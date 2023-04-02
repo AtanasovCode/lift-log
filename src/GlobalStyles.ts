@@ -9,9 +9,10 @@ export const GlobalStyle = createGlobalStyle`
 
     html,
     body {
-        min-height: 100vh;
+        min-height: 100%;
+        max-width: 1440px;
         font-size: ${props => props.theme.defaultFontSize};
-        font-family: ${props => props.theme.defaultFontFamily};
+        font-family: ${props => props.theme.defaultFont};
         background-color: ${props => props.theme.defaultBackgroundColor};
     }
 
@@ -19,11 +20,22 @@ export const GlobalStyle = createGlobalStyle`
     input[type=button] {
         border: none;
         outline: none;
+        cursor: pointer;
     }
 
     button:hover,
     input:focus,
     input:hover {
         outline: none;
+    }
+
+    a,
+    Link {
+        text-decoration: none;
+        color: dodgerblue;
+    }
+
+    ul {
+        list-style: none;
     }
 `;

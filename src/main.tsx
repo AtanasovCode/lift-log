@@ -18,6 +18,9 @@ const theme = {
   darkPurple: "hsl(327, 89%, 24%)",
   lightGreen: "hsl(125, 71%, 68%)",
   softOrange: "hsl(13, 77%, 52%)",
+
+  lighterGreen: "hsl(125, 88%, 79%)",
+  darkGreen: "hsl(125, 100%, 32%)",
 };
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
