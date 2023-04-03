@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import Nav from './components/navigation/Nav';
+import TestGraph from './components/graphs/TestGraph';
 
 import * as Styled from './styles/App.Styled';
 
@@ -26,6 +27,7 @@ function App() {
         </Styled.HeroInfo>
 
       </Styled.Hero>
+      <TestGraph />
     </Styled.App>
   )
 }
