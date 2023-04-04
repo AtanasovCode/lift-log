@@ -5,60 +5,60 @@ const TestGraph = () => {
 
     const data = [
         {
-            month: "January",
-            weight: 110
+            month: "Jan",
+            weight: 30
         },
         {
-            month: "February",
-            weight: 115
+            month: "Feb",
+            weight: 35
         },
         {
-            month: "March",
-            weight: 108
+            month: "Mar",
+            weight: 40
         },
         {
-            month: "April",
-            weight: 107
+            month: "Apr",
+            weight: 45
         },
         {
             month: "May",
-            weight: 124
+            weight: 45
         },
         {
-            month: "June",
-            weight: 112
+            month: "Jun",
+            weight: 50
         },
         {
-            month: "July",
-            weight: 105
+            month: "Jul",
+            weight: 50
         },
         {
-            month: "August",
-            weight: 101
+            month: "Aug",
+            weight: 55
         },
         {
-            month: "September",
-            weight: 94
+            month: "Sep",
+            weight: 60
         },
         {
-            month: "October",
-            weight: 97
+            month: "Oct",
+            weight: 65
         },
         {
-            month: "November",
-            weight: 90
+            month: "Nov",
+            weight: 65
         },
         {
-            month: "December",
-            weight: 84
+            month: "Dec",
+            weight: 70
         },
     ]
 
     return (
         <Container>
             <LineChart
-                width={400}
-                height={400}
+                width={550}
+                height={150}
                 data={data}
             >
                 <Line 
@@ -66,10 +66,16 @@ const TestGraph = () => {
                     dataKey="weight"
                     stroke="dodgerblue"
                 />
-                <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                 <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
+                <YAxis domain={[25, 80]} />
+                <Tooltip 
+                    contentStyle={
+                        {width: 300, 
+                            background: "#222", 
+                            borderColor: "#111",
+                            color: "#fff",
+                        }}
+                />
             </LineChart>
         </Container>
     );

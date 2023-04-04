@@ -1,7 +1,9 @@
 import { useState } from 'react'
 
 import Nav from './components/navigation/Nav';
+import Hero from './components/Hero';
 import TestGraph from './components/graphs/TestGraph';
+import LiftProgressGraph from './components/graphs/homepage-graphs/LiftProgressGraph';
 
 import * as Styled from './styles/App.Styled';
 
@@ -10,24 +12,8 @@ function App() {
 
   return (
     <Styled.App>
-      <Styled.Hero>
-        <Nav />
-
-        <Styled.HeroInfo>
-          <Styled.MainTitle>
-            Track your strength and progress
-            <Styled.Fancy>
-              effectively
-            </Styled.Fancy>
-          </Styled.MainTitle>
-          <Styled.HeroButton 
-            type="button"
-            value="Get Stats!"
-          />
-        </Styled.HeroInfo>
-
-      </Styled.Hero>
-      <TestGraph />
+      <Hero />
+      <LiftProgressGraph />
     </Styled.App>
   )
 }

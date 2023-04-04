@@ -9,6 +9,7 @@ const theme = {
   defaultFontSize: "16px",
   defaultFontFamily: "sans-serif",
   defaultBackgroundColor: "#111",
+  defaultFontColor: "#fff",
 
   logoFont: "'Keania One', cursive",
   defaultFont: "'Noto Sans', sans-serif",
@@ -21,6 +22,8 @@ const theme = {
 
   lighterGreen: "hsl(125, 88%, 79%)",
   darkGreen: "hsl(125, 100%, 32%)",
+
+  barFill: "#000",
 };
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

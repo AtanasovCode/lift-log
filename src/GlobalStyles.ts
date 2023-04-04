@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
         max-width: 1440px;
         font-size: ${props => props.theme.defaultFontSize};
         font-family: ${props => props.theme.defaultFont};
-        background-color: ${props => props.theme.defaultBackgroundColor};
+        background-color: ${props => props.theme.richBlack};
     }
 
     button,
