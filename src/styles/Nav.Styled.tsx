@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+interface Props {
+    active: boolean;
+}
+
+
 export const Nav = styled.nav`
     padding: 35px 65px;
     width: 100%;
@@ -11,16 +16,67 @@ export const Nav = styled.nav`
     left: 0;
     color: #fff;
     z-index: 4;
+
+    @media (max-width: 700px) {
+        align-items: center;
+        justify-content: center;
+        background-color: ${props => props.theme.richBlack};
+        position: fixed;
+        z-index: 10;
+        padding: 20px;
+    }
 `;
 
 export const Logo = styled.img`
     width: 80px;
+
+    @media (max-width: 700px) {
+        width: 50px;
+    }
 `;
 
-export const NavLinks = styled.div`
+export const NavLinks = styled.div<Props>`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 700px) {
+        position: fixed;
+        width: 50%;
+        height: 100vh;
+        background-color: ${props => props.theme.richBlack};
+        padding: 40px 15px;
+        margin-top: 75px;
+        top: 0;
+        right: -200%;
+        transition: all .666s ease;
+
+        //Mobile Nav is Active
+        ${props => props.active && `
+            top: 0;
+            right: 0;
+            transition: all .666s ease;
+        `}
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background-color: rgba(0, 0, 0, .7);
+        }
+    }
+
+    @media (max-width: 400px) {
+        width: 75%;
+    }
 `;
 
 export const NavLink = styled.div`
@@ -29,6 +85,12 @@ export const NavLink = styled.div`
     margin: 0 35px;
     cursor: pointer;
     user-select: none;
+
+    @media (max-width: 700px) {
+        font-size: 20px;
+        font-weight: 500;
+        margin: 10px 0;
+    }
 `;
 
 export const SpecialLink = styled(NavLink)`
@@ -39,5 +101,22 @@ export const SpecialLink = styled(NavLink)`
     &:hover {
         background-color: ${props => props.theme.lighterGreen};
         color: #000;
+    }
+`;
+
+export const MenuIcon = styled.div`
+    user-select: none;
+    opacity: 0;
+    position: absolute;
+    z-index: 0;
+
+    @media (max-width: 700px) {
+        user-select: all;
+        opacity: 1;
+        position: absolute;
+        right: 25px;
+        cursor: pointer;
+        z-index: 5;
+        width: 30px;
     }
 `;
