@@ -25,7 +25,42 @@ const StrongestLiftsChart = () => {
     const theme = useContext(ThemeContext);
 
     //Pie Chart Colors
-    const colors = [`#1A4B4C`, `#404040`, `#00275b`, `#80014b`, `#2F2D2E`];
+    const colors = [`#810101`, `#5f4a4a`, `#260072`, `#1f221f`, `#005e62`];
+
+    //Custom Tooltip Content
+    function CustomTooltip({ label, payload, active }) {
+
+        //Get the src for the exercise icons
+        const getExerciseIcon = (name: string) => {
+            switch (name) {
+                case "Bench Press": return bench;
+                case "Overhead Press": return ohp;
+                case "Deadlift": return deadlift;
+                case "Squat": return squat;
+                case "Barbell Curl": return curl;
+                case "Lat Pulldown": return lat;
+            }
+        }
+
+        if (active) {
+            return (
+                <TooltipContainer>
+                        {payload.map((info) => {
+                            return (
+                                <TooltipExercise key={info.name}>
+                                    <TooltipIcon src={getExerciseIcon(info.name)} />
+                                    {info.name}:
+                                </TooltipExercise>
+                            );
+                        })}
+                        {payload.map((info) => {
+                            return <TooltipLift key={info.name}>{info.value}kg</TooltipLift>
+                        })}
+                </TooltipContainer>
+            );
+        }
+        return null;
+    }
 
 
 
@@ -50,7 +85,7 @@ const StrongestLiftsChart = () => {
             </Info>
             <Chart>
                 <PieChart
-                    height={340}
+                    height={360}
                     width={300}
                 >
                     <Pie
@@ -60,15 +95,15 @@ const StrongestLiftsChart = () => {
                         outerRadius={105}
                         fill="#000"
                         stroke="none"
-                        paddingAngle={4}
+                        paddingAngle={6}
                         label
                     >
                         {StrongestLifts.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                         ))}
                     </Pie>
-                    <Legend wrapperStyle={{ fontSize: "10px", bottom: "-25px" }} />
-                    <Tooltip />
+                    <Legend wrapperStyle={{ fontSize: "10px", bottom: "-10px" }} />
+                    <Tooltip content={<CustomTooltip />} />
                 </PieChart>
             </Chart>
         </Container>
@@ -81,7 +116,7 @@ const Container = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 80px 100px;
+    padding: 80px 30px;
     background-color: #FF950A;
     color: #000;
 
@@ -100,6 +135,7 @@ const Chart = styled.div`
 
     font-size: 20px;
     font-weight: 700;
+    color: #fff;
 `;
 
 const Info = styled.div`
@@ -132,4 +168,35 @@ const IconsSplit = styled(Icons)`
 const Icon = styled.img`
     width: 85px;
     height: 85px;
+`;
+
+const TooltipContainer = styled.div`
+    padding: 5px;
+    background-color: black;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 300;
+`;
+
+const TooltipIcon = styled.img`
+    width: 20px;
+    height: 20px;
+    filter: invert(100%);
+    margin-right: 6px;
+`;
+
+const TooltipExercise = styled.div`
+    margin-right: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const TooltipLift = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;

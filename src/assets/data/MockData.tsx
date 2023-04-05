@@ -51,32 +51,32 @@ const LiftData = [
 const StrongestLifts = [
     {
         icon: {bench},
-        name: "Barbell Bench Press",
-        times: 178,
+        name: "Bench Press",
+        times: 125,
     },
     {
-        name: "Barbell Squat",
-        times: 134,
+        name: "Squat",
+        times: 165,
         icon: {squat}
     },
     {
         name: "Overhead Press",
-        times: 108,
+        times: 85,
         icon: {ohp}
     },
     {
         name: "Deadlift",
-        times: 78,
+        times: 155,
         icon: {deadlift}
     },
     {
         name: "Barbell Curl",
-        times: 95,
+        times: 65,
         icon: {curl}
     },
     {
         name: "Lat Pulldown",
-        times: 112,
+        times: 115,
         icon: {lat}
     },
 ]
