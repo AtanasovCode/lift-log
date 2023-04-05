@@ -100,7 +100,6 @@ const Container = styled.div`
     background-color: #000;
     color: ${props => props.theme.defaultFontColor};
     padding: 80px 100px;
-    margin-top: 30px;
 `;
 
 const Info = styled.div`

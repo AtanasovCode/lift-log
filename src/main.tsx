@@ -20,6 +20,9 @@ const theme = {
   lightGreen: "hsl(125, 71%, 68%)",
   softOrange: "hsl(13, 77%, 52%)",
 
+  magnolia: "hsl(273, 33%, 94%)",
+  mayaBlue: "hsl(203, 93%, 67%)",
+
   lighterGreen: "hsl(125, 88%, 79%)",
   darkGreen: "hsl(125, 100%, 32%)",
 
