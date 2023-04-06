@@ -18,7 +18,7 @@ const Hero = () => {
                     value="Get Stats!"
                 />
             </Styled.HeroInfo>
-
+            <Styled.HeaderTint />
         </Styled.HeroSection>
     );
 }

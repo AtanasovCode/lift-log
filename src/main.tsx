@@ -25,6 +25,7 @@ const theme = {
 
   lighterGreen: "hsl(125, 88%, 79%)",
   darkGreen: "hsl(125, 100%, 32%)",
+  richBlackDark: "hsl(210, 53.84615384615385%, 5.098039215686274%)",
 
   barFill: "#000",
 };

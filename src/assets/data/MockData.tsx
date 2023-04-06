@@ -66,7 +66,7 @@ const StrongestLifts = [
     },
     {
         name: "Deadlift",
-        times: 155,
+        times: 185,
         icon: {deadlift}
     },
     {
@@ -76,7 +76,7 @@ const StrongestLifts = [
     },
     {
         name: "Lat Pulldown",
-        times: 115,
+        times: 90,
         icon: {lat}
     },
 ]

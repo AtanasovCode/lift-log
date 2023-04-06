@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import header from '../assets/images/header.jpg';
+import headerMobile from '../assets/images/header-mobile.jpg';
 
 export const HeroSection = styled.div`
     position: relative;
@@ -13,7 +14,7 @@ export const HeroSection = styled.div`
 
     background: linear-gradient(
         to right,
-        ${props => props.theme.richBlack} 25%,
+        ${props => props.theme.richBlackDark} 25%,
         transparent
     ), url(${header});
 
@@ -21,14 +22,24 @@ export const HeroSection = styled.div`
     background-position: 50% 85%;
     background-repeat: no-repeat;
     overflow: hidden;
+
+    @media (max-width: 700px) {
+        display:flex;
+        align-items: center;
+        justfiy-content: center;
+        background: url(${headerMobile});
+        background-position: center;
+    }
 `;
 
 export const HeaderTint = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .5);
-    z-index: 1;
+    @media (max-width: 700px) {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .7);
+        z-index: 1;    
+    }
 `;
 
 export const HeroInfo = styled.div`
@@ -42,16 +53,22 @@ export const HeroInfo = styled.div`
 
     animation: fadeIn 1.2s 1;
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-100%);
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    @media (max-width: 700px) {
+        margin-left: 0;
+        align-items: center;
+        text-align: center;
     }
-}
 `;
 
 export const MainTitle = styled.div`
@@ -59,6 +76,11 @@ export const MainTitle = styled.div`
     font-weight: 700;
     color: #fff;
     margin-bottom: 30px;
+
+    @media (max-width: 700px) {
+        font-size: 30px;
+        margin: 0 20px;
+    }
 `;
 
 export const Fancy = styled.span`

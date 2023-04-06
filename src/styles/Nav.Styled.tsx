@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+//This allows passing of custom props 
 interface Props {
     active: boolean;
 }
@@ -20,7 +21,7 @@ export const Nav = styled.nav`
     @media (max-width: 700px) {
         align-items: center;
         justify-content: center;
-        background-color: ${props => props.theme.richBlack};
+        background-color: ${props => props.theme.richBlackDark};
         position: fixed;
         z-index: 10;
         padding: 20px;
@@ -31,6 +32,10 @@ export const Logo = styled.img`
     width: 80px;
 
     @media (max-width: 700px) {
+        width: 70px;
+    }
+
+    @media (max-width: 500px) {
         width: 50px;
     }
 `;
@@ -44,7 +49,7 @@ export const NavLinks = styled.div<Props>`
         position: fixed;
         width: 50%;
         height: 100vh;
-        background-color: ${props => props.theme.richBlack};
+        background-color: ${props => props.theme.richBlackDark};
         padding: 40px 15px;
         margin-top: 75px;
         top: 0;
