@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
+import useWindowSize from "../../hooks/UseWindow";
 import { ThemeContext } from "styled-components";
+import * as Styled from '../../../styles/LiftProgress.Styled';
 import {
     ComposedChart,
     LineChart,
@@ -18,31 +19,32 @@ import { LiftData } from "../../../assets/data/MockData";
 
 const LiftProgressGraph = () => {
 
-    const [barFill, setBarFill] = useState("#000");
     const [chartHeight, setChartHeight] = useState<number>();
 
     //We use this to use our thene
     //Outside of styled-components
     const theme = useContext(ThemeContext);
 
+    // Define general type for useWindowSize hook, which includes width and height
+    interface Size {
+        width: number | undefined;
+        height: number | undefined;
+    }
+
     const size: Size = useWindowSize();
 
     //Change the height of the chart, based on window size
     useEffect(() => {
         let w = size.width;
-        
-        if(w !== undefined) {
-            if(w >= 1000) setChartHeight(280);
-            else if(w < 1000 && w >= 700) setChartHeight(250);
-            else if(w < 700 && w >= 500) setChartHeight(250);
-            else if(w < 500) setChartHeight(160);
+
+        if (w !== undefined) {
+            if (w >= 1000) setChartHeight(280);
+            else if (w < 1000 && w >= 500) setChartHeight(250);
+            else if (w < 700 && w >= 500) setChartHeight(180);
+            else if (w < 550) setChartHeight(160);
         }
 
     }, [size.width])
-
-    useEffect(() => {
-        console.log(chartHeight);
-    }, [chartHeight])
 
     //Custom Tooltip Content
     function CustomTooltip({ label, payload, active }) {
@@ -65,29 +67,29 @@ const LiftProgressGraph = () => {
 
         if (active) {
             return (
-                <TooltipContainer>
-                    <TooltipHeading>
+                <Styled.TooltipContainer>
+                    <Styled.TooltipHeading>
                         Barbell Bench Press
-                    </TooltipHeading>
-                    <TooltipDesc>
+                    </Styled.TooltipHeading>
+                    <Styled.TooltipDesc>
                         Lifted in: {getFullMonth(label)}
-                    </TooltipDesc>
-                    <TooltipDesc>
+                    </Styled.TooltipDesc>
+                    <Styled.TooltipDesc>
                         Weight: {payload[0].value}kg
-                    </TooltipDesc>
-                </TooltipContainer>
+                    </Styled.TooltipDesc>
+                </Styled.TooltipContainer>
             );
         }
         return null;
     }
 
     return (
-        <Container>
-            <Info>
+        <Styled.Container>
+            <Styled.Info>
                 Track your strength increase
-                with <OrangeWord>ease</OrangeWord>
-            </Info>
-            <Chart>
+                with <Styled.OrangeWord>ease</Styled.OrangeWord>
+            </Styled.Info>
+            <Styled.Chart>
                 <ResponsiveContainer width={'99%'} height={chartHeight}>
                     <BarChart
                         data={LiftData}
@@ -105,156 +107,12 @@ const LiftProgressGraph = () => {
                         />
                     </BarChart>
                 </ResponsiveContainer>
-                <ChartDescription>
+                <Styled.ChartDescription>
                     *Hover over chart to see data
-                </ChartDescription>
-            </Chart>
-        </Container>
+                </Styled.ChartDescription>
+            </Styled.Chart>
+        </Styled.Container>
     );
 }
 
 export default LiftProgressGraph;
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #000;
-    color: ${props => props.theme.defaultFontColor};
-    padding: 80px 100px;
-
-    @media (max-width: 1000px) {
-        padding: 80px;
-    }
-    
-    @media (max-width: 900px) {
-        padding: 80px 20px;
-    }
-
-    @media (max-width: 700px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-`;
-
-const Info = styled.div`
-    flex: 100%;
-
-
-    font-size: 32px;
-    font-weight: 700;
-    text-align: center;
-
-    @media (max-width: 900px) {
-        font-size: 26px;
-    }
-
-    @media (max-width: 700px) {
-        font-size: 23px;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 55px;
-    }
-`;
-
-
-const OrangeWord = styled.span`
-    color: ${props => props.theme.softOrange};
-    color: #000;
-    -webkit-text-stroke: 1px ${props => props.theme.softOrange};
-    padding-left: 5px;
-    font-size: 44px;
-    transition: color .3s ease;
-
-    &:hover {
-        color: ${props => props.theme.softOrange};
-        cursor: pointer;
-    }
-`;
-
-
-const Chart = styled.div`
-    flex: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-right: 70px;
-
-    @media (max-width: 700px) {
-        margin: 0 20px;
-        width: 100%;
-    }
-`;
-
-const ChartDescription = styled.div`
-    position: absolute;
-    bottom: -15px;
-    font-size: 12px;
-    font-weight: 300;
-    color: darkgray;
-
-    @media (max-width: 700px) {
-        opacity: 0;
-        user-select: none;
-        left: -200%;
-    }
-`;
-
-const TooltipContainer = styled.div`
-    padding: 10px 12px;
-    background-color: ${props => props.theme.defaultBackgroundColor};
-    border: none;
-`;
-
-const TooltipHeading = styled.div`
-    margin-bottom: 10px;
-    font-weight: 600;
-    font-size: 16px;
-`;
-
-const TooltipDesc = styled.div`
-    margin-bottom: 6px;
-`;
-
-
-// Define general type for useWindowSize hook, which includes width and height
-interface Size {
-    width: number | undefined;
-    height: number | undefined;
-}
-
-// Hook
-function useWindowSize(): Size {
-    // Initialize state with undefined width/height so server and client renders match
-    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-    const [windowSize, setWindowSize] = useState<Size>({
-        width: undefined,
-        height: undefined,
-    });
-
-    useEffect(() => {
-        // Handler to call on window resize
-        function handleResize() {
-            // Set window width/height to state
-            setWindowSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        }
-
-        // Add event listener
-        window.addEventListener("resize", handleResize);
-
-        // Call handler right away so state gets updated with initial window size
-        handleResize();
-
-        // Remove event listener on cleanup
-        return () => window.removeEventListener("resize", handleResize);
-    }, []); // Empty array ensures that effect is only run on mount
-
-    return windowSize;
-}

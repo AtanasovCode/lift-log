@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ThemeContext } from "styled-components";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import useWindowSize from "../../hooks/UseWindow";
 import { StrongestLifts } from "../../../assets/data/MockData";
 import {
     PieChart,
@@ -22,11 +23,34 @@ import lat from '../../../assets/icons/lat.png';
 
 const StrongestLiftsChart = () => {
 
+    const [pieH, setPieH] = useState<number>();
+
     //Grab theme from styled-components
     const theme = useContext(ThemeContext);
 
     //Pie Chart Colors
     const colors = [`#810101`, `#5f4a4a`, `#260072`, `#1f221f`, `#005e62`];
+
+    // Define general type for useWindowSize hook, which includes width and height
+    interface Size {
+        width: number | undefined;
+        height: number | undefined;
+    }
+
+    const size: Size = useWindowSize();
+
+    //Change chart height based on window size
+    useEffect(() => {
+        let w = size.width;
+
+        if (w !== undefined) {
+            if (w >= 1000) setPieH(330);
+            else if (w < 1000 && w >= 500) setPieH(300);
+            else if (w < 700 && w >= 500) setPieH(180);
+            else if (w < 550) setPieH(160);
+        }
+
+    }, [size.width])
 
     //Custom Tooltip Content
     function CustomTooltip({ label, payload, active }) {
@@ -85,7 +109,7 @@ const StrongestLiftsChart = () => {
                 </Icons>
             </Info>
             <Chart>
-                <ResponsiveContainer width="99%" height={300}>
+                <ResponsiveContainer width={300} height={330}>
                     <PieChart margin={{ top: 0, left: 0, right: 0, bottom: 0 }} >
                         <Pie
                             data={StrongestLifts}
@@ -120,18 +144,14 @@ const Container = styled.section`
     background-color: #FF950A;
     color: #000;
 
-    .recharts-legend-wrapper {  //targets the parent of the legend items
-        border: 2px solid black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        padding: 0 155px;
-    } 
+    //targets the parent of the legend items -> .recharts-legend-wrapper 
 
     .recharts-legend-item {   //This targets the legend items individually
         margin: 5px;
-        flex: 3;
+    }
+
+    @media (max-width: 700px) {
+        flex-direction: column;
     }
 `;
 
@@ -144,6 +164,14 @@ const Chart = styled.div`
     font-size: 20px;
     font-weight: 700;
     color: #fff;
+
+    @media (max-width: 900px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 700px) {
+        font-size: 20px;
+    }
 `;
 
 const Info = styled.div`
@@ -152,12 +180,24 @@ const Info = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 700px) {
+        margin-bottom: 35px;
+    }
 `;
 
 const Title = styled.div`
     font-size: 30px;
     font-weight: 700;
     text-align: center;
+    
+    @media (max-width: 900px) {
+        font-size: 26px;
+    }
+
+    @media (max-width: 700px) {
+        font-size: 30px;
+    }
 `;
 
 const Icons = styled.div`
@@ -176,6 +216,16 @@ const IconsSplit = styled(Icons)`
 const Icon = styled.img`
     width: 85px;
     height: 85px;
+
+    @media (max-width: 900px) {
+        width: 65px;
+        height: 65px;
+    }
+
+    @media (max-width: 700px) {
+        width: 85px;
+        height: 85px;
+    }
 `;
 
 const TooltipContainer = styled.div`
