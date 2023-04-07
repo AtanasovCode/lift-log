@@ -43,7 +43,7 @@ export const HeaderTint = styled.div`
 `;
 
 export const HeroInfo = styled.div`
-    width: 40%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -80,6 +80,13 @@ export const MainTitle = styled.div`
     @media (max-width: 700px) {
         font-size: 30px;
         margin: 0 20px;
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 24px;
+        margin: 0 15px;
+        margin-bottom: 30px;
     }
 `;
 

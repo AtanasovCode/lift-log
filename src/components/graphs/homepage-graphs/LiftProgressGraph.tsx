@@ -9,7 +9,9 @@ import {
     XAxis,
     YAxis,
     Bar,
-    CartesianAxis
+    CartesianAxis,
+    ResponsiveContainer,
+    BarChart,
 } from "recharts";
 import { LiftData } from "../../../assets/data/MockData";
 
@@ -66,22 +68,23 @@ const LiftProgressGraph = () => {
                 with <OrangeWord>ease</OrangeWord>
             </Info>
             <Chart>
-                <ComposedChart
-                    width={420}
-                    height={220}
-                    data={LiftData}
-                >
-                    <XAxis dataKey="Month" />
-                    <YAxis domain={[35, 105]} />
-                    <Bar 
-                        dataKey="Lift" 
-                        stroke={theme.softOrange}
-                    />
-                    <Tooltip
-                        content={<CustomTooltip />}
-                        cursor={false}
-                    />
-                </ComposedChart>
+                <ResponsiveContainer width={'100%'} height={220}>
+                    <BarChart
+                        data={LiftData}
+                        margin={{ top: 0, left: 0, right: 0, bottom: 0 }}                        
+                    >
+                        <XAxis dataKey="Month" />
+                        <YAxis domain={[35, 100]} width={40} />
+                        <Bar
+                            dataKey="Lift"
+                            stroke={theme.softOrange}
+                        />
+                        <Tooltip
+                            content={<CustomTooltip />}
+                            cursor={false}
+                        />
+                    </BarChart>
+                </ResponsiveContainer>
                 <ChartDescription>
                     *Hover over chart to see data
                 </ChartDescription>
@@ -100,15 +103,37 @@ const Container = styled.div`
     background-color: #000;
     color: ${props => props.theme.defaultFontColor};
     padding: 80px 100px;
+
+    @media (max-width: 1000px) {
+        padding: 80px;
+    }
+    
+    @media (max-width: 900px) {
+        padding: 80px 20px;
+    }
+
+    @media (max-width: 700px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 `;
 
 const Info = styled.div`
     flex: 100%;
 
+
     font-size: 32px;
     font-weight: 700;
-    margin-left: 120px;
     text-align: center;
+
+    @media (max-width: 700px) {
+        font-size: 26px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 55px;
+    }
 `;
 
 
@@ -133,6 +158,12 @@ const Chart = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+    margin-right: 70px;
+
+    @media (max-width: 700px) {
+        margin: 0 20px;
+        width: 100%;
+    }
 `;
 
 const ChartDescription = styled.div`
@@ -141,6 +172,12 @@ const ChartDescription = styled.div`
     font-size: 12px;
     font-weight: 300;
     color: darkgray;
+
+    @media (max-width: 700px) {
+        opacity: 0;
+        user-select: none;
+        left: -200%;
+    }
 `;
 
 const TooltipContainer = styled.div`
