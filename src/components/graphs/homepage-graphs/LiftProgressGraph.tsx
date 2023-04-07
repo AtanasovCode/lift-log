@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { ThemeContext } from "styled-components";
 import {
@@ -19,10 +19,30 @@ import { LiftData } from "../../../assets/data/MockData";
 const LiftProgressGraph = () => {
 
     const [barFill, setBarFill] = useState("#000");
+    const [chartHeight, setChartHeight] = useState<number>();
 
     //We use this to use our thene
     //Outside of styled-components
     const theme = useContext(ThemeContext);
+
+    const size: Size = useWindowSize();
+
+    //Change the height of the chart, based on window size
+    useEffect(() => {
+        let w = size.width;
+        
+        if(w !== undefined) {
+            if(w >= 1000) setChartHeight(280);
+            else if(w < 1000 && w >= 700) setChartHeight(250);
+            else if(w < 700 && w >= 500) setChartHeight(250);
+            else if(w < 500) setChartHeight(160);
+        }
+
+    }, [size.width])
+
+    useEffect(() => {
+        console.log(chartHeight);
+    }, [chartHeight])
 
     //Custom Tooltip Content
     function CustomTooltip({ label, payload, active }) {
@@ -68,10 +88,10 @@ const LiftProgressGraph = () => {
                 with <OrangeWord>ease</OrangeWord>
             </Info>
             <Chart>
-                <ResponsiveContainer width={'100%'} height={220}>
+                <ResponsiveContainer width={'99%'} height={chartHeight}>
                     <BarChart
                         data={LiftData}
-                        margin={{ top: 0, left: 0, right: 0, bottom: 0 }}                        
+                        margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
                     >
                         <XAxis dataKey="Month" />
                         <YAxis domain={[35, 100]} width={40} />
@@ -128,8 +148,12 @@ const Info = styled.div`
     font-weight: 700;
     text-align: center;
 
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
         font-size: 26px;
+    }
+
+    @media (max-width: 700px) {
+        font-size: 23px;
         display: flex;
         flex-direction: column;
         margin-bottom: 55px;
@@ -195,3 +219,42 @@ const TooltipHeading = styled.div`
 const TooltipDesc = styled.div`
     margin-bottom: 6px;
 `;
+
+
+// Define general type for useWindowSize hook, which includes width and height
+interface Size {
+    width: number | undefined;
+    height: number | undefined;
+}
+
+// Hook
+function useWindowSize(): Size {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState<Size>({
+        width: undefined,
+        height: undefined,
+    });
+
+    useEffect(() => {
+        // Handler to call on window resize
+        function handleResize() {
+            // Set window width/height to state
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        }
+
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+
+        // Call handler right away so state gets updated with initial window size
+        handleResize();
+
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
+    }, []); // Empty array ensures that effect is only run on mount
+
+    return windowSize;
+}

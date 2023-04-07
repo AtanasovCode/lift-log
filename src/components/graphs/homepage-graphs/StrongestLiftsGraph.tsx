@@ -9,6 +9,7 @@ import {
     CartesianGrid,
     Tooltip,
     Legend,
+    ResponsiveContainer,
 } from "recharts";
 
 import bench from '../../../assets/icons/bench.png'
@@ -45,17 +46,17 @@ const StrongestLiftsChart = () => {
         if (active) {
             return (
                 <TooltipContainer>
-                        {payload.map((info) => {
-                            return (
-                                <TooltipExercise key={info.name}>
-                                    <TooltipIcon src={getExerciseIcon(info.name)} />
-                                    {info.name}:
-                                </TooltipExercise>
-                            );
-                        })}
-                        {payload.map((info) => {
-                            return <TooltipLift key={info.name}>{info.value}kg</TooltipLift>
-                        })}
+                    {payload.map((info) => {
+                        return (
+                            <TooltipExercise key={info.name}>
+                                <TooltipIcon src={getExerciseIcon(info.name)} />
+                                {info.name}:
+                            </TooltipExercise>
+                        );
+                    })}
+                    {payload.map((info) => {
+                        return <TooltipLift key={info.name}>{info.value}kg</TooltipLift>
+                    })}
                 </TooltipContainer>
             );
         }
@@ -84,27 +85,26 @@ const StrongestLiftsChart = () => {
                 </Icons>
             </Info>
             <Chart>
-                <PieChart
-                    height={360}
-                    width={300}
-                >
-                    <Pie
-                        data={StrongestLifts}
-                        dataKey="times"
-                        innerRadius={60}
-                        outerRadius={105}
-                        fill="#000"
-                        stroke="none"
-                        paddingAngle={6}
-                        label
-                    >
-                        {StrongestLifts.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                        ))}
-                    </Pie>
-                    <Legend wrapperStyle={{ fontSize: "10px", bottom: "-10px" }} />
-                    <Tooltip content={<CustomTooltip />} />
-                </PieChart>
+                <ResponsiveContainer width="99%" height={300}>
+                    <PieChart margin={{ top: 0, left: 0, right: 0, bottom: 0 }} >
+                        <Pie
+                            data={StrongestLifts}
+                            dataKey="times"
+                            innerRadius={60}
+                            outerRadius={105}
+                            fill="#000"
+                            stroke="none"
+                            paddingAngle={6}
+                            label
+                        >
+                            {StrongestLifts.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                            ))}
+                        </Pie>
+                        <Legend wrapperStyle={{ fontSize: "10px", bottom: "-10px" }} />
+                        <Tooltip content={<CustomTooltip />} />
+                    </PieChart>
+                </ResponsiveContainer>
             </Chart>
         </Container>
     );
@@ -120,10 +120,18 @@ const Container = styled.section`
     background-color: #FF950A;
     color: #000;
 
-    //This targets the legend items individually
-    //.recharts-legend-wrapper targets the parent of the legend items
-    .recharts-legend-item {
+    .recharts-legend-wrapper {  //targets the parent of the legend items
+        border: 2px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 155px;
+    } 
+
+    .recharts-legend-item {   //This targets the legend items individually
         margin: 5px;
+        flex: 3;
     }
 `;
 
