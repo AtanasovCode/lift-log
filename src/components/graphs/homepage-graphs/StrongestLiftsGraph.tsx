@@ -109,26 +109,24 @@ const StrongestLiftsChart = () => {
                 </Icons>
             </Info>
             <Chart>
-                <ResponsiveContainer width={300} height={330}>
-                    <PieChart margin={{ top: 0, left: 0, right: 0, bottom: 0 }} >
-                        <Pie
-                            data={StrongestLifts}
-                            dataKey="times"
-                            innerRadius={60}
-                            outerRadius={105}
-                            fill="#000"
-                            stroke="none"
-                            paddingAngle={6}
-                            label
-                        >
-                            {StrongestLifts.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                            ))}
-                        </Pie>
-                        <Legend wrapperStyle={{ fontSize: "10px", bottom: "-10px" }} />
-                        <Tooltip content={<CustomTooltip />} />
-                    </PieChart>
-                </ResponsiveContainer>
+                <PieChart margin={{ top: 0, left: 0, right: 0, bottom: 0 }} width={300} height={330}>
+                    <Pie
+                        data={StrongestLifts}
+                        dataKey="times"
+                        innerRadius={60}
+                        outerRadius={105}
+                        fill="#000"
+                        stroke="none"
+                        paddingAngle={6}
+                        label
+                    >
+                        {StrongestLifts.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                        ))}
+                    </Pie>
+                    <Legend wrapperStyle={{ fontSize: "10px", bottom: "-10px" }} />
+                    <Tooltip content={<CustomTooltip />} />
+                </PieChart>
             </Chart>
         </Container>
     );

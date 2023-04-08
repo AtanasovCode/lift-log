@@ -86,7 +86,7 @@ const LiftProgressGraph = () => {
     return (
         <Styled.Container>
             <Styled.Info>
-                Track your strength increase
+                Visualize your strength increase
                 with <Styled.OrangeWord>ease</Styled.OrangeWord>
             </Styled.Info>
             <Styled.Chart>

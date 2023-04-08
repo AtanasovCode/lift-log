@@ -1,40 +1,39 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from './GlobalStyles';
+import { GlobalStyle } from './styles/GlobalStyles';
 
-const theme = {
-  defaultFontSize: "16px",
-  defaultFontFamily: "sans-serif",
-  defaultBackgroundColor: "#111",
-  defaultFontColor: "#fff",
+//Theme for webpage
+import { theme } from './styles/Theme';
 
-  logoFont: "'Keania One', cursive",
-  defaultFont: "'Noto Sans', sans-serif",
+//Error Handling for react-router-dom
+import ErrorPage from './components/errors/ErrorPage';
 
-  richBlack: "hsl(209, 51%, 12%)",
-  darkBlue: "hsl(203, 94%, 12%)",
-  darkPurple: "hsl(327, 89%, 24%)",
-  lightGreen: "hsl(125, 71%, 68%)",
-  softOrange: "hsl(13, 77%, 52%)",
+//Importing Routes:
+import Homepage from './routes/Homepage';
+import GetStats from './routes/GetStats';
 
-  magnolia: "hsl(273, 33%, 94%)",
-  mayaBlue: "hsl(203, 93%, 67%)",
-
-  lighterGreen: "hsl(125, 88%, 79%)",
-  darkGreen: "hsl(125, 100%, 32%)",
-  richBlackDark: "hsl(210, 53.84615384615385%, 5.098039215686274%)",
-
-  barFill: "#000",
-};
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Homepage />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/get-stats",
+    element: <GetStats />,
+  }
+])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
       <GlobalStyle />
-      <App />
     </ThemeProvider>
   </React.StrictMode>,
 )
