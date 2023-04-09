@@ -32,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
     a,
     Link {
         text-decoration: none;
-        color: dodgerblue;
+        color: #fff;
     }
 
     ul {

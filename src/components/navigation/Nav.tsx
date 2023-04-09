@@ -1,6 +1,7 @@
+import { useState } from 'react';
+import Link from 'phosphor-react';
 import * as Styled from '../../styles/Nav.Styled';
 
-import { useState } from 'react';
 import logo from '../../assets/logo.png';
 import { Hamburger, List } from 'phosphor-react';
 
@@ -24,13 +25,13 @@ const Nav = () => {
                 />
             </Styled.MenuIcon>
             <Styled.NavLinks active={active}>
-                <Styled.NavLink>
+                <Styled.NavLink to="/">
                     Home
                 </Styled.NavLink>
-                <Styled.NavLink>
+                <Styled.NavLink to="/about">
                     About
                 </Styled.NavLink>
-                <Styled.SpecialLink>
+                <Styled.SpecialLink to="/get-stats">
                     Try it!
                 </Styled.SpecialLink>
             </Styled.NavLinks>

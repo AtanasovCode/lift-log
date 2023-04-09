@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 //This allows passing of custom props 
 interface Props {
@@ -84,7 +85,7 @@ export const NavLinks = styled.div<Props>`
     }
 `;
 
-export const NavLink = styled.div`
+export const NavLink = styled(Link)`
     font-size: 15px;
     font-weight: 500;
     margin: 0 35px;

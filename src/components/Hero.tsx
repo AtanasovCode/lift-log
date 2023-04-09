@@ -13,10 +13,9 @@ const Hero = () => {
                         effectively
                     </Styled.Fancy>
                 </Styled.MainTitle>
-                <Styled.HeroButton
-                    type="button"
-                    value="Get Stats!"
-                />
+                <Styled.HeroButton to="/get-stats">
+                    Get Stats!
+                </Styled.HeroButton>
             </Styled.HeroInfo>
             <Styled.HeaderTint />
         </Styled.HeroSection>

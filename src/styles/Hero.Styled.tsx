@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import header from '../assets/images/header.jpg';
 import headerMobile from '../assets/images/header-mobile.jpg';
@@ -95,7 +96,7 @@ export const Fancy = styled.span`
     padding-left: 7px;
 `;
 
-export const HeroButton = styled.input`
+export const HeroButton = styled(Link)`
     background-color: ${props => props.theme.lightGreen};
     color: #000;
     padding: 10px 65px;

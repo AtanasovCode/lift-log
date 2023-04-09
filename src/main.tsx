@@ -26,6 +26,11 @@ const router = createBrowserRouter([
   {
     path: "/get-stats",
     element: <GetStats />,
+    children: [
+        {
+          path: "/get-stats/your-stats",
+        }
+    ]
   }
 ])
 
