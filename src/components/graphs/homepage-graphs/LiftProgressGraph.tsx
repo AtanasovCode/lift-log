@@ -14,7 +14,7 @@ import {
     ResponsiveContainer,
     BarChart,
 } from "recharts";
-import { LiftData } from "../../../assets/data/MockData";
+import { LiftDataBench, LiftDataSquat, LiftDataDeadlift } from "../../../assets/data/MockData";
 
 
 const LiftProgressGraph = () => {
@@ -60,6 +60,10 @@ const LiftProgressGraph = () => {
                 case "Jun": month = "June"; break;
                 case "Jul": month = "July"; break;
                 case "Aug": month = "August"; break;
+                case "Sep": month = "September"; break;
+                case "Oct": month = "October"; break;
+                case "Nov": month = "November"; break;
+                case "Dec": month = "December"; break;
             }
 
             return month;
@@ -67,20 +71,32 @@ const LiftProgressGraph = () => {
 
         if (active) {
             return (
-                <Styled.TooltipContainer>
+                <Styled.TooltipContainer key={label}>
                     <Styled.TooltipHeading>
-                        Barbell Bench Press
+                        {getFullMonth(label)}
                     </Styled.TooltipHeading>
-                    <Styled.TooltipDesc>
-                        Lifted in: {getFullMonth(label)}
-                    </Styled.TooltipDesc>
-                    <Styled.TooltipDesc>
-                        Weight: {payload[0].value}kg
-                    </Styled.TooltipDesc>
+                    {payload.map((info) => {
+                        return (
+                            <Styled.TooltipBody>
+                                <Styled.TooltipInfo>
+                                    {info.payload.Exercise}:
+                                </Styled.TooltipInfo>
+                                <Styled.TooltipInfo>
+                                    {info.payload.Lift}kg
+                                </Styled.TooltipInfo>
+                            </Styled.TooltipBody>
+                        );
+                    })}
                 </Styled.TooltipContainer>
             );
         }
         return null;
+    }
+
+    function CustomDot(label) {
+        return (
+            <Styled.TooltipDot />
+        );
     }
 
     return (
@@ -91,25 +107,42 @@ const LiftProgressGraph = () => {
             </Styled.Info>
             <Styled.Chart>
                 <ResponsiveContainer width={'99%'} height={chartHeight}>
-                    <BarChart
-                        data={LiftData}
+                    <LineChart
                         margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
                     >
-                        <XAxis dataKey="Month" />
-                        <YAxis domain={[35, 100]} width={40} />
-                        <Bar
+                        <XAxis dataKey="Month" xAxisId={"bench"} tick={{ fontSize: 10 }} />
+                        <XAxis xAxisId={"squat"} hide />
+                        <XAxis xAxisId={"deadlift"} hide />
+                        <YAxis domain={[35, 240]} width={40} yAxisId={"bench"} />
+                        <YAxis domain={[35, 240]} width={40} yAxisId={"squat"} hide />
+                        <YAxis domain={[35, 240]} width={40} yAxisId={"deadlift"} hide />
+                        <Line
+                            data={LiftDataDeadlift}
+                            dataKey="Lift"
+                            stroke={theme.mayaBlue}
+                            xAxisId={"deadlift"}
+                            yAxisId={"deadlift"}
+                            dot={<CustomDot />}
+                        />
+                        <Line
+                            data={LiftDataBench}
                             dataKey="Lift"
                             stroke={theme.softOrange}
+                            xAxisId={"bench"}
+                            yAxisId={"bench"}
+                            dot={<CustomDot />}
                         />
-                        <Tooltip
-                            content={<CustomTooltip />}
-                            cursor={false}
+                        <Line
+                            data={LiftDataSquat}
+                            dataKey="Lift"
+                            stroke={theme.lighterGreen}
+                            xAxisId={"squat"}
+                            yAxisId={"squat"}
+                            dot={<CustomDot />}
                         />
-                    </BarChart>
+                        <Tooltip content={<CustomTooltip />} />
+                    </LineChart>
                 </ResponsiveContainer>
-                <Styled.ChartDescription>
-                    *Hover over chart to see data
-                </Styled.ChartDescription>
             </Styled.Chart>
         </Styled.Container>
     );

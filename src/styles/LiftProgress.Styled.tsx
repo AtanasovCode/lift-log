@@ -104,3 +104,23 @@ export const TooltipHeading = styled.div`
 export const TooltipDesc = styled.div`
     margin-bottom: 6px;
 `;
+
+export const TooltipBody = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+`;
+
+export const TooltipInfo = styled.span`
+    font-size: 15px;
+    margin-right: 7px;
+    margin-bottom: 6px;
+`;
+
+export const TooltipDot = styled.div`
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    opacity: .5;
+    background-color: black;
+`;
