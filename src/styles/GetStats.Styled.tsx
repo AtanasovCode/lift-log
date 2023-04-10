@@ -9,7 +9,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     background-color: ${props => props.theme.richBlackDark};
-    padding-top: 135px;
+    padding-top: 145px;
 `;
 
 export const Title = styled.div`
@@ -24,11 +24,8 @@ export const Tabs = styled.div`
     justify-content: flex-start;
     padding: 0 30px;
 
-    @media (max-width: 600px) {
-        padding: 0 15px;
-    }
-
     @media (max-width: 500px) {
+        padding: 0 15px;
         justify-content: center;
     }
 `;
@@ -39,12 +36,12 @@ export const Tab = styled.div`
     align-items: center;
     justify-content: center;
     padding: 12px 18px;
-    user-select: none;
-    cursor: pointer;
     border-radius: 16px;
     background-color: ${props => props.theme.richBlack};
     color: #ffffff70;
     margin: 0 15px;
+    cursor: pointer;
+    user-select: none;
 
     //Tab is currently active:
     background-color: ${props => props.active && props.theme.mayaBlue};
