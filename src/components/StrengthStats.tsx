@@ -1,5 +1,5 @@
 import * as Styled from '../styles/StrengthStats.Styled';
-import { RocketLaunch } from 'phosphor-react';
+import RocketLaunch from '@phosphor-icons/react/dist/icons/RocketLaunch';
 import { theme } from '../styles/Theme';
 
 const StrengthStats = () => {

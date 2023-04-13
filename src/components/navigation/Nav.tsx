@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Link from 'phosphor-react';
 import * as Styled from '../../styles/Nav.Styled';
+import { List } from '@phosphor-icons/react';
 
 import logo from '../../assets/logo.png';
-import { Hamburger, List } from 'phosphor-react';
 
 const Nav = () => {
 
@@ -21,7 +21,7 @@ const Nav = () => {
             <Styled.MenuIcon onClick={handleMobileNavShow} >
                 <List 
                     color="white"
-                    size="100%"
+                    size={38}
                 />
             </Styled.MenuIcon>
             <Styled.NavLinks active={active}>

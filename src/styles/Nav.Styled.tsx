@@ -112,11 +112,9 @@ export const SpecialLink = styled(NavLink)`
 
 export const MenuIcon = styled.div`
     user-select: none;
-    width: 0;
-    height: 0;
     opacity: 0;
     position: absolute;
-    top: -300%;
+    right: -300%;
     z-index: 0;
 
     @media (max-width: 700px) {
