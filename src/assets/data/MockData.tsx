@@ -5,6 +5,58 @@ import curl from '../icons/curl.png';
 import squat from '../icons/squat.png';
 import lat from '../icons/lat.png';
 
+
+const months = [
+    {
+        month: "January",
+        value: 1
+    },
+    {
+        month: "February",
+        value: 2
+    },
+    {
+        month: "March",
+        value: 3
+    },
+    {
+        month: "April",
+        value: 4
+    },
+    {
+        month: "May",
+        value: 5
+    },
+    {
+        month: "June",
+        value: 6
+    },
+    {
+        month: "July",
+        value: 7
+    },
+    {
+        month: "August",
+        value: 8
+    },
+    {
+        month: "September",
+        value: 9
+    },
+    {
+        month: "October",
+        value: 10
+    },
+    {
+        month: "November",
+        value: 11
+    },
+    {
+        month: "December",
+        value: 12
+    },
+];
+
 const LiftDataBench = [
     {
         Exercise: "Bench Press",
@@ -196,40 +248,41 @@ const LiftDataDeadlift = [
 
 const StrongestLifts = [
     {
-        icon: {bench},
+        icon: { bench },
         name: "Bench Press",
         times: 125,
     },
     {
         name: "Squat",
         times: 165,
-        icon: {squat}
+        icon: { squat }
     },
     {
         name: "Overhead Press",
         times: 85,
-        icon: {ohp}
+        icon: { ohp }
     },
     {
         name: "Deadlift",
         times: 185,
-        icon: {deadlift}
+        icon: { deadlift }
     },
     {
         name: "Curl",
         times: 65,
-        icon: {curl}
+        icon: { curl }
     },
     {
         name: "Lat Pulldown",
         times: 90,
-        icon: {lat}
+        icon: { lat }
     },
 ]
 
 export {
-    LiftDataBench, 
-    LiftDataSquat, 
-    LiftDataDeadlift, 
+    months,
+    LiftDataBench,
+    LiftDataSquat,
+    LiftDataDeadlift,
     StrongestLifts
 };

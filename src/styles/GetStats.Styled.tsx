@@ -12,12 +12,6 @@ export const Container = styled.div`
     padding-top: 145px;
 `;
 
-export const Title = styled.div`
-    font-size: 26px;
-    font-weight: 700;
-    color: #fff;
-`;
-
 export const Tabs = styled.div`
     display: flex;
     align-items: center;
