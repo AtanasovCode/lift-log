@@ -4,6 +4,8 @@ import { Outlet } from 'react-router-dom';
 
 import Nav from '../components/navigation/Nav';
 import StrengthStats from '../components/StrengthStats';
+import LiftsStats from '../components/LiftsStats';
+import Consistency from '../components/Consistency';
 
 
 const GetStats = () => {
@@ -16,7 +18,9 @@ const GetStats = () => {
 
     //Return correct component based on the active tab
     const getActiveComponent = () => {
-        if(activeTab == "strength") return <StrengthStats />
+        if(activeTab == "strength") return <StrengthStats />;
+        if(activeTab == "lifts") return <LiftsStats />
+        if(activeTab == "consistency") return <Consistency />
     }
 
     return (
@@ -33,20 +37,20 @@ const GetStats = () => {
                 >
                     Strength
                 </Styled.Tab>
-                <Styled.Tab
+                <Styled.TabGreen
                     id="lifts"
                     onClick={(e) => handleChangeTab(e)}
                     active={activeTab == "lifts" ? true : false}
                 >
                     Lifts
-                </Styled.Tab>
-                <Styled.Tab
+                </Styled.TabGreen>
+                <Styled.TabPurple
                     id="consistency"
                     onClick={(e) => handleChangeTab(e)}
                     active={activeTab == "consistency" ? true : false}
                 >
                     Consistency
-                </Styled.Tab>
+                </Styled.TabPurple>
             </Styled.Tabs>
             {getActiveComponent()}
         </Styled.Container>

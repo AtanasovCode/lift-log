@@ -1,4 +1,4 @@
-import { Month } from "../styles/StrengthStats.Styled";
+import { Month } from "../styles/Stats.Styled";
 import { months } from "../assets/data/MockData";
 
 const MonthSelect = ({value}) => {

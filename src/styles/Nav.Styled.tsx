@@ -18,6 +18,7 @@ export const Nav = styled.nav`
     left: 0;
     color: #fff;
     z-index: 4;
+    overflow-x: hidden;
 
     @media (max-width: 700px) {
         align-items: center;

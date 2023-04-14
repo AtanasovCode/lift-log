@@ -18,7 +18,7 @@ export const Tabs = styled.div`
     justify-content: flex-start;
     padding: 0 30px;
 
-    @media (max-width: 500px) {
+    @media (max-width: 550px) {
         padding: 0 15px;
         justify-content: center;
     }
@@ -49,4 +49,12 @@ export const Tab = styled.div`
         margin: 0 10px;
         padding: 10px;
     }
+`;
+
+export const TabGreen = styled(Tab)`
+    background-color: ${props => props.active && props.theme.lightGreen};
+`;
+
+export const TabPurple = styled(Tab)`
+    background-color: ${props => props.active && props.theme.lightPurple};
 `;
