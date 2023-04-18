@@ -1,6 +1,7 @@
 import * as Styled from '../styles/Stats.Styled';
 import RocketLaunch from '@phosphor-icons/react/dist/icons/RocketLaunch';
 import { theme } from '../styles/Theme';
+import CalendarInput from './CalendarInput';
 import ExerciseSelect from './ExerciseSelect';
 
 const StrengthStats = () => {
@@ -24,8 +25,9 @@ const StrengthStats = () => {
                 </Styled.Heading>
 
                 <Styled.InputContainer>
-                    
+                    <CalendarInput />
                 </Styled.InputContainer>
+                <ExerciseSelect />
         </Styled.Container>
     );
 }

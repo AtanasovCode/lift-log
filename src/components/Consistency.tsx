@@ -1,5 +1,5 @@
 import * as Styled from '../styles/Stats.Styled';
-import { Infinity } from '@phosphor-icons/react';
+import { Infinity, Repeat, CalendarX } from '@phosphor-icons/react';
 import { theme } from '../styles/Theme';
 
 const Consistency = () => {
@@ -17,7 +17,7 @@ const Consistency = () => {
                     consistency
                 </Styled.Title>
                 <Styled.Icon>
-                    <Infinity 
+                    <CalendarX 
                         weight="duotone"
                         size="100%"
                         color={theme.lightPurple}

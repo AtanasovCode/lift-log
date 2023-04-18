@@ -15,7 +15,7 @@ const theme = {
   
     magnolia: "hsl(273, 33%, 94%)",
     mayaBlue: "hsl(203, 93%, 67%)",
-    lightPurple: "hsl(326.11764705882354, 100%, 50%)",
+    lightPurple: "hsl(13, 77%, 52%)",
   
     lighterGreen: "hsl(125, 88%, 79%)",
     darkGreen: "hsl(125, 100%, 32%)",
