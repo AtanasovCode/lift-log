@@ -113,3 +113,12 @@ export const Month = styled.select`
     padding: 10px;
     padding-right: 25px;
 `;
+
+export const CalendarButton = styled.input`
+    padding: 10px 25px;
+    text-align: center;
+    background-color: ${props => props.theme.mayaBlueDark};
+    color: #fff;
+    border: none;
+\    font-size: 16px;
+`;

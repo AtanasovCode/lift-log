@@ -14,7 +14,9 @@ const theme = {
     softOrange: "hsl(13, 77%, 52%)",
   
     magnolia: "hsl(273, 33%, 94%)",
-    mayaBlue: "hsl(203, 93%, 67%)",
+    mayaBlue: "#5dbdf9",
+    mayaBluePale: "rgba(93, 189, 249, .17)",
+    mayaBlueDark: "rgba(93, 189, 249, .3)",
     lightPurple: "hsl(13, 77%, 52%)",
   
     lighterGreen: "hsl(125, 88%, 79%)",

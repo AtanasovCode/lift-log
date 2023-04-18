@@ -1,10 +1,18 @@
 import * as Styled from '../styles/Stats.Styled';
+import { useState } from 'react';
 import RocketLaunch from '@phosphor-icons/react/dist/icons/RocketLaunch';
 import { theme } from '../styles/Theme';
 import CalendarInput from './CalendarInput';
 import ExerciseSelect from './ExerciseSelect';
 
-const StrengthStats = () => {
+const StrengthStats = ({userData, setUserData}) => {
+
+    const [showCalendar, setShowCalendar] = useState(false);
+
+    const handleCalendarShow = () => {
+        setShowCalendar(!showCalendar);
+    }
+
     return (
         <Styled.Container>
 
@@ -25,7 +33,18 @@ const StrengthStats = () => {
                 </Styled.Heading>
 
                 <Styled.InputContainer>
-                    <CalendarInput />
+                    <Styled.CalendarButton 
+                        type="button" 
+                        value="Show Calender" 
+                        onClick={handleCalendarShow} 
+                    />
+                    <CalendarInput 
+                        userData={userData} 
+                        setUserData={setUserData}
+                        showCalendar={showCalendar}
+                        setShowCalendar={setShowCalendar}
+                        handleCalendarShow={handleCalendarShow}
+                    />
                 </Styled.InputContainer>
                 <ExerciseSelect />
         </Styled.Container>

@@ -215,7 +215,7 @@ const DropdownText = styled.div`
 `;
 
 const DropdownIcon = styled.img`
-  height: 65px;
+  height: 30px;
   filter: invert(100%);
 `;
 
