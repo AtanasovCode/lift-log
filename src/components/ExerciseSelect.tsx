@@ -108,7 +108,6 @@ const ExerciseSelect = () => {
       <DropdownHeader className="dropdown-header" onClick={toggleDropdown}>
         Select an exercise
       </DropdownHeader>
-      {isOpen && (
         <DropdownList>
           <DropdownInput
             type="text"
@@ -133,7 +132,6 @@ const ExerciseSelect = () => {
             </DropdownItem>
           ))}
         </DropdownList>
-      )}
     </DropdownWrapper>
   );
 };
@@ -141,18 +139,33 @@ const ExerciseSelect = () => {
 export default ExerciseSelect;
 
 export const DropdownWrapper = styled.div`
-  position: relative;
-  margin: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  max-width: 650px;
+  padding: 15px;
+  width: 50vw;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme.richBlackDark};
+  border: 1px solid ${props => props.theme.mayaBlueDark};
+  border-radius: 8px;
 `;
 
 export const DropdownHeader = styled.div`
-  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
   font-weight: 600;
-  padding: 10px;
-  max-width: 30%;
-  border: 1px solid #cccccc60;
+  padding: 15px;
+  border-bottom: none;
   border-top-right-radius: 7px;
   border-top-left-radius: 7px;
+  margin-bottom: 45px;
   cursor: pointer;
   background-color: transparent;
   color: #fff;
@@ -162,29 +175,28 @@ export const DropdownHeader = styled.div`
 `;
 
 export const DropdownList = styled.div`
-  position: absolute;
-  width: 30%;
-  top: 100%;
-  left: 0;
   z-index: 1;
   background-color: transparent;
-  border: 1px solid #cccccc50;
+  border-top: none;
   color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  max-height: 350px;
+  max-height: 370px;
   overflow-y: auto;
+  width: 100%;
 `;
 
 export const DropdownInput = styled.input`
-  display: block;
   width: 100%;
   padding: 10px;
+  z-index: 10;
   border: none;
   border-bottom: 1px solid #cccccc50;
-  background-color: transparent;
+  background-color: ${props => props.theme.richBlackDark};
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
+
+  position: fixed;
+  left: 0;
+  top: 14%;
   &:focus {
     outline: none;
   }
@@ -211,23 +223,23 @@ const DropdownText = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  margin-left: 15px;
+  margin-left: 25px;
 `;
 
 const DropdownIcon = styled.img`
-  height: 30px;
+  height: 40px;
   filter: invert(100%);
 `;
 
 const DropdownExercise = styled.div`
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 400;
   color: #fff;
   margin-bottom: 5px;
 `;
 
 const DropdownCategory = styled.div`
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 300;
   color: darkgray;
 `;
