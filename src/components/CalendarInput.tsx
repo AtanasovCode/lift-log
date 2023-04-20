@@ -109,13 +109,12 @@ const Calendar = styled.div`
     border: 1px solid #ffffff50;
     border-radius: 12px;
     position: absolute;
-    top: -200%;
-    width: 0;
-    height: 0;
+    top: -300%;
+    max-width: 650px;
+    width: 70vw;
     opacity: 0;
     background-color: ${props => props.theme.richBlack};
     z-index: -1;
-    max-width: 650px;
 
     //calendar is active 
     ${props => props.active && `
@@ -123,18 +122,14 @@ const Calendar = styled.div`
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
-        width: auto;
-        height: auto;
         opacity: 1;
         z-index: 10;
     `}
 
     @media (max-width: 700px) {
-        width: 80vw;
-    }
-
-    @media (max-width: 500px) {
-        width: 90vw;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
     }
 `;
 
@@ -246,19 +241,17 @@ const Submit = styled.input`
     height: 45px;
     margin-top: 40px;
     border-radius: 8px;
+    border: none;
 
     &:hover {
         background-color: ${props => props.theme.mayaBlueDark};
     }
 
-    @media (max-width: 700px) {
-        margin-top: 25px;
-    }
 
     @media (max-width: 500px) {
-        margin-top: 15px;
         font-size: 15px;
-        height: 35px;
+        height: 40px;
+        margin-top: 25px;
     }
 `;
 

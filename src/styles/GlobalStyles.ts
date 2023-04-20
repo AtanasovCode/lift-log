@@ -18,7 +18,6 @@ export const GlobalStyle = createGlobalStyle`
 
     button,
     input[type=button] {
-        border: none;
         outline: none;
         cursor: pointer;
     }

@@ -97,13 +97,17 @@ export const InputContainer = styled.div`
 
 
 export const CalendarButton = styled.input`
-    padding: 10px 25px;
-    text-align: center;
-    background-color: ${props => props.theme.mayaBlueDark};
+    padding: 10px 5px;
+    width: 30%;
     color: #fff;
-    border: none;
+    background-color: ${props => props.theme.richBlack};
+    border: 1px solid ${props => props.theme.mayaBlue};
     font-size: 16px;
     margin-bottom: 20px;
+
+    &:hover {
+        background-color: ${props => props.theme.mayaBluePale};
+    }
 `;
 
 export const ExercisesButton = styled(CalendarButton)``;

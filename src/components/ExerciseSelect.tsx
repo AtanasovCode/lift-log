@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { X } from "@phosphor-icons/react";
+import { X, MagnifyingGlass } from "@phosphor-icons/react";
 
 import bench from '../assets/icons/bench.png';
 import curl from '../assets/icons/curl.png';
@@ -53,22 +53,22 @@ const exercises = [
   { name: 'Rear Delt Fly', category: 'Shoulders' },
 ];
 
+
 const ExerciseSelect = ({
   showExercises,
   handleExerciseShow,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredOptions, setFilteredOptions] = useState(exercises);
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const [filter, setFilter] = useState("any");
+  const [bodyParts, setBodyParts] = useState(['Chest', 'Back', 'Biceps', 'Triceps', 'Shoulders', 'Legs'])
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
+  //For filtering exercises based on search
   useEffect(() => {
     const filtered = exercises.filter(
       (exercise) =>
@@ -78,6 +78,19 @@ const ExerciseSelect = ({
     setFilteredOptions(filtered);
   }, [searchTerm]);
 
+  //For filtering exercises based on category selected
+  useEffect(() => {
+
+    if(filter != "any") {
+      const filtered = exercises.filter(x => x.category === filter);
+
+      setFilteredOptions(filtered);
+    } else {
+      setFilteredOptions(exercises);
+    }
+  }, [filter]);
+
+  //each exercise gets an icon
   const getExerciseIcon = (name: string) => {
     switch (name) {
       case "Bench Press": return bench;
@@ -108,42 +121,80 @@ const ExerciseSelect = ({
     }
   }
 
+  const changeFilter = (filter: string) => {
+    setFilter(filter);
+    console.log(filter);
+  }
+
   return (
     <DropdownWrapper active={showExercises}>
       <Close onClick={handleExerciseShow}>
-        <X 
+        <X
           color="#ccc"
           weight="light"
           size="100%"
         />
       </Close>
-      <DropdownHeader className="dropdown-header" onClick={toggleDropdown}>
+      <DropdownHeader>
         Select an exercise
       </DropdownHeader>
-        <DropdownList>
-          <DropdownInput
-            type="text"
-            placeholder="Search for an exercise"
-            value={searchTerm}
-            onChange={handleSearchChange}
+
+      <DropdownSearch>
+        <DropdownInput
+          type="text"
+          placeholder="Search for an exercise"
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+        <SearchIcon>
+          <MagnifyingGlass
+            size="100%"
+            color="#ccc"
+            weight="light"
           />
-          {filteredOptions.map((exercise) => (
-            <DropdownItem key={exercise.name} className="dropdown-item">
-              <DropdownIcon 
-                src={getExerciseIcon(exercise.name)} 
-                alt="icon" 
-              />
-              <DropdownText>
-                <DropdownExercise>
-                  {exercise.name}
-                </DropdownExercise>
-                <DropdownCategory>
-                  {exercise.category}
-                </DropdownCategory>
-              </DropdownText>
-            </DropdownItem>
-          ))}
-        </DropdownList>
+        </SearchIcon>
+
+        <FilterTabs>
+          <Filter defaultValue="any">
+            <FilterOption 
+              value="any"
+              onClick={(e: any) => changeFilter(e.currentTarget.value)}
+            >Any body part</FilterOption>
+            {
+              bodyParts.map((x) => {
+                return (
+                  <FilterOption
+                    value={x}
+                    key={x}
+                    onClick={(e: any) => changeFilter(e.currentTarget.value)}
+                  >
+                    {x}
+                  </FilterOption>
+                );
+              })
+            }
+          </Filter>
+        </FilterTabs>
+      </DropdownSearch>
+
+      <DropdownList>
+        {filteredOptions.map((exercise) => (
+          <DropdownItem key={exercise.name} className="dropdown-item">
+            <DropdownIcon
+              src={getExerciseIcon(exercise.name)}
+              alt="icon"
+            />
+            <DropdownText>
+              <DropdownExercise>
+                {exercise.name}
+              </DropdownExercise>
+              <DropdownCategory>
+                {exercise.category}
+              </DropdownCategory>
+            </DropdownText>
+          </DropdownItem>
+        ))}
+      </DropdownList>
     </DropdownWrapper>
   );
 };
@@ -169,7 +220,7 @@ export const DropdownWrapper = styled.div`
   //Exercise select is active:
   ${props => props.active && `
     position: fixed;
-    width: 50vw;
+    width: 60vw;
     z-index: 10;
     opacity: 1;
     top: 50%;
@@ -178,12 +229,10 @@ export const DropdownWrapper = styled.div`
   `}
 
   @media (max-width: 700px) {
-    width: 80vw;
+    width: 100%;
+    height: 100%;
   }
-
-  @media (max-width: 500px) {
-    width: 95vw;
-  }
+  
 `;
 
 export const DropdownHeader = styled.div`
@@ -192,7 +241,6 @@ export const DropdownHeader = styled.div`
   font-size: 22px;
   font-weight: 600;
   padding: 15px;
-  margin-bottom: 45px;
   color: #fff;
 
   @media (max-width: 700px) {
@@ -202,6 +250,64 @@ export const DropdownHeader = styled.div`
   @media (max-width: 550px) {
     font-size: 18px;
   }
+`;
+
+const DropdownSearch = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
+export const DropdownInput = styled.input`
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  padding-left: 45px;
+  border: 1px solid ${props => props.theme.mayaBlueDark};
+  background-color: ${props => props.theme.richBlack};
+  color: #fff;
+  font-size: 18px;
+  &:focus {
+    outline: none;
+  }
+
+  @media (max-width: 550px) {
+    font-size: 15px;
+  }
+`;
+
+const SearchIcon = styled.div`
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 8px;
+  top: 5%;
+`;
+
+const FilterTabs = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 8px 0 25px 0;
+`;
+
+const Filter = styled.select`
+  padding: 10px;
+  background-color: ${props => props.theme.richBlack};
+  border: 1px solid ${props => props.theme.mayaBlueDark};
+  border-radius: 8px;
+  font-size: 15px;
+  color: #ffffff80;
+  margin-right: 10px;
+`;
+
+const FilterOption = styled.option`
+  background-color: ${props => props.theme.richBlack};
+  border: 1px solid ${props => props.theme.mayaBlueDark};
 `;
 
 export const DropdownList = styled.div`
@@ -215,26 +321,6 @@ export const DropdownList = styled.div`
 
   @media (max-width: 700px) {
     max-height: 300px;
-  }
-`;
-
-export const DropdownInput = styled.input`
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-bottom: 1px solid ${props => props.theme.mayaBlueDark};
-  background-color: ${props => props.theme.richBlack};
-  color: #fff;
-  font-size: 18px;
-  position: fixed;
-  left: 0;
-  top: 16%;
-  &:focus {
-    outline: none;
-  }
-
-  @media (max-width: 550px) {
-    font-size: 15px;
   }
 `;
 
