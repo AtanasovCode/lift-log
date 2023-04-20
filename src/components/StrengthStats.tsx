@@ -8,9 +8,14 @@ import ExerciseSelect from './ExerciseSelect';
 const StrengthStats = ({userData, setUserData}) => {
 
     const [showCalendar, setShowCalendar] = useState(false);
+    const [showExercises, setShowExercises] = useState(false);
 
     const handleCalendarShow = () => {
         setShowCalendar(!showCalendar);
+    }
+
+    const handleExerciseShow = () => {
+        setShowExercises(!showExercises);
     }
 
     return (
@@ -38,6 +43,11 @@ const StrengthStats = ({userData, setUserData}) => {
                         value="Show Calender" 
                         onClick={handleCalendarShow} 
                     />
+                    <Styled.ExercisesButton 
+                        type="button"
+                        value="Show Exercises"
+                        onClick={handleExerciseShow}
+                    />
                     <CalendarInput 
                         userData={userData} 
                         setUserData={setUserData}
@@ -46,7 +56,10 @@ const StrengthStats = ({userData, setUserData}) => {
                         handleCalendarShow={handleCalendarShow}
                     />
                 </Styled.InputContainer>
-                <ExerciseSelect />
+                <ExerciseSelect 
+                    showExercises={showExercises}
+                    handleExerciseShow={handleExerciseShow}
+                />
         </Styled.Container>
     );
 }

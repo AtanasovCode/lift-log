@@ -5,13 +5,15 @@ export const Container = styled.div`
     flex-direction: column;
     margin-top: 30px;
     color: #fff;
+    background-color: ${props => props.theme.richBlack};
+    padding: 0 25px;
 `;
 
 export const Heading = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin: 0 25px;
+    margin-bottom: 35px;
     position: relative;
     animation: slideIn .456s ease 1;
 
@@ -93,26 +95,6 @@ export const InputContainer = styled.div`
     justify-content: center;
 `;
 
-export const DataInput = styled.input`
-    padding: 7px;
-    color: #fff;
-    border: 1px solid #ffffff50;
-    background-color: transparent;
-`;
-
-export const InputInfo = styled.div`
-    color: darkgray;
-    font-size: 15px;
-`;
-
-export const Month = styled.select`
-    background-color: ${props => props.theme.richBlackDark};
-    color: #fff;
-    border: 1px solid #fff;
-    font-size: 18px;
-    padding: 10px;
-    padding-right: 25px;
-`;
 
 export const CalendarButton = styled.input`
     padding: 10px 25px;
@@ -120,5 +102,8 @@ export const CalendarButton = styled.input`
     background-color: ${props => props.theme.mayaBlueDark};
     color: #fff;
     border: none;
-\    font-size: 16px;
+    font-size: 16px;
+    margin-bottom: 20px;
 `;
+
+export const ExercisesButton = styled(CalendarButton)``;

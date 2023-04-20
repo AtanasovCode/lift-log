@@ -8,7 +8,7 @@ export const Container = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: ${props => props.theme.richBlackDark};
+    background-color: ${props => props.theme.richBlack};
     padding-top: 145px;
 `;
 

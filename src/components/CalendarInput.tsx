@@ -113,19 +113,29 @@ const Calendar = styled.div`
     width: 0;
     height: 0;
     opacity: 0;
-    background-color: ${props => props.theme.richBlackDark};
-    z-index: 10;
+    background-color: ${props => props.theme.richBlack};
+    z-index: -1;
     max-width: 650px;
 
     //calendar is active 
     ${props => props.active && `
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         width: auto;
         height: auto;
         opacity: 1;
+        z-index: 10;
     `}
+
+    @media (max-width: 700px) {
+        width: 80vw;
+    }
+
+    @media (max-width: 500px) {
+        width: 90vw;
+    }
 `;
 
 const Heading = styled.div`
@@ -134,6 +144,10 @@ const Heading = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 35px;
+
+    @media (max-width: 700px) {
+        margin-bottom: 20px;
+    }
 `;
 
 const Title = styled.div`
@@ -143,22 +157,36 @@ const Title = styled.div`
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 10px;
+
+    @media (max-width: 700px) {
+        font-size: 20px;
+    }
 `;
 
 const Description = styled.div`
     font-size: 15px;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
+    text-align: center;
 `;
 
 const Disclaimer = styled.div`
     font-size: 14px;
     color: darkgray;
+    text-align: center;
 `;
 
 const Months = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
+
+    @media (max-width: 700px) {
+        grid-gap: 10px;
+    }
+
+    @media (max-width: 500px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
 `;
 
 const Month = styled.div`
@@ -181,6 +209,10 @@ const MonthName = styled.div`
     text-align: center;
     border-top-right-radius: 7px;
     border-top-left-radius: 7px;
+
+    @media (max-width: 500px) {
+        font-size: 15px;
+    }
 `;
 
 const MonthInput = styled.input`
@@ -217,6 +249,16 @@ const Submit = styled.input`
 
     &:hover {
         background-color: ${props => props.theme.mayaBlueDark};
+    }
+
+    @media (max-width: 700px) {
+        margin-top: 25px;
+    }
+
+    @media (max-width: 500px) {
+        margin-top: 15px;
+        font-size: 15px;
+        height: 35px;
     }
 `;
 

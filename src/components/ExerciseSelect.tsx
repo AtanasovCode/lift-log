@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { X } from "@phosphor-icons/react";
 
 import bench from '../assets/icons/bench.png';
 import curl from '../assets/icons/curl.png';
@@ -23,6 +24,7 @@ import lunges from '../assets/icons/lunges.png';
 import legPress from '../assets/icons/leg-press.png';
 import ropePushdown from '../assets/icons/rope-extension.png';
 import kickbacks from '../assets/icons/tri-kickback.png';
+import { theme } from "../styles/Theme";
 
 const exercises = [
   { name: 'Bench Press', category: 'Chest' },
@@ -51,7 +53,10 @@ const exercises = [
   { name: 'Rear Delt Fly', category: 'Shoulders' },
 ];
 
-const ExerciseSelect = () => {
+const ExerciseSelect = ({
+  showExercises,
+  handleExerciseShow,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredOptions, setFilteredOptions] = useState(exercises);
@@ -104,7 +109,14 @@ const ExerciseSelect = () => {
   }
 
   return (
-    <DropdownWrapper className="dropdown">
+    <DropdownWrapper active={showExercises}>
+      <Close onClick={handleExerciseShow}>
+        <X 
+          color="#ccc"
+          weight="light"
+          size="100%"
+        />
+      </Close>
       <DropdownHeader className="dropdown-header" onClick={toggleDropdown}>
         Select an exercise
       </DropdownHeader>
@@ -140,20 +152,38 @@ export default ExerciseSelect;
 
 export const DropdownWrapper = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
   max-width: 650px;
   padding: 15px;
-  width: 50vw;
-  z-index: 10;
+  width: 0;
+  top: -300%;
+  z-index: 0;
+  opacity: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme.richBlackDark};
+  background-color: ${props => props.theme.richBlack};
   border: 1px solid ${props => props.theme.mayaBlueDark};
   border-radius: 8px;
+
+  //Exercise select is active:
+  ${props => props.active && `
+    position: fixed;
+    width: 50vw;
+    z-index: 10;
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  `}
+
+  @media (max-width: 700px) {
+    width: 80vw;
+  }
+
+  @media (max-width: 500px) {
+    width: 95vw;
+  }
 `;
 
 export const DropdownHeader = styled.div`
@@ -162,15 +192,15 @@ export const DropdownHeader = styled.div`
   font-size: 22px;
   font-weight: 600;
   padding: 15px;
-  border-bottom: none;
-  border-top-right-radius: 7px;
-  border-top-left-radius: 7px;
   margin-bottom: 45px;
-  cursor: pointer;
-  background-color: transparent;
   color: #fff;
-  &:hover {
-    background-color: #222;
+
+  @media (max-width: 700px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 550px) {
+    font-size: 18px;
   }
 `;
 
@@ -182,23 +212,29 @@ export const DropdownList = styled.div`
   max-height: 370px;
   overflow-y: auto;
   width: 100%;
+
+  @media (max-width: 700px) {
+    max-height: 300px;
+  }
 `;
 
 export const DropdownInput = styled.input`
   width: 100%;
   padding: 10px;
-  z-index: 10;
   border: none;
-  border-bottom: 1px solid #cccccc50;
-  background-color: ${props => props.theme.richBlackDark};
+  border-bottom: 1px solid ${props => props.theme.mayaBlueDark};
+  background-color: ${props => props.theme.richBlack};
   color: #fff;
   font-size: 18px;
-
   position: fixed;
   left: 0;
-  top: 14%;
+  top: 16%;
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 550px) {
+    font-size: 15px;
   }
 `;
 
@@ -229,6 +265,14 @@ const DropdownText = styled.div`
 const DropdownIcon = styled.img`
   height: 40px;
   filter: invert(100%);
+
+  @media (max-width: 700px) {
+    height: 30px;
+  }
+
+  @media (max-width: 500px) {
+    height: 25px;
+  }
 `;
 
 const DropdownExercise = styled.div`
@@ -236,10 +280,27 @@ const DropdownExercise = styled.div`
   font-weight: 400;
   color: #fff;
   margin-bottom: 5px;
+
+  @media (max-width: 550px) {
+    font-size: 16px;
+  }
 `;
 
 const DropdownCategory = styled.div`
   font-size: 15px;
   font-weight: 300;
   color: darkgray;
+
+  @media (max-width: 550px) {
+    font-size: 14px;
+  }
+`;
+
+const Close = styled.div`
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 `;
