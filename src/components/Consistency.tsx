@@ -5,25 +5,27 @@ import { theme } from '../styles/Theme';
 const Consistency = () => {
     return (
         <Styled.Container>
-            <Styled.Heading>
-                <Styled.Title>
-                    <Styled.PurpleFancy>
-                        Track
-                    </Styled.PurpleFancy>
-                    your
-                    <Styled.PurpleFancy>
-                        workout
-                    </Styled.PurpleFancy>
-                    consistency
-                </Styled.Title>
-                <Styled.Icon>
-                    <CalendarX 
-                        weight="duotone"
-                        size="100%"
-                        color={theme.lightPurple}
-                    />
-                </Styled.Icon>
-            </Styled.Heading>
+            <Styled.TextContainer>
+                <Styled.HeadingOrange>
+                    <Styled.Title>
+                        <Styled.PurpleFancy>
+                            Track
+                        </Styled.PurpleFancy>
+                        your
+                        <Styled.PurpleFancy>
+                            workout
+                        </Styled.PurpleFancy>
+                        consistency
+                    </Styled.Title>
+                    <Styled.Icon>
+                        <CalendarX
+                            weight="fill"
+                            size="100%"
+                            color={theme.richBlackDark}
+                        />
+                    </Styled.Icon>
+                </Styled.HeadingOrange>
+            </Styled.TextContainer>
         </Styled.Container>
     );
 }

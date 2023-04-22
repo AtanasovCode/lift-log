@@ -8,8 +8,8 @@ export const Container = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: ${props => props.theme.richBlack};
-    padding-top: 145px;
+    background-color: ${props => props.theme.richBlackDark};
+    padding-top: 125px;
 `;
 
 export const Tabs = styled.div`

@@ -277,12 +277,41 @@ const StrongestLifts = [
         times: 90,
         icon: { lat }
     },
-]
+];
+
+
+const exercises = [
+    { name: 'Bench Press', category: 'Chest' },
+    { name: 'Incline Bench Press', category: 'Chest' },
+    { name: 'Cable Crossover', category: 'Chest' },
+    { name: 'Push-up', category: 'Chest' },
+    { name: 'Bent-over Row', category: 'Back' },
+    { name: 'Low Seated Row', category: 'Back' },
+    { name: 'Pull-up', category: 'Back' },
+    { name: 'Deadlift', category: 'Back' },
+    { name: 'Lat Pulldown', category: 'Back' },
+    { name: 'Squat', category: 'Legs' },
+    { name: 'Lunges', category: 'Legs' },
+    { name: 'Leg Press', category: 'Legs' },
+    { name: 'Calf Raise', category: 'Legs' },
+    { name: 'Bicep Curl', category: 'Biceps' },
+    { name: 'Hammer Curl', category: 'Biceps' },
+    { name: 'Chin-up', category: 'Biceps' },
+    { name: 'Tricep Kickback', category: 'Triceps' },
+    { name: 'Skull Crusher', category: 'Triceps' },
+    { name: 'Dips', category: 'Triceps' },
+    { name: 'Rope Pushdown', category: 'Triceps' },
+    { name: 'Shoulder Press', category: 'Shoulders' },
+    { name: 'Lateral Raise', category: 'Shoulders' },
+    { name: 'Front Raise', category: 'Shoulders' },
+    { name: 'Rear Delt Fly', category: 'Shoulders' },
+  ];
 
 export {
     months,
     LiftDataBench,
     LiftDataSquat,
     LiftDataDeadlift,
-    StrongestLifts
+    StrongestLifts,
+    exercises,
 };

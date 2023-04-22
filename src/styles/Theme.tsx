@@ -17,7 +17,7 @@ const theme = {
     mayaBlue: "#5dbdf9",
     mayaBluePale: "rgba(93, 189, 249, .17)",
     mayaBlueDark: "rgba(93, 189, 249, .3)",
-    lightPurple: "hsl(13, 77%, 52%)",
+    lightPurple: "hsl(12.827, 96.026%, 70.392%)",
   
     lighterGreen: "hsl(125, 88%, 79%)",
     darkGreen: "hsl(125, 100%, 32%)",

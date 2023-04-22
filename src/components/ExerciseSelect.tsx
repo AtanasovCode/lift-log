@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { X, MagnifyingGlass } from "@phosphor-icons/react";
+import { exercises } from "../assets/data/MockData";
 
 import bench from '../assets/icons/bench.png';
 import curl from '../assets/icons/curl.png';
@@ -24,39 +25,12 @@ import lunges from '../assets/icons/lunges.png';
 import legPress from '../assets/icons/leg-press.png';
 import ropePushdown from '../assets/icons/rope-extension.png';
 import kickbacks from '../assets/icons/tri-kickback.png';
-import { theme } from "../styles/Theme";
-
-const exercises = [
-  { name: 'Bench Press', category: 'Chest' },
-  { name: 'Incline Bench Press', category: 'Chest' },
-  { name: 'Cable Crossover', category: 'Chest' },
-  { name: 'Push-up', category: 'Chest' },
-  { name: 'Bent-over Row', category: 'Back' },
-  { name: 'Low Seated Row', category: 'Back' },
-  { name: 'Pull-up', category: 'Back' },
-  { name: 'Deadlift', category: 'Back' },
-  { name: 'Lat Pulldown', category: 'Back' },
-  { name: 'Squat', category: 'Legs' },
-  { name: 'Lunges', category: 'Legs' },
-  { name: 'Leg Press', category: 'Legs' },
-  { name: 'Calf Raise', category: 'Legs' },
-  { name: 'Bicep Curl', category: 'Biceps' },
-  { name: 'Hammer Curl', category: 'Biceps' },
-  { name: 'Chin-up', category: 'Biceps' },
-  { name: 'Tricep Kickback', category: 'Triceps' },
-  { name: 'Skull Crusher', category: 'Triceps' },
-  { name: 'Dips', category: 'Triceps' },
-  { name: 'Rope Pushdown', category: 'Triceps' },
-  { name: 'Shoulder Press', category: 'Shoulders' },
-  { name: 'Lateral Raise', category: 'Shoulders' },
-  { name: 'Front Raise', category: 'Shoulders' },
-  { name: 'Rear Delt Fly', category: 'Shoulders' },
-];
 
 
 const ExerciseSelect = ({
   showExercises,
   handleExerciseShow,
+  handleExerciseSelected,
 }) => {
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -80,7 +54,6 @@ const ExerciseSelect = ({
 
   //For filtering exercises based on category selected
   useEffect(() => {
-
     if(filter != "any") {
       const filtered = exercises.filter(x => x.category === filter);
 
@@ -123,7 +96,6 @@ const ExerciseSelect = ({
 
   const changeFilter = (filter: string) => {
     setFilter(filter);
-    console.log(filter);
   }
 
   return (
@@ -179,7 +151,11 @@ const ExerciseSelect = ({
 
       <DropdownList>
         {filteredOptions.map((exercise) => (
-          <DropdownItem key={exercise.name} className="dropdown-item">
+          <DropdownItem 
+            key={exercise.name} 
+            className="dropdown-item"
+            onClick={() =>handleExerciseSelected(exercise.name)}
+          >
             <DropdownIcon
               src={getExerciseIcon(exercise.name)}
               alt="icon"
