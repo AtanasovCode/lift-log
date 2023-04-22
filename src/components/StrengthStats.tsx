@@ -1,30 +1,22 @@
 import * as Styled from '../styles/Stats.Styled';
 import { useState } from 'react';
 import RocketLaunch from '@phosphor-icons/react/dist/icons/RocketLaunch';
-import { Calendar, Barbell } from '@phosphor-icons/react';
+import { Calendar, Barbell, ChartLine } from '@phosphor-icons/react';
 import { theme } from '../styles/Theme';
 import CalendarInput from './CalendarInput';
 import ExerciseSelect from './ExerciseSelect';
 
-const StrengthStats = ({ userData, setUserData }) => {
-
-    const [showCalendar, setShowCalendar] = useState(false);
-    const [showExercises, setShowExercises] = useState(false);
-    const [exerciseSelected, setExerciseSelected] = useState("Select an Exercise");
-
-    const handleCalendarShow = () => {
-        setShowCalendar(!showCalendar);
-    }
-
-    const handleExerciseShow = () => {
-        setShowExercises(!showExercises);
-    }
-
-    const handleExerciseSelected = (name: string) => {
-        setExerciseSelected(name);
-        handleExerciseShow();
-    }
-
+const StrengthStats = ({
+    userData, 
+    setUserData,
+    handleExerciseSelected,
+    handleExerciseShow,
+    handleCalendarShow,
+    showExercises,
+    showCalendar,
+    setShowCalendar,
+    exerciseSelected,
+}) => {
     return (
         <Styled.Container>
 
@@ -65,9 +57,17 @@ const StrengthStats = ({ userData, setUserData }) => {
 
 
                 <Styled.InputContainer>
+
                     <Styled.LabelContainer>
                         <Styled.LabelText>
                             Exercise:
+                            <Styled.LabelIcon>
+                                <Barbell
+                                    color={theme.mayaBlue}
+                                    weight="fill"
+                                    size="100%"
+                                />
+                            </Styled.LabelIcon>
                         </Styled.LabelText>
                         <Styled.InputExercise
                             type="text"
@@ -76,6 +76,39 @@ const StrengthStats = ({ userData, setUserData }) => {
                             onClick={handleExerciseShow}
                         />
                     </Styled.LabelContainer>
+
+                    <Styled.LabelContainer>
+                        <Styled.LabelText>
+                            Lifts:
+                            <Styled.LabelIcon>
+                                <Calendar
+                                    color={theme.mayaBlue}
+                                    weight="fill"
+                                    size="100%"
+                                />
+                            </Styled.LabelIcon>
+                        </Styled.LabelText>
+                        <Styled.InputLifts
+                            type="input"
+                            value="Input lift data"
+                            onClick={handleCalendarShow}
+                        />
+                    </Styled.LabelContainer>
+
+                    <Styled.Submit
+                        type="button"
+                        to="/get-stats/your-stats"
+                    >
+                        <Styled.SubmitIcon>
+                            <ChartLine 
+                                size="100%"
+                                color={theme.richBlackDark}
+                                weight="light"
+                            />
+                        </Styled.SubmitIcon>
+                        Get Results
+                    </Styled.Submit>
+
                 </Styled.InputContainer>
 
             </Styled.TextContainer>

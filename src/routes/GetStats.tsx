@@ -12,19 +12,35 @@ const GetStats = () => {
 
     const [activeTab, setActiveTab] = useState("strength");
     const [userData, setUserData] = useState([
-        { month: "Jan", weight: 0},
-        { month: "Feb", weight: 0},
-        { month: "Mar", weight: 0},
-        { month: "Apr", weight: 0},
-        { month: "May", weight: 0},
-        { month: "Jun", weight: 0},
-        { month: "Jul", weight: 0},
-        { month: "Aug", weight: 0},
-        { month: "Sep", weight: 0},
-        { month: "Oct", weight: 0},
-        { month: "Nov", weight: 0},
-        { month: "Dec", weight: 0},
+        { month: "Jan", weight: 0 },
+        { month: "Feb", weight: 0 },
+        { month: "Mar", weight: 0 },
+        { month: "Apr", weight: 0 },
+        { month: "May", weight: 0 },
+        { month: "Jun", weight: 0 },
+        { month: "Jul", weight: 0 },
+        { month: "Aug", weight: 0 },
+        { month: "Sep", weight: 0 },
+        { month: "Oct", weight: 0 },
+        { month: "Nov", weight: 0 },
+        { month: "Dec", weight: 0 },
     ]);
+    const [showCalendar, setShowCalendar] = useState(false);
+    const [showExercises, setShowExercises] = useState(false);
+    const [exerciseSelected, setExerciseSelected] = useState("Select an Exercise");
+
+    const handleCalendarShow = () => {
+        setShowCalendar(!showCalendar);
+    }
+
+    const handleExerciseShow = () => {
+        setShowExercises(!showExercises);
+    }
+
+    const handleExerciseSelected = (name: string) => {
+        setExerciseSelected(name);
+        handleExerciseShow();
+    }
 
     const handleChangeTab = (e) => {
         setActiveTab(e.currentTarget.id);
@@ -32,10 +48,43 @@ const GetStats = () => {
 
     //Return correct component based on the active tab
     const getActiveComponent = () => {
-        if(activeTab == "strength") return <StrengthStats userData={userData} setUserData={setUserData} />;
-        if(activeTab == "lifts") return <LiftsStats />
-        if(activeTab == "consistency") return <Consistency />
+        if (activeTab == "strength") {
+            return (
+                <StrengthStats
+                    userData={userData}
+                    setUserData={setUserData}
+                    handleCalendarShow={handleCalendarShow}
+                    handleExerciseShow={handleExerciseShow}
+                    handleExerciseSelected={handleExerciseSelected}
+                    showExercises={showExercises}
+                    exerciseSelected={exerciseSelected}
+                    showCalendar={showCalendar}
+                    setShowCalendar={setShowCalendar}
+                />
+            );
+        }
+        if (activeTab == "lifts") {
+            return (
+                <LiftsStats />
+            );
+        }
+        if (activeTab == "consistency") {
+            return (
+                <Consistency
+                    userData={userData}
+                    setUserData={setUserData}
+                    handleCalendarShow={handleCalendarShow}
+                    handleExerciseShow={handleExerciseShow}
+                    handleExerciseSelected={handleExerciseSelected}
+                    showExercises={showExercises}
+                    exerciseSelected={exerciseSelected}
+                    showCalendar={showCalendar}
+                    setShowCalendar={setShowCalendar}
+                />
+            );
+        }
     }
+
 
     return (
         <Styled.Container>

@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import image from '../assets/images/header-s.jpg';
+import ExerciseSelect from "../components/ExerciseSelect";
 
 export const Container = styled.div`
     display: flex;
@@ -141,6 +143,7 @@ export const InputContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 45px;
 `;
 
 export const LabelContainer = styled.div`
@@ -148,20 +151,79 @@ export const LabelContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 60px;
+    margin-bottom: 25px;
+    position: relative;
 `;
 
 export const InputExercise = styled.input`
     border: 1px solid ${props => props.theme.mayaBlue};
     background-color: transparent;
-    margin-left: 10px;
+    margin-left: 5px;
     color: #fff;
     font-size: 18px;
-    padding: 5px;
-    padding-left: 7px;
+    padding: 10px;
+    padding-left: 55px;
+    border-radius: 12px;
+    color: darkgray;
+`;
+
+export const InputExerciseGreen = styled(InputExercise)`border: 1px solid ${props => props.theme.lightGreen};`;
+
+export const InputExerciseOrange = styled(InputExercise)`border: 1px solid ${props => props.theme.lightPurple};`;
+
+export const InputLifts = styled(InputExercise)`
+    cursor: pointer;
+
+    &:hover {
+        background-color: ${props => props.theme.mayaBluePale};
+    }
 `;
 
 export const LabelText = styled.div`
     font-size: 18px;
     color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+`;
+
+export const LabelIcon = styled.div`
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 120%;
+`;
+
+
+export const Submit = styled(Link)`
+    background-color: ${props => props.theme.mayaBlue};
+    color: #000;
+    padding: 10px 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    position: relative;
+`;
+
+export const SubmitGreen = styled(Submit)`
+    background-color: ${props => props.theme.lightGreen};
+`;
+
+export const SubmitOrange = styled(Submit)`
+    background-color: ${props => props.theme.lightPurple};
+`;
+
+export const SubmitIcon = styled.div`
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;

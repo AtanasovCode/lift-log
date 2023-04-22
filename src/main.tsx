@@ -16,6 +16,7 @@ import ErrorPage from './components/errors/ErrorPage';
 //Importing Routes:
 import Homepage from './routes/Homepage';
 import GetStats from './routes/GetStats';
+import Result from './routes/Results';
 
 const router = createBrowserRouter([
   {
@@ -26,11 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/get-stats",
     element: <GetStats />,
-    children: [
-        {
-          path: "/get-stats/your-stats",
-        }
-    ]
+  },
+  {
+    path: "/get-stats/your-stats",
+    element: <Result />
   }
 ])
 
