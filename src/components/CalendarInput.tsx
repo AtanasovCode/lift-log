@@ -9,6 +9,7 @@ const CalendarInput = ({
     showCalendar,
     setShowCalendar,
     handleCalendarShow,
+    handleCalendarSubmit,
 }) => {
     const [activeError, setActiveError] = useState(false);
 
@@ -37,14 +38,6 @@ const CalendarInput = ({
         }else {
             setActiveError(false);
         }
-    }
-
-
-
-    const test = () => {
-        activateErrorMessage();
-
-        activeError ? console.log("Error") : console.log(userData);
     }
 
     return (
@@ -96,7 +89,7 @@ const CalendarInput = ({
             <Submit 
                 type="button" 
                 value="Submit Lifts" 
-                onClick={test}
+                onClick={handleCalendarSubmit}
             />
         </Calendar>
     );

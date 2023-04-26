@@ -8,26 +8,18 @@ import LiftsStats from '../components/LiftsStats';
 import Consistency from '../components/Consistency';
 
 
-const GetStats = () => {
+const GetStats = ({
+    userData,
+    setUserData,
+    exerciseSelected,
+    setExerciseSelected,
+    calendarValue,
+    setCalendarValue,
+}) => {
 
     const [activeTab, setActiveTab] = useState("strength");
-    const [userData, setUserData] = useState([
-        { month: "Jan", weight: 0 },
-        { month: "Feb", weight: 0 },
-        { month: "Mar", weight: 0 },
-        { month: "Apr", weight: 0 },
-        { month: "May", weight: 0 },
-        { month: "Jun", weight: 0 },
-        { month: "Jul", weight: 0 },
-        { month: "Aug", weight: 0 },
-        { month: "Sep", weight: 0 },
-        { month: "Oct", weight: 0 },
-        { month: "Nov", weight: 0 },
-        { month: "Dec", weight: 0 },
-    ]);
     const [showCalendar, setShowCalendar] = useState(false);
     const [showExercises, setShowExercises] = useState(false);
-    const [exerciseSelected, setExerciseSelected] = useState("Select an Exercise");
 
     const handleCalendarShow = () => {
         setShowCalendar(!showCalendar);
@@ -40,6 +32,11 @@ const GetStats = () => {
     const handleExerciseSelected = (name: string) => {
         setExerciseSelected(name);
         handleExerciseShow();
+    }
+
+    const handleCalendarSubmit = () => {
+        handleCalendarShow();
+        setCalendarValue("Lifts Updated");
     }
 
     const handleChangeTab = (e) => {
@@ -60,6 +57,8 @@ const GetStats = () => {
                     exerciseSelected={exerciseSelected}
                     showCalendar={showCalendar}
                     setShowCalendar={setShowCalendar}
+                    calendarValue={calendarValue}
+                    handleCalendarSubmit={handleCalendarSubmit}
                 />
             );
         }

@@ -21,7 +21,7 @@ const LiftProgressGraph = () => {
 
     const [chartHeight, setChartHeight] = useState<number>();
 
-    //We use this to use our thene
+    //We use this to use our theme
     //Outside of styled-components
     const theme = useContext(ThemeContext);
 

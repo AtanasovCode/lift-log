@@ -14,30 +14,15 @@ import { theme } from './styles/Theme';
 import ErrorPage from './components/errors/ErrorPage';
 
 //Importing Routes:
+import Router from './routes/Router';
 import Homepage from './routes/Homepage';
 import GetStats from './routes/GetStats';
 import Result from './routes/Results';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Homepage />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: "/get-stats",
-    element: <GetStats />,
-  },
-  {
-    path: "/get-stats/your-stats",
-    element: <Result />
-  }
-])
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+      <Router />
       <GlobalStyle />
     </ThemeProvider>
   </React.StrictMode>,
