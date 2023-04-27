@@ -33,12 +33,21 @@ const GetStats = ({
 
     const handleExerciseSelected = (name: string) => {
         setExerciseSelected(name);
+        sessionStorage.setItem("exerciseSelectedStrength", name);
         handleExerciseShow();
+
+        console.log(sessionStorage.getItem("exerciseSelectedStrength"));
     }
 
     const handleCalendarSubmit = () => {
+        //We need to stringify an array with objects to set it to session storage
+        sessionStorage.setItem("userDataStrength", JSON.stringify(userData));
+
+
         handleCalendarShow();
         setCalendarValue("Lifts Updated");
+
+        console.log(sessionStorage.getItem("userDataStrength"));
     }
 
     const handleChangeTab = (e) => {

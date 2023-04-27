@@ -34,6 +34,9 @@ const Result = ({
     const [strongestMonth, setStrongestMonth] = useState("");
     const [percentImproved, setPercentImproved] = useState(0);
 
+    const [currentExercise, setCurrentExercise] = useState(sessionStorage.getItem("exerciseSelectedStrength"));
+    const [currentData, setCurrentData] = useState([]);
+
     //Generates a random tip for the users
     useEffect(() => {
         const randomTip = tips[Math.floor(Math.random() * tips.length)];
@@ -54,41 +57,56 @@ const Result = ({
     //calculating strongest and weakest lift
     //calculating the progress in %
     useEffect(() => {
+
+
         let strongest = 0;
         let weakest = 999999;
 
         let firstLift = 0;
         let lastLift = 0;
+        let indexFirst = -1;
+        let indexLast = -1;
 
         let strongestM = "";
         let weakestM = "";
-        
-        userData.map((lift: any, index: number) => {
 
-            //Get the very first and very last lift
-            //To calculate percentage of progress made
-            if(index == 0) {
-                firstLift = lift.weight;
-            }else if(index <= userData.length) {
-                lastLift = lift.weight;
-            }
+        let data = sessionStorage.getItem("userDataStrength");
+        if (data != null) {
 
-            //Get the strongest and weakest lift
-            if (lift.weight > strongest) {
-                strongest = lift.weight
-                strongestM = lift.month;
-            }
-            if (lift.weight != 0 && lift.weight < weakest) {
-                weakest = lift.weight;
-                weakestM = lift.month;
-            }
-        })
+            setCurrentData(JSON.parse(data));
+
+            //Need to parse the data to be able to map it
+            JSON.parse(data).map((lift: any, index: number) => {
+
+                //Get the very first and very last lift
+                //To calculate percentage of progress made
+                if(lift.weight > 0) {
+                    if(indexFirst === -1) {
+                        indexFirst = lift.index;
+                        firstLift = lift.weight;
+                    }
+                    indexLast = lift.index;
+                    lastLift = lift.weight;
+                }
+
+
+                //Get the strongest and weakest lift
+                if (lift.weight > strongest) {
+                    strongest = lift.weight
+                    strongestM = lift.month;
+                }
+                if (lift.weight != 0 && lift.weight < weakest) {
+                    weakest = lift.weight;
+                    weakestM = lift.month;
+                }
+            })
+        }
 
         //Setting the highest value for the YAxis
         setYAxisHighestValue(strongest + 10);
 
         //Set the lowest value for the YAxis
-        setYAxisLowestValue(weakest - 5);
+        weakest >= 5 ? setYAxisLowestValue(weakest - 5) : setYAxisLowestValue(weakest);
 
         //Get the improvement in percentage
         //Calculated based on the very first lift, and 
@@ -108,11 +126,11 @@ const Result = ({
         <Styled.Container>
             <Styled.LiftInfo>
                 <Styled.LiftIcon
-                    src={getExerciseIcon(exerciseSelected)}
+                    src={getExerciseIcon(currentExercise)}
                 />
                 <Styled.LiftText>
                     <Styled.LiftName>
-                        {exerciseSelected}
+                        {currentExercise}
                     </Styled.LiftName>
                     <Styled.LiftData>
                         <Styled.LiftStats>
@@ -144,9 +162,9 @@ const Result = ({
             <Styled.ChartContainer>
                 <ResponsiveContainer width="99%" height={350}>
                     <LineChart>
-                        <Line data={userData} dataKey="weight" />
+                        <Line data={currentData} dataKey="weight" />
                         <XAxis dataKey="month" />
-                        <YAxis domain={[0, YAxisHighestValue]} />
+                        <YAxis domain={[YAxisLowestValue, YAxisHighestValue]} />
                         <Tooltip />
                     </LineChart>
                 </ResponsiveContainer>
