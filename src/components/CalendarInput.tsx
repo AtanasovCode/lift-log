@@ -63,7 +63,7 @@ const CalendarInput = ({
             </Heading>
             <Months>
                 {
-                    userData.map((month, index) => {
+                    userData.map((month: any, index: any) => {
                         return (
                             <Month key={month.month}>
                                 <MonthName>{month.month}</MonthName>

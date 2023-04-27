@@ -197,7 +197,7 @@ export const LabelIcon = styled.div`
 `;
 
 
-export const Submit = styled(Link)`
+export const Submit = styled.div`
     background-color: ${props => props.theme.mayaBlue};
     color: #000;
     padding: 10px 45px;
@@ -208,6 +208,8 @@ export const Submit = styled(Link)`
     border-radius: 12px;
     font-weight: 600;
     position: relative;
+    cursor: pointer;
+    user-select: none;
 `;
 
 export const SubmitGreen = styled(Submit)`

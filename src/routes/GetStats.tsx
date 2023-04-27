@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as Styled from '../styles/GetStats.Styled';
-import { Outlet } from 'react-router-dom';
+import { Outlet, redirect } from 'react-router-dom';
 
 import Nav from '../components/navigation/Nav';
 import StrengthStats from '../components/StrengthStats';
@@ -43,6 +43,18 @@ const GetStats = ({
         setActiveTab(e.currentTarget.id);
     }
 
+    const handleSubmitData = () => {
+        let lifts = 0;
+
+        userData.map((lift: any) => {
+            if(lift.weight > 0) lifts++;
+        })
+
+        if(lifts >= 3 && exerciseSelected != "Select an exercise") {
+            return redirect("./get-stats/results");
+        }
+    }
+
     //Return correct component based on the active tab
     const getActiveComponent = () => {
         if (activeTab == "strength") {
@@ -59,6 +71,7 @@ const GetStats = ({
                     setShowCalendar={setShowCalendar}
                     calendarValue={calendarValue}
                     handleCalendarSubmit={handleCalendarSubmit}
+                    handleSubmitData={handleSubmitData}
                 />
             );
         }

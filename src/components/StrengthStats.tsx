@@ -18,6 +18,7 @@ const StrengthStats = ({
     exerciseSelected,
     calendarValue,
     handleCalendarSubmit,
+    handleSubmitData,
 }) => {
     return (
         <Styled.Container>
@@ -73,9 +74,8 @@ const StrengthStats = ({
                             </Styled.LabelIcon>
                         </Styled.LabelText>
                         <Styled.InputExercise
-                            type="text"
+                            type="button"
                             value={exerciseSelected}
-                            onChange={() => handleExerciseShow}
                             onClick={handleExerciseShow}
                         />
                     </Styled.LabelContainer>
@@ -92,7 +92,7 @@ const StrengthStats = ({
                             </Styled.LabelIcon>
                         </Styled.LabelText>
                         <Styled.InputLifts
-                            type="input"
+                            type="button"
                             value={calendarValue}
                             onClick={handleCalendarShow}
                         />
@@ -100,7 +100,7 @@ const StrengthStats = ({
 
                     <Styled.Submit
                         type="button"
-                        to="/get-stats/results"
+                        onClick={() => handleSubmitData}
                     >
                         <Styled.SubmitIcon>
                             <ChartLine 

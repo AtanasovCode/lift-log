@@ -71,9 +71,9 @@ const Consistency = ({
                             </Styled.LabelIcon>
                         </Styled.LabelText>
                         <Styled.InputExerciseOrange
-                            type="text"
+                            type="input"
                             value={exerciseSelected}
-                            placeholder="chose exercise..."
+                            readOnly
                             onClick={handleExerciseShow}
                         />
                     </Styled.LabelContainer>
@@ -90,7 +90,7 @@ const Consistency = ({
                             </Styled.LabelIcon>
                         </Styled.LabelText>
                         <Styled.InputLifts
-                            type="input"
+                            type="button"
                             value="Input lift data"
                             onClick={handleCalendarShow}
                         />
