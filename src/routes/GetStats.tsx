@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as Styled from '../styles/GetStats.Styled';
-import { Outlet, redirect } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import Nav from '../components/navigation/Nav';
 import StrengthStats from '../components/StrengthStats';
@@ -16,6 +16,8 @@ const GetStats = ({
     calendarValue,
     setCalendarValue,
 }) => {
+
+    const navigate = useNavigate();
 
     const [activeTab, setActiveTab] = useState("strength");
     const [showCalendar, setShowCalendar] = useState(false);
@@ -43,6 +45,10 @@ const GetStats = ({
         setActiveTab(e.currentTarget.id);
     }
 
+
+    //Checks to see if user has selected an exercise
+    //and has values for at least 3 lifts
+    //If true, the function navigates to the results page
     const handleSubmitData = () => {
         let lifts = 0;
 
@@ -51,7 +57,8 @@ const GetStats = ({
         })
 
         if(lifts >= 3 && exerciseSelected != "Select an exercise") {
-            return redirect("./get-stats/results");
+            console.log("All is good!")
+            navigate("/get-stats/results");
         }
     }
 

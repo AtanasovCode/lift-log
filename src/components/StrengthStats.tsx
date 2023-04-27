@@ -99,8 +99,7 @@ const StrengthStats = ({
                     </Styled.LabelContainer>
 
                     <Styled.Submit
-                        type="button"
-                        onClick={() => handleSubmitData}
+                        onClick={handleSubmitData}
                     >
                         <Styled.SubmitIcon>
                             <ChartLine 
