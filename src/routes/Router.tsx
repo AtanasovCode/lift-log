@@ -105,6 +105,7 @@ const Router = () => {
                 calendarValue={calendarValue}
                 setCalendarValue={setCalendarValue}
             />,
+            errorElement: <ErrorPage />
         },
         {
             path: "/get-stats/results",
@@ -114,7 +115,8 @@ const Router = () => {
                 exerciseSelected={exerciseSelected}
                 setExerciseSelected={setExerciseSelected}
                 getExerciseIcon={getExerciseIcon}
-            />
+            />,
+            errorElement: <ErrorPage />
         }
     ])
 

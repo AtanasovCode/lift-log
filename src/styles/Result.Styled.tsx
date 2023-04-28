@@ -2,17 +2,26 @@ import styled from "styled-components";
 
 
 interface Props {
-    positive: boolean
+    positive: boolean,
 }
 
 export const Container = styled.div`
     min-height: 100vh;
+    padding: 80px 50px 50px 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: ${props => props.theme.richBlackDark};
     color: #fff;
-    padding: 45px;
+
+    @media (max-width: 820px) {
+        padding: 50px 20px 25px 20px;
+    }
+
+    @media (max-width: 700px) {
+        flex-direction: column;
+        padding-top: 120px;
+    }
 `;
 
 export const ChartContainer = styled.div`
@@ -20,6 +29,14 @@ export const ChartContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 700px) {
+        width: 80%;
+    }
+
+    @media (max-width: 500px) {
+        width: 100%;
+    }
 `;
 
 export const LiftInfo = styled.div`
@@ -27,19 +44,28 @@ export const LiftInfo = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 700px) {
+        width: 100%;
+        margin-bottom: 30px;
+    }
 `;
 
-export const LiftIcon = styled.img`
-    filter: invert(100%);
-    margin-right: 20px;
-    height: 80px;
-`;
-
-export const LiftText = styled.div`
+export const InfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+`;
+
+export const LiftIcon = styled.img`
+    filter: invert(100%);
+    margin-right: 10px;
+    height: 40px;
+
+    @media (max-width: 700px) {
+        height: 55px;
+    }
 `;
 
 export const LiftName = styled.div`
@@ -50,26 +76,39 @@ export const LiftName = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 100%;
+
+    @media (max-width: 700px) {
+        width: 100%;
+        font-size: 26px;
+        }
 `;
 
-export const LiftData = styled.div`
+export const StatsContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    flex: 100%;
 `;
 
-export const LiftStats = styled.div`
+export const Stats = styled.div`
     display: flex;
-    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
 `;
 
-export const Stat = styled.div`
-    margin-left: 5px;
+export const LiftNumber = styled.div`
+    font-size: 30px;
+    font-weight: 800;
+    color: ${props => props.theme.mayaBlue};
+    margin-right: 7px;
+    font-family: 'Dosis', sans-serif;
 `;
 
-export const Improved = styled.div`
-    display: flex;
+export const LiftDesc = styled.div`
+    font-size: 25px;
+    font-weight: 900;
 `;
 
 export const Percent = styled.div<Props>`
@@ -86,4 +125,8 @@ export const Tip = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 700px) {
+        transform: translateX(-300%);
+    }
 `;

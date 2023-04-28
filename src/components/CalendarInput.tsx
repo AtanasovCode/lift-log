@@ -70,6 +70,7 @@ const CalendarInput = ({
                                 <MonthInput
                                     type="text"
                                     placeholder="0"
+                                    maxLength={3}
                                     value={month.weight > 0 ? month.weight : ""}
                                     onChange={(e) => {
                                         handleInputChange(parseInt(e.currentTarget.value), index);
