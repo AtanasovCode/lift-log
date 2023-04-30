@@ -108,6 +108,8 @@ const GetStats = ({
                     exerciseSelected={exerciseSelected}
                     showCalendar={showCalendar}
                     setShowCalendar={setShowCalendar}
+                    calendarValue={calendarValue}
+                    handleSubmitData={handleSubmitData}
                 />
             );
         }

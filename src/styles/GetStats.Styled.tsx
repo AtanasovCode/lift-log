@@ -16,7 +16,7 @@ export const Tabs = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0 30px;
+    padding: 0 50px;
 
     @media (max-width: 550px) {
         padding: 0 15px;

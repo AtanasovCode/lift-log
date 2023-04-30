@@ -2,11 +2,13 @@ import { useState } from 'react';
 import CalendarInput from './CalendarInput';
 import ExerciseSelect from './ExerciseSelect';
 import * as Styled from '../styles/Stats.Styled';
-import { CalendarX, Calendar, Barbell } from '@phosphor-icons/react';
+import { CalendarX, Calendar, Barbell, ChartLine } from '@phosphor-icons/react';
 import { theme } from '../styles/Theme';
 
+import illustration from '../assets/illustrations/group-orange-bg.svg';
+
 const Consistency = ({
-    userData, 
+    userData,
     setUserData,
     handleExerciseSelected,
     handleExerciseShow,
@@ -15,9 +17,18 @@ const Consistency = ({
     showCalendar,
     setShowCalendar,
     exerciseSelected,
+    calendarValue,
+    handleSubmitData,
 }) => {
     return (
         <Styled.Container>
+
+            <Styled.ImageContainer>
+                <Styled.Illustration
+                    src={illustration}
+                />
+            </Styled.ImageContainer>
+
             <Styled.TextContainer>
 
                 <Styled.HeadingOrange>
@@ -58,51 +69,62 @@ const Consistency = ({
 
 
                 <Styled.InputContainer>
-
-                    <Styled.LabelContainer>
-                        <Styled.LabelText>
-                            Exercise:
-                            <Styled.LabelIcon>
-                                <Barbell
-                                    color={theme.lightPurple}
-                                    weight="fill"
-                                    size="100%"
+                    <Styled.Inputs>
+                        <Styled.LabelContainer>
+                            <Styled.LabelText>
+                                Exercise:
+                            </Styled.LabelText>
+                            <Styled.InputFieldContainer>
+                                <Styled.LabelIcon>
+                                    <Barbell
+                                        color={theme.lightPurple}
+                                        weight="fill"
+                                        size="100%"
+                                    />
+                                </Styled.LabelIcon>
+                                <Styled.InputExerciseOrange
+                                    type="button"
+                                    value={exerciseSelected}
+                                    onClick={handleExerciseShow}
                                 />
-                            </Styled.LabelIcon>
-                        </Styled.LabelText>
-                        <Styled.InputExerciseOrange
-                            type="input"
-                            value={exerciseSelected}
-                            readOnly
-                            onClick={handleExerciseShow}
-                        />
-                    </Styled.LabelContainer>
+                            </Styled.InputFieldContainer>
+                        </Styled.LabelContainer>
 
-                    <Styled.LabelContainer>
-                        <Styled.LabelText>
-                            Lifts:
-                            <Styled.LabelIcon>
-                                <Calendar
+                        <Styled.LabelContainer>
+                            <Styled.LabelText>
+                                Lifts:
+                            </Styled.LabelText>
+                            <Styled.InputFieldContainer>
+                                <Styled.LabelIcon>
+                                    <Calendar
+                                        color={theme.lightPurple}
+                                        weight="fill"
+                                        size="100%"
+                                    />
+                                </Styled.LabelIcon>
+                                <Styled.InputLifts
+                                    type="button"
+                                    value={calendarValue}
+                                    onClick={handleCalendarShow}
                                     color={theme.lightPurple}
-                                    weight="fill"
-                                    size="100%"
                                 />
-                            </Styled.LabelIcon>
-                        </Styled.LabelText>
-                        <Styled.InputLifts
-                            type="button"
-                            value="Input lift data"
-                            onClick={handleCalendarShow}
-                        />
-                    </Styled.LabelContainer>
+                            </Styled.InputFieldContainer>
+                        </Styled.LabelContainer>
 
-                    <Styled.SubmitOrange
-                        type="button"
-                        to="/get-stats/your-stats"
-                    >
-                        Submit Data
-                    </Styled.SubmitOrange>
-
+                        <Styled.Submit
+                            onClick={handleSubmitData}
+                            color={theme.lightPurple}
+                        >
+                            <Styled.SubmitIcon>
+                                <ChartLine
+                                    size="100%"
+                                    color={theme.richBlackDark}
+                                    weight="light"
+                                />
+                            </Styled.SubmitIcon>
+                            Get Results
+                        </Styled.Submit>
+                    </Styled.Inputs>
                 </Styled.InputContainer>
 
             </Styled.TextContainer>

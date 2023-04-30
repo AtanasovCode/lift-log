@@ -6,8 +6,10 @@ import { theme } from '../styles/Theme';
 import CalendarInput from './CalendarInput';
 import ExerciseSelect from './ExerciseSelect';
 
+import illustration from '../assets/illustrations/group-bg.svg';
+
 const StrengthStats = ({
-    userData, 
+    userData,
     setUserData,
     handleExerciseSelected,
     handleExerciseShow,
@@ -23,7 +25,12 @@ const StrengthStats = ({
     return (
         <Styled.Container>
 
-            <Styled.ImageContainer />
+            <Styled.ImageContainer>
+                <Styled.Illustration 
+                    src={illustration}
+                    alt="illustration of a man carrying a barbell with weight"
+                />
+            </Styled.ImageContainer>
 
             <Styled.TextContainer>
 
@@ -62,54 +69,61 @@ const StrengthStats = ({
 
                 <Styled.InputContainer>
 
-                    <Styled.LabelContainer>
-                        <Styled.LabelText>
-                            Exercise:
-                            <Styled.LabelIcon>
-                                <Barbell
-                                    color={theme.mayaBlue}
-                                    weight="fill"
-                                    size="100%"
+                    <Styled.Inputs>
+                        <Styled.LabelContainer>
+                            <Styled.LabelText>
+                                Exercise:
+                            </Styled.LabelText>
+                            <Styled.InputFieldContainer>
+                                <Styled.LabelIcon>
+                                    <Barbell
+                                        color={theme.mayaBlue}
+                                        weight="fill"
+                                        size="100%"
+                                    />
+                                </Styled.LabelIcon>
+                                <Styled.InputExercise
+                                    type="button"
+                                    value={exerciseSelected}
+                                    onClick={handleExerciseShow}
                                 />
-                            </Styled.LabelIcon>
-                        </Styled.LabelText>
-                        <Styled.InputExercise
-                            type="button"
-                            value={exerciseSelected}
-                            onClick={handleExerciseShow}
-                        />
-                    </Styled.LabelContainer>
+                            </Styled.InputFieldContainer>
+                        </Styled.LabelContainer>
 
-                    <Styled.LabelContainer>
-                        <Styled.LabelText>
-                            Lifts:
-                            <Styled.LabelIcon>
-                                <Calendar
-                                    color={theme.mayaBlue}
-                                    weight="fill"
-                                    size="100%"
+                        <Styled.LabelContainer>
+                            <Styled.LabelText>
+                                Lifts:
+                            </Styled.LabelText>
+                            <Styled.InputFieldContainer>
+                                <Styled.LabelIcon>
+                                    <Calendar
+                                        color={theme.mayaBlue}
+                                        weight="fill"
+                                        size="100%"
+                                    />
+                                </Styled.LabelIcon>
+                                <Styled.InputLifts
+                                    type="button"
+                                    value={calendarValue}
+                                    onClick={handleCalendarShow}
                                 />
-                            </Styled.LabelIcon>
-                        </Styled.LabelText>
-                        <Styled.InputLifts
-                            type="button"
-                            value={calendarValue}
-                            onClick={handleCalendarShow}
-                        />
-                    </Styled.LabelContainer>
+                            </Styled.InputFieldContainer>
+                        </Styled.LabelContainer>
 
-                    <Styled.Submit
-                        onClick={handleSubmitData}
-                    >
-                        <Styled.SubmitIcon>
-                            <ChartLine 
-                                size="100%"
-                                color={theme.richBlackDark}
-                                weight="light"
-                            />
-                        </Styled.SubmitIcon>
-                        Get Results
-                    </Styled.Submit>
+                        <Styled.Submit
+                            onClick={handleSubmitData}
+                            color={theme.mayaBlue}
+                        >
+                            <Styled.SubmitIcon>
+                                <ChartLine
+                                    size="100%"
+                                    color={theme.richBlackDark}
+                                    weight="light"
+                                />
+                            </Styled.SubmitIcon>
+                            Get Results
+                        </Styled.Submit>
+                    </Styled.Inputs>
 
                 </Styled.InputContainer>
 

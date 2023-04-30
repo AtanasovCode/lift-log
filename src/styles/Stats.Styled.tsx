@@ -5,28 +5,55 @@ import ExerciseSelect from "../components/ExerciseSelect";
 
 export const Container = styled.div`
     display: flex;
-    align-items: center;
+    flex-direction: row-reverse;
+    align-items: stretch;
     justify-content: center;
     margin-top: 30px;
     color: #fff;
     background-color: ${props => props.theme.richBlackDark};
+    padding-bottom: 25px;
+
+    @media (max-width: 700px) {
+        flex-direction: column-reverse;
+    }
 `;
 
 export const ImageContainer = styled.div`
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    @media (max-width: 700px) {
+        margin-top: 35px;
+    }
+`;
+
+export const Illustration = styled.img`
+    width: 57%;
+    min-width: 300px;
+
+    @media (max-width: 930px) {
+        min-width: 230px;
+    }
+
+    @media (max-width: 700px) {
+        width: 200px;
+    }
 `;
 
 
 export const TextContainer = styled.div`
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
     background-color: ${props => props.theme.richBlackDark};
-    padding: 35px 50px;
-    width: 100%;
+    padding: 0px 50px;
 
     @media (max-width: 700px) {
-        padding: 35px;
+        padding: 0;
     }
 
     @media (max-width: 550px) {
@@ -38,10 +65,9 @@ export const Heading = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     position: relative;
-    padding: 25px;
     border-radius: 15px;
+    background-color: ${props => props.theme.richBlackDark};
 
     @keyframes slideIn {
         from {
@@ -57,58 +83,68 @@ export const Heading = styled.div`
         }
     }
 
-    @media (max-width: 550px) {
+    @media (max-width: 700px) {
+        width: 100%;
         flex-direction: column-reverse;
         margin-top: 35px;
         animation: slideIn .456s ease 1;
         border-radius: 55px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+        padding: 25px 0;
     }
 `;
 
 export const HeadingGreen = styled(Heading)`
-    background-color: ${props => props.theme.lightGreen};
+    @media (max-width: 700px) {
+        background-color: ${props => props.theme.lightGreen};
+    }
 `;
 
 export const HeadingBlue = styled(Heading)`
-    background-color: ${props => props.theme.mayaBlue};
+    @media (max-width: 700px) {
+        background-color: ${props => props.theme.mayaBlue};
+    }
 `;
 
 export const HeadingOrange = styled(Heading)`
-    background-color: ${props => props.theme.lightPurple};
+    @media (max-width: 700px) {
+        background-color: ${props => props.theme.lightPurple};
+    }
 `;
 
 
 export const Title = styled.div`
     font-size: 30px;
     font-weight: 700;
-    color: #000;
-    
-    @media (max-width: 750px) {
-        font-size: 24px;
-    }
+    color: #fff;
 
-    @media (max-width: 550px) {
+    @media (max-width: 930px) {
+        font-size: 22px;
+    }
+    
+
+    @media (max-width: 700px) {
         font-weight: 900;
         font-size: 30px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
+        color: #000;
     }
 `;
 
 export const Fancy = styled.span`
     color: ${props => props.theme.mayaBlue};
     margin: 0 6px;
-    background-color: ${props => props.theme.richBlackDark};
-    padding: 8px;
-    border-radius: 8px;
     text-align: center;
 
-    @media (max-width: 550px) {
+    @media (max-width: 700px) {
         margin: 7px 0;
+        background-color: ${props => props.theme.richBlackDark};
+        border-radius: 8px;
+        padding: 8px;
     }
 `;
 
@@ -122,10 +158,10 @@ export const PurpleFancy = styled(Fancy)`
 
 export const Icon = styled.div`
     margin-left: 6px;
-    width: 60px;
-    height: 60px;
+    width: 0;
+    height: 0;
 
-    @media (max-width: 750px) {
+    @media (max-width: 700px) {
         width: 50px;
         height: 50px;
     }
@@ -140,22 +176,50 @@ export const Icon = styled.div`
 export const InputContainer = styled.div`
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 45px;
+    padding: 0 20px;
+`;
+
+export const Inputs = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    @media (max-width: 550px) {
+        width: 90%;
+    }
+
+    @media (max-width: 400px) {
+        width: 90%;
+    }
 `;
 
 export const LabelContainer = styled.div`
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     margin-bottom: 25px;
+    position: relative;
+
+    @media (max-width: 550px) {
+        flex-direction: column;
+    }
+`;
+
+export const InputFieldContainer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 `;
 
 export const InputExercise = styled.input`
+    flex: 100%;
     border: 1px solid ${props => props.theme.mayaBlue};
     background-color: transparent;
     margin-left: 5px;
@@ -165,6 +229,11 @@ export const InputExercise = styled.input`
     padding-left: 55px;
     border-radius: 12px;
     color: darkgray;
+
+    @media (max-width: 550px) {
+        width: 100%;
+        margin-top: 12px;
+    }
 `;
 
 export const InputExerciseGreen = styled(InputExercise)`border: 1px solid ${props => props.theme.lightGreen};`;
@@ -173,6 +242,8 @@ export const InputExerciseOrange = styled(InputExercise)`border: 1px solid ${pro
 
 export const InputLifts = styled(InputExercise)`
     cursor: pointer;
+
+    border-color: ${props => props.color};
 
     &:hover {
         background-color: ${props => props.theme.mayaBluePale};
@@ -186,19 +257,29 @@ export const LabelText = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 100px;
+    flex: 35%;
+
+    @media (max-width: 550px) {
+        font-size: 17px;
+    }
 `;
 
 export const LabelIcon = styled.div`
     width: 30px;
     height: 30px;
     position: absolute;
-    left: 120%;
+    left: 8%;
+
+    @media (max-width: 550px) {
+        width: 35px;
+        height: 35px;
+        bottom: 5%;
+    }
 `;
 
 
 export const Submit = styled.div`
-    background-color: ${props => props.theme.mayaBlue};
+    background-color: ${props => props.color};
     color: #000;
     padding: 10px 45px;
     display: flex;
@@ -210,6 +291,7 @@ export const Submit = styled.div`
     position: relative;
     cursor: pointer;
     user-select: none;
+    width: 100%;
 `;
 
 export const SubmitGreen = styled(Submit)`
