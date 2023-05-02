@@ -97,14 +97,7 @@ const Router = () => {
         },
         {
             path: "/get-stats",
-            element: <GetStats
-                userData={userData}
-                setUserData={setUserData}
-                exerciseSelected={exerciseSelected}
-                setExerciseSelected={setExerciseSelected}
-                calendarValue={calendarValue}
-                setCalendarValue={setCalendarValue}
-            />,
+            element: <GetStats />,
             errorElement: <ErrorPage />
         },
         {

@@ -13,6 +13,8 @@ import { theme } from './styles/Theme';
 //Error Handling for react-router-dom
 import ErrorPage from './components/errors/ErrorPage';
 
+import { AppProvider } from './components/context/AppContext';
+
 //Importing Routes:
 import Router from './routes/Router';
 import Homepage from './routes/Homepage';
@@ -21,9 +23,11 @@ import Result from './routes/Results';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Router />
-      <GlobalStyle />
-    </ThemeProvider>
+    <AppProvider>
+      <ThemeProvider theme={theme}>
+        <Router />
+        <GlobalStyle />
+      </ThemeProvider>
+    </AppProvider>
   </React.StrictMode>,
 )

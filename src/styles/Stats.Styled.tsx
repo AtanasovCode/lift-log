@@ -183,10 +183,8 @@ export const InputContainer = styled.div`
 `;
 
 export const Inputs = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
 
     @media (max-width: 550px) {
         width: 90%;
@@ -198,10 +196,9 @@ export const Inputs = styled.div`
 `;
 
 export const LabelContainer = styled.div`
-    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     margin-bottom: 25px;
     position: relative;
 
@@ -211,24 +208,57 @@ export const LabelContainer = styled.div`
 `;
 
 export const InputFieldContainer = styled.div`
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    min-width: 250px;
+    margin-left: 10px;
 `;
 
-export const InputExercise = styled.input`
-    flex: 100%;
+export const LabelText = styled.div`
+    font-size: 18px;
+    color: #fff;
+
+    /* max-width: 180px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; */
+
+    @media (max-width: 550px) {
+        font-size: 17px;
+    }
+`;
+
+export const SelectField = styled.select`
+    width: 100%;
     border: 1px solid ${props => props.theme.mayaBlue};
     background-color: transparent;
-    margin-left: 5px;
     color: #fff;
     font-size: 18px;
     padding: 10px;
     padding-left: 55px;
     border-radius: 12px;
     color: darkgray;
+`;
+
+export const SelectOption = styled.option`
+    background-color: ${props => props.theme.richBlackDark};
+    color: #fff;
+`;
+
+
+export const InputExercise = styled.input`
+    width: 100%;
+    border: 1px solid ${props => props.theme.mayaBlue};
+    background-color: transparent;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    padding-left: 55px;
+    border-radius: 12px;
+    color: darkgray;
+    text-align: left;
 
     @media (max-width: 550px) {
         width: 100%;
@@ -247,20 +277,6 @@ export const InputLifts = styled(InputExercise)`
 
     &:hover {
         background-color: ${props => props.theme.mayaBluePale};
-    }
-`;
-
-export const LabelText = styled.div`
-    font-size: 18px;
-    color: #fff;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 35%;
-
-    @media (max-width: 550px) {
-        font-size: 17px;
     }
 `;
 

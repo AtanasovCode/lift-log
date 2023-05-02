@@ -1,32 +1,37 @@
 import * as Styled from '../styles/Stats.Styled';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import RocketLaunch from '@phosphor-icons/react/dist/icons/RocketLaunch';
 import { Calendar, Barbell, ChartLine } from '@phosphor-icons/react';
 import { theme } from '../styles/Theme';
 import CalendarInput from './CalendarInput';
 import ExerciseSelect from './ExerciseSelect';
+import State
 
 import illustration from '../assets/illustrations/group-bg.svg';
 
-const StrengthStats = ({
-    userData,
-    setUserData,
-    handleExerciseSelected,
-    handleExerciseShow,
-    handleCalendarShow,
-    showExercises,
-    showCalendar,
-    setShowCalendar,
-    exerciseSelected,
-    calendarValue,
-    handleCalendarSubmit,
-    handleSubmitData,
-}) => {
+import { AppContext } from './context/AppContext';
+
+const StrengthStats = () => {
+
+    const {
+        userData, setUserData,
+        showExercises,
+        showCalendar, setShowCalendar,
+        calendarValue,
+        exerciseSelected,
+        showCharts, setShowCharts,
+        toggleCalendar,
+        toggleCharts,
+        toggleExercises,
+        submitData,
+    } = useContext(AppContext);
+
+
     return (
         <Styled.Container>
 
             <Styled.ImageContainer>
-                <Styled.Illustration 
+                <Styled.Illustration
                     src={illustration}
                     alt="illustration of a man carrying a barbell with weight"
                 />
@@ -85,7 +90,7 @@ const StrengthStats = ({
                                 <Styled.InputExercise
                                     type="button"
                                     value={exerciseSelected}
-                                    onClick={handleExerciseShow}
+                                    onClick={toggleExercises}
                                 />
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>
@@ -105,13 +110,13 @@ const StrengthStats = ({
                                 <Styled.InputLifts
                                     type="button"
                                     value={calendarValue}
-                                    onClick={handleCalendarShow}
+                                    onClick={toggleCalendar}
                                 />
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>
 
                         <Styled.Submit
-                            onClick={handleSubmitData}
+                            onClick={submitData}
                             color={theme.mayaBlue}
                         >
                             <Styled.SubmitIcon>
