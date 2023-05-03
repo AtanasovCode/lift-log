@@ -12,7 +12,9 @@ import { AppContext } from './context/AppContext';
 
 import { useNavigate } from 'react-router-dom';
 
-const StrengthStats = () => {
+const StrengthStats = ({
+    submitData,
+}) => {
 
     const {
         userData, setUserData,
@@ -24,7 +26,6 @@ const StrengthStats = () => {
         toggleCalendar,
         toggleCharts,
         toggleExercises,
-        submitData,
     } = useContext(AppContext);
 
     const navigate = useNavigate();
@@ -108,7 +109,7 @@ const StrengthStats = () => {
                         </Styled.LabelContainer>
 
                         <Styled.Submit
-                            onClick={submitData(navigate)}
+                            onClick={submitData}
                             color={theme.mayaBlue}
                         >
                             <Styled.SubmitIcon>

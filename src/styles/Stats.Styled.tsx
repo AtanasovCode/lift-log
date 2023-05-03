@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import image from '../assets/images/header-s.jpg';
 import ExerciseSelect from "../components/ExerciseSelect";
 
+interface Props {
+    active: boolean,
+}
+
 export const Container = styled.div`
     display: flex;
     flex-direction: row-reverse;

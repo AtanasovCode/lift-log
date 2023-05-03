@@ -8,13 +8,18 @@ import {
 import { theme } from '../styles/Theme';
 
 import { AppContext } from './context/AppContext';
-import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
 
 import ChartSelect from './ChartSelect';
 
 import illustration from '../assets/illustrations/group-green-bg.svg'
 
-const LiftsStats = () => {
+const LiftsStats = ({
+    submitData,
+}) => {
+
+    const navigate = useNavigate();
 
     const {
         userData, setUserData,
@@ -22,12 +27,18 @@ const LiftsStats = () => {
         showCalendar, setShowCalendar,
         calendarValue,
         exerciseSelected,
+        numberOfExercises, setNumberOfExercises,
         showCharts, setShowCharts,
         toggleCalendar,
         toggleCharts,
         toggleExercises,
-        submitData,
     } = useContext(AppContext);
+
+    const [numbers, setNumbers] = useState([2, 3, 4, 5, 6]);
+
+
+    const setNumber = (number: number) => {
+    }
 
     return (
         <Styled.Container>
@@ -39,11 +50,7 @@ const LiftsStats = () => {
 
 
             {/*Components for selecting chart type, exercises*/}
-            <ChartSelect 
-                active={showCharts} 
-                handleChartsShow={toggleCharts}
-                showCharts={showCharts}
-            />
+            <ChartSelect />
 
             <Styled.TextContainer>
                 <Styled.HeadingGreen>
@@ -70,7 +77,7 @@ const LiftsStats = () => {
                     <Styled.Inputs>
                         <Styled.LabelContainer>
                             <Styled.LabelText>
-                                Number of exercises:
+                                Track:
                             </Styled.LabelText>
                             <Styled.InputFieldContainer>
                                 <Styled.LabelIcon>
@@ -87,20 +94,22 @@ const LiftsStats = () => {
                                         value="select"
                                         disabled
                                     >
-                                        Select a number
+                                        Exercises to track
                                     </Styled.SelectOption>
-                                    <Styled.SelectOption value="1">
-                                        1
-                                    </Styled.SelectOption>
-                                    <Styled.SelectOption value="2">
-                                        2
-                                    </Styled.SelectOption>
-                                    <Styled.SelectOption value="3">
-                                        3
-                                    </Styled.SelectOption>
-                                    <Styled.SelectOption value="4">
-                                        4
-                                    </Styled.SelectOption>
+                                   {numbers.map((number) => {
+                                    return  (
+                                        <Styled.SelectOption 
+                                            value={number}
+                                            key={number}
+                                            onClick={() => {
+                                                setNumberOfExercises(number);
+                                                sessionStorage.setItem("numberOfExercises", numberOfExercises);
+                                            }}
+                                        >
+                                            {number} Exercises
+                                        </Styled.SelectOption>
+                                    );
+                                   })}
                                 </Styled.SelectField>
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>
@@ -119,7 +128,7 @@ const LiftsStats = () => {
                                 </Styled.LabelIcon>
                                 <Styled.InputExercise
                                     type="button"
-                                    value="Select exercise"
+                                    value="Select exercises"
                                     onClick={toggleExercises}
                                 />
                             </Styled.InputFieldContainer>
@@ -144,6 +153,20 @@ const LiftsStats = () => {
                                 />
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>
+
+                        <Styled.Submit
+                            onClick={submitData}
+                            color={theme.lightGreen}
+                        >
+                            <Styled.SubmitIcon>
+                                <ChartDonut
+                                    size="100%"
+                                    color={theme.richBlackDark}
+                                    weight="fill"
+                                />
+                            </Styled.SubmitIcon>
+                            Get Results
+                        </Styled.Submit>
                     </Styled.Inputs>
                 </Styled.InputContainer>
             </Styled.TextContainer>

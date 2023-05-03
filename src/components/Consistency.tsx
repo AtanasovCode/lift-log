@@ -10,7 +10,9 @@ import { AppContext } from './context/AppContext';
 
 import illustration from '../assets/illustrations/group-orange-bg.svg';
 
-const Consistency = () => {
+const Consistency = ({
+    submitData,
+}) => {
 
     const navigate = useNavigate();
 
@@ -22,7 +24,6 @@ const Consistency = () => {
         showCalendar, showExercises,
         exerciseSelected,
         calendarValue,
-        submitData,
     } = useContext(AppContext);
 
 
@@ -108,7 +109,7 @@ const Consistency = () => {
                         </Styled.LabelContainer>
 
                         <Styled.Submit
-                            onClick={submitData(navigate)}
+                            onClick={submitData}
                             color={theme.lightPurple}
                         >
                             <Styled.SubmitIcon>
