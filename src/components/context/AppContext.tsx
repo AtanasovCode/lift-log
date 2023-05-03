@@ -18,6 +18,7 @@ interface AppContextProps {
     toggleExercises: () => void;
     toggleCharts: () => void;
     submitData: () => void;
+    calendarSubmit: () => void;
 }
 
 export const AppContext = createContext<AppContextProps>({
@@ -37,11 +38,10 @@ export const AppContext = createContext<AppContextProps>({
     toggleExercises: () => { },
     toggleCharts: () => { },
     submitData: () => { },
+    calendarSubmit: () => { },
 });
 
 export const AppProvider: React.FC = ({ children }) => {
-
-    const navigate = useNavigate();
 
     const [userData, setUserData] = useState<{ month: string; weight: number }[]>([
         { month: 'Jan', weight: 0 },
@@ -71,7 +71,7 @@ export const AppProvider: React.FC = ({ children }) => {
     //Checks to see if user has selected an exercise
     //and has values for at least 3 lifts
     //If true, the function navigates to the results page
-    const submitData = () => {
+    const submitData = (navigate) => {
         let lifts = 0;
 
         userData.map((lift: any) => {
@@ -81,6 +81,16 @@ export const AppProvider: React.FC = ({ children }) => {
         if (lifts >= 3 && exerciseSelected != "Select an exercise") {
             navigate("/get-stats/results");
         }
+    }
+
+    //When the user clicks submit inside of the CalendarInput component
+    const calendarSubmit = () => {
+        //We need to stringify an array with objects to set it to session storage
+        sessionStorage.setItem("userDataStrength", JSON.stringify(userData));
+
+
+        toggleCalendar();
+        setCalendarValue("Lifts Updated");
     }
 
     const contextValue = {
@@ -100,6 +110,7 @@ export const AppProvider: React.FC = ({ children }) => {
         toggleExercises,
         toggleCharts,
         submitData,
+        calendarSubmit,
     };
 
     return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

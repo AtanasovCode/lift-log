@@ -14,11 +14,7 @@ import ChartSelect from './ChartSelect';
 
 import illustration from '../assets/illustrations/group-green-bg.svg'
 
-const LiftsStats = ({
-    handleExerciseSelected,
-    handleCalendarSubmit,
-    handleSubmitData,
-}) => {
+const LiftsStats = () => {
 
     const {
         userData, setUserData,
@@ -30,6 +26,7 @@ const LiftsStats = ({
         toggleCalendar,
         toggleCharts,
         toggleExercises,
+        submitData,
     } = useContext(AppContext);
 
     return (
@@ -44,7 +41,7 @@ const LiftsStats = ({
             {/*Components for selecting chart type, exercises*/}
             <ChartSelect 
                 active={showCharts} 
-                handleChartsShow={handleChartsShow}
+                handleChartsShow={toggleCharts}
                 showCharts={showCharts}
             />
 

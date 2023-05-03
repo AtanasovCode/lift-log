@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "styled-components";
+
+import { AppContext } from "./context/AppContext";
 import { 
     ChartPie,
     ChartDonut,
@@ -13,16 +15,17 @@ interface Props {
     active: boolean
 }
 
-const ChartSelect = ({
-    active,
-    handleChartsShow,
-    showCharts,
-}) => {
+const ChartSelect = () => {
+
+    const {
+        toggleCharts,
+        showCharts,
+    } = useContext(AppContext);
 
     const theme = useContext(ThemeContext);
 
     return (
-        <Container active={active}>
+        <Container active={showCharts}>
             <Heading>
                 <Title>
                     Select your preferred chart type
@@ -30,7 +33,7 @@ const ChartSelect = ({
             </Heading>
 
             <ChartsContainer>
-                <CloseIcon onClick={handleChartsShow}>
+                <CloseIcon onClick={toggleCharts}>
                     <X 
                         size="100%"
                         color="#fff"

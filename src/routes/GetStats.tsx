@@ -23,21 +23,6 @@ const GetStats = () => {
         toggleCalendar, toggleExercises,
     } = useContext(AppContext);
 
-    const handleExerciseSelected = (name: string) => {
-        setExerciseSelected(name);
-        sessionStorage.setItem("exerciseSelectedStrength", name);
-        toggleExercises();
-    }
-
-    const handleCalendarSubmit = () => {
-        //We need to stringify an array with objects to set it to session storage
-        sessionStorage.setItem("userDataStrength", JSON.stringify(userData));
-
-
-        toggleCalendar();
-        setCalendarValue("Lifts Updated");
-    }
-
     const handleChangeTab = (e) => {
         setActiveTab(e.currentTarget.id);
     }

@@ -5,11 +5,12 @@ import { Calendar, Barbell, ChartLine } from '@phosphor-icons/react';
 import { theme } from '../styles/Theme';
 import CalendarInput from './CalendarInput';
 import ExerciseSelect from './ExerciseSelect';
-import State
 
 import illustration from '../assets/illustrations/group-bg.svg';
 
 import { AppContext } from './context/AppContext';
+
+import { useNavigate } from 'react-router-dom';
 
 const StrengthStats = () => {
 
@@ -25,6 +26,8 @@ const StrengthStats = () => {
         toggleExercises,
         submitData,
     } = useContext(AppContext);
+
+    const navigate = useNavigate();
 
 
     return (
@@ -56,19 +59,8 @@ const StrengthStats = () => {
                 </Styled.HeadingBlue>
 
                 {/*Input components that are activated on button click*/}
-                <ExerciseSelect
-                    handleExerciseShow={handleExerciseShow}
-                    showExercises={showExercises}
-                    handleExerciseSelected={handleExerciseSelected}
-                />
-                <CalendarInput
-                    userData={userData}
-                    setUserData={setUserData}
-                    showCalendar={showCalendar}
-                    setShowCalendar={setShowCalendar}
-                    handleCalendarShow={handleCalendarShow}
-                    handleCalendarSubmit={handleCalendarSubmit}
-                />
+                <ExerciseSelect />
+                <CalendarInput />
                 {/*===================================================*/}
 
 
@@ -116,7 +108,7 @@ const StrengthStats = () => {
                         </Styled.LabelContainer>
 
                         <Styled.Submit
-                            onClick={submitData}
+                            onClick={submitData(navigate)}
                             color={theme.mayaBlue}
                         >
                             <Styled.SubmitIcon>

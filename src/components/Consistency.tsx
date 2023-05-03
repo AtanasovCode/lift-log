@@ -1,25 +1,31 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import CalendarInput from './CalendarInput';
 import ExerciseSelect from './ExerciseSelect';
 import * as Styled from '../styles/Stats.Styled';
 import { CalendarX, Calendar, Barbell, ChartLine } from '@phosphor-icons/react';
 import { theme } from '../styles/Theme';
+import { useNavigate } from 'react-router-dom';
+
+import { AppContext } from './context/AppContext';
 
 import illustration from '../assets/illustrations/group-orange-bg.svg';
 
-const Consistency = ({
-    userData,
-    setUserData,
-    handleExerciseSelected,
-    handleExerciseShow,
-    handleCalendarShow,
-    showExercises,
-    showCalendar,
-    setShowCalendar,
-    exerciseSelected,
-    calendarValue,
-    handleSubmitData,
-}) => {
+const Consistency = () => {
+
+    const navigate = useNavigate();
+
+
+    const {
+        userData, setUserData,
+        setExercise, toggleExercises,
+        toggleCalendar,
+        showCalendar, showExercises,
+        exerciseSelected,
+        calendarValue,
+        submitData,
+    } = useContext(AppContext);
+
+
     return (
         <Styled.Container>
 
@@ -53,18 +59,8 @@ const Consistency = ({
 
                 {/*Component that activate on button click*/}
 
-                <ExerciseSelect
-                    handleExerciseShow={handleExerciseShow}
-                    showExercises={showExercises}
-                    handleExerciseSelected={handleExerciseSelected}
-                />
-                <CalendarInput
-                    userData={userData}
-                    setUserData={setUserData}
-                    showCalendar={showCalendar}
-                    setShowCalendar={setShowCalendar}
-                    handleCalendarShow={handleCalendarShow}
-                />
+                <ExerciseSelect />
+                <CalendarInput />
                 {/*===================================================*/}
 
 
@@ -85,7 +81,7 @@ const Consistency = ({
                                 <Styled.InputExerciseOrange
                                     type="button"
                                     value={exerciseSelected}
-                                    onClick={handleExerciseShow}
+                                    onClick={toggleExercises}
                                 />
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>
@@ -105,14 +101,14 @@ const Consistency = ({
                                 <Styled.InputLifts
                                     type="button"
                                     value={calendarValue}
-                                    onClick={handleCalendarShow}
+                                    onClick={toggleCalendar}
                                     color={theme.lightPurple}
                                 />
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>
 
                         <Styled.Submit
-                            onClick={handleSubmitData}
+                            onClick={submitData(navigate)}
                             color={theme.lightPurple}
                         >
                             <Styled.SubmitIcon>

@@ -1,17 +1,20 @@
 import styled from "styled-components"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { X } from "@phosphor-icons/react";
 import { theme } from "../styles/Theme";
 
-const CalendarInput = ({
-    userData, 
-    setUserData,
-    showCalendar,
-    setShowCalendar,
-    handleCalendarShow,
-    handleCalendarSubmit,
-}) => {
+import { AppContext } from "./context/AppContext";
+
+const CalendarInput = () => {
+
+
     const [activeError, setActiveError] = useState(false);
+
+    const {
+        userData, setUserData,
+        toggleCalendar, showCalendar,
+        calendarSubmit,
+    } = useContext(AppContext);
 
 
     //Updates the weight values based on the user input
@@ -30,7 +33,7 @@ const CalendarInput = ({
         let lifts = 0;
 
         userData.map((data) => {
-            if(data.weight > 0 && data.weight != "") lifts++;
+            if(data.weight > 0) lifts++;
         })
 
         if(lifts < 3) {
@@ -42,7 +45,7 @@ const CalendarInput = ({
 
     return (
         <Calendar active={showCalendar}>
-            <Close onClick={handleCalendarShow}>
+            <Close onClick={toggleCalendar}>
                 <X 
                     size="100%"
                     color="#ccc"
@@ -90,7 +93,7 @@ const CalendarInput = ({
             <Submit 
                 type="button" 
                 value="Submit Lifts" 
-                onClick={handleCalendarSubmit}
+                onClick={calendarSubmit}
             />
         </Calendar>
     );

@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { X, MagnifyingGlass } from "@phosphor-icons/react";
 import { exercises } from "../assets/data/MockData";
+
+import { AppContext } from "./context/AppContext";
 
 import bench from '../assets/icons/bench.png';
 import curl from '../assets/icons/curl.png';
@@ -27,11 +29,15 @@ import ropePushdown from '../assets/icons/rope-extension.png';
 import kickbacks from '../assets/icons/tri-kickback.png';
 
 
-const ExerciseSelect = ({
-  showExercises,
-  handleExerciseShow,
-  handleExerciseSelected,
-}) => {
+const ExerciseSelect = () => {
+
+  const {
+    submitData,
+    setExerciseSelected,
+    showExercises,
+    toggleExercises,
+    setExercise,
+  } = useContext(AppContext);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredOptions, setFilteredOptions] = useState(exercises);
@@ -100,7 +106,7 @@ const ExerciseSelect = ({
 
   return (
     <DropdownWrapper active={showExercises}>
-      <Close onClick={handleExerciseShow}>
+      <Close onClick={toggleExercises}>
         <X
           color="#ccc"
           weight="light"
@@ -154,7 +160,11 @@ const ExerciseSelect = ({
           <DropdownItem 
             key={exercise.name} 
             className="dropdown-item"
-            onClick={() =>handleExerciseSelected(exercise.name)}
+            onClick={() => {
+              setExerciseSelected(exercise.name);
+              sessionStorage.setItem("exerciseSelectedStrength", exercise.name)
+              toggleExercises();
+            }}
           >
             <DropdownIcon
               src={getExerciseIcon(exercise.name)}
