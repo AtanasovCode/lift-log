@@ -14,6 +14,7 @@ import { useContext, useState } from 'react';
 import ChartSelect from './ChartSelect';
 
 import illustration from '../assets/illustrations/group-green-bg.svg'
+import MultipleExerciseSelect from './MultipleExerciseSelect';
 
 const LiftsStats = ({
     submitData,
@@ -51,7 +52,6 @@ const LiftsStats = ({
 
             {/*Components for selecting chart type, exercises*/}
             <ChartSelect />
-
             <Styled.TextContainer>
                 <Styled.HeadingGreen>
                     <Styled.Title>
@@ -167,6 +167,8 @@ const LiftsStats = ({
                             </Styled.SubmitIcon>
                             Get Results
                         </Styled.Submit>
+
+                        <MultipleExerciseSelect />
                     </Styled.Inputs>
                 </Styled.InputContainer>
             </Styled.TextContainer>

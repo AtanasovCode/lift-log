@@ -1,8 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import useWindowSize from '../components/hooks/UseWindow';
+import { AppContext } from '../components/context/AppContext';
 import { ThemeContext } from 'styled-components';
 import * as Styled from '../styles/Result.Styled';
+
 import { tips } from '../assets/data/MockData';
+import { getExerciseIcon } from '../components/GetIcon';
 import {
     ResponsiveContainer,
     LineChart,
@@ -15,13 +18,12 @@ import { Barbell } from '@phosphor-icons/react';
 
 import Nav from '../components/navigation/Nav';
 
-const Result = ({
-    userData,
-    setUserData,
-    exerciseSelected,
-    setExerciseSelected,
-    getExerciseIcon,
-}) => {
+const Result = () => {
+
+    const {
+        userData, setUserData,
+        exerciseSelected, setExerciseSelected,
+    } = useContext(AppContext);
 
     //We use this to use our theme
     //Outside of styled-components
