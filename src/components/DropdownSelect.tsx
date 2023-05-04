@@ -5,6 +5,7 @@ import { getExerciseIcon } from './GetIcon';
 import {
     DotOutline,
     MagnifyingGlass,
+    X,
 } from '@phosphor-icons/react';
 
 
@@ -25,7 +26,6 @@ const DropdownSelect = () => {
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
-        console.log(isOpen);
     };
 
     const handleItemClick = (name: string) => {
@@ -39,29 +39,40 @@ const DropdownSelect = () => {
     };
 
     return (
-        <Dropdown>
-            <Search
-                onClick={toggleDropdown}
-                placeholder="Search exercises..."
-                value={isOpen ? searchText : exercise}
-                onChange={handleSearchTextChange}
-            />
+        <Dropdown onClick={toggleDropdown} >
             {
                 isOpen != true && exercise != "" ?
-                    <SearchExercise
-                        src={getExerciseIcon(exercise)}
-                    />
-                    :
-                    <SearchIcon>
-                        <MagnifyingGlass
-                            size="100%"
-                            weight="light"
-                            color="#ccc"
+                    <Heading>
+                        <SearchExercise
+                            src={getExerciseIcon(exercise)}
                         />
-                    </SearchIcon>
+                        {exercise}
+                    </Heading>
+                    :
+                    <SearchContainer>
+                        <Search
+                            placeholder="Search exercises..."
+                            value={isOpen ? searchText : exercise}
+                            onChange={handleSearchTextChange}
+                        />
+                        <SearchIcon>
+                            <MagnifyingGlass
+                                size="100%"
+                                weight="light"
+                                color="#ccc"
+                            />
+                        </SearchIcon>
+                    </SearchContainer>
             }
             {isOpen === true && (
                 <List>
+                    <CloseList onClick={() => setIsOpen(false)}>
+                        <X 
+                            size={32}
+                            color="#ccc"
+                            weight="light"
+                        />
+                    </CloseList>
                     {filteredExercises.map((exercise: Exercise) => (
                         <Option
                             key={exercise.name}
@@ -74,8 +85,8 @@ const DropdownSelect = () => {
                             <DotDevide>
                                 <DotOutline
                                     size={25}
-                                    color="#ccc"
-                                    weight="light"
+                                    color="#cccccc70"
+                                    weight="fill"
                                 />
                             </DotDevide>
                             <OptionCategory>{exercise.category}</OptionCategory>
@@ -92,24 +103,52 @@ export default DropdownSelect;
 
 
 const Dropdown = styled.div`
-    min-width: 22px;
-    border: 1px solid #ccc;
+    min-width: 220px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    cursor: pointer;
+
+    @media (max-width: 550px) {
+        min-width: auto;
+    }
 `;
 
+const Heading = styled.div`
+    width: 100%;
+    padding: 7px 15px;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #ccc;
+    position: relative;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+
+    @media (max-width: 550px) {
+        font-size: 14px;
+    }
+`;
+
+const SearchContainer = styled.div`
+    width: 100%;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+`;
 
 const Search = styled.input`
+    width: 100%;
     padding: 7px 15px;
     padding-left: 30px;
-    width: 100%;
     border: none;
-    height: 100%;
     background-color: ${props => props.theme.richBlack};
     color: darkgray;
     font-size: 16px;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
 `;
 
 const SearchIcon = styled.div`
@@ -122,11 +161,14 @@ const SearchIcon = styled.div`
 
 const SearchExercise = styled.img`
     position: absolute;
-    top: 7px;
+    top: 5px;
     left: 15px;
-    transform: translateX(-50%);
-    width: 20px;
+    height: 25px;
     filter: invert(100%);
+
+    @media (max-width: 550px) {
+        height: 20px;
+    }
 `;
 
 const List = styled.div`
@@ -137,6 +179,31 @@ const List = styled.div`
     top: calc(100% + 5px);
     left: 0;
     right: 0;
+    z-index: 12;
+
+    @media (max-width: 550px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 20;
+        max-height: 100vh;
+    }
+`;
+
+const CloseList = styled.div`
+    opacity: 0;
+    position: absolute;
+    right: -500%;
+
+    @media (max-width: 550px) {
+        opacity: 1;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 15;
+    }
 `;
 
 const Option = styled.div`
@@ -145,22 +212,40 @@ const Option = styled.div`
     justify-content: flex-start;
     padding: 10px;
     border-bottom: 1px solid #cccccc50;
+    cursor: pointer;
+
+    @media (max-width: 550px) {
+        padding: 15px;
+    }
 `;
 
 const OptionName = styled.div`
     font-size: 15px;
+
+    @media (max-width: 550px) {
+        font-size: 17px;
+    }
 `;
 
 const OptionCategory = styled.div`
     font-size: 13px;
     color: darkgray;
     font-weight: 300;
+
+    @media (max-width: 550px) {
+        font-size: 14px;
+    }
 `;
 
 const OptionIcon = styled.img`
-    width: 25px;
+    height: 35px;
     filter: invert(100%);
     margin-right: 10px;
+
+    @media (max-width: 550px) {
+        height: 35px;
+        margin-right: 15px;
+    }
 `;
 
 const DotDevide = styled.div`

@@ -1,9 +1,9 @@
-import bench from '../icons/bench.png';
-import deadlift from '../icons/deadlift.png';
-import ohp from '../icons/ohp.png';
-import curl from '../icons/curl.png';
-import squat from '../icons/squat.png';
-import lat from '../icons/lat.png';
+import bench from '../icons/bench.svg';
+import deadlift from '../icons/deadlift.svg';
+import ohp from '../icons/ohp.svg';
+import curl from '../icons/curl.svg';
+import squat from '../icons/squat.svg';
+import lat from '../icons/lat.svg';
 
 
 const months = [

@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import bench from '../../assets/icons/bench.png';
+
 interface AppContextProps {
     userData: { month: string; weight: number }[];
     setUserData: React.Dispatch<React.SetStateAction<{ month: string; weight: number }[]>>;
@@ -12,6 +14,8 @@ interface AppContextProps {
     setShowCalendar: React.Dispatch<React.SetStateAction<boolean>>;
     showExercises: boolean;
     setShowExercises: React.Dispatch<React.SetStateAction<boolean>>;
+    showMultipleExercises: boolean;
+    setShowMultipleExercises: React.Dispatch<React.SetStateAction<boolean>>;
     showCharts: boolean;
     setShowCharts: React.Dispatch<React.SetStateAction<boolean>>;
     numberOfExercises: number;
@@ -33,6 +37,8 @@ export const AppContext = createContext<AppContextProps>({
     setShowCalendar: () => { },
     showExercises: false,
     setShowExercises: () => { },
+    showMultipleExercises: false,
+    setShowMultipleExercises: () => { },
     showCharts: false,
     numberOfExercises: 0,
     setNumberOfExercises: () => { },
@@ -64,6 +70,7 @@ export const AppProvider: React.FC = ({ children }) => {
     const [showCalendar, setShowCalendar] = useState<boolean>(false);
     const [calendarValue, setCalendarValue] = useState("Input your lifts")
     const [showExercises, setShowExercises] = useState<boolean>(false);
+    const [showMultipleExercises, setShowMultipleExercises] = useState<boolean>(false)
     const [showCharts, setShowCharts] = useState<boolean>(false);
     const [numberOfExercises, setNumberOfExercises] = useState(2);
 
@@ -100,6 +107,8 @@ export const AppProvider: React.FC = ({ children }) => {
         calendarSubmit,
         numberOfExercises,
         setNumberOfExercises,
+        showMultipleExercises,
+        setShowMultipleExercises,
     };
 
     return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

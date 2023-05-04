@@ -13,12 +13,12 @@ import {
     ResponsiveContainer,
 } from "recharts";
 
-import bench from '../../../assets/icons/bench.png'
-import deadlift from '../../../assets/icons/deadlift.png';
-import ohp from '../../../assets/icons/ohp.png';
-import curl from '../../../assets/icons/curl.png';
-import squat from '../../../assets/icons/squat.png';
-import lat from '../../../assets/icons/lat.png';
+import bench from '../../../assets/icons/bench.svg'
+import deadlift from '../../../assets/icons/deadlift.svg';
+import ohp from '../../../assets/icons/ohp.svg';
+import curl from '../../../assets/icons/curl.svg';
+import squat from '../../../assets/icons/squat.svg';
+import lat from '../../../assets/icons/lat.svg';
 
 
 const StrongestLiftsChart = () => {

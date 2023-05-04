@@ -16,30 +16,24 @@ import ChartSelect from './ChartSelect';
 import illustration from '../assets/illustrations/group-green-bg.svg'
 import MultipleExerciseSelect from './MultipleExerciseSelect';
 
-const LiftsStats = ({
-    submitData,
-}) => {
+const LiftsStats = () => {
 
     const navigate = useNavigate();
 
     const {
         userData, setUserData,
-        showExercises,
-        showCalendar, setShowCalendar,
+        showExercises, setShowExercises,
         calendarValue,
         exerciseSelected,
         numberOfExercises, setNumberOfExercises,
+        showMultipleExercises, setShowMultipleExercises,
         showCharts, setShowCharts,
-        toggleCalendar,
         toggleCharts,
         toggleExercises,
     } = useContext(AppContext);
 
     const [numbers, setNumbers] = useState([2, 3, 4, 5, 6]);
 
-
-    const setNumber = (number: number) => {
-    }
 
     return (
         <Styled.Container>
@@ -52,6 +46,10 @@ const LiftsStats = ({
 
             {/*Components for selecting chart type, exercises*/}
             <ChartSelect />
+            {showMultipleExercises == true && <MultipleExerciseSelect />}
+           
+
+
             <Styled.TextContainer>
                 <Styled.HeadingGreen>
                     <Styled.Title>
@@ -129,7 +127,7 @@ const LiftsStats = ({
                                 <Styled.InputExercise
                                     type="button"
                                     value="Select exercises"
-                                    onClick={toggleExercises}
+                                    onClick={() => setShowMultipleExercises(true)}
                                 />
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>
@@ -155,7 +153,6 @@ const LiftsStats = ({
                         </Styled.LabelContainer>
 
                         <Styled.Submit
-                            onClick={submitData}
                             color={theme.lightGreen}
                         >
                             <Styled.SubmitIcon>
@@ -168,7 +165,6 @@ const LiftsStats = ({
                             Get Results
                         </Styled.Submit>
 
-                        <MultipleExerciseSelect />
                     </Styled.Inputs>
                 </Styled.InputContainer>
             </Styled.TextContainer>

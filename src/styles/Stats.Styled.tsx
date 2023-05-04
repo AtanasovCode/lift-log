@@ -244,6 +244,11 @@ export const SelectField = styled.select`
     padding-left: 55px;
     border-radius: 12px;
     color: darkgray;
+
+    @media (max-width: 550px) {
+        width: 100%;
+        margin-top: 12px;
+    }
 `;
 
 export const SelectOption = styled.option`
