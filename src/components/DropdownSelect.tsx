@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { exercises } from '../assets/data/MockData';
 import { getExerciseIcon } from './GetIcon';
@@ -15,14 +15,35 @@ interface Exercise {
     category: string;
 }
 
+interface Props {
+    position: string,
+}
 
-const DropdownSelect = () => {
+
+const DropdownSelect = ({
+    checkDistance,
+    dropdownPosition,
+}) => {
+
+    const childRef = useRef<HTMLDivElement>(null);
+
     const [isOpen, setIsOpen] = useState(false);
     const [searchText, setSearchText] = useState("");
     const [exercise, setExercise] = useState("");
     const filteredExercises = exercises.filter((exercise: Exercise) =>
         exercise.name.toLowerCase().includes(searchText.toLowerCase())
     );
+    const [childBottom, setChildBottom] = useState();
+
+    //Find out the height of the dropdown element
+    //Used to calculate if there is enough space below the dropdown
+    useEffect(() => {
+        if (childRef.current != null) {
+            setChildBottom(childRef.current.getBoundingClientRect().bottom);
+        } else {
+            console.log("childRef.current = null");
+        }
+    }, [])
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
@@ -38,8 +59,14 @@ const DropdownSelect = () => {
         setSearchText(event.target.value);
     };
 
+
     return (
-        <Dropdown onClick={toggleDropdown} >
+        <Dropdown
+            ref={childRef}
+            onClick={() => {
+                checkDistance(childBottom)
+                toggleDropdown();
+            }} >
             {
                 isOpen != true && exercise != "" ?
                     <Heading>
@@ -64,10 +91,10 @@ const DropdownSelect = () => {
                         </SearchIcon>
                     </SearchContainer>
             }
-            {isOpen === true && (
-                <List>
+            {isOpen == true && (
+                <List position={dropdownPosition}>
                     <CloseList onClick={() => setIsOpen(false)}>
-                        <X 
+                        <X
                             size={32}
                             color="#ccc"
                             weight="light"
@@ -171,15 +198,28 @@ const SearchExercise = styled.img`
     }
 `;
 
-const List = styled.div`
-    max-height: 220px;
+const List = styled.div<Props>`
+    max-height: 200px;
     overflow-y: auto;
+    overflow-x: hidden;
     background-color: ${props => props.theme.richBlack};
+    border: 1px solid #cccccc60;
     position: absolute;
-    top: calc(100% + 5px);
-    left: 0;
-    right: 0;
     z-index: 12;
+
+    ${props => props.position == "bottom" && `
+        top: calc(100% + 5px);
+        left: 0;
+        right: 0;
+    `}
+
+    //When there is not enough space below the dropdown
+    //display the list above
+    ${props => props.position == "top" && `
+        bottom: calc(100% + 5px);
+        left: 0;
+        right: 0; 
+    `}
 
     @media (max-width: 550px) {
         position: fixed;

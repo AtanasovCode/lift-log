@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { getExerciseIcon } from "./GetIcon";
 import styled from "styled-components";
 import { AppContext } from "./context/AppContext";
-import { X } from "@phosphor-icons/react";
+import { Cpu, X } from "@phosphor-icons/react";
 
 import { exercises } from "../assets/data/MockData";
 import DropdownSelect from "./DropdownSelect";
@@ -13,19 +13,33 @@ interface Props {
 
 const MultipleExerciseSelect = () => {
 
+    //Used for calculating height
+    const parentRef = useRef<HTMLDivElement>(null);
+
+
     const {
         numberOfExercises,
         showMultipleExercises, setShowMultipleExercises,
     } = useContext(AppContext);
 
-    const [unit, setUnit] = useState("kg");
+    const [unit, setUnit] = useState<string>("kg");
+    const [dropdownPosition, setDropdownPosition] = useState<string>("bottom");
+
+    const checkDistance = (childBottom: number) => {
+        const parentBottom: any = parentRef.current != null && parentRef.current.getBoundingClientRect().bottom;
+        const distance =  parentBottom - childBottom;
+
+        let result: string = distance >= 120 ? "bottom" : "top";
+
+        setDropdownPosition(result);
+    }
 
     const returnInputs = () => {
         let inputs = [];
         for (let i = 0; i < numberOfExercises; i++) {
             inputs.push([
                 <Input key={i}>
-                    <DropdownSelect />
+                    <DropdownSelect checkDistance={checkDistance} dropdownPosition={dropdownPosition} />
                     <InputPR
                         type="text"
                         placeholder="Your PR"
@@ -38,7 +52,7 @@ const MultipleExerciseSelect = () => {
     }
 
     return (
-        <Container>
+        <Container ref={parentRef}>
             <CloseIcon onClick={() => setShowMultipleExercises(false)}>
                 <X
                     size="100%"
