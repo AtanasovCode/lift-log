@@ -23,17 +23,21 @@ interface Props {
 const DropdownSelect = ({
     checkDistance,
     dropdownPosition,
+    setExerciseData,
+    exerciseData,
 }) => {
 
     const childRef = useRef<HTMLDivElement>(null);
 
     const [isOpen, setIsOpen] = useState(false);
     const [searchText, setSearchText] = useState("");
-    const [exercise, setExercise] = useState("");
     const filteredExercises = exercises.filter((exercise: Exercise) =>
         exercise.name.toLowerCase().includes(searchText.toLowerCase())
     );
     const [childBottom, setChildBottom] = useState();
+
+    const [exercise, setExercise] = useState<string>("");
+    const [PR, setPR] = useState<number>(0)
 
     //Find out the height of the dropdown element
     //Used to calculate if there is enough space below the dropdown
@@ -41,7 +45,7 @@ const DropdownSelect = ({
         if (childRef.current != null) {
             setChildBottom(childRef.current.getBoundingClientRect().bottom);
         } else {
-            console.log("childRef.current = null");
+            console.log("childRef.current == null");
         }
     }, [])
 
@@ -60,73 +64,117 @@ const DropdownSelect = ({
     };
 
 
-    return (
-        <Dropdown
-            ref={childRef}
-            onClick={() => {
-                checkDistance(childBottom)
-                toggleDropdown();
-            }} >
-            {
-                isOpen != true && exercise != "" ?
-                    <Heading>
-                        <SearchExercise
-                            src={getExerciseIcon(exercise)}
-                        />
-                        {exercise}
-                    </Heading>
-                    :
-                    <SearchContainer>
-                        <Search
-                            placeholder="Search exercises..."
-                            value={isOpen ? searchText : exercise}
-                            onChange={handleSearchTextChange}
-                        />
-                        <SearchIcon>
-                            <MagnifyingGlass
-                                size="100%"
-                                weight="light"
-                                color="#ccc"
-                            />
-                        </SearchIcon>
-                    </SearchContainer>
+    //Set the values inside when they are changed:
+    useEffect(() => {
+        if(PR > 0 && exercise != "") {
+            let values = {
+                name: exercise,
+                pr: PR,
             }
-            {isOpen == true && (
-                <List position={dropdownPosition}>
-                    <CloseList onClick={() => setIsOpen(false)}>
-                        <X
-                            size={32}
-                            color="#ccc"
-                            weight="light"
-                        />
-                    </CloseList>
-                    {filteredExercises.map((exercise: Exercise) => (
-                        <Option
-                            key={exercise.name}
-                            onClick={() => handleItemClick(exercise.name)}
-                        >
-                            <OptionIcon
-                                src={getExerciseIcon(exercise.name)}
+
+            setExerciseData([...exerciseData, values])
+        }
+    }, [exercise, PR])
+
+
+    return (
+        <Input>
+            <Dropdown
+                ref={childRef}
+                onClick={() => {
+                    checkDistance(childBottom)
+                    toggleDropdown();
+                }} >
+                {
+                    isOpen != true && exercise != "" ?
+                        <Heading>
+                            <SearchExercise
+                                src={getExerciseIcon(exercise)}
                             />
-                            <OptionName>{exercise.name}</OptionName>
-                            <DotDevide>
-                                <DotOutline
-                                    size={25}
-                                    color="#cccccc70"
-                                    weight="fill"
+                            {exercise}
+                        </Heading>
+                        :
+                        <SearchContainer>
+                            <Search
+                                placeholder="Search exercises..."
+                                value={isOpen ? searchText : exercise}
+                                onChange={handleSearchTextChange}
+                            />
+                            <SearchIcon>
+                                <MagnifyingGlass
+                                    size="100%"
+                                    weight="light"
+                                    color="#ccc"
                                 />
-                            </DotDevide>
-                            <OptionCategory>{exercise.category}</OptionCategory>
-                        </Option>
-                    ))}
-                </List>
-            )}
-        </Dropdown>
+                            </SearchIcon>
+                        </SearchContainer>
+                }
+                {isOpen == true && (
+                    <List position={dropdownPosition}>
+                        <CloseList onClick={() => setIsOpen(false)}>
+                            <X
+                                size={32}
+                                color="#ccc"
+                                weight="light"
+                            />
+                        </CloseList>
+                        {filteredExercises.map((exercise: Exercise) => (
+                            <Option
+                                key={exercise.name}
+                                onClick={() => handleItemClick(exercise.name)}
+                            >
+                                <OptionIcon
+                                    src={getExerciseIcon(exercise.name)}
+                                />
+                                <OptionName>{exercise.name}</OptionName>
+                                <DotDevide>
+                                    <DotOutline
+                                        size={25}
+                                        color="#cccccc70"
+                                        weight="fill"
+                                    />
+                                </DotDevide>
+                                <OptionCategory>{exercise.category}</OptionCategory>
+                            </Option>
+                        ))}
+                    </List>
+                )}
+            </Dropdown>
+            <InputPR 
+                type="text"
+                placeholder="Your PR"
+                value={PR != 0 ? PR : ""}
+                onChange={(e) => setPR(parseInt(e.currentTarget.value))}
+            />
+        </Input>
     );
 };
 
 export default DropdownSelect;
 
+
+const Input = styled.div`
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 10px;
+
+    @media (max-width: 550px) {
+        grid-template-columns: 1fr auto;
+    }
+`;
+
+const InputPR = styled.input`
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: ${props => props.theme.richBlack};
+    color: #fff;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+
+    @media (max-width: 550px) {
+        max-width: 80px;
+    }
+`;
 
 
 const Dropdown = styled.div`
@@ -203,12 +251,12 @@ const List = styled.div<Props>`
     overflow-y: auto;
     overflow-x: hidden;
     background-color: ${props => props.theme.richBlack};
-    border: 1px solid #cccccc60;
+    border: 1px solid #bbbbbb90;
     position: absolute;
-    z-index: 12;
+    z-index: 15;
 
     ${props => props.position == "bottom" && `
-        top: calc(100% + 5px);
+        top: 100%;
         left: 0;
         right: 0;
     `}
@@ -216,7 +264,7 @@ const List = styled.div<Props>`
     //When there is not enough space below the dropdown
     //display the list above
     ${props => props.position == "top" && `
-        bottom: calc(100% + 5px);
+        bottom: 100%;
         left: 0;
         right: 0; 
     `}

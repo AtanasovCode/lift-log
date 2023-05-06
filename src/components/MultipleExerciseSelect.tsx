@@ -24,29 +24,56 @@ const MultipleExerciseSelect = () => {
 
     const [unit, setUnit] = useState<string>("kg");
     const [dropdownPosition, setDropdownPosition] = useState<string>("bottom");
+    const [exerciseData, setExerciseData] = useState([]);
 
+
+    //Used to check the distance between the bottom of the 
+    //child element (the dropdown component) and the bottom of this component
+    //If there is not enough space, it tells the dropdown component to 
+    //display it's list of exercise above and not below.
     const checkDistance = (childBottom: number) => {
         const parentBottom: any = parentRef.current != null && parentRef.current.getBoundingClientRect().bottom;
-        const distance =  parentBottom - childBottom;
+        const distance = parentBottom - childBottom;
 
         let result: string = distance >= 120 ? "bottom" : "top";
 
         setDropdownPosition(result);
     }
 
+    const submitData = () => {
+
+        let lifts = 0;
+        exerciseData.map(() => {
+            lifts++;
+        })
+
+        if (lifts == numberOfExercises) {
+            sessionStorage.setItem("userDataLifts", JSON.stringify(exerciseData));
+            setShowMultipleExercises(false);
+        } else {
+            console.log("not enough info");
+        }
+
+    }
+
     const returnInputs = () => {
         let inputs = [];
         for (let i = 0; i < numberOfExercises; i++) {
             inputs.push([
-                <Input key={i}>
-                    <DropdownSelect checkDistance={checkDistance} dropdownPosition={dropdownPosition} />
-                    <InputPR
-                        type="text"
-                        placeholder="Your PR"
-                    />
-                </Input>
+                <DropdownSelect
+                    key={i}
+                    checkDistance={checkDistance}
+                    dropdownPosition={dropdownPosition}
+                    setExerciseData={setExerciseData}
+                    exerciseData={exerciseData}
+                />
             ])
         }
+
+
+        useEffect(() => {
+            console.log(exerciseData);
+        }, [exerciseData])
 
         return inputs;
     }
@@ -78,6 +105,7 @@ const MultipleExerciseSelect = () => {
                     returnInputs()
                 }
             </InputsContainer>
+            <input type="button" onClick={submitData} value="click" />
         </Container>
     );
 }
@@ -157,28 +185,6 @@ const InputsContainer = styled.div`
     grid-gap: 15px;
 `;
 
-const Input = styled.div`
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 10px;
-
-    @media (max-width: 550px) {
-        grid-template-columns: 1fr auto;
-    }
-`;
-
-const InputPR = styled.input`
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: ${props => props.theme.richBlack};
-    color: #fff;
-    border-bottom-right-radius: 12px;
-    border-top-right-radius: 12px;
-
-    @media (max-width: 550px) {
-        max-width: 80px;
-    }
-`;
 
 const InputUnit = styled.select`
     background-color: ${props => props.theme.richBlack};
