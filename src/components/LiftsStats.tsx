@@ -21,15 +21,10 @@ const LiftsStats = () => {
     const navigate = useNavigate();
 
     const {
-        userData, setUserData,
-        showExercises, setShowExercises,
-        calendarValue,
-        exerciseSelected,
         numberOfExercises, setNumberOfExercises,
         showMultipleExercises, setShowMultipleExercises,
         showCharts, setShowCharts,
-        toggleCharts,
-        toggleExercises,
+        toggleCharts, toggleMultipleExercises,
     } = useContext(AppContext);
 
     const [numbers, setNumbers] = useState([2, 3, 4, 5, 6]);
@@ -44,9 +39,9 @@ const LiftsStats = () => {
             </Styled.ImageContainer>
 
 
-            {/*Components for selecting chart type, exercises*/}
-            <ChartSelect />
-            {showMultipleExercises == true && <MultipleExerciseSelect />}
+            {/*Components for selecting chart type, exercises...*/}
+            {showCharts && <ChartSelect />}
+            {showMultipleExercises && <MultipleExerciseSelect />}
            
 
 
@@ -127,7 +122,7 @@ const LiftsStats = () => {
                                 <Styled.InputExercise
                                     type="button"
                                     value="Select exercises"
-                                    onClick={() => setShowMultipleExercises(true)}
+                                    onClick={toggleMultipleExercises}
                                 />
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>

@@ -1,34 +1,45 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import bench from '../../assets/icons/bench.png';
 
 interface AppContextProps {
+    //State used for StrengthStats
     userData: { month: string; weight: number }[];
     setUserData: React.Dispatch<React.SetStateAction<{ month: string; weight: number }[]>>;
     exerciseSelected: string;
     setExerciseSelected: React.Dispatch<React.SetStateAction<string>>;
+    
     showCalendar: boolean;
-    calendarValue: string;
-    setCalendarValue: React.Dispatch<React.SetStateAction<string>>;
     setShowCalendar: React.Dispatch<React.SetStateAction<boolean>>;
+    calendarValue: string;
+    calendarSubmit: () => void;
+    setCalendarValue: React.Dispatch<React.SetStateAction<string>>;
     showExercises: boolean;
     setShowExercises: React.Dispatch<React.SetStateAction<boolean>>;
+
+    //State used in LiftsStats:
+    exercisesData: {name: string, weight: 0}[];
+    setExercisesData: React.Dispatch<React.SetStateAction<{name: string, weight: number}>>;
     showMultipleExercises: boolean;
     setShowMultipleExercises: React.Dispatch<React.SetStateAction<boolean>>;
     showCharts: boolean;
     setShowCharts: React.Dispatch<React.SetStateAction<boolean>>;
     numberOfExercises: number;
     setNumberOfExercises: React.Dispatch<React.SetStateAction<number>>;
+
+    //Functions for toggling components on/off
     toggleCalendar: () => void;
     toggleExercises: () => void;
     toggleCharts: () => void;
-    calendarSubmit: () => void;
+    toggleMultipleExercises: () => void;
 }
 
 export const AppContext = createContext<AppContextProps>({
     userData: [],
     setUserData: () => { },
+    exercisesData: [],
+    setExercisesData: () => { },
     exerciseSelected: 'Select an exercise',
     setExerciseSelected: () => { },
     showCalendar: false,
@@ -45,6 +56,7 @@ export const AppContext = createContext<AppContextProps>({
     setShowCharts: () => { },
     toggleCalendar: () => { },
     toggleExercises: () => { },
+    toggleMultipleExercises: () => { },
     toggleCharts: () => { },
     calendarSubmit: () => { },
 });
@@ -65,6 +77,7 @@ export const AppProvider: React.FC = ({ children }) => {
         { month: 'Nov', weight: 0 },
         { month: 'Dec', weight: 0 },
     ]);
+    const [exercisesData, setExercisesData] = useState([]);
 
     const [exerciseSelected, setExerciseSelected] = useState<string>('Select an exercise');
     const [showCalendar, setShowCalendar] = useState<boolean>(false);
@@ -77,6 +90,7 @@ export const AppProvider: React.FC = ({ children }) => {
     const toggleCalendar = () => setShowCalendar(!showCalendar);
     const toggleExercises = () => setShowExercises(!showExercises);
     const toggleCharts = () => setShowCharts(!showCharts);
+    const toggleMultipleExercises = () => setShowMultipleExercises(!showMultipleExercises);
 
     //When the user clicks submit inside of the CalendarInput component
     const calendarSubmit = () => {
@@ -95,9 +109,12 @@ export const AppProvider: React.FC = ({ children }) => {
         setExerciseSelected,
         showCalendar,
         setShowCalendar,
+        exercisesData,
+        setExercisesData,
         calendarValue,
         setCalendarValue,
         showExercises,
+        toggleMultipleExercises,
         setShowExercises,
         showCharts,
         setShowCharts,

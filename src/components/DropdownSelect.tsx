@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { exercises } from '../assets/data/MockData';
 import { getExerciseIcon } from './GetIcon';
@@ -7,6 +7,9 @@ import {
     MagnifyingGlass,
     X,
 } from '@phosphor-icons/react';
+
+import { AppContext } from './context/AppContext';
+import { checkDistance } from './CheckDistance';
 
 
 
@@ -19,13 +22,16 @@ interface Props {
     position: string,
 }
 
-
 const DropdownSelect = ({
-    checkDistance,
-    dropdownPosition,
-    setExerciseData,
-    exerciseData,
+    index,
+    onExerciseDataUpdate,
+    parentRef,
 }) => {
+
+    const {
+        exercisesData,
+        toggleMultipleExercises,
+    } = useContext(AppContext);
 
     const childRef = useRef<HTMLDivElement>(null);
 
@@ -34,57 +40,34 @@ const DropdownSelect = ({
     const filteredExercises = exercises.filter((exercise: Exercise) =>
         exercise.name.toLowerCase().includes(searchText.toLowerCase())
     );
-    const [childBottom, setChildBottom] = useState();
 
-    const [exercise, setExercise] = useState<string>("");
-    const [PR, setPR] = useState<number>(0)
-
-    //Find out the height of the dropdown element
-    //Used to calculate if there is enough space below the dropdown
-    useEffect(() => {
-        if (childRef.current != null) {
-            setChildBottom(childRef.current.getBoundingClientRect().bottom);
-        } else {
-            console.log("childRef.current == null");
-        }
-    }, [])
+    const [exercise, setExercise] = useState("");
+    const [PR, setPR] = useState(0);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
-    };
-
-    const handleItemClick = (name: string) => {
-        setIsOpen(false);
-        setExercise(name);
-        setSearchText("");
     };
 
     const handleSearchTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchText(event.target.value);
     };
 
+    const handleExerciseChange = (name: string) => {
+        setExercise(name);
+        onExerciseDataUpdate(index, name, PR);
+    };
 
-    //Set the values inside when they are changed:
-    useEffect(() => {
-        if(PR > 0 && exercise != "") {
-            let values = {
-                name: exercise,
-                pr: PR,
-            }
-
-            setExerciseData([...exerciseData, values])
-        }
-    }, [exercise, PR])
-
+    const handlePrChange = (event: any) => {
+        setPR(event.currentTarget.value);
+        onExerciseDataUpdate(index, exercise, event.currentTarget.value);
+    };
 
     return (
         <Input>
             <Dropdown
                 ref={childRef}
-                onClick={() => {
-                    checkDistance(childBottom)
-                    toggleDropdown();
-                }} >
+                onClick={toggleDropdown}
+            >
                 {
                     isOpen != true && exercise != "" ?
                         <Heading>
@@ -110,8 +93,8 @@ const DropdownSelect = ({
                         </SearchContainer>
                 }
                 {isOpen == true && (
-                    <List position={dropdownPosition}>
-                        <CloseList onClick={() => setIsOpen(false)}>
+                    <List position={checkDistance(parentRef, childRef)}>
+                        <CloseList onClick={toggleMultipleExercises}>
                             <X
                                 size={32}
                                 color="#ccc"
@@ -121,7 +104,7 @@ const DropdownSelect = ({
                         {filteredExercises.map((exercise: Exercise) => (
                             <Option
                                 key={exercise.name}
-                                onClick={() => handleItemClick(exercise.name)}
+                                onClick={() => handleExerciseChange(exercise.name)}
                             >
                                 <OptionIcon
                                     src={getExerciseIcon(exercise.name)}
@@ -140,11 +123,11 @@ const DropdownSelect = ({
                     </List>
                 )}
             </Dropdown>
-            <InputPR 
+            <InputPR
                 type="text"
-                placeholder="Your PR"
+                placeholder="Your RP"
                 value={PR != 0 ? PR : ""}
-                onChange={(e) => setPR(parseInt(e.currentTarget.value))}
+                onChange={handlePrChange}
             />
         </Input>
     );

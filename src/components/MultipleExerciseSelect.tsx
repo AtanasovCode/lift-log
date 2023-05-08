@@ -7,10 +7,6 @@ import { Cpu, X } from "@phosphor-icons/react";
 import { exercises } from "../assets/data/MockData";
 import DropdownSelect from "./DropdownSelect";
 
-interface Props {
-    active: boolean,
-}
-
 const MultipleExerciseSelect = () => {
 
     //Used for calculating height
@@ -20,41 +16,21 @@ const MultipleExerciseSelect = () => {
     const {
         numberOfExercises,
         showMultipleExercises, setShowMultipleExercises,
+        toggleMultipleExercises,
+        exercisesData, setExercisesData,
     } = useContext(AppContext);
 
     const [unit, setUnit] = useState<string>("kg");
     const [dropdownPosition, setDropdownPosition] = useState<string>("bottom");
-    const [exerciseData, setExerciseData] = useState([]);
+
+    // Callback function to update exercisesData
+    const handleExerciseDataUpdate = (index: number, exercise: string, pr: number) => {
+        const updatedData = [...exercisesData];
+        updatedData[index] = { exercise, pr };
+        setExercisesData(updatedData);
+    };
 
 
-    //Used to check the distance between the bottom of the 
-    //child element (the dropdown component) and the bottom of this component
-    //If there is not enough space, it tells the dropdown component to 
-    //display it's list of exercise above and not below.
-    const checkDistance = (childBottom: number) => {
-        const parentBottom: any = parentRef.current != null && parentRef.current.getBoundingClientRect().bottom;
-        const distance = parentBottom - childBottom;
-
-        let result: string = distance >= 120 ? "bottom" : "top";
-
-        setDropdownPosition(result);
-    }
-
-    const submitData = () => {
-
-        let lifts = 0;
-        exerciseData.map(() => {
-            lifts++;
-        })
-
-        if (lifts == numberOfExercises) {
-            sessionStorage.setItem("userDataLifts", JSON.stringify(exerciseData));
-            setShowMultipleExercises(false);
-        } else {
-            console.log("not enough info");
-        }
-
-    }
 
     const returnInputs = () => {
         let inputs = [];
@@ -62,25 +38,31 @@ const MultipleExerciseSelect = () => {
             inputs.push([
                 <DropdownSelect
                     key={i}
-                    checkDistance={checkDistance}
-                    dropdownPosition={dropdownPosition}
-                    setExerciseData={setExerciseData}
-                    exerciseData={exerciseData}
+                    index={i}
+                    onExerciseDataUpdate={handleExerciseDataUpdate}
+                    parentRef={parentRef}
                 />
             ])
         }
 
-
-        useEffect(() => {
-            console.log(exerciseData);
-        }, [exerciseData])
-
         return inputs;
+    }
+
+
+    const submitData = () => {
+        let lifts = 0;
+
+        exercisesData.map(() => {
+            lifts++;
+        })
+
+        lifts == numberOfExercises && 
+        console.log(exercisesData);
     }
 
     return (
         <Container ref={parentRef}>
-            <CloseIcon onClick={() => setShowMultipleExercises(false)}>
+            <CloseIcon onClick={toggleMultipleExercises}>
                 <X
                     size="100%"
                     weight="light"
@@ -105,7 +87,7 @@ const MultipleExerciseSelect = () => {
                     returnInputs()
                 }
             </InputsContainer>
-            <input type="button" onClick={submitData} value="click" />
+            <input type="button" value="click" onClick={submitData} />
         </Container>
     );
 }
