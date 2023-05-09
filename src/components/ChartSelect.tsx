@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "styled-components";
 
 import { AppContext } from "./context/AppContext";
-import { 
+import {
     ChartPie,
     ChartDonut,
     ChartBarHorizontal,
@@ -24,8 +24,56 @@ const ChartSelect = () => {
 
     const theme = useContext(ThemeContext);
 
+    const [charts, setCharts] = useState(["Pie Chart", "Donut Chart", "Bar Chart", "H. Bar Chart"]);
+
+    const selectChart = (name: string) => {
+        sessionStorage.setItem("chartType", name);
+        toggleCharts();
+    }
+
+    const getChartIcon = (name: string) => {
+        switch (name) {
+            case "Pie Chart": return (
+                <ChartIcon>
+                    <ChartPie
+                        size="100%"
+                        color={theme.lightGreen}
+                        weight="fill"
+                    />
+                </ChartIcon>
+            );
+            case "Donut Chart": return (
+                <ChartIcon>
+                    <ChartDonut
+                        size="100%"
+                        color={theme.lightGreen}
+                        weight="fill"
+                    />
+                </ChartIcon>
+            );
+            case "Bar Chart": return (
+                <ChartIcon>
+                    <ChartBar
+                        size="100%"
+                        weight="fill"
+                        color={theme.lightGreen}
+                    />
+                </ChartIcon>
+            );
+            case "H. Bar Chart": return (
+                <ChartIcon>
+                    <ChartBarHorizontal
+                        size="100%"
+                        weight="fill"
+                        color={theme.lightGreen}
+                    />
+                </ChartIcon>
+            );
+        }
+    }
+
     return (
-        <Container active={showCharts}>
+        <Container>
             <Heading>
                 <Title>
                     Select your preferred chart type
@@ -34,61 +82,20 @@ const ChartSelect = () => {
 
             <ChartsContainer>
                 <CloseIcon onClick={toggleCharts}>
-                    <X 
+                    <X
                         size="100%"
                         color="#fff"
                         weight="light"
                     />
                 </CloseIcon>
-                <ChartOption>
-                    <ChartIcon>
-                        <ChartPie
-                            size="100%"
-                            color={theme.lightGreen}
-                            weight="fill"
-                        />
-                    </ChartIcon>
-                    <ChartName>Pie Chart</ChartName>
-                </ChartOption>
-
-                <ChartOption>
-                    <ChartIcon>
-                        <ChartDonut 
-                            size="100%"
-                            color={theme.lightGreen}
-                            weight="fill"
-                        />
-                    </ChartIcon>
-                    <ChartName>
-                        Donut Chart
-                    </ChartName>
-                </ChartOption>
-
-                <ChartOption>
-                    <ChartIcon>
-                        <ChartBar 
-                            size="100%"
-                            weight="fill"
-                            color={theme.lightGreen}
-                        />
-                    </ChartIcon>
-                    <ChartName>
-                        Bar Chart
-                    </ChartName>
-                </ChartOption>
-
-                <ChartOption>
-                    <ChartIcon>
-                        <ChartBarHorizontal
-                            size="100%"
-                            weight="fill"
-                            color={theme.lightGreen}
-                        />
-                    </ChartIcon>
-                    <ChartName>
-                        H. Bar Chart
-                    </ChartName>
-                </ChartOption>
+                {charts.map((chart) => {
+                    return (
+                        <ChartOption key={chart} onClick={() => selectChart(chart)}>
+                            {getChartIcon(chart)}
+                            <ChartName>{chart}</ChartName>
+                        </ChartOption>
+                    );
+                })}
             </ChartsContainer>
         </Container>
     );
@@ -96,13 +103,8 @@ const ChartSelect = () => {
 
 export default ChartSelect;
 
-const Container = styled.div<Props>`
+const Container = styled.div`
     max-width: 550px;
-    position: absolute;
-    width: 0;
-    top: -2200px;
-    z-index: 0;
-    opacity: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,17 +112,14 @@ const Container = styled.div<Props>`
     border-radius: 8px;
     padding: 35px;
     background-color: ${props => props.theme.richBlack};
+    position: fixed;
+    width: 60vw;
+    z-index: 10;
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 
-    //Exercise select is active:
-    ${props => props.active && `
-        position: fixed;
-        width: 60vw;
-        z-index: 10;
-        opacity: 1;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-    `}
 
     @media (max-width: 1000px) {
         max-width: 700px;

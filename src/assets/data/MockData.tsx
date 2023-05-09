@@ -282,7 +282,7 @@ const StrongestLifts = [
 
 const exercises = [
     { name: 'Bench Press', category: 'Chest' },
-    { name: 'Incline Bench Press', category: 'Chest' },
+    { name: 'Incline Press', category: 'Chest' },
     { name: 'Cable Crossover', category: 'Chest' },
     { name: 'Push-up', category: 'Chest' },
     { name: 'Bent-over Row', category: 'Back' },

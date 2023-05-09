@@ -58,8 +58,8 @@ const DropdownSelect = ({
     };
 
     const handlePrChange = (event: any) => {
-        setPR(event.currentTarget.value);
-        onExerciseDataUpdate(index, exercise, event.currentTarget.value);
+        setPR(parseInt(event.currentTarget.value));
+        onExerciseDataUpdate(index, exercise, parseInt(event.currentTarget.value));
     };
 
     return (

@@ -29,6 +29,16 @@ const LiftsStats = () => {
 
     const [numbers, setNumbers] = useState([2, 3, 4, 5, 6]);
 
+    const submitData = () => {
+        let chart = sessionStorage.getItem("chartType");
+        let numExercises = sessionStorage.getItem("numberOfExercises");
+
+        if(chart && numExercises) {
+            navigate("/get-stats/lifts-stats");
+        }
+
+    }
+
 
     return (
         <Styled.Container>
@@ -149,6 +159,7 @@ const LiftsStats = () => {
 
                         <Styled.Submit
                             color={theme.lightGreen}
+                            onClick={submitData}
                         >
                             <Styled.SubmitIcon>
                                 <ChartDonut

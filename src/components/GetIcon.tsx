@@ -26,7 +26,7 @@ import kickbacks from '../assets/icons/tri-kickback.svg';
   export const getExerciseIcon = (name: string) => {
     switch (name) {
       case "Bench Press": return bench;
-      case "Incline Bench Press": return inclineBench;
+      case "Incline Press": return inclineBench;
       case "Cable Crossover": return cableCrossover;
       case "Push-up": return pushUp;
       case "Bent-over Row": return bentRow;

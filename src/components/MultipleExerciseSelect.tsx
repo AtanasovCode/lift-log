@@ -52,12 +52,14 @@ const MultipleExerciseSelect = () => {
     const submitData = () => {
         let lifts = 0;
 
-        exercisesData.map(() => {
-            lifts++;
+        exercisesData.map((lift) => {
+            lift.name != "" && lift.pr > 0 && lifts++;
         })
 
-        lifts == numberOfExercises && 
-        console.log(exercisesData);
+        if (lifts == numberOfExercises) {
+            sessionStorage.setItem("lifts", JSON.stringify(exercisesData));
+            toggleMultipleExercises();
+        }
     }
 
     return (
@@ -87,7 +89,11 @@ const MultipleExerciseSelect = () => {
                     returnInputs()
                 }
             </InputsContainer>
-            <input type="button" value="click" onClick={submitData} />
+            <SubmitData 
+                type="button" 
+                value="Submit" 
+                onClick={submitData}
+            />
         </Container>
     );
 }
@@ -178,4 +184,21 @@ const InputUnit = styled.select`
 
 const UnitOption = styled.option`
     background-color: ${props => props.theme.richBlack};
+`;
+
+const SubmitData = styled.input`
+    min-width: 40%;
+    border: none;
+    background-color: ${props => props.theme.lightGreen};
+    color: #000;
+    font-weight: 600;
+    margin-top: 40px;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 12px;
+
+    &:hover {
+        background-color: ${props => props.theme.lighterGreen};
+        cursor: pointer;
+    }
 `;
