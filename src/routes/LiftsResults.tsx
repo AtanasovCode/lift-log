@@ -3,6 +3,9 @@ import { ThemeContext } from "styled-components";
 import styled from "styled-components";
 
 import BarChartComponent from "../components/graphs/result-charts/BarChart";
+import HBarChartComponent from "../components/graphs/result-charts/HBarChart";
+import DonutChartComponent from "../components/graphs/result-charts/DonutChart";
+import PieChartComponent from "../components/graphs/result-charts/PieChart";
 import Nav from "../components/navigation/Nav";
 
 const LiftsResults = () => {
@@ -21,6 +24,35 @@ const LiftsResults = () => {
         console.log(exercises);
 
     }, [exercises])
+
+    const getChart = (name: string) => {
+        switch (name) {
+            case "Pie Chart": return (
+                <PieChartComponent
+                    exercises={exercises}
+                    theme={theme}
+                />
+            );
+            case "Donut Chart": return (
+                <DonutChartComponent
+                    exercises={exercises}
+                    theme={theme}
+                />
+            );
+            case "Bar Chart": return (
+                <BarChartComponent
+                    exercises={exercises}
+                    theme={theme}
+                />
+            );
+            case "H. Bar Chart": return (
+                <HBarChartComponent
+                    exercises={exercises}
+                    theme={theme}
+                />
+            );
+        }
+    }
 
     return (
         <Container>
@@ -52,9 +84,7 @@ const LiftsResults = () => {
             </LiftsContainer>
 
             <ChartContainer>
-                <BarChartComponent
-                    exercises={exercises}
-                />
+                {getChart(sessionStorage.getItem("chartType"))}
             </ChartContainer>
         </Container>
     );
@@ -83,7 +113,7 @@ const LiftsContainer = styled.div`
 
 const LiftTitle = styled.div`
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 600;
     margin-bottom: 45px;
 `;

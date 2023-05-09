@@ -8,29 +8,27 @@ import {
     XAxis, YAxis,
 } from "recharts";
 
-const BarChartComponent = ({
+const HBarChartComponent = ({
     exercises,
     theme,
 }) => {
-
-
     return (
         <ResponsiveContainer width="99%" height={420}>
-            <BarChart data={exercises}>
-                <XAxis 
-                    type="category" dataKey="exercise"
-                    tick={{fontSize: 14}} 
+            <BarChart data={exercises} layout="vertical">
+                <XAxis type="number" dataKey="pr" />
+                <YAxis 
+                    type="category" 
+                    dataKey="exercise" 
+                    width={120}
                 />
-                <YAxis type="number" dataKey="pr" />
                 <Bar
                     dataKey="pr"
                     fill={theme.lightGreen}
                     barSize={50}
                 />
-                <Tooltip />
             </BarChart>
         </ResponsiveContainer>
     );
 }
 
-export default BarChartComponent;
+export default HBarChartComponent;
