@@ -91,7 +91,7 @@ const StrongestLiftsChart = () => {
                         ))}
                     </Pie>
                     <Legend wrapperStyle={{ fontSize: "10px", bottom: "-10px" }} />
-                    <Tooltip content={<CustomTooltip />} />
+                    <Tooltip content={<CustomTooltip chartType="Donut Chart" />} />
                 </PieChart>
             </Chart>
         </Container>

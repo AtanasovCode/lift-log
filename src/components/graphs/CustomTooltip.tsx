@@ -1,11 +1,10 @@
 import { getExerciseIcon } from "../GetIcon";
 import styled from "styled-components";
 
-export const CustomTooltip = ({ label, payload, active }) => {
+export const CustomTooltip = ({ payload, active, chartType }) => {
 
     if (active) {
-        const {name, pr } = payload[0];
-        const chartType = sessionStorage.getItem("chartType");
+        const {name, pr, value } = payload[0];
 
         if (chartType === 'Donut Chart' || chartType == "Pie Chart") {
             return (
@@ -14,7 +13,7 @@ export const CustomTooltip = ({ label, payload, active }) => {
                         <TooltipIcon src={getExerciseIcon(name)} />
                         {name}:
                     </TooltipExercise>
-                    <TooltipLift>{pr}kg</TooltipLift>
+                    <TooltipLift>{pr ? pr : value}kg</TooltipLift>
                 </TooltipContainer>
             );
         } else if (chartType === "Bar Chart" || chartType =="H. Bar Chart") {

@@ -38,7 +38,11 @@ const PieChartComponent = () => {
                         ))
                     }
                 </Pie>
-                <Tooltip content={<CustomTooltip label={exercises} />} />
+                <Tooltip content={
+                    <CustomTooltip
+                        chartType={sessionStorage.getItem("chartType")}
+                    />
+                } />
             </PieChart>
         </ResponsiveContainer>
     );

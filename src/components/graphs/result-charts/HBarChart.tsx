@@ -20,21 +20,28 @@ const HBarChartComponent = () => {
     return (
         <ResponsiveContainer width="99%" height={420}>
             <BarChart data={exercises} layout="vertical">
-                <XAxis 
-                    type="number" dataKey="pr" 
-                    tick={{fill: "#000"}}
+                <XAxis
+                    type="number" dataKey="pr"
+                    tick={{ fill: "#000" }}
                 />
                 <YAxis
                     type="category" dataKey="exercise"
                     width={120}
-                    tick={{fill: "#000"}}
+                    tick={{ fill: "#000" }}
                 />
                 <Bar
                     dataKey="pr"
                     fill={theme.richBlackDark}
                     barSize={50}
                 />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip
+                    content={
+                        <CustomTooltip
+                            chartType={sessionStorage.getItem("chartType")}
+                        />
+                    }
+                    cursor={{fill: "#00000030"}}
+                />
             </BarChart>
         </ResponsiveContainer>
     );

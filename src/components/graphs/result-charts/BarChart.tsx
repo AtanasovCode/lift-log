@@ -34,9 +34,13 @@ const BarChartComponent = () => {
                     dataKey="pr"
                     fill={theme.richBlackDark}
                 />
-                <Tooltip 
-                    content={<CustomTooltip />} 
-                    cursor={{fill: "#00000030"}}
+                <Tooltip
+                    content={
+                        <CustomTooltip
+                            chartType={sessionStorage.getItem("chartType")}
+                        />
+                    }
+                    cursor={{ fill: "#00000030" }}
                 />
             </BarChart>
         </ResponsiveContainer>

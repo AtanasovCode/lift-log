@@ -41,7 +41,11 @@ const DonutChartComponent = () => {
                         ))
                     }
                 </Pie>
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip content={
+                    <CustomTooltip
+                        chartType={sessionStorage.getItem("chartType")}
+                    />
+                } />
             </PieChart>
         </ResponsiveContainer>
     );

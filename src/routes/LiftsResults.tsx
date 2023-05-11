@@ -21,13 +21,12 @@ const LiftsResults = () => {
     const theme = useContext(ThemeContext);
 
     const COLORS: [string, string, string, string, string, string] = [
-        '#493636', // black
-        '#874c00', // orange
-        '#9e0000', // light grey
-        '#3c008b', // dark grey
-        '#5C5C5E', // medium grey
-        '#008009', // light green
-    ];
+        '#810101', // Red
+        '#4e3939', // Brownish-grey
+        '#260072', // Deep purple
+        '#1f221f', // Dark green
+        '#005e62', // Teal
+      ];
 
     const [exercises, setExercises] = useState([]);
 
