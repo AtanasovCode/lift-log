@@ -19,8 +19,8 @@ interface AppContextProps {
     setShowExercises: React.Dispatch<React.SetStateAction<boolean>>;
 
     //State used in LiftsStats:
-    exercisesData: {name: string, weight: number}[];
-    setExercisesData: React.Dispatch<React.SetStateAction<{name: string, weight: number}>>;
+    exercisesData: {name: string, pr: number}[];
+    setExercisesData: React.Dispatch<React.SetStateAction<{name: string, pr: number}>>;
     showMultipleExercises: boolean;
     setShowMultipleExercises: React.Dispatch<React.SetStateAction<boolean>>;
     showCharts: boolean;

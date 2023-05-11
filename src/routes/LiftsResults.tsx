@@ -29,7 +29,6 @@ const LiftsResults = () => {
         '#008009', // light green
     ];
 
-
     const [exercises, setExercises] = useState([]);
 
     useEffect(() => {
@@ -68,8 +67,8 @@ const LiftsResults = () => {
                         {exercises.map((lift) => {
                             return (
                                 <LiftIconHeading
-                                    key={lift.exercise}
-                                    src={getExerciseIcon(lift.exercise)}
+                                    key={lift.name}
+                                    src={getExerciseIcon(lift.name)}
                                 />
                             );
                         })}
@@ -83,9 +82,9 @@ const LiftsResults = () => {
                         {
                             exercises.map((lift) => {
                                 return (
-                                    <Lift key={lift.exercise}>
+                                    <Lift key={lift.name}>
                                         <LiftName>
-                                            {lift.exercise}
+                                            {lift.name}
                                         </LiftName>
                                         <LiftPR>
                                             {lift.pr}kg

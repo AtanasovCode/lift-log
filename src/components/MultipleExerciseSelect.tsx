@@ -24,9 +24,9 @@ const MultipleExerciseSelect = () => {
     const [dropdownPosition, setDropdownPosition] = useState<string>("bottom");
 
     // Callback function to update exercisesData
-    const handleExerciseDataUpdate = (index: number, exercise: string, pr: number) => {
+    const handleExerciseDataUpdate = (index: number, name: string, pr: number) => {
         const updatedData = [...exercisesData];
-        updatedData[index] = { exercise, pr };
+        updatedData[index] = { name, pr };
         setExercisesData(updatedData);
     };
 

@@ -18,14 +18,12 @@ const BarChartComponent = () => {
         theme
     } = useContext(ChartContext);
 
-    const numberOfExercises = useContext(AppContext);
-
 
     return (
         <ResponsiveContainer width="99%" height={420}>
             <BarChart data={exercises}>
                 <XAxis
-                    type="category" dataKey="exercise"
+                    type="category" dataKey="name"
                     tick={{ fontSize: 14, fill: "#000" }}
                 />
                 <YAxis
@@ -36,7 +34,10 @@ const BarChartComponent = () => {
                     dataKey="pr"
                     fill={theme.richBlackDark}
                 />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip 
+                    content={<CustomTooltip />} 
+                    cursor={{fill: "#00000030"}}
+                />
             </BarChart>
         </ResponsiveContainer>
     );

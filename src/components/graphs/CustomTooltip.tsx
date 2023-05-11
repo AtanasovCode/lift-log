@@ -1,39 +1,50 @@
 import { getExerciseIcon } from "../GetIcon";
 import styled from "styled-components";
 
-export const CustomTooltip = ({ payload, active }) => {
+export const CustomTooltip = ({ label, payload, active }) => {
 
     if (active) {
-        console.log(payload);
-        return (
-            <TooltipContainer>
-                {payload.map((info) => {
-                    return (
-                        <TooltipExercise key={info.name}>
-                            <TooltipIcon src={getExerciseIcon(info.name)} />
-                            {info.name}:
-                        </TooltipExercise>
-                    );
-                })}
-                {payload.map((info: any) => {
-                    return <TooltipLift key={info.name}>{info.value}kg</TooltipLift>
-                })}
-            </TooltipContainer>
-        );
+        const {name, pr } = payload[0];
+        const chartType = sessionStorage.getItem("chartType");
+
+        if (chartType === 'Donut Chart' || chartType == "Pie Chart") {
+            return (
+                <TooltipContainer>
+                    <TooltipExercise>
+                        <TooltipIcon src={getExerciseIcon(name)} />
+                        {name}:
+                    </TooltipExercise>
+                    <TooltipLift>{pr}kg</TooltipLift>
+                </TooltipContainer>
+            );
+        } else if (chartType === "Bar Chart" || chartType =="H. Bar Chart") {
+            const { name, pr } = payload[0].payload;
+            return (
+                <TooltipContainer>
+                    <TooltipExercise>
+                        <TooltipIcon src={getExerciseIcon(name)} />
+                        {name}:
+                    </TooltipExercise>
+                    <TooltipLift>{pr}kg</TooltipLift>
+                </TooltipContainer>
+            );
+        }
     }
+
     return null;
 }
 
 
 const TooltipContainer = styled.div`
-    padding: 5px;
-    background-color: black;
+    padding: 10px;
+    background-color: ${props => props.theme.richBlackDark};
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 300;
+    border: none;
 `;
 
 const TooltipIcon = styled.img`

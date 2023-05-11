@@ -41,7 +41,7 @@ const DropdownSelect = ({
         exercise.name.toLowerCase().includes(searchText.toLowerCase())
     );
 
-    const [exercise, setExercise] = useState("");
+    const [name, setName] = useState("");
     const [PR, setPR] = useState(0);
 
     const toggleDropdown = () => {
@@ -53,13 +53,13 @@ const DropdownSelect = ({
     };
 
     const handleExerciseChange = (name: string) => {
-        setExercise(name);
+        setName(name);
         onExerciseDataUpdate(index, name, PR);
     };
 
     const handlePrChange = (event: any) => {
         setPR(parseInt(event.currentTarget.value));
-        onExerciseDataUpdate(index, exercise, parseInt(event.currentTarget.value));
+        onExerciseDataUpdate(index, name, parseInt(event.currentTarget.value));
     };
 
     return (
@@ -69,18 +69,18 @@ const DropdownSelect = ({
                 onClick={toggleDropdown}
             >
                 {
-                    isOpen != true && exercise != "" ?
+                    isOpen != true && name != "" ?
                         <Heading>
                             <SearchExercise
-                                src={getExerciseIcon(exercise)}
+                                src={getExerciseIcon(name)}
                             />
-                            {exercise}
+                            {name}
                         </Heading>
                         :
                         <SearchContainer>
                             <Search
                                 placeholder="Search exercises..."
-                                value={isOpen ? searchText : exercise}
+                                value={isOpen ? searchText : name}
                                 onChange={handleSearchTextChange}
                             />
                             <SearchIcon>
