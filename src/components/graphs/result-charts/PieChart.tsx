@@ -9,20 +9,15 @@ import {
     YAxis,
     Tooltip,
 } from "recharts";
+import { ChartContext } from "../../../routes/LiftsResults";
+import { CustomTooltip } from "../CustomTooltip";
 
-const PieChartComponent = ({
-    theme,
-    exercises
-}) => {
+const PieChartComponent = () => {
 
-    const COLORS = [
-        theme.lightGreen,
-        theme.darkPurple,
-        theme.softOrange,
-        theme.lightPurple,
-        theme.darkGreen,
-        theme.mayaBlue,
-    ];
+    const {
+        exercises,
+        COLORS
+    } = useContext(ChartContext);
 
     return (
         <ResponsiveContainer width="99%" height={420}>
@@ -36,14 +31,14 @@ const PieChartComponent = ({
                     {
                         exercises.map((entry, index) => (
                             <Cell
-                                key={`cell-${index}`} 
-                                fill={COLORS[index % COLORS.length]} 
+                                key={`cell-${index}`}
+                                fill={COLORS[index % COLORS.length]}
                                 stroke="none"
                             />
                         ))
                     }
                 </Pie>
-                <Tooltip />
+                <Tooltip content={<CustomTooltip label={exercises} />} />
             </PieChart>
         </ResponsiveContainer>
     );

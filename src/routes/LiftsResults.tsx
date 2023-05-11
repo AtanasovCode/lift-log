@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, createContext } from "react";
 import { ThemeContext } from "styled-components";
 import styled from "styled-components";
 
@@ -7,10 +7,28 @@ import HBarChartComponent from "../components/graphs/result-charts/HBarChart";
 import DonutChartComponent from "../components/graphs/result-charts/DonutChart";
 import PieChartComponent from "../components/graphs/result-charts/PieChart";
 import Nav from "../components/navigation/Nav";
+import { getExerciseIcon } from "../components/GetIcon";
+
+interface ChartContextType {
+    COLORS: [string, string, string, string, string, string],
+    exercises: any[]
+}
+
+export const ChartContext = createContext({});
 
 const LiftsResults = () => {
 
     const theme = useContext(ThemeContext);
+
+    const COLORS: [string, string, string, string, string, string] = [
+        '#493636', // black
+        '#874c00', // orange
+        '#9e0000', // light grey
+        '#3c008b', // dark grey
+        '#5C5C5E', // medium grey
+        '#008009', // light green
+    ];
+
 
     const [exercises, setExercises] = useState([]);
 
@@ -20,73 +38,73 @@ const LiftsResults = () => {
         setExercises(JSON.parse(lifts));
     }, [])
 
-    useEffect(() => {
-        console.log(exercises);
-
-    }, [exercises])
 
     const getChart = (name: string) => {
         switch (name) {
             case "Pie Chart": return (
-                <PieChartComponent
-                    exercises={exercises}
-                    theme={theme}
-                />
+                <PieChartComponent />
             );
             case "Donut Chart": return (
-                <DonutChartComponent
-                    exercises={exercises}
-                    theme={theme}
-                />
+                <DonutChartComponent />
             );
             case "Bar Chart": return (
-                <BarChartComponent
-                    exercises={exercises}
-                    theme={theme}
-                />
+                <BarChartComponent />
             );
             case "H. Bar Chart": return (
-                <HBarChartComponent
-                    exercises={exercises}
-                    theme={theme}
-                />
+                <HBarChartComponent />
             );
+            default: return null;
         }
     }
 
     return (
-        <Container>
+        <ChartContext.Provider value={{ COLORS, exercises, theme }}>
+            <Container>
 
-            <Nav />
+                <Nav />
 
-            <LiftsContainer>
-                <LiftTitle>
-                    Your
-                    <Fancy>strongest</Fancy>
-                    lifts
-                </LiftTitle>
-                <Lifts>
-                    {
-                        exercises.map((lift) => {
+                <LiftsContainer>
+                    <LiftsIcons>
+                        {exercises.map((lift) => {
                             return (
-                                <Lift key={lift.exercise}>
-                                    <LiftName>
-                                        {lift.exercise}
-                                    </LiftName>
-                                    <LiftPR>
-                                        {lift.pr}kg
-                                    </LiftPR>
-                                </Lift>
+                                <LiftIconHeading
+                                    key={lift.exercise}
+                                    src={getExerciseIcon(lift.exercise)}
+                                />
                             );
-                        })
-                    }
-                </Lifts>
-            </LiftsContainer>
+                        })}
+                    </LiftsIcons>
+                    <LiftTitle>
+                        Your
+                        strongest
+                        lifts
+                    </LiftTitle>
+                    <Lifts>
+                        {
+                            exercises.map((lift) => {
+                                return (
+                                    <Lift key={lift.exercise}>
+                                        <LiftName>
+                                            {lift.exercise}
+                                        </LiftName>
+                                        <LiftPR>
+                                            {lift.pr}kg
+                                        </LiftPR>
+                                    </Lift>
+                                );
+                            })
+                        }
+                    </Lifts>
+                </LiftsContainer>
 
-            <ChartContainer>
-                {getChart(sessionStorage.getItem("chartType"))}
-            </ChartContainer>
-        </Container>
+                <ChartContainer>
+                    {
+                        sessionStorage.getItem("chartType") !== null &&
+                        getChart(sessionStorage.getItem("chartType") as string)
+                    }
+                </ChartContainer>
+            </Container>
+        </ChartContext.Provider>
     );
 }
 
@@ -94,13 +112,14 @@ export default LiftsResults;
 
 
 const Container = styled.div`
-    min-height: 100vh;
-    background-color: ${props => props.theme.richBlackDark};
+    min-height: calc(100vh - 125px);
+    background-color: ${props => props.theme.darkYellow};
     display: flex;
     align-items: stretch;
     justify-content: center;
     color: #fff;
-    padding-top: 125px;
+    padding: 0 40px 40px 40px;
+    margin-top: 125px;
 `;
 
 const LiftsContainer = styled.div`
@@ -109,21 +128,29 @@ const LiftsContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-right: 35px;
+    color: #000;
+    border-radius: 16px;
+`;
+
+const LiftsIcons = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+`;
+
+const LiftIconHeading = styled.img`
+    width: 70px;
+    margin: 0 15px;
 `;
 
 const LiftTitle = styled.div`
     text-align: center;
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 45px;
-`;
-
-const Fancy = styled.span`
-    font-family: 'Dosis', sans-serif;
-    color: ${props => props.theme.lightGreen};
-    font-size: 30px;
+    font-size: 34px;
     font-weight: 900;
-    margin: 0 8px;
+    margin-bottom: 15px;
+    font-family: 'Dosis', sans-serif;
 `;
 
 const Lifts = styled.div`
@@ -148,7 +175,6 @@ const LiftPR = styled.div`
     font-size: 30px;
     font-family: 'Dosis', sans-serif;
     font-weight: 900;
-    color: ${props => props.theme.lightGreen};
 `;
 
 const ChartContainer = styled.div`

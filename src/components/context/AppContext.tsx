@@ -85,7 +85,7 @@ export const AppProvider: React.FC = ({ children }) => {
     const [showExercises, setShowExercises] = useState<boolean>(false);
     const [showMultipleExercises, setShowMultipleExercises] = useState<boolean>(false)
     const [showCharts, setShowCharts] = useState<boolean>(false);
-    const [numberOfExercises, setNumberOfExercises] = useState(2);
+    const [numberOfExercises, setNumberOfExercises] = useState(0);
 
     const toggleCalendar = () => setShowCalendar(!showCalendar);
     const toggleExercises = () => setShowExercises(!showExercises);

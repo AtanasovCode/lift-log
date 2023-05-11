@@ -12,6 +12,8 @@ import {
     Legend,
     ResponsiveContainer,
 } from "recharts";
+import { getExerciseIcon } from "../../GetIcon";
+import { CustomTooltip } from "../CustomTooltip";
 
 import bench from '../../../assets/icons/bench.svg'
 import deadlift from '../../../assets/icons/deadlift.svg';
@@ -50,43 +52,7 @@ const StrongestLiftsChart = () => {
             else if (w < 550) setPieH(160);
         }
 
-    }, [size.width])
-
-    //Custom Tooltip Content
-    function CustomTooltip({ label, payload, active }) {
-
-        //Get the src for the exercise icons
-        const getExerciseIcon = (name: string) => {
-            switch (name) {
-                case "Bench Press": return bench;
-                case "Overhead Press": return ohp;
-                case "Deadlift": return deadlift;
-                case "Squat": return squat;
-                case "Barbell Curl": return curl;
-                case "Lat Pulldown": return lat;
-            }
-        }
-
-        if (active) {
-            return (
-                <TooltipContainer>
-                    {payload.map((info) => {
-                        return (
-                            <TooltipExercise key={info.name}>
-                                <TooltipIcon src={getExerciseIcon(info.name)} />
-                                {info.name}:
-                            </TooltipExercise>
-                        );
-                    })}
-                    {payload.map((info) => {
-                        return <TooltipLift key={info.name}>{info.value}kg</TooltipLift>
-                    })}
-                </TooltipContainer>
-            );
-        }
-        return null;
-    }
-
+    }, [size.width]);
 
 
     return (
@@ -224,35 +190,4 @@ const Icon = styled.img`
         width: 85px;
         height: 85px;
     }
-`;
-
-const TooltipContainer = styled.div`
-    padding: 5px;
-    background-color: black;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 300;
-`;
-
-const TooltipIcon = styled.img`
-    width: 20px;
-    height: 20px;
-    filter: invert(100%);
-    margin-right: 6px;
-`;
-
-const TooltipExercise = styled.div`
-    margin-right: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
-
-const TooltipLift = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
 `;

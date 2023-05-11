@@ -46,7 +46,7 @@ import kickbacks from '../assets/icons/tri-kickback.svg';
       case "Tricep Extension": break;
       case "Skull Crusher": break;
       case "Dips": return dips;
-      case "Shoulder Press": return ohp;
+      case "Overhead Press": return ohp;
       case "Lateral Raise": return latRaise;
       case "Front Raise": return frontRaise;
       case "Rear Delt Fly": break;

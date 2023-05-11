@@ -9,20 +9,15 @@ import {
     YAxis,
     Tooltip,
 } from "recharts";
+import { ChartContext } from "../../../routes/LiftsResults";
+import { CustomTooltip } from "../CustomTooltip";
 
-const DonutChartComponent = ({
-    theme,
-    exercises
-}) => {
+const DonutChartComponent = () => {
 
-    const COLORS = [
-        theme.lightGreen,
-        theme.darkPurple,
-        theme.softOrange,
-        theme.lightPurple,
-        theme.darkGreen,
-        theme.mayaBlue,
-    ];
+    const {
+        exercises,
+        COLORS,
+    } = useContext(ChartContext);
 
     return (
         <ResponsiveContainer width="99%" height={420}>
@@ -31,21 +26,22 @@ const DonutChartComponent = ({
                     data={exercises}
                     innerRadius={50}
                     outerRadius={160}
+                    paddingAngle={3}
                     fill="#8884d8"
-                    paddingAngle={4}
                     dataKey="pr"
+                    paddingAngle={3}
                 >
                     {
                         exercises.map((entry, index) => (
                             <Cell
-                                key={`cell-${index}`} 
-                                fill={COLORS[index % COLORS.length]} 
+                                key={`cell-${index}`}
+                                fill={COLORS[index % COLORS.length]}
                                 stroke="none"
                             />
                         ))
                     }
                 </Pie>
-                <Tooltip />
+                <Tooltip content={<CustomTooltip />} />
             </PieChart>
         </ResponsiveContainer>
     );

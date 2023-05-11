@@ -248,34 +248,28 @@ const LiftDataDeadlift = [
 
 const StrongestLifts = [
     {
-        icon: { bench },
         name: "Bench Press",
         times: 125,
     },
     {
         name: "Squat",
         times: 165,
-        icon: { squat }
     },
     {
         name: "Overhead Press",
         times: 85,
-        icon: { ohp }
     },
     {
         name: "Deadlift",
         times: 185,
-        icon: { deadlift }
     },
     {
-        name: "Curl",
+        name: "Bicep Curl",
         times: 65,
-        icon: { curl }
     },
     {
         name: "Lat Pulldown",
         times: 90,
-        icon: { lat }
     },
 ];
 
@@ -301,7 +295,7 @@ const exercises = [
     { name: 'Skull Crusher', category: 'Triceps' },
     { name: 'Dips', category: 'Triceps' },
     { name: 'Rope Pushdown', category: 'Triceps' },
-    { name: 'Shoulder Press', category: 'Shoulders' },
+    { name: 'Overhead Press', category: 'Shoulders' },
     { name: 'Lateral Raise', category: 'Shoulders' },
     { name: 'Front Raise', category: 'Shoulders' },
     { name: 'Rear Delt Fly', category: 'Shoulders' },
