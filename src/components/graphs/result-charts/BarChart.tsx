@@ -15,20 +15,26 @@ const BarChartComponent = () => {
 
     const {
         exercises,
-        theme
+        chartHeight,
+        theme,
+        AxisFontSize,
+        AxisWidth,
     } = useContext(ChartContext);
 
-
     return (
-        <ResponsiveContainer width="99%" height={420}>
+        <ResponsiveContainer width="99%" height={chartHeight}>
             <BarChart data={exercises}>
                 <XAxis
                     type="category" dataKey="name"
-                    tick={{ fontSize: 14, fill: "#000" }}
+                    tick={{
+                        fontSize: `${AxisFontSize}px`, 
+                        fill: "#000",
+                    }}
                 />
                 <YAxis
                     type="number" dataKey="pr"
-                    tick={{ fill: "#000" }}
+                    tick={{ fill: "#000", fontSize: `${AxisFontSize}` }}
+                    width={AxisWidth}
                 />
                 <Bar
                     dataKey="pr"

@@ -51,7 +51,7 @@ export const AppContext = createContext<AppContextProps>({
     showMultipleExercises: false,
     setShowMultipleExercises: () => { },
     showCharts: false,
-    numberOfExercises: 0,
+    numberOfExercises: 2,
     setNumberOfExercises: () => { },
     setShowCharts: () => { },
     toggleCalendar: () => { },
@@ -85,7 +85,7 @@ export const AppProvider: React.FC = ({ children }) => {
     const [showExercises, setShowExercises] = useState<boolean>(false);
     const [showMultipleExercises, setShowMultipleExercises] = useState<boolean>(false)
     const [showCharts, setShowCharts] = useState<boolean>(false);
-    const [numberOfExercises, setNumberOfExercises] = useState(0);
+    const [numberOfExercises, setNumberOfExercises] = useState(2);
 
     const toggleCalendar = () => setShowCalendar(!showCalendar);
     const toggleExercises = () => setShowExercises(!showExercises);

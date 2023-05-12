@@ -22,6 +22,7 @@ const MultipleExerciseSelect = () => {
 
     const [unit, setUnit] = useState<string>("kg");
     const [dropdownPosition, setDropdownPosition] = useState<string>("bottom");
+    const [errorMessage, setErrorMessage] = useState(false);
 
     // Callback function to update exercisesData
     const handleExerciseDataUpdate = (index: number, name: string, pr: number) => {
@@ -29,7 +30,6 @@ const MultipleExerciseSelect = () => {
         updatedData[index] = { name, pr };
         setExercisesData(updatedData);
     };
-
 
 
     const returnInputs = () => {
@@ -59,6 +59,8 @@ const MultipleExerciseSelect = () => {
         if (lifts == numberOfExercises) {
             sessionStorage.setItem("lifts", JSON.stringify(exercisesData));
             toggleMultipleExercises();
+        } else {
+            setErrorMessage(!errorMessage);
         }
     }
 
@@ -94,6 +96,9 @@ const MultipleExerciseSelect = () => {
                 value="Submit" 
                 onClick={submitData}
             />
+            {
+                errorMessage && <Error>Provide data to all input fields!</Error>
+            }
         </Container>
     );
 }
@@ -201,4 +206,12 @@ const SubmitData = styled.input`
         background-color: ${props => props.theme.lighterGreen};
         cursor: pointer;
     }
+`;
+
+const Error = styled.div`
+    font-size: 13px;
+    font-weight: 300;
+    color: #ff4c4c;
+    margin-top: 10px;
+    text-align: center;
 `;

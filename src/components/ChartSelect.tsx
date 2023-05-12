@@ -15,7 +15,7 @@ interface Props {
     active: boolean
 }
 
-const ChartSelect = () => {
+const ChartSelect = ({ setChartType, getChartIcon }) => {
 
     const {
         toggleCharts,
@@ -28,48 +28,8 @@ const ChartSelect = () => {
 
     const selectChart = (name: string) => {
         sessionStorage.setItem("chartType", name);
+        setChartType(name);
         toggleCharts();
-    }
-
-    const getChartIcon = (name: string) => {
-        switch (name) {
-            case "Pie Chart": return (
-                <ChartIcon>
-                    <ChartPie
-                        size="100%"
-                        color={theme.lightGreen}
-                        weight="fill"
-                    />
-                </ChartIcon>
-            );
-            case "Donut Chart": return (
-                <ChartIcon>
-                    <ChartDonut
-                        size="100%"
-                        color={theme.lightGreen}
-                        weight="fill"
-                    />
-                </ChartIcon>
-            );
-            case "Bar Chart": return (
-                <ChartIcon>
-                    <ChartBar
-                        size="100%"
-                        weight="fill"
-                        color={theme.lightGreen}
-                    />
-                </ChartIcon>
-            );
-            case "H. Bar Chart": return (
-                <ChartIcon>
-                    <ChartBarHorizontal
-                        size="100%"
-                        weight="fill"
-                        color={theme.lightGreen}
-                    />
-                </ChartIcon>
-            );
-        }
     }
 
     return (
@@ -91,7 +51,9 @@ const ChartSelect = () => {
                 {charts.map((chart) => {
                     return (
                         <ChartOption key={chart} onClick={() => selectChart(chart)}>
-                            {getChartIcon(chart)}
+                            <ChartIcon>
+                                {getChartIcon(chart, "fill", theme.lightGreen)}
+                            </ChartIcon>
                             <ChartName>{chart}</ChartName>
                         </ChartOption>
                     );

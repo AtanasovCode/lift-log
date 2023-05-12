@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "styled-components";
+import useWindowSize from "../../hooks/UseWindow";
 import {
     ResponsiveContainer,
     BarChart,
@@ -14,20 +15,27 @@ const HBarChartComponent = () => {
 
     const {
         exercises,
-        theme
+        chartHeight,
+        theme,
+        AxisFontSize,
+        HAxisWidth,
     } = useContext(ChartContext);
 
     return (
-        <ResponsiveContainer width="99%" height={420}>
-            <BarChart data={exercises} layout="vertical">
+        <ResponsiveContainer width="99%" height={chartHeight}>
+            <BarChart 
+                data={exercises} 
+                layout="vertical"
+                margin={{ top: 0, right: 20, bottom: 0, left: 20 }}
+            >
                 <XAxis
                     type="number" dataKey="pr"
-                    tick={{ fill: "#000" }}
+                    tick={{ fill: "#000", fontSize: `${AxisFontSize}` }}
                 />
                 <YAxis
-                    type="category" dataKey="exercise"
-                    width={120}
-                    tick={{ fill: "#000" }}
+                    type="category" dataKey="name"
+                    width={HAxisWidth}
+                    tick={{ fill: "#000", fontSize: `${AxisFontSize}px`}}
                 />
                 <Bar
                     dataKey="pr"

@@ -26,6 +26,7 @@ const DropdownSelect = ({
     index,
     onExerciseDataUpdate,
     parentRef,
+    errorMessage,
 }) => {
 
     const {
@@ -137,6 +138,7 @@ export default DropdownSelect;
 
 
 const Input = styled.div`
+    position: relative;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 10px;
@@ -144,6 +146,11 @@ const Input = styled.div`
     @media (max-width: 550px) {
         grid-template-columns: 1fr auto;
     }
+`;
+
+const Error = styled.div`
+    position: absolute;
+    bottom: -25px;
 `;
 
 const InputPR = styled.input`

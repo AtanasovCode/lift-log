@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import image from '../assets/images/header-s.jpg';
-import ExerciseSelect from "../components/ExerciseSelect";
 
 interface Props {
     active: boolean,
+    color: string,
 }
 
 export const Container = styled.div`
@@ -65,7 +65,7 @@ export const TextContainer = styled.div`
     }
 `;
 
-export const Heading = styled.div`
+export const Heading = styled.div<Props>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,19 +95,8 @@ export const Heading = styled.div`
         border-radius: 55px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+        background-color: ${props => props.color};
         padding: 25px 0;
-    }
-`;
-
-export const HeadingGreen = styled(Heading)`
-    @media (max-width: 700px) {
-        background-color: ${props => props.theme.lightGreen};
-    }
-`;
-
-export const HeadingBlue = styled(Heading)`
-    @media (max-width: 700px) {
-        background-color: ${props => props.theme.mayaBlue};
     }
 `;
 
@@ -140,11 +129,12 @@ export const Title = styled.div`
 `;
 
 export const Fancy = styled.span`
-    color: ${props => props.theme.mayaBlue};
+    color: ${props => props.color};
     margin: 0 6px;
     text-align: center;
 
     @media (max-width: 700px) {
+        color: ${props => props.color};
         margin: 7px 0;
         background-color: ${props => props.theme.richBlackDark};
         border-radius: 8px;
@@ -152,9 +142,6 @@ export const Fancy = styled.span`
     }
 `;
 
-export const GreenFancy = styled(Fancy)`
-    color: ${props => props.theme.lightGreen};
-`;
 
 export const PurpleFancy = styled(Fancy)`
     color: ${props => props.theme.lightPurple};
@@ -236,7 +223,7 @@ export const LabelText = styled.div`
 
 export const SelectField = styled.select`
     width: 100%;
-    border: 1px solid ${props => props.theme.mayaBlue};
+    border: 1px solid ${props => props.color};
     background-color: transparent;
     color: #fff;
     font-size: 18px;
@@ -259,7 +246,7 @@ export const SelectOption = styled.option`
 
 export const InputExercise = styled.input`
     width: 100%;
-    border: 1px solid ${props => props.theme.mayaBlue};
+    border: 1px solid ${props => props.color};
     background-color: transparent;
     color: #fff;
     font-size: 18px;
@@ -317,10 +304,6 @@ export const Submit = styled.div`
     cursor: pointer;
     user-select: none;
     width: 100%;
-`;
-
-export const SubmitGreen = styled(Submit)`
-    background-color: ${props => props.theme.lightGreen};
 `;
 
 export const SubmitOrange = styled(Submit)`

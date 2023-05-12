@@ -43,11 +43,11 @@ const StrengthStats = ({
 
             <Styled.TextContainer>
 
-                <Styled.HeadingBlue>
+                <Styled.Heading color={theme.mayaBlue}>
                     <Styled.Title>
-                        <Styled.Fancy>Visualize</Styled.Fancy>
+                        <Styled.Fancy color={theme.mayaBlue}>Visualize</Styled.Fancy>
                         your
-                        <Styled.Fancy>power</Styled.Fancy>
+                        <Styled.Fancy color={theme.mayaBlue}>power</Styled.Fancy>
                         increase
                     </Styled.Title>
 
@@ -57,7 +57,7 @@ const StrengthStats = ({
                             color={theme.richBlackDark}
                             weight="fill" />
                     </Styled.Icon>
-                </Styled.HeadingBlue>
+                </Styled.Heading>
 
                 {/*Input components that are activated on button click*/}
                 <ExerciseSelect />

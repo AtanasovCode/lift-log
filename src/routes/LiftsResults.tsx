@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, createContext } from "react";
+import useWindowSize from "../components/hooks/UseWindow";
 import { ThemeContext } from "styled-components";
 import styled from "styled-components";
 
@@ -9,16 +10,13 @@ import PieChartComponent from "../components/graphs/result-charts/PieChart";
 import Nav from "../components/navigation/Nav";
 import { getExerciseIcon } from "../components/GetIcon";
 
-interface ChartContextType {
-    COLORS: [string, string, string, string, string, string],
-    exercises: any[]
-}
-
 export const ChartContext = createContext({});
 
 const LiftsResults = () => {
 
     const theme = useContext(ThemeContext);
+
+    const size = useWindowSize();
 
     const COLORS: [string, string, string, string, string, string] = [
         '#810101', // Red
@@ -26,9 +24,35 @@ const LiftsResults = () => {
         '#260072', // Deep purple
         '#1f221f', // Dark green
         '#005e62', // Teal
-      ];
+        '#9b00a7' //Dark purple
+    ];
 
     const [exercises, setExercises] = useState([]);
+    const [chartHeight, setChartHeight] = useState<number>(400);
+
+    //Used to determine the font size of the axis tick and
+    //the width of the axis
+    const [AxisFontSize, setAxisFontSize] = useState(14);
+    const [AxisWidth, setAxisWidth] = useState(110);
+
+    //Used for the YAXIS for the horizontal bar chart
+    const [HAxisWidth, setHAxisWidth] = useState(110);
+
+    useEffect(() => {
+        let w = size.width;
+
+        if (w > 550) {
+            setAxisWidth(110);
+            setAxisFontSize(14);
+            setHAxisWidth(110);
+        }
+
+        if (w <= 550) {
+            setAxisWidth(20);
+            setAxisFontSize(11);
+            setHAxisWidth(60);
+        }
+    }, [size])
 
     useEffect(() => {
         let lifts = sessionStorage.getItem("lifts");
@@ -56,7 +80,16 @@ const LiftsResults = () => {
     }
 
     return (
-        <ChartContext.Provider value={{ COLORS, exercises, theme }}>
+        <ChartContext.Provider value={{
+            COLORS,
+            exercises,
+            chartHeight,
+            setChartHeight,
+            theme,
+            AxisFontSize,
+            AxisWidth,
+            HAxisWidth,
+        }}>
             <Container>
 
                 <Nav />
@@ -64,10 +97,14 @@ const LiftsResults = () => {
                 <LiftsContainer>
                     <LiftsIcons>
                         {exercises.map((lift) => {
+                            let iconSrc = getExerciseIcon(lift.name);
+                            console.log(iconSrc);
+                            console.log("Exercises: " + lift.name)
                             return (
                                 <LiftIconHeading
                                     key={lift.name}
-                                    src={getExerciseIcon(lift.name)}
+                                    src={iconSrc}
+                                    alt={lift.name}
                                 />
                             );
                         })}
@@ -114,10 +151,20 @@ const Container = styled.div`
     background-color: ${props => props.theme.darkYellow};
     display: flex;
     align-items: stretch;
-    justify-content: center;
+    justify-content: space-between;
     color: #fff;
-    padding: 0 40px 40px 40px;
+    padding: 25px 40px 40px 40px;
     margin-top: 125px;
+
+    @media (max-width: 1100px) {
+        padding: 25px 20px 40px 20px;
+    }
+
+    @media (max-width: 850px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 `;
 
 const LiftsContainer = styled.div`
@@ -126,21 +173,41 @@ const LiftsContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-right: 35px;
     color: #000;
-    border-radius: 16px;
+
+    @media (max-width: 850px) {
+        width: 100%;
+        margin-bottom: 45px;
+    }
+
+    @media (max-width: 550px) {
+        margin-bottom: 45px;
+    }
 `;
 
 const LiftsIcons = styled.div`
-    display: flex;
-    align-items: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     justify-content: center;
-    margin-bottom: 25px;
+    grid-gap: 15px;
 `;
 
 const LiftIconHeading = styled.img`
-    width: 70px;
-    margin: 0 15px;
+    width: 100%;
+    max-width: 60px;
+
+    @media (max-width: 1100px) {
+        max-width: 45px;
+    }
+
+    @media (max-width: 850px) {
+        max-width: 90px;
+    }
+
+    @media (max-width: 550px) {
+        max-width: 50px;
+    }
 `;
 
 const LiftTitle = styled.div`
@@ -148,13 +215,39 @@ const LiftTitle = styled.div`
     font-size: 34px;
     font-weight: 900;
     margin-bottom: 15px;
+    margin-top: 20px;
     font-family: 'Dosis', sans-serif;
+
+    @media (max-width: 1100px) {
+        font-size: 30px;
+    }
+
+    @media (max-width: 850px) {
+        font-size: 32px;
+    }
+
+    @media (max-width: 550px) {
+        font-size: 25px;
+    }
 `;
 
 const Lifts = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 35px;
+
+    @media (max-width: 1100px) {
+        grid-gap: 20px;
+    }
+
+    @media (max-width: 850px) {
+        grid-gap: 35px;
+    }
+
+    @media (max-width: 550px) {
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+    }
 `;
 
 const Lift = styled.div`
@@ -166,6 +259,14 @@ const Lift = styled.div`
 const LiftName = styled.div`
     font-size: 17px;
     font-weight: 600;
+
+    @media (max-width: 1100px) {
+        font-size: 15px;
+    }
+
+    @media (max-width: 850px) {
+        font-size: 17px;
+    }
 `;
 
 const LiftPR = styled.div`
@@ -173,6 +274,16 @@ const LiftPR = styled.div`
     font-size: 30px;
     font-family: 'Dosis', sans-serif;
     font-weight: 900;
+
+    @media (max-width: 1100px) {
+        font-size: 24px;
+        margin-left: 5px;
+    }
+
+    @media (max-width: 850px) {
+        font-size: 30px;
+        margin-left: 8px;
+    }
 `;
 
 const ChartContainer = styled.div`
@@ -180,4 +291,13 @@ const ChartContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 850px) {
+        width: 100%;
+    }
+
+    
+    .recharts-legend-item {   //This targets the legend items individually
+        margin: 5px;
+    }
 `;

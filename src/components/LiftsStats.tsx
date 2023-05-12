@@ -1,15 +1,18 @@
 import * as Styled from '../styles/Stats.Styled';
-import { 
-    HandFist, 
-    ListNumbers, 
+import {
+    HandFist,
+    ListNumbers,
     Barbell,
     ChartDonut,
+    ChartBar,
+    ChartBarHorizontal,
+    ChartPieSlice,
 } from '@phosphor-icons/react';
 import { theme } from '../styles/Theme';
 
 import { AppContext } from './context/AppContext';
 import { useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import ChartSelect from './ChartSelect';
 
@@ -23,22 +26,62 @@ const LiftsStats = () => {
     const {
         numberOfExercises, setNumberOfExercises,
         showMultipleExercises, setShowMultipleExercises,
+        exercisesData, setExercisesData,
         showCharts, setShowCharts,
         toggleCharts, toggleMultipleExercises,
     } = useContext(AppContext);
 
     const [numbers, setNumbers] = useState([2, 3, 4, 5, 6]);
+    const [chartType, setChartType] = useState("");
 
     const submitData = () => {
         let chart = sessionStorage.getItem("chartType");
         let numExercises = sessionStorage.getItem("numberOfExercises");
 
-        if(chart && numExercises) {
+        if (chart && numExercises) {
             navigate("/get-stats/lifts-stats");
         }
-
     }
 
+    const getChartIcon = (name: string, weight: string, color: string) => {
+        switch (name) {
+            case "Pie Chart": return (
+                <ChartPieSlice
+                    size="100%"
+                    color={color}
+                    weight={weight}
+                />
+            );
+            case "Donut Chart": return (
+                <ChartDonut
+                    size="100%"
+                    color={color}
+                    weight={weight}
+                />
+            );
+            case "Bar Chart": return (
+                <ChartBar
+                    size="100%"
+                    weight={weight}
+                    color={color}
+                />
+            );
+            case "H. Bar Chart": return (
+                <ChartBarHorizontal
+                    size="100%"
+                    weight={weight}
+                    color={color}
+                />
+            );
+            default: return (
+                <ChartBarHorizontal
+                    size="100%"
+                    weight={weight}
+                    color={color}
+                />
+            );
+        }
+    }
 
     return (
         <Styled.Container>
@@ -50,21 +93,21 @@ const LiftsStats = () => {
 
 
             {/*Components for selecting chart type, exercises...*/}
-            {showCharts && <ChartSelect />}
+            {showCharts && <ChartSelect setChartType={setChartType} getChartIcon={getChartIcon} />}
             {showMultipleExercises && <MultipleExerciseSelect />}
-           
+
 
 
             <Styled.TextContainer>
-                <Styled.HeadingGreen>
+                <Styled.Heading color={theme.darkYellow}>
                     <Styled.Title>
-                        <Styled.GreenFancy>
+                        <Styled.Fancy color={theme.darkYellow}>
                             Observe
-                        </Styled.GreenFancy>
+                        </Styled.Fancy>
                         your
-                        <Styled.GreenFancy>
+                        <Styled.Fancy color={theme.darkYellow}>
                             strongest
-                        </Styled.GreenFancy>
+                        </Styled.Fancy>
                         lifts
                     </Styled.Title>
                     <Styled.Icon>
@@ -74,7 +117,7 @@ const LiftsStats = () => {
                             weight="fill"
                         />
                     </Styled.Icon>
-                </Styled.HeadingGreen>
+                </Styled.Heading>
 
                 <Styled.InputContainer>
                     <Styled.Inputs>
@@ -87,11 +130,12 @@ const LiftsStats = () => {
                                     <ListNumbers
                                         size="100%"
                                         weight="light"
-                                        color={theme.lightGreen}
+                                        color={theme.darkYellow}
                                     />
                                 </Styled.LabelIcon>
                                 <Styled.SelectField
-                                    defaultValue="select"
+                                    defaultValue={2}
+                                    color={theme.darkYellow}
                                 >
                                     <Styled.SelectOption
                                         value="select"
@@ -99,20 +143,20 @@ const LiftsStats = () => {
                                     >
                                         Exercises to track
                                     </Styled.SelectOption>
-                                   {numbers.map((number) => {
-                                    return  (
-                                        <Styled.SelectOption 
-                                            value={number}
-                                            key={number}
-                                            onClick={() => {
-                                                setNumberOfExercises(number);
-                                                sessionStorage.setItem("numberOfExercises", numberOfExercises);
-                                            }}
-                                        >
-                                            {number} Exercises
-                                        </Styled.SelectOption>
-                                    );
-                                   })}
+                                    {numbers.map((number) => {
+                                        return (
+                                            <Styled.SelectOption
+                                                value={number}
+                                                key={number}
+                                                onClick={() => {
+                                                    setNumberOfExercises(number);
+                                                    sessionStorage.setItem("numberOfExercises", numberOfExercises);
+                                                }}
+                                            >
+                                                {number} Exercises
+                                            </Styled.SelectOption>
+                                        );
+                                    })}
                                 </Styled.SelectField>
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>
@@ -125,13 +169,14 @@ const LiftsStats = () => {
                                 <Styled.LabelIcon>
                                     <Barbell
                                         size="100%"
-                                        color={theme.lightGreen}
+                                        color={theme.darkYellow}
                                         weight="light"
                                     />
                                 </Styled.LabelIcon>
                                 <Styled.InputExercise
                                     type="button"
-                                    value="Select exercises"
+                                    value={exercisesData.length ? "Exercises Updated" : "Input Exercises"}
+                                    color={theme.darkYellow}
                                     onClick={toggleMultipleExercises}
                                 />
                             </Styled.InputFieldContainer>
@@ -143,22 +188,19 @@ const LiftsStats = () => {
                             </Styled.LabelText>
                             <Styled.InputFieldContainer>
                                 <Styled.LabelIcon>
-                                    <ChartDonut
-                                        size="100%"
-                                        color={theme.lightGreen}
-                                        weight="light"
-                                    />
+                                    {getChartIcon(chartType, "light", theme.darkYellow)}
                                 </Styled.LabelIcon>
-                                <Styled.InputExercise 
+                                <Styled.InputExercise
                                     type="button"
-                                    value="Select Chart"
+                                    value={chartType ? chartType : "Select Chart"}
+                                    color={theme.darkYellow}
                                     onClick={toggleCharts}
                                 />
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>
 
                         <Styled.Submit
-                            color={theme.lightGreen}
+                            color={theme.darkYellow}
                             onClick={submitData}
                         >
                             <Styled.SubmitIcon>

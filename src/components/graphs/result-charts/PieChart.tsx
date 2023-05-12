@@ -1,32 +1,39 @@
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
+import styled from "styled-components";
 import {
     ResponsiveContainer,
     PieChart,
     Pie,
     Cell,
-    XAxis,
-    YAxis,
     Tooltip,
+    Legend,
 } from "recharts";
 import { ChartContext } from "../../../routes/LiftsResults";
 import { CustomTooltip } from "../CustomTooltip";
+import { getExerciseIcon } from "../../GetIcon";
 
 const PieChartComponent = () => {
 
     const {
         exercises,
-        COLORS
+        COLORS,
+        chartHeight,
     } = useContext(ChartContext);
 
+    const customLabel = ({ value }) => {
+        return <text fill="#000">{value}</text>
+    }
+
     return (
-        <ResponsiveContainer width="99%" height={420}>
+        <ResponsiveContainer width="99%" height={chartHeight}>
             <PieChart>
                 <Pie
                     data={exercises}
-                    fill="#8884d8"
+                    fill="red"
                     paddingAngle={0}
                     dataKey="pr"
+                    label
                 >
                     {
                         exercises.map((entry, index) => (
@@ -38,6 +45,10 @@ const PieChartComponent = () => {
                         ))
                     }
                 </Pie>
+                <Legend
+                    wrapperStyle={{ fontSize: "12px", bottom: "-10px" }}
+                    iconType="circle"
+                />
                 <Tooltip content={
                     <CustomTooltip
                         chartType={sessionStorage.getItem("chartType")}
