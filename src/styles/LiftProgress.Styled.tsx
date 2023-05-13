@@ -1,20 +1,24 @@
 import styled from "styled-components";
+import bubbleSVG from '../assets/illustrations/bubble.svg';
 
 export const Container = styled.div`
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    position: relative;
     justify-content: space-between;
-    background-color: #000;
+    background-color: ${props => props.theme.richBlackDark};
     color: ${props => props.theme.defaultFontColor};
-    padding: 80px 100px;
+    padding: 50px 100px 190px 100px;
 
     @media (max-width: 1000px) {
         padding: 80px;
+        padding-bottom: 190px;
     }
     
     @media (max-width: 900px) {
         padding: 80px 20px;
+        padding-bottom: 190px;
     }
 
     @media (max-width: 700px) {
@@ -22,6 +26,10 @@ export const Container = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+
+    @media (max-width: 500px) {
+        padding-bottom: 120px;
     }
 `;
 
@@ -123,4 +131,16 @@ export const TooltipDot = styled.div`
     border-radius: 50%;
     opacity: .5;
     background-color: black;
+`;
+
+export const Bubble = styled.div`
+    height: 240px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -200px;
+    z-index: 15;
+    background-image: url(${bubbleSVG});
+    background-repeat: no-repeat;
+    background-size: cover;
 `;
