@@ -165,6 +165,10 @@ const Container = styled.div`
         align-items: center;
         justify-content: center;
     }
+
+    @media (max-width: 700px) {
+        margin-top: 80px;
+    }
 `;
 
 const LiftsContainer = styled.div`
@@ -202,7 +206,7 @@ const LiftIconHeading = styled.img`
     }
 
     @media (max-width: 850px) {
-        max-width: 90px;
+        max-width: 70px;
     }
 
     @media (max-width: 550px) {

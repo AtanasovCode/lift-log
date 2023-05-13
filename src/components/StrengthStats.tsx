@@ -60,9 +60,10 @@ const StrengthStats = ({
                 </Styled.Heading>
 
                 {/*Input components that are activated on button click*/}
-                <ExerciseSelect />
-                <CalendarInput />
-                {/*===================================================*/}
+                {showExercises && <ExerciseSelect />}
+                {showCalendar && <CalendarInput />}
+                {showExercises && <Styled.Tint />}
+                {showCalendar && <Styled.Tint />}
 
 
                 <Styled.InputContainer>
@@ -116,7 +117,7 @@ const StrengthStats = ({
                                 <ChartLine
                                     size="100%"
                                     color={theme.richBlackDark}
-                                    weight="light"
+                                    weight="duotone"
                                 />
                             </Styled.SubmitIcon>
                             Get Results

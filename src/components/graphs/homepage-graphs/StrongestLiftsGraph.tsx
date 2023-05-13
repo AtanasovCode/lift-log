@@ -113,7 +113,7 @@ const Container = styled.section`
     .recharts-legend-item {   //This targets the legend items individually
         margin: 5px;
     }
-
+    
     @media (max-width: 700px) {
         flex-direction: column;
     }

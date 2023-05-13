@@ -5,6 +5,7 @@ import image from '../assets/images/header-s.jpg';
 interface Props {
     active: boolean,
     color: string,
+    tint: boolean,
 }
 
 export const Container = styled.div`
@@ -20,6 +21,16 @@ export const Container = styled.div`
     @media (max-width: 700px) {
         flex-direction: column-reverse;
     }
+`;
+
+export const Tint = styled.div`
+    background-color: rgba(0, 0, 0, .8);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 6;
 `;
 
 export const ImageContainer = styled.div`

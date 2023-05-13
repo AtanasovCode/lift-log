@@ -52,7 +52,7 @@ const ChartSelect = ({ setChartType, getChartIcon }) => {
                     return (
                         <ChartOption key={chart} onClick={() => selectChart(chart)}>
                             <ChartIcon>
-                                {getChartIcon(chart, "fill", theme.lightGreen)}
+                                {getChartIcon(chart, "fill", theme.darkYellow)}
                             </ChartIcon>
                             <ChartName>{chart}</ChartName>
                         </ChartOption>
@@ -73,7 +73,9 @@ const Container = styled.div`
     justify-content: center;
     border-radius: 8px;
     padding: 35px;
-    background-color: ${props => props.theme.richBlack};
+    background-color: ${props => props.theme.richBlackDark};
+    border-radius: 15px;
+    border: 1px solid ${props => props.theme.darkYellow};
     position: fixed;
     width: 60vw;
     z-index: 10;
@@ -131,7 +133,7 @@ const ChartsContainer = styled.div`
 `;
 
 const ChartOption = styled.div`
-    border: 1px solid ${props => props.theme.lightGreen};
+    border: 1px solid ${props => props.theme.darkYellow};
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -141,8 +143,8 @@ const ChartOption = styled.div`
     user-select: none;
 
     &:hover {
-        background-color: #cccccc30;
         cursor: pointer;
+        background-color: #cccccc30;
     }
 `;
 

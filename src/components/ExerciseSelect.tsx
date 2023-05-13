@@ -137,31 +137,22 @@ const ExerciseSelect = () => {
 export default ExerciseSelect;
 
 export const DropdownWrapper = styled.div`
-  position: absolute;
   max-width: 650px;
   padding: 15px;
-  width: 0;
-  top: -300%;
-  z-index: 0;
-  opacity: 0;
+  position: fixed;
+  width: 60vw;
+  z-index: 10;
+  opacity: 1;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme.richBlack};
+  background-color: ${props => props.theme.richBlackDark};
   border: 1px solid ${props => props.theme.mayaBlueDark};
   border-radius: 8px;
-
-  //Exercise select is active:
-  ${props => props.active && `
-    position: fixed;
-    width: 60vw;
-    z-index: 10;
-    opacity: 1;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  `}
 
   @media (max-width: 700px) {
     width: 100%;
@@ -202,8 +193,8 @@ export const DropdownInput = styled.input`
   padding: 10px;
   border-radius: 8px;
   padding-left: 45px;
-  border: 1px solid ${props => props.theme.mayaBlueDark};
-  background-color: ${props => props.theme.richBlack};
+  border: 1px solid ${props => props.theme.mayaBlue};
+  background-color: ${props => props.theme.richBlackDark};
   color: #fff;
   font-size: 18px;
   &:focus {
@@ -233,8 +224,8 @@ const FilterTabs = styled.div`
 
 const Filter = styled.select`
   padding: 10px;
-  background-color: ${props => props.theme.richBlack};
-  border: 1px solid ${props => props.theme.mayaBlueDark};
+  background-color: ${props => props.theme.richBlackDark};
+  border: 1px solid ${props => props.theme.mayaBlue};
   border-radius: 8px;
   font-size: 15px;
   color: #ffffff80;
@@ -243,7 +234,7 @@ const Filter = styled.select`
 
 const FilterOption = styled.option`
   background-color: ${props => props.theme.richBlack};
-  border: 1px solid ${props => props.theme.mayaBlueDark};
+  border: 1px solid ${props => props.theme.mayaBlue};
 `;
 
 export const DropdownList = styled.div`
@@ -263,7 +254,7 @@ export const DropdownList = styled.div`
 export const DropdownItem = styled.div`
   padding: 10px;
   width: 100%;
-  border-bottom: 1px solid #cccccc50;
+  border-bottom: 1px solid ${props => props.theme.mayaBlue};
   background-color: transparent;
   font-size: 14px;
   cursor: pointer;

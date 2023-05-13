@@ -20,13 +20,14 @@ interface Exercise {
 
 interface Props {
     position: string,
+    isOpen: boolean,
 }
 
 const DropdownSelect = ({
     index,
     onExerciseDataUpdate,
     parentRef,
-    errorMessage,
+    mobileView,
 }) => {
 
     const {
@@ -56,6 +57,7 @@ const DropdownSelect = ({
     const handleExerciseChange = (name: string) => {
         setName(name);
         onExerciseDataUpdate(index, name, PR);
+        toggleDropdown();
     };
 
     const handlePrChange = (event: any) => {
@@ -67,7 +69,8 @@ const DropdownSelect = ({
         <Input>
             <Dropdown
                 ref={childRef}
-                onClick={toggleDropdown}
+                onClick={(mobileView && isOpen) ? console.log() : toggleDropdown}
+                isOpen={isOpen}
             >
                 {
                     isOpen != true && name != "" ?
@@ -78,7 +81,7 @@ const DropdownSelect = ({
                             {name}
                         </Heading>
                         :
-                        <SearchContainer>
+                        <SearchContainer isOpen={isOpen}>
                             <Search
                                 placeholder="Search exercises..."
                                 value={isOpen ? searchText : name}
@@ -126,8 +129,8 @@ const DropdownSelect = ({
             </Dropdown>
             <InputPR
                 type="text"
-                placeholder="Your RP"
-                value={PR != 0 ? PR : ""}
+                placeholder="Your PR"
+                value={isNaN(PR) || PR == 0 ? "" : PR}
                 onChange={handlePrChange}
             />
         </Input>
@@ -138,59 +141,64 @@ export default DropdownSelect;
 
 
 const Input = styled.div`
+    width: 100%;
     position: relative;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 10px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
 
     @media (max-width: 550px) {
         grid-template-columns: 1fr auto;
     }
 `;
 
-const Error = styled.div`
-    position: absolute;
-    bottom: -25px;
-`;
-
 const InputPR = styled.input`
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: ${props => props.theme.richBlack};
+    flex: 33%;
+    border: 1px solid ${props => props.theme.darkYellow};
+    padding: 15px;
+    background-color: ${props => props.theme.richBlackDark};
     color: #fff;
     border-bottom-right-radius: 12px;
     border-top-right-radius: 12px;
 
     @media (max-width: 550px) {
-        max-width: 80px;
+        flex: 35%;
     }
 `;
 
 
-const Dropdown = styled.div`
+const Dropdown = styled.div<Props>`
+    flex: 66%;
     min-width: 220px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
+    font-size: 17px;
+    margin-right: 8px;
+    border: 1px solid ${props => props.theme.darkYellow};
+    position: relative;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+
+    ${props => props.isOpen && `
+        border-radius: 0;
+    `}
 
     @media (max-width: 550px) {
-        min-width: auto;
+        flex: 65%;
     }
 `;
 
 const Heading = styled.div`
     width: 100%;
-    padding: 7px 15px;
+    padding: 15px;
     padding-left: 50px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border: 1px solid #ccc;
-    position: relative;
-    border-bottom-left-radius: 12px;
-    border-top-left-radius: 12px;
 
     @media (max-width: 550px) {
         font-size: 14px;
@@ -199,35 +207,50 @@ const Heading = styled.div`
 
 const SearchContainer = styled.div`
     width: 100%;
-    border: 1px solid #ccc;
-    border-bottom-left-radius: 12px;
-    border-top-left-radius: 12px;
+
+    ${props => props.isOpen && `
+        @media (max-width: 550px) {
+            height: 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid ${props.theme.darkYellow};
+        }
+    `}
 `;
 
 const Search = styled.input`
     width: 100%;
     padding: 7px 15px;
-    padding-left: 30px;
+    padding-left: 40px;
     border: none;
-    background-color: ${props => props.theme.richBlack};
+    background-color: ${props => props.theme.richBlackDark};
     color: darkgray;
     font-size: 16px;
     border-bottom-left-radius: 12px;
     border-top-left-radius: 12px;
+
+    @media (max-width: 550px) {
+        border-radius: none;
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 const SearchIcon = styled.div`
     position: absolute;
-    top: 7px;
-    left: 15px;
-    transform: translateX(-50%);
-    width: 20px;
+    top: 50%;
+    left: 2%;
+    transform: translateY(-50%);
+    width: 25px;
 `;
 
+//this is the selected exercise icon:
 const SearchExercise = styled.img`
     position: absolute;
-    top: 5px;
-    left: 15px;
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
     height: 25px;
     filter: invert(100%);
 
@@ -237,11 +260,11 @@ const SearchExercise = styled.img`
 `;
 
 const List = styled.div<Props>`
-    max-height: 200px;
+    max-height: 240px;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: ${props => props.theme.richBlack};
-    border: 1px solid #bbbbbb90;
+    background-color: ${props => props.theme.richBlackDark};
+    border: 1px solid ${props => props.theme.darkYellow};
     position: absolute;
     z-index: 15;
 
@@ -261,12 +284,13 @@ const List = styled.div<Props>`
 
     @media (max-width: 550px) {
         position: fixed;
-        top: 0;
+        top: 60px;
         left: 0;
         width: 100%;
         height: 100vh;
         z-index: 20;
         max-height: 100vh;
+        border: none;
     }
 `;
 
@@ -289,7 +313,7 @@ const Option = styled.div`
     align-items: center;
     justify-content: flex-start;
     padding: 10px;
-    border-bottom: 1px solid #cccccc50;
+    border-bottom: 1px solid ${props => props.theme.darkYellow};
     cursor: pointer;
 
     @media (max-width: 550px) {

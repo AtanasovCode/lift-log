@@ -1,5 +1,5 @@
 import { useContext, useState, useRef, useEffect } from "react";
-import { getExerciseIcon } from "./GetIcon";
+import useWindowSize from "./hooks/UseWindow";
 import styled from "styled-components";
 import { AppContext } from "./context/AppContext";
 import { Cpu, X } from "@phosphor-icons/react";
@@ -11,6 +11,7 @@ const MultipleExerciseSelect = () => {
 
     //Used for calculating height
     const parentRef = useRef<HTMLDivElement>(null);
+    const size = useWindowSize();
 
 
     const {
@@ -23,6 +24,7 @@ const MultipleExerciseSelect = () => {
     const [unit, setUnit] = useState<string>("kg");
     const [dropdownPosition, setDropdownPosition] = useState<string>("bottom");
     const [errorMessage, setErrorMessage] = useState(false);
+    const [mobileView, setMobileView] = useState(false);
 
     // Callback function to update exercisesData
     const handleExerciseDataUpdate = (index: number, name: string, pr: number) => {
@@ -30,6 +32,13 @@ const MultipleExerciseSelect = () => {
         updatedData[index] = { name, pr };
         setExercisesData(updatedData);
     };
+
+    useEffect(() => {
+        let w = size.width;
+
+        if(w <= 750) setMobileView(true);
+        if(w > 750) setMobileView(false);
+    }, [size])
 
 
     const returnInputs = () => {
@@ -41,6 +50,7 @@ const MultipleExerciseSelect = () => {
                     index={i}
                     onExerciseDataUpdate={handleExerciseDataUpdate}
                     parentRef={parentRef}
+                    mobileView={mobileView}
                 />
             ])
         }
@@ -60,7 +70,7 @@ const MultipleExerciseSelect = () => {
             sessionStorage.setItem("lifts", JSON.stringify(exercisesData));
             toggleMultipleExercises();
         } else {
-            setErrorMessage(!errorMessage);
+            setErrorMessage(true);
         }
     }
 
@@ -106,20 +116,22 @@ const MultipleExerciseSelect = () => {
 export default MultipleExerciseSelect;
 
 const Container = styled.div`
-    max-width: 650px;
+    max-width: 700px;
     position: fixed;
     width: 60%;
     top: 50%;        
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    background-color: ${props => props.theme.richBlack};
+    background-color: ${props => props.theme.richBlackDark};
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #fff;
-    padding: 35px;
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid ${props => props.theme.darkYellow};
 
 
 
@@ -129,10 +141,16 @@ const Container = styled.div`
         padding: 25px;
     }
 
-    @media (max-width: 700px) {
-        width: 100vw;
+    @media (max-width: 750px) {
+        max-width: 100%;
         height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        transform: translateX(0) translateY(0);
         padding: 20px;
+        border-radius: 0;
     }
 
     @media (max-width: 550px) {
@@ -194,7 +212,7 @@ const UnitOption = styled.option`
 const SubmitData = styled.input`
     min-width: 40%;
     border: none;
-    background-color: ${props => props.theme.lightGreen};
+    background-color: ${props => props.theme.darkYellow};
     color: #000;
     font-weight: 600;
     margin-top: 40px;
@@ -203,7 +221,6 @@ const SubmitData = styled.input`
     border-radius: 12px;
 
     &:hover {
-        background-color: ${props => props.theme.lighterGreen};
         cursor: pointer;
     }
 `;

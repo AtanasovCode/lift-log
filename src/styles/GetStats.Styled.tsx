@@ -52,7 +52,7 @@ export const Tab = styled.div`
 `;
 
 export const TabGreen = styled(Tab)`
-    background-color: ${props => props.active && props.theme.lightGreen};
+    background-color: ${props => props.active && props.theme.darkYellow};
 `;
 
 export const TabPurple = styled(Tab)`

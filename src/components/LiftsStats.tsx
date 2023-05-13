@@ -16,7 +16,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import ChartSelect from './ChartSelect';
 
-import illustration from '../assets/illustrations/group-green-bg.svg'
+import illustration from '../assets/illustrations/group-yellow-bg.svg'
 import MultipleExerciseSelect from './MultipleExerciseSelect';
 
 const LiftsStats = () => {
@@ -85,6 +85,8 @@ const LiftsStats = () => {
 
     return (
         <Styled.Container>
+            {showMultipleExercises && <Styled.Tint />}
+            {showCharts && <Styled.Tint />}
             <Styled.ImageContainer>
                 <Styled.Illustration
                     src={illustration}

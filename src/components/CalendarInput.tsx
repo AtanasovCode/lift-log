@@ -102,31 +102,26 @@ const CalendarInput = () => {
 export default CalendarInput;
 
 const Calendar = styled.div`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 15;
     padding: 25px;
-    border: 1px solid #ffffff50;
-    border-radius: 12px;
-    position: absolute;
-    top: -300%;
-    max-width: 650px;
+    background-color: ${props => props.theme.richBlackDark};
+    border: 1px solid ${props => props.theme.mayaBlue};
+    border-radius: 15px;
+    max-width: 700px;
     width: 70vw;
-    opacity: 0;
-    background-color: ${props => props.theme.richBlack};
-    z-index: -1;
-
-    //calendar is active 
-    ${props => props.active && `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        opacity: 1;
-        z-index: 10;
-    `}
 
     @media (max-width: 700px) {
         width: 100%;
         height: 100%;
         border-radius: 0;
+    }
+
+    @media (max-width: 550px) {
+        min-height: 100vh;
     }
 `;
 
@@ -172,11 +167,11 @@ const Months = styled.div`
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 750px) {
         grid-gap: 10px;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 550px) {
         grid-template-columns: repeat(3, 1fr);
     }
 `;
@@ -186,8 +181,8 @@ const Month = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 7px;
-    border: 1px solid ${props => props.theme.mayaBluePale};
+    border: 1px solid ${props => props.theme.mayaBlueDark};
+    border-radius: 8px;
     position: relative;
 `;
 
@@ -199,8 +194,6 @@ const MonthName = styled.div`
     color: #fff;
     width: 100%;
     text-align: center;
-    border-top-right-radius: 7px;
-    border-top-left-radius: 7px;
 
     @media (max-width: 500px) {
         font-size: 15px;
@@ -213,10 +206,7 @@ const MonthInput = styled.input`
     padding: 5px;
     padding-left: 12px;
     background-color: transparent;
-    border: 1px solid ${props => props.theme.mayaBluePale};
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-    border-top: none;
+    border: none;
     color: #ffffff;
     font-size: 16px;
 `;

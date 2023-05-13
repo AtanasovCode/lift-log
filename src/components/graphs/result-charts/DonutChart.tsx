@@ -35,7 +35,7 @@ const DonutChartComponent = () => {
         }
 
         if(w <= 425) {
-            setOuterRadius(105);
+            setOuterRadius(95);
             setInnerRadius(30)
         }
     }, [size])
