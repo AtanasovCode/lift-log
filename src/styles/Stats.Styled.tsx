@@ -330,3 +330,12 @@ export const SubmitIcon = styled.div`
     align-items: center;
     justify-content: center;
 `;
+
+
+export const ErrorMessage = styled.div`
+    font-size: 15px;
+    color: #fa2a2a;
+    font-weight: 300;
+    position: absolute;
+    bottom: -25px;
+`;

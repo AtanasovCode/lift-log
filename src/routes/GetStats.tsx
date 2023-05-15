@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import * as Styled from '../styles/GetStats.Styled';
 import { Outlet, useNavigate } from 'react-router-dom';
 
@@ -14,7 +14,11 @@ const GetStats = () => {
 
     const navigate = useNavigate();
 
-    const [activeTab, setActiveTab] = useState("strength");
+    const [defaultTab, setDefaultTab] = useState("strength");
+    const [activeTab, setActiveTab] = useState(
+        sessionStorage.getItem("activeTab") || defaultTab
+    );
+    const [errorActive, setErrorActive] = useState(false);
 
     const {
         userData, setUserData,
@@ -23,24 +27,13 @@ const GetStats = () => {
         toggleCalendar, toggleExercises,
     } = useContext(AppContext);
 
-    const handleChangeTab = (e) => {
+
+    useEffect(() => {
+        sessionStorage.setItem("activeTab", activeTab);
+    }, [activeTab])
+
+    const handleChangeTab = (e: any) => {
         setActiveTab(e.currentTarget.id);
-    }
-
-
-    //Checks to see if user has selected an exercise
-    //and has values for at least 3 lifts
-    //If true, the function navigates to the results page
-    const submitData = () => {
-        let lifts = 0;
-
-        userData.map((lift: any) => {
-            if (lift.weight > 0) lifts++;
-        })
-
-        if (lifts >= 3 && exerciseSelected != "Select an exercise") {
-            navigate("/get-stats/results");
-        }
     }
 
     //Return correct component based on the active tab
@@ -48,21 +41,16 @@ const GetStats = () => {
         if (activeTab == "strength") {
             return (
                 <StrengthStats
-                    submitData={submitData}
+                    errorActive={errorActive}
+                    setErrorActive={setErrorActive}
                 />
             );
         }
         if (activeTab == "lifts") {
             return (
-                <LiftsStats
-                    submitData={submitData}
-                />
-            );
-        }
-        if (activeTab == "consistency") {
-            return (
-                <Consistency
-                    submitData={submitData}
+                <LiftsStats 
+                    errorActive={errorActive}
+                    setErrorActive={setErrorActive}
                 />
             );
         }
@@ -90,13 +78,6 @@ const GetStats = () => {
                 >
                     Lifts
                 </Styled.TabGreen>
-                <Styled.TabPurple
-                    id="consistency"
-                    onClick={(e) => handleChangeTab(e)}
-                    active={activeTab == "consistency" ? true : false}
-                >
-                    Consistency
-                </Styled.TabPurple>
             </Styled.Tabs>
             {getActiveComponent()}
         </Styled.Container>

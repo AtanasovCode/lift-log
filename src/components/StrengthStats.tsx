@@ -13,7 +13,7 @@ import { AppContext } from './context/AppContext';
 import { useNavigate } from 'react-router-dom';
 
 const StrengthStats = ({
-    submitData,
+    errorActive, setErrorActive,
 }) => {
 
     const {
@@ -29,6 +29,24 @@ const StrengthStats = ({
     } = useContext(AppContext);
 
     const navigate = useNavigate();
+
+    //Checks to see if user has selected an exercise
+    //and has values for at least 3 lifts
+    //If true, the function navigates to the results page
+    const submitData = () => {
+        let lifts = 0;
+
+        userData.map((lift: any) => {
+            if (lift.weight > 0) lifts++;
+        })
+
+        if (lifts >= 3 && exerciseSelected != "Select an exercise") {
+            setErrorActive(false);
+            navigate("/get-stats/results");
+        } else {
+            setErrorActive(true);
+        }
+    }
 
 
     return (
@@ -121,6 +139,13 @@ const StrengthStats = ({
                                 />
                             </Styled.SubmitIcon>
                             Get Results
+
+                            {
+                                errorActive &&
+                                <Styled.ErrorMessage>
+                                    There is some data missing!
+                                </Styled.ErrorMessage>
+                            }
                         </Styled.Submit>
                     </Styled.Inputs>
 

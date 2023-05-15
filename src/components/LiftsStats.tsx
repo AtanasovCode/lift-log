@@ -19,7 +19,9 @@ import ChartSelect from './ChartSelect';
 import illustration from '../assets/illustrations/group-yellow-bg.svg'
 import MultipleExerciseSelect from './MultipleExerciseSelect';
 
-const LiftsStats = () => {
+const LiftsStats = ({
+    errorActive, setErrorActive,
+}) => {
 
     const navigate = useNavigate();
 
@@ -39,7 +41,10 @@ const LiftsStats = () => {
         let numExercises = sessionStorage.getItem("numberOfExercises");
 
         if (chart && numExercises) {
+            setErrorActive(false);
             navigate("/get-stats/lifts-stats");
+        } else {
+            setErrorActive(true);
         }
     }
 
@@ -213,6 +218,13 @@ const LiftsStats = () => {
                                 />
                             </Styled.SubmitIcon>
                             Get Results
+
+                            {
+                                errorActive &&
+                                <Styled.ErrorMessage>
+                                    There is some data missing!
+                                </Styled.ErrorMessage>
+                            }
                         </Styled.Submit>
 
                     </Styled.Inputs>

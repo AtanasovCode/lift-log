@@ -64,7 +64,6 @@ const MultipleExerciseSelect = () => {
 
         exercisesData.map((lift) => {
             lift.name != "" && lift.pr > 0 && lifts++;
-            console.log("Lifts: " + lifts + " " + "number of exercises: " + numberOfExercises);
         })
 
         if (lifts == numberOfExercises) {
