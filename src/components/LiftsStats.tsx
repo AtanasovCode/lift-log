@@ -152,7 +152,7 @@ const LiftsStats = () => {
                                                 key={number}
                                                 onClick={() => {
                                                     setNumberOfExercises(number);
-                                                    sessionStorage.setItem("numberOfExercises", numberOfExercises);
+                                                    sessionStorage.setItem("numberOfExercises", number);
                                                 }}
                                             >
                                                 {number} Exercises

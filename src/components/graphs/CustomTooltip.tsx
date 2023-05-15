@@ -8,7 +8,7 @@ export const CustomTooltip = ({ payload, active, chartType }) => {
 
         if (chartType === 'Donut Chart' || chartType == "Pie Chart") {
             return (
-                <TooltipContainer>
+                <TooltipContainer key={name}>
                     <TooltipExercise>
                         <TooltipIcon src={getExerciseIcon(name)} />
                         {name}:
@@ -19,7 +19,7 @@ export const CustomTooltip = ({ payload, active, chartType }) => {
         } else if (chartType === "Bar Chart" || chartType =="H. Bar Chart") {
             const { name, pr } = payload[0].payload;
             return (
-                <TooltipContainer>
+                <TooltipContainer key={name}>
                     <TooltipExercise>
                         <TooltipIcon src={getExerciseIcon(name)} />
                         {name}:

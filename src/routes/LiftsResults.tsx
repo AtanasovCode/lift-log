@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext, createContext } from "react";
 import useWindowSize from "../components/hooks/UseWindow";
+import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "styled-components";
 import styled from "styled-components";
 
@@ -15,7 +16,7 @@ export const ChartContext = createContext({});
 const LiftsResults = () => {
 
     const theme = useContext(ThemeContext);
-
+    const navigate = useNavigate();
     const size = useWindowSize();
 
     const COLORS: [string, string, string, string, string, string] = [
@@ -79,6 +80,14 @@ const LiftsResults = () => {
         }
     }
 
+    const handleRestartResults = () => {
+        sessionStorage.removeItem("numberOfExercises");
+        sessionStorage.removeItem("lifts");
+        sessionStorage.removeItem("chartType");
+
+        navigate("/get-stats", {replace: true});
+    }
+
     return (
         <ChartContext.Provider value={{
             COLORS,
@@ -95,20 +104,6 @@ const LiftsResults = () => {
                 <Nav />
 
                 <LiftsContainer>
-                    <LiftsIcons>
-                        {exercises.map((lift) => {
-                            let iconSrc = getExerciseIcon(lift.name);
-                            console.log(iconSrc);
-                            console.log("Exercises: " + lift.name)
-                            return (
-                                <LiftIconHeading
-                                    key={lift.name}
-                                    src={iconSrc}
-                                    alt={lift.name}
-                                />
-                            );
-                        })}
-                    </LiftsIcons>
                     <LiftTitle>
                         Your
                         strongest
@@ -130,6 +125,11 @@ const LiftsResults = () => {
                             })
                         }
                     </Lifts>
+                    <RestartButton 
+                        type="button"
+                        value="New Results"
+                        onClick={handleRestartResults}
+                    />
                 </LiftsContainer>
 
                 <ChartContainer>
@@ -155,6 +155,7 @@ const Container = styled.div`
     color: #fff;
     padding: 25px 40px 40px 40px;
     margin-top: 125px;
+    border-top-left-radius: 18%;
 
     @media (max-width: 1100px) {
         padding: 25px 20px 40px 20px;
@@ -164,6 +165,8 @@ const Container = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
     }
 
     @media (max-width: 700px) {
@@ -186,31 +189,6 @@ const LiftsContainer = styled.div`
 
     @media (max-width: 550px) {
         margin-bottom: 45px;
-    }
-`;
-
-const LiftsIcons = styled.div`
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    justify-content: center;
-    grid-gap: 15px;
-`;
-
-const LiftIconHeading = styled.img`
-    width: 100%;
-    max-width: 60px;
-
-    @media (max-width: 1100px) {
-        max-width: 45px;
-    }
-
-    @media (max-width: 850px) {
-        max-width: 70px;
-    }
-
-    @media (max-width: 550px) {
-        max-width: 50px;
     }
 `;
 
@@ -303,5 +281,27 @@ const ChartContainer = styled.div`
     
     .recharts-legend-item {   //This targets the legend items individually
         margin: 5px;
+    }
+`;
+
+
+const RestartButton = styled.input`
+    width: 60%;
+    text-align: center;
+    background-color: ${props => props.theme.richBlackDark};
+    color: ${props => props.theme.darkYellow};
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 40px;
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all .3s ease-in;
+
+    &:hover {
+        background-color: ${props => props.theme.darkYellow};
+        color: ${props => props.theme.richBlackDark};
+        border: 3px solid ${props => props.theme.richBlackDark};
     }
 `;

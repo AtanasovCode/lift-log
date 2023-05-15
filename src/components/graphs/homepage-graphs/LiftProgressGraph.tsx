@@ -77,7 +77,7 @@ const LiftProgressGraph = () => {
                     </TooltipHeading>
                     {payload.map((info) => {
                         return (
-                            <TooltipBody>
+                            <TooltipBody key={info.payload.Exercise}>
                                 <TooltipInfo>
                                     {info.payload.Exercise}:
                                 </TooltipInfo>

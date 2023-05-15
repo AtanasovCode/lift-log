@@ -86,11 +86,15 @@ export const AppProvider: React.FC = ({ children }) => {
     const [showMultipleExercises, setShowMultipleExercises] = useState<boolean>(false)
     const [showCharts, setShowCharts] = useState<boolean>(false);
     const [numberOfExercises, setNumberOfExercises] = useState(2);
+    sessionStorage.setItem("numberOfExercises", 2);
 
     const toggleCalendar = () => setShowCalendar(!showCalendar);
     const toggleExercises = () => setShowExercises(!showExercises);
     const toggleCharts = () => setShowCharts(!showCharts);
-    const toggleMultipleExercises = () => setShowMultipleExercises(!showMultipleExercises);
+    const toggleMultipleExercises = () => {
+        setShowMultipleExercises(!showMultipleExercises);
+        setExercisesData([]);
+    };
 
     //When the user clicks submit inside of the CalendarInput component
     const calendarSubmit = () => {
