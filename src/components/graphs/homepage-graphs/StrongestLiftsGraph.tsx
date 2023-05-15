@@ -58,7 +58,6 @@ const StrongestLiftsChart = () => {
 
     return (
         <Container>
-            <Wave />
             <Info>
                 <Title>
                     Track your strongest lifts!
@@ -106,7 +105,7 @@ const Container = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px 30px 30px;
+    padding: 30px;
     background-color: #FF950A;
     position: relative;
     color: #000;
@@ -192,28 +191,5 @@ const Icon = styled.img`
     @media (max-width: 700px) {
         width: 85px;
         height: 85px;
-    }
-`;
-
-const Wave = styled.div`
-    width: 100%;
-    height: 240px;
-    position: absolute;
-    top: -240px;
-    left: 0;
-    right: 0;
-
-    background-image: url(${wave});
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    @media (max-width: 700px) {
-        height: 150px;
-        top: -150px;
-    }
-
-    @media (max-width: 500px) {
-        height: 120px;
-        top: -120px;
     }
 `;

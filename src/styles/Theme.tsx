@@ -7,7 +7,7 @@ const theme = {
     logoFont: "'Keania One', cursive",
     defaultFont: "'Noto Sans', sans-serif",
   
-    richBlack: "hsl(209, 51%, 12%)",
+    richBlack: "#0f1f2e",
     darkBlue: "hsl(203, 94%, 12%)",
     darkPurple: "hsl(327, 89%, 24%)",
     lightGreen: "#73e77d",
@@ -19,10 +19,11 @@ const theme = {
     mayaBlueDark: "rgba(93, 189, 249, .3)",
     lightPurple: "#dd02b8",
     darkYellow: "#FF950A",
+    aquamarine: "#04F1AA",
   
     lighterGreen: "hsl(125, 88%, 79%)",
     darkGreen: "hsl(125, 100%, 32%)",
-    richBlackDark: "hsl(210, 53.84615384615385%, 5.098039215686274%)",
+    richBlackDark: "#060d14",
   
     barFill: "#000",
   };

@@ -69,7 +69,7 @@ const DropdownSelect = ({
         <Input>
             <Dropdown
                 ref={childRef}
-                onClick={(mobileView && isOpen) ? console.log() : toggleDropdown}
+                onClick={() => (mobileView && isOpen) ? console.log() : toggleDropdown}
                 isOpen={isOpen}
             >
                 {
