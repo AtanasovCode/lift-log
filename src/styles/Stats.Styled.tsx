@@ -2,10 +2,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import image from '../assets/images/header-s.jpg';
 
-interface Props {
+interface Props{
     active: boolean,
-    color: string,
     tint: boolean,
+}
+
+interface PropsHeading {
+    color: string,
 }
 
 export const Container = styled.div`
@@ -76,7 +79,7 @@ export const TextContainer = styled.div`
     }
 `;
 
-export const Heading = styled.div<Props>`
+export const Heading = styled.div<PropsHeading>`
     display: flex;
     align-items: center;
     justify-content: center;

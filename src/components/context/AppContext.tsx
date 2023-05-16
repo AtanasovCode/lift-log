@@ -20,7 +20,7 @@ interface AppContextProps {
 
     //State used in LiftsStats:
     exercisesData: {name: string, pr: number}[];
-    setExercisesData: React.Dispatch<React.SetStateAction<{name: string, pr: number}>>;
+    setExercisesData: React.Dispatch<React.SetStateAction<{name: string, pr: number}[]>>;
     showMultipleExercises: boolean;
     setShowMultipleExercises: React.Dispatch<React.SetStateAction<boolean>>;
     showCharts: boolean;
@@ -61,7 +61,7 @@ export const AppContext = createContext<AppContextProps>({
     calendarSubmit: () => { },
 });
 
-export const AppProvider: React.FC = ({ children }) => {
+export const AppProvider = ({ children }) => {
 
     const [userData, setUserData] = useState<{ month: string; weight: number }[]>([
         { month: 'Jan', weight: 0 },
@@ -77,7 +77,7 @@ export const AppProvider: React.FC = ({ children }) => {
         { month: 'Nov', weight: 0 },
         { month: 'Dec', weight: 0 },
     ]);
-    const [exercisesData, setExercisesData] = useState([]);
+    const [exercisesData, setExercisesData] = useState<{name: string, pr: number}[]>([]);
 
     const [exerciseSelected, setExerciseSelected] = useState<string>('Select an exercise');
     const [showCalendar, setShowCalendar] = useState<boolean>(false);
@@ -86,7 +86,7 @@ export const AppProvider: React.FC = ({ children }) => {
     const [showMultipleExercises, setShowMultipleExercises] = useState<boolean>(false)
     const [showCharts, setShowCharts] = useState<boolean>(false);
     const [numberOfExercises, setNumberOfExercises] = useState(2);
-    sessionStorage.setItem("numberOfExercises", 2);
+    sessionStorage.setItem("numberOfExercises", "2");
 
     const toggleCalendar = () => setShowCalendar(!showCalendar);
     const toggleExercises = () => setShowExercises(!showExercises);

@@ -12,10 +12,11 @@ import {
 } from "@phosphor-icons/react";
 
 interface Props {
-    active: boolean
+    setChartType: Function, 
+    getChartIcon: Function,
 }
 
-const ChartSelect = ({ setChartType, getChartIcon }) => {
+const ChartSelect = ({ setChartType, getChartIcon }: Props) => {
 
     const {
         toggleCharts,

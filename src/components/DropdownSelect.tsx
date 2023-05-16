@@ -19,8 +19,18 @@ interface Exercise {
 }
 
 interface Props {
-    position: string,
+    index: number,
+    onExerciseDataUpdate: Function,
+    parentRef: any,
+    mobileView: boolean,
+}
+
+interface StyledProps {
     isOpen: boolean,
+}
+
+interface PropsPosition {
+    position: string,
 }
 
 const DropdownSelect = ({
@@ -28,7 +38,7 @@ const DropdownSelect = ({
     onExerciseDataUpdate,
     parentRef,
     mobileView,
-}) => {
+}: Props) => {
 
     const {
         exercisesData,
@@ -168,7 +178,7 @@ const InputPR = styled.input`
 `;
 
 
-const Dropdown = styled.div<Props>`
+const Dropdown = styled.div<StyledProps>`
     flex: 66%;
     min-width: 220px;
     position: relative;
@@ -205,7 +215,7 @@ const Heading = styled.div`
     }
 `;
 
-const SearchContainer = styled.div`
+const SearchContainer = styled.div<StyledProps>`
     width: 100%;
 
     ${props => props.isOpen && `
@@ -259,7 +269,7 @@ const SearchExercise = styled.img`
     }
 `;
 
-const List = styled.div<Props>`
+const List = styled.div<PropsPosition>`
     max-height: 240px;
     overflow-y: auto;
     overflow-x: hidden;

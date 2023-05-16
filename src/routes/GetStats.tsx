@@ -7,7 +7,7 @@ import { AppContext } from '../components/context/AppContext';
 import Nav from '../components/navigation/Nav';
 import StrengthStats from '../components/StrengthStats';
 import LiftsStats from '../components/LiftsStats';
-import Consistency from '../components/Consistency';
+import { theme } from '../styles/Theme';
 
 
 const GetStats = () => {
@@ -65,18 +65,20 @@ const GetStats = () => {
             <Nav />
 
             <Styled.Tabs>
-                <Styled.TabGreen
+                <Styled.Tab
                     id="lifts"
                     onClick={(e) => handleChangeTab(e)}
                     active={activeTab == "lifts" ? true : false}
+                    color={theme.darkYellow}
                 >
                     Lifts
-                </Styled.TabGreen>
+                </Styled.Tab>
 
                 <Styled.Tab
                     id="strength"
                     onClick={(e) => handleChangeTab(e)}
                     active={activeTab == "strength" ? true : false}
+                    color={theme.mayaBlue}
                 >
                     Strength
                 </Styled.Tab>

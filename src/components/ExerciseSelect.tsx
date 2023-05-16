@@ -10,11 +10,9 @@ import { getExerciseIcon } from "./GetIcon";
 const ExerciseSelect = () => {
 
   const {
-    submitData,
     setExerciseSelected,
     showExercises,
     toggleExercises,
-    setExercise,
   } = useContext(AppContext);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,7 +20,7 @@ const ExerciseSelect = () => {
   const [filter, setFilter] = useState("any");
   const [bodyParts, setBodyParts] = useState(['Chest', 'Back', 'Biceps', 'Triceps', 'Shoulders', 'Legs'])
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: any) => {
     setSearchTerm(e.target.value);
   };
 
@@ -52,7 +50,7 @@ const ExerciseSelect = () => {
   }
 
   return (
-    <DropdownWrapper active={showExercises}>
+    <DropdownWrapper>
       <Close onClick={toggleExercises}>
         <X
           color="#ccc"

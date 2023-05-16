@@ -44,7 +44,7 @@ const CalendarInput = () => {
     }
 
     return (
-        <Calendar active={showCalendar}>
+        <Calendar>
             <Close onClick={toggleCalendar}>
                 <X 
                     size="100%"

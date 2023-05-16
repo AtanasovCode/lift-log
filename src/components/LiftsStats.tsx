@@ -7,6 +7,7 @@ import {
     ChartBar,
     ChartBarHorizontal,
     ChartPieSlice,
+    IconWeight,
 } from '@phosphor-icons/react';
 import { theme } from '../styles/Theme';
 
@@ -19,9 +20,20 @@ import ChartSelect from './ChartSelect';
 import illustration from '../assets/illustrations/group-yellow-bg.svg'
 import MultipleExerciseSelect from './MultipleExerciseSelect';
 
+interface Props {
+    errorActive: boolean,
+    setErrorActive: Function,
+}
+
+interface Exercises {
+    name: string,
+    pr: number,
+}
+
+
 const LiftsStats = ({
     errorActive, setErrorActive,
-}) => {
+}: Props) => {
 
     const navigate = useNavigate();
 
@@ -46,7 +58,8 @@ const LiftsStats = ({
 
         let chart = sessionStorage.getItem("chartType");
         let lifts = 0;
-        let exercises = JSON.parse(sessionStorage.getItem("lifts"));
+        let stringExercises = sessionStorage.getItem("lifts");
+        let exercises = JSON.parse(stringExercises);
 
         exercises && exercises.map((lift: any) => {
             if(lift.name && lift.pr) {
@@ -62,7 +75,9 @@ const LiftsStats = ({
         }
     }
 
-    const getChartIcon = (name: string, weight: string, color: string) => {
+    type IconWeight = 'light' | 'regular' | 'bold' | 'duotone' | 'fill';
+
+    const getChartIcon = (name: string, weight: IconWeight | undefined, color: string) => {
         switch (name) {
             case "Pie Chart": return (
                 <ChartPieSlice
@@ -171,7 +186,7 @@ const LiftsStats = ({
                                                 key={number}
                                                 onClick={() => {
                                                     setNumberOfExercises(number);
-                                                    sessionStorage.setItem("numberOfExercises", number);
+                                                    sessionStorage.setItem("numberOfExercises", number.toString());
                                                 }}
                                             >
                                                 {number} Exercises

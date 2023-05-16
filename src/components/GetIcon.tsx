@@ -25,7 +25,7 @@ import triExtension from '../assets/icons/tri-extension.svg';
 import deltFly from '../assets/icons/delt-fly.svg';
 
   //each exercise gets an icon
-  export const getExerciseIcon = (name: string) => {
+  export const getExerciseIcon = (name: string | null) => {
     switch (name) {
       case "Bench Press": return bench;
       case "Incline Press": return inclineBench;

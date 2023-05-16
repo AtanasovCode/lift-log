@@ -12,9 +12,14 @@ import { AppContext } from './context/AppContext';
 
 import { useNavigate } from 'react-router-dom';
 
+interface Props {
+    errorActive: boolean,
+    setErrorActive: Function,
+}
+
 const StrengthStats = ({
     errorActive, setErrorActive,
-}) => {
+}: Props) => {
 
     const {
         userData, setUserData,

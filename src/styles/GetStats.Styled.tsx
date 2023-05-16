@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 interface Props {
-    active: boolean
+    active: boolean,
+    color: string,
 }
 
 export const Container = styled.div`
@@ -24,7 +25,7 @@ export const Tabs = styled.div`
     }
 `;
 
-export const Tab = styled.div`
+export const Tab = styled.div<Props>`
     text-align: center;
     display: flex;
     align-items: center;
@@ -38,7 +39,7 @@ export const Tab = styled.div`
     user-select: none;
 
     //Tab is currently active:
-    background-color: ${props => props.active && props.theme.mayaBlue};
+    background-color: ${props => props.active && props.color};
     color: ${props => props.active && "#000"};
 
     @media (max-width: 900px) {
@@ -49,12 +50,4 @@ export const Tab = styled.div`
         margin: 0 10px;
         padding: 10px;
     }
-`;
-
-export const TabGreen = styled(Tab)`
-    background-color: ${props => props.active && props.theme.darkYellow};
-`;
-
-export const TabPurple = styled(Tab)`
-    background-color: ${props => props.active && props.theme.lightPurple};
 `;

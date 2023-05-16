@@ -13,6 +13,11 @@ import { getExerciseIcon } from "../components/GetIcon";
 
 export const ChartContext = createContext({});
 
+interface Lifts {
+    name: string,
+    pr: number,
+}
+
 const LiftsResults = () => {
 
     const theme = useContext(ThemeContext);
@@ -111,7 +116,7 @@ const LiftsResults = () => {
                     </LiftTitle>
                     <Lifts>
                         {
-                            exercises.map((lift) => {
+                            exercises.map((lift: Lifts) => {
                                 return (
                                     <Lift key={lift.name}>
                                         <LiftName>
