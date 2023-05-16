@@ -33,14 +33,28 @@ const LiftsStats = ({
         toggleCharts, toggleMultipleExercises,
     } = useContext(AppContext);
 
+    useEffect(() => {
+        console.log(exercisesData);
+    }, [exercisesData])
+
     const [numbers, setNumbers] = useState([2, 3, 4, 5, 6]);
     const [chartType, setChartType] = useState("");
 
-    const submitData = () => {
-        let chart = sessionStorage.getItem("chartType");
-        let numExercises = sessionStorage.getItem("numberOfExercises");
+    const submitData = (e: any) => {
 
-        if (chart && numExercises) {
+        e.preventDefault();
+
+        let chart = sessionStorage.getItem("chartType");
+        let lifts = 0;
+        let exercises = JSON.parse(sessionStorage.getItem("lifts"));
+
+        exercises && exercises.map((lift: any) => {
+            if(lift.name && lift.pr) {
+                lifts++;
+            }
+        })
+
+        if (chart && lifts == numberOfExercises) {
             setErrorActive(false);
             navigate("/get-stats/lifts-stats");
         } else {
@@ -182,7 +196,7 @@ const LiftsStats = ({
                                 </Styled.LabelIcon>
                                 <Styled.InputExercise
                                     type="button"
-                                    value={exercisesData.length ? "Exercises Updated" : "Input Exercises"}
+                                    value={sessionStorage.getItem("lifts") ? "Exercises Updated" : "Input Exercises"}
                                     color={theme.darkYellow}
                                     onClick={toggleMultipleExercises}
                                 />

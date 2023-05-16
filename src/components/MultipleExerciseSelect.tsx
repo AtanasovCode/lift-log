@@ -59,11 +59,12 @@ const MultipleExerciseSelect = () => {
     }
 
 
-    const submitData = () => {
+    const submitData = (e: any) => {
+
         let lifts = 0;
 
         exercisesData.map((lift) => {
-            lift.name != "" && lift.pr > 0 && lifts++;
+            if(lift.name && lift.pr > 0) lifts++;
         })
 
         if (lifts == numberOfExercises) {

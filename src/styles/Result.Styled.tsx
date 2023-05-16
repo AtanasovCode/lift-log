@@ -7,7 +7,7 @@ interface Props {
 
 export const Container = styled.div`
     min-height: 100vh;
-    padding: 80px 50px 50px 50px;
+    padding: 80px 70px 50px 70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,12 +42,13 @@ export const ChartContainer = styled.div`
 export const LiftInfo = styled.div`
     flex: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
     @media (max-width: 700px) {
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 60px;
     }
 `;
 
@@ -128,5 +129,25 @@ export const Tip = styled.div`
 
     @media (max-width: 700px) {
         transform: translateX(-300%);
+    }
+`;
+
+export const ResetButton = styled.input`
+    border-radius: 12px;
+    background-color: ${props => props.theme.richBlackDark};
+    color: ${props => props.theme.mayaBlue};
+    border: 2px solid ${props => props.theme.mayaBlue};
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    width: 40%;
+    margin-top: 30px;
+    transition: all .3s ease-in;
+
+    &:hover {
+        cursor: pointer;
+        background-color: ${props => props.theme.mayaBlue};
+        color: ${props => props.theme.richBlackDark};
     }
 `;

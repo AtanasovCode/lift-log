@@ -34,6 +34,7 @@ const GetStats = () => {
 
     const handleChangeTab = (e: any) => {
         setActiveTab(e.currentTarget.id);
+        setErrorActive(false);
     }
 
     //Return correct component based on the active tab
@@ -48,7 +49,7 @@ const GetStats = () => {
         }
         if (activeTab == "lifts") {
             return (
-                <LiftsStats 
+                <LiftsStats
                     errorActive={errorActive}
                     setErrorActive={setErrorActive}
                 />
@@ -64,13 +65,6 @@ const GetStats = () => {
             <Nav />
 
             <Styled.Tabs>
-                <Styled.Tab
-                    id="strength"
-                    onClick={(e) => handleChangeTab(e)}
-                    active={activeTab == "strength" ? true : false}
-                >
-                    Strength
-                </Styled.Tab>
                 <Styled.TabGreen
                     id="lifts"
                     onClick={(e) => handleChangeTab(e)}
@@ -78,6 +72,14 @@ const GetStats = () => {
                 >
                     Lifts
                 </Styled.TabGreen>
+
+                <Styled.Tab
+                    id="strength"
+                    onClick={(e) => handleChangeTab(e)}
+                    active={activeTab == "strength" ? true : false}
+                >
+                    Strength
+                </Styled.Tab>
             </Styled.Tabs>
             {getActiveComponent()}
         </Styled.Container>
