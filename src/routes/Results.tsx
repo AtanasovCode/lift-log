@@ -84,7 +84,8 @@ const Result = () => {
         let data = sessionStorage.getItem("userDataStrength");
         if (data != null) {
 
-            setCurrentData(JSON.parse(data));
+            let filteredData = JSON.parse(data).filter((lift) => lift.weight !== 0);
+            setCurrentData(filteredData);
 
             //Need to parse the data to be able to map it
             JSON.parse(data).map((lift: any, index: number) => {
@@ -197,7 +198,13 @@ const Result = () => {
         navigate("/get-stats");
     }
 
-    const CustomTooltip = ({payload, active, label}) => {
+    interface TooltipProps {
+        payload: any,
+        active: boolean,
+        label: string,
+    }
+
+    const CustomTooltip = ({payload, active, label}: TooltipProps) => {
         if(active) {
             let weight = payload[0].payload.weight;
             let month = payload[0].payload.month;
