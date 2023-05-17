@@ -73,7 +73,7 @@ const Result = () => {
 
 
         let strongest = 0;
-        let weakest = 0;
+        let weakest = 99999;
         let brokenPBs = 0;
 
         let firstLift = 0;
@@ -109,6 +109,7 @@ const Result = () => {
                 }
                 if (lift.weight != 0 && lift.weight < weakest) {
                     weakest = lift.weight;
+                    console.log(weakest);
                 }
             })
         }
@@ -118,6 +119,8 @@ const Result = () => {
 
         //Set the lowest value for the YAxis
         weakest >= 5 ? setYAxisLowestValue(weakest - 5) : setYAxisLowestValue(weakest);
+
+        console.log("lowest value: " + YAxisLowestValue + " Highest: " + YAxisHighestValue);
 
         //Get the improvement in percentage
         //Calculated based on the very first lift, and 

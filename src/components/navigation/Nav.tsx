@@ -3,7 +3,7 @@ import * as Styled from '../../styles/Nav.Styled';
 import { List } from '@phosphor-icons/react';
 import { useNavigate } from 'react-router-dom';
 
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.svg';
 
 const Nav = () => {
 

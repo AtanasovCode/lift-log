@@ -31,15 +31,11 @@ export const Nav = styled.nav`
 `;
 
 export const Logo = styled.img`
-    width: 80px;
+    height: 50px;
     cursor: pointer;
 
     @media (max-width: 700px) {
-        width: 70px;
-    }
-
-    @media (max-width: 500px) {
-        width: 50px;
+        height: 60px;
     }
 `;
 
