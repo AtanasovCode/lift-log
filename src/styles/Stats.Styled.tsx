@@ -225,10 +225,6 @@ export const LabelText = styled.div`
     font-size: 18px;
     color: #fff;
 
-    /* max-width: 180px;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; */
 
     @media (max-width: 550px) {
         font-size: 17px;
@@ -249,6 +245,7 @@ export const SelectField = styled.select`
     @media (max-width: 550px) {
         width: 100%;
         margin-top: 12px;
+        padding-left: 65px;
     }
 `;
 
@@ -273,6 +270,7 @@ export const InputExercise = styled.input`
     @media (max-width: 550px) {
         width: 100%;
         margin-top: 12px;
+        padding-left: 65px;
     }
 `;
 

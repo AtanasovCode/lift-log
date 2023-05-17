@@ -1,7 +1,4 @@
 import React, { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import bench from '../../assets/icons/bench.png';
 
 interface AppContextProps {
     //State used for StrengthStats
@@ -9,18 +6,20 @@ interface AppContextProps {
     setUserData: React.Dispatch<React.SetStateAction<{ month: string; weight: number }[]>>;
     exerciseSelected: string;
     setExerciseSelected: React.Dispatch<React.SetStateAction<string>>;
-    
+
     showCalendar: boolean;
     setShowCalendar: React.Dispatch<React.SetStateAction<boolean>>;
     calendarValue: string;
     calendarSubmit: () => void;
     setCalendarValue: React.Dispatch<React.SetStateAction<string>>;
+    calendarError: boolean;
+    setCalendarError: React.Dispatch<React.SetStateAction<boolean>>;
     showExercises: boolean;
     setShowExercises: React.Dispatch<React.SetStateAction<boolean>>;
 
     //State used in LiftsStats:
-    exercisesData: {name: string, pr: number}[];
-    setExercisesData: React.Dispatch<React.SetStateAction<{name: string, pr: number}[]>>;
+    exercisesData: { name: string, pr: number }[];
+    setExercisesData: React.Dispatch<React.SetStateAction<{ name: string, pr: number }[]>>;
     showMultipleExercises: boolean;
     setShowMultipleExercises: React.Dispatch<React.SetStateAction<boolean>>;
     showCharts: boolean;
@@ -46,6 +45,8 @@ export const AppContext = createContext<AppContextProps>({
     calendarValue: "Input your lifts",
     setCalendarValue: () => { },
     setShowCalendar: () => { },
+    calendarError: false,
+    setCalendarError: () => { },
     showExercises: false,
     setShowExercises: () => { },
     showMultipleExercises: false,
@@ -77,11 +78,12 @@ export const AppProvider = ({ children }) => {
         { month: 'Nov', weight: 0 },
         { month: 'Dec', weight: 0 },
     ]);
-    const [exercisesData, setExercisesData] = useState<{name: string, pr: number}[]>([]);
+    const [exercisesData, setExercisesData] = useState<{ name: string, pr: number }[]>([]);
 
     const [exerciseSelected, setExerciseSelected] = useState<string>('Select an exercise');
     const [showCalendar, setShowCalendar] = useState<boolean>(false);
-    const [calendarValue, setCalendarValue] = useState("Input your lifts")
+    const [calendarValue, setCalendarValue] = useState("Input your lifts");
+    const [calendarError, setCalendarError] = useState(false);
     const [showExercises, setShowExercises] = useState<boolean>(false);
     const [showMultipleExercises, setShowMultipleExercises] = useState<boolean>(false)
     const [showCharts, setShowCharts] = useState<boolean>(false);
@@ -96,14 +98,38 @@ export const AppProvider = ({ children }) => {
         setExercisesData([]);
     };
 
+    const activateErrorMessage = (lifts: number) => {
+        let error: boolean = false;
+
+        if (lifts < 3) {
+            error = true;
+        } else {
+            error = false;
+        }
+
+        return error;
+    }
+
     //When the user clicks submit inside of the CalendarInput component
     const calendarSubmit = () => {
-        //We need to stringify an array with objects to set it to session storage
-        sessionStorage.setItem("userDataStrength", JSON.stringify(userData));
 
+        let lifts = 0;
 
-        toggleCalendar();
-        setCalendarValue("Lifts Updated");
+        userData.map((data) => {
+            if (data.weight > 0) lifts++;
+        })
+
+        //Check to see if the user has provided data for atleast 3 input fields
+        if (activateErrorMessage(lifts) == false) {
+            //We need to stringify an array with objects to set it to session storage
+            sessionStorage.setItem("userDataStrength", JSON.stringify(userData));
+
+            toggleCalendar();
+            setCalendarError(false);
+            setCalendarValue("Lifts Updated");
+        } else {
+            setCalendarError(true);
+        }
     }
 
     const contextValue = {
@@ -118,6 +144,7 @@ export const AppProvider = ({ children }) => {
         calendarValue,
         setCalendarValue,
         showExercises,
+        calendarError,
         toggleMultipleExercises,
         setShowExercises,
         showCharts,

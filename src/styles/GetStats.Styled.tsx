@@ -19,7 +19,7 @@ export const Tabs = styled.div`
     justify-content: flex-start;
     padding: 0 50px;
 
-    @media (max-width: 550px) {
+    @media (max-width: 700px) {
         padding: 0 15px;
         justify-content: center;
     }
@@ -41,13 +41,4 @@ export const Tab = styled.div<Props>`
     //Tab is currently active:
     background-color: ${props => props.active && props.color};
     color: ${props => props.active && "#000"};
-
-    @media (max-width: 900px) {
-        font-size: 14px;
-    }
-
-    @media (max-width: 600px) {
-        margin: 0 10px;
-        padding: 10px;
-    }
 `;

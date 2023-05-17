@@ -151,3 +151,24 @@ export const ResetButton = styled.input`
         color: ${props => props.theme.richBlackDark};
     }
 `;
+
+export const Tooltip = styled.div`
+    background-color: ${props => props.theme.richBlackDark};
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const TooltipInfo = styled.div`
+    font-size: 16px;
+    margin-right: 7px;
+`;
+
+export const TooltipValue = styled.div`
+    font-family: 'Dosis', sans-serif;
+    color: ${props => props.theme.mayaBlue};
+    font-size: 20px;
+    font-weight: 900;
+`;

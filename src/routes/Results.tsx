@@ -197,6 +197,24 @@ const Result = () => {
         navigate("/get-stats");
     }
 
+    const CustomTooltip = ({payload, active, label}) => {
+        if(active) {
+            let weight = payload[0].payload.weight;
+            let month = payload[0].payload.month;
+
+            return (
+                <Styled.Tooltip>
+                    <Styled.TooltipInfo>
+                        {month}:
+                    </Styled.TooltipInfo>
+                    <Styled.TooltipValue>
+                        {weight}kg
+                    </Styled.TooltipValue>
+                </Styled.Tooltip>
+            );
+        }
+    }
+
     return (
         <Styled.Container>
             <Nav />
@@ -258,7 +276,7 @@ const Result = () => {
                             width={yAxisWidth}
                             tick={{ fontSize: `${axisFontSize}` }}
                         />
-                        <Tooltip />
+                        <Tooltip content={<CustomTooltip />} />
                     </LineChart>
                 </ResponsiveContainer>
             </Styled.ChartContainer>

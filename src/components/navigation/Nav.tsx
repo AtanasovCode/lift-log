@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Link from 'phosphor-react';
 import * as Styled from '../../styles/Nav.Styled';
 import { List } from '@phosphor-icons/react';
+import { useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.png';
 
@@ -15,22 +15,27 @@ const Nav = () => {
         //console.log("ACTIVE!");
     }
 
+    const navigate = useNavigate();
+
     return (
         <Styled.Nav>
-            <Styled.Logo src={logo} />
+            <Styled.Logo 
+                src={logo}
+                onClick={() => navigate("/")}
+            />
+
             <Styled.MenuIcon onClick={handleMobileNavShow} >
                 <List 
                     color="white"
                     size={38}
                 />
             </Styled.MenuIcon>
+
             <Styled.NavLinks active={active}>
                 <Styled.NavLink to="/">
                     Home
                 </Styled.NavLink>
-                <Styled.NavLink to="/about">
-                    About
-                </Styled.NavLink>
+
                 <Styled.SpecialLink to="/get-stats">
                     Try it!
                 </Styled.SpecialLink>

@@ -32,6 +32,7 @@ export const Nav = styled.nav`
 
 export const Logo = styled.img`
     width: 80px;
+    cursor: pointer;
 
     @media (max-width: 700px) {
         width: 70px;

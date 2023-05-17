@@ -13,7 +13,7 @@ const CalendarInput = () => {
     const {
         userData, setUserData,
         toggleCalendar, showCalendar,
-        calendarSubmit,
+        calendarSubmit, calendarError,
     } = useContext(AppContext);
 
 
@@ -29,24 +29,10 @@ const CalendarInput = () => {
         return;
     }
 
-    const activateErrorMessage = () => {
-        let lifts = 0;
-
-        userData.map((data) => {
-            if(data.weight > 0) lifts++;
-        })
-
-        if(lifts < 3) {
-            setActiveError(true);
-        }else {
-            setActiveError(false);
-        }
-    }
-
     return (
         <Calendar>
             <Close onClick={toggleCalendar}>
-                <X 
+                <X
                     size="100%"
                     color="#ccc"
                     weight="light"
@@ -84,17 +70,14 @@ const CalendarInput = () => {
                     })
                 }
             </Months>
-            {
-                activeError && 
-                <Error>
-                    You need to have at least 3 lifts!
-                </Error>
-            }
-            <Submit 
-                type="button" 
-                value="Submit Lifts" 
+            <Submit
+                type="button"
+                value="Submit Lifts"
                 onClick={calendarSubmit}
             />
+            {
+                calendarError && <ErrorMsg>Atleast 3 lifts needed</ErrorMsg>
+            }
         </Calendar>
     );
 };
@@ -242,7 +225,7 @@ const Submit = styled.input`
     }
 `;
 
-const Error = styled.div`
+const ErrorMsg = styled.div`
     font-size: 15px;
     color: #cf3838;
     text-align: center;
