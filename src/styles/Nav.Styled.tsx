@@ -122,6 +122,10 @@ export const MenuIcon = styled.div`
         right: 25px;
         cursor: pointer;
         z-index: 5;
+        width: 40px;
+    }
+
+    @media (max-width: 500px) {
         width: 30px;
     }
 `;

@@ -145,6 +145,10 @@ export const ResetButton = styled.input`
     margin-top: 30px;
     transition: all .3s ease-in;
 
+    @media (max-width: 450px) {
+        width: 70%;
+    }
+
     &:hover {
         cursor: pointer;
         background-color: ${props => props.theme.mayaBlue};

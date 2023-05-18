@@ -85,7 +85,7 @@ export const MainTitle = styled.div`
     }
 
     @media (max-width: 500px) {
-        font-size: 24px;
+        font-size: 22px;
         margin: 0 15px;
         margin-bottom: 30px;
     }

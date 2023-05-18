@@ -27,7 +27,8 @@ const Nav = () => {
             <Styled.MenuIcon onClick={handleMobileNavShow} >
                 <List 
                     color="white"
-                    size={38}
+                    size="100%"
+                    weight="regular"
                 />
             </Styled.MenuIcon>
 

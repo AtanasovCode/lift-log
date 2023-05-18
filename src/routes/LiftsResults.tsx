@@ -175,7 +175,7 @@ const Container = styled.div`
     }
 
     @media (max-width: 700px) {
-        margin-top: 80px;
+        margin-top: 120px;
     }
 `;
 

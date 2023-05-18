@@ -134,15 +134,25 @@ const Title = styled.div`
 `;
 
 const Description = styled.div`
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 10px;
     text-align: center;
+
+    @media (max-width: 550px) {
+        font-size: 16px;
+        padding: 0 30px;
+    }
 `;
 
 const Disclaimer = styled.div`
     font-size: 14px;
     color: darkgray;
     text-align: center;
+
+    @media (max-width: 550px) {
+        font-size: 13px;
+        padding: 0 30px;
+    }
 `;
 
 const Months = styled.div`

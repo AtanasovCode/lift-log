@@ -62,7 +62,7 @@ const LiftsStats = ({
         let exercises = JSON.parse(stringExercises);
 
         exercises && exercises.map((lift: any) => {
-            if(lift.name && lift.pr) {
+            if (lift.name && lift.pr) {
                 lifts++;
             }
         })
@@ -172,6 +172,10 @@ const LiftsStats = ({
                                 <Styled.SelectField
                                     defaultValue={2}
                                     color={theme.darkYellow}
+                                    onChange={(e) => {
+                                        setNumberOfExercises(e.currentTarget.value);
+                                        sessionStorage.setItem("numberOfExercises", e.currentTarget.value.toString());
+                                    }}
                                 >
                                     <Styled.SelectOption
                                         value="select"
@@ -184,10 +188,6 @@ const LiftsStats = ({
                                             <Styled.SelectOption
                                                 value={number}
                                                 key={number}
-                                                onClick={() => {
-                                                    setNumberOfExercises(number);
-                                                    sessionStorage.setItem("numberOfExercises", number.toString());
-                                                }}
                                             >
                                                 {number} Exercises
                                             </Styled.SelectOption>

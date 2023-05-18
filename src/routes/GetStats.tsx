@@ -14,7 +14,7 @@ const GetStats = () => {
 
     const navigate = useNavigate();
 
-    const [defaultTab, setDefaultTab] = useState("strength");
+    const [defaultTab, setDefaultTab] = useState("lifts");
     const [activeTab, setActiveTab] = useState(
         sessionStorage.getItem("activeTab") || defaultTab
     );

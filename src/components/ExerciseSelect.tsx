@@ -78,10 +78,12 @@ const ExerciseSelect = () => {
         </SearchIcon>
 
         <FilterTabs>
-          <Filter defaultValue="any">
+          <Filter 
+            defaultValue="any"
+            onChange={(e: any) => changeFilter(e.currentTarget.value)}
+          >
             <FilterOption
               value="any"
-              onClick={(e: any) => changeFilter(e.currentTarget.value)}
             >
               Any body part
             </FilterOption>
@@ -91,7 +93,6 @@ const ExerciseSelect = () => {
                   <FilterOption
                     value={x}
                     key={x}
-                    onClick={(e: any) => changeFilter(e.currentTarget.value)}
                   >
                     {x}
                   </FilterOption>
