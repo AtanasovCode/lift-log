@@ -9,7 +9,7 @@ const theme = {
   
     richBlack: "#0f1f2e",
     darkBlue: "hsl(203, 94%, 12%)",
-    darkPurple: "hsl(327, 89%, 24%)",
+    darkPurple: "#740743",
     lightGreen: "#73e77d",
     softOrange: "hsl(13, 77%, 52%)",
   
@@ -28,11 +28,11 @@ const theme = {
     barFill: "#000",
 
 
-    background: "",
-    primary: "",
-    secondary: "",
-    accent: "",
-    text: "",
+    background: "#0f1f2e",
+    primary: "#740743",
+    secondary: "#5dbdf92b",
+    accent: "#0085FF",
+    text: "#f5f1f1",
   };
 
   export { theme };

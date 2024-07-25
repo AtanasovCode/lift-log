@@ -32,7 +32,7 @@ const StrongestLiftsChart = () => {
     const theme = useContext(ThemeContext);
 
     //Pie Chart Colors
-    const colors = [`#810101`, `#5f4a4a`, `#260072`, `#1f221f`, `#005e62`];
+    const colors = [`#f84040`, `#bfdde3`, `#6316fd`, `#666c66`, `#ff00aa`, '#00f895dd'];
 
     // Define general type for useWindowSize hook, which includes width and height
     interface Size {
@@ -105,10 +105,12 @@ const Container = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px;
-    background-color: #FF950A;
+    padding: 2.5rem;
+    min-height: 90vh;
+    //background-color: #FF950A;
+    background-color: ${props => props.theme.mayaBluePale};
     position: relative;
-    color: #000;
+    color: ${props => props.theme.text};
 
     //targets the parent of the legend items -> .recharts-legend-wrapper 
 
@@ -182,6 +184,7 @@ const IconsSplit = styled(Icons)`
 const Icon = styled.img`
     width: 85px;
     height: 85px;
+    filter: invert(100%);
 
     @media (max-width: 900px) {
         width: 65px;

@@ -64,13 +64,13 @@ export const HeroInfoImage = styled.img`
     right: 0;
     width: 16%;
 
-    animation: lift 3.5s ease-in infinite;
+    animation: lift 3s ease-in infinite;
 
     @keyframes lift {
         0% {
             bottom: 0%;
         }
-        65% {
+        75% {
             bottom: 35%;
         }
 

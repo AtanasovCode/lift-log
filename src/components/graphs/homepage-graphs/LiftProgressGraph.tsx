@@ -102,8 +102,7 @@ const LiftProgressGraph = () => {
     return (
         <Container>
             <Info>
-                Visualize your strength increase
-                with <OrangeWord>ease</OrangeWord>
+                Visualize your strength increase with <Fancy>ease</Fancy>
             </Info>
             <Chart>
                 <ResponsiveContainer width={'99%'} height={chartHeight}>
@@ -153,14 +152,17 @@ export default LiftProgressGraph;
 import wave from '../../../assets/illustrations/wave.svg';
 
 export const Container = styled.div`
+    min-height: 60vh;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     position: relative;
     justify-content: space-between;
-    background-color: ${props => props.theme.richBlackDark};
+    background-color: ${props => props.theme.background};
     color: ${props => props.theme.defaultFontColor};
-    padding: 50px 100px;
+    padding: 2.5rem;
+    margin: 2rem 0; 
+    width: 100vw;
 
     @media (max-width: 1000px) {
         padding: 80px;
@@ -185,12 +187,11 @@ export const Container = styled.div`
 `;
 
 export const Info = styled.div`
-    flex: 100%;
-
-
-    font-size: 32px;
+    flex: 1;
+    font-size: 2rem;
     font-weight: 700;
     text-align: center;
+    max-width: 35%;
 
     @media (max-width: 900px) {
         font-size: 26px;
@@ -205,23 +206,22 @@ export const Info = styled.div`
 `;
 
 
-export const OrangeWord = styled.span`
-    color: ${props => props.theme.softOrange};
-    color: #000;
-    -webkit-text-stroke: 1px ${props => props.theme.softOrange};
-    padding-left: 5px;
-    font-size: 44px;
+export const Fancy = styled.span`
+    color: ${props => props.theme.accent};
+    color: ${props => props.theme.background};
+    -webkit-text-stroke: 1px ${props => props.theme.accent};
+    font-size: 2rem;
     transition: color .3s ease;
 
     &:hover {
-        color: ${props => props.theme.softOrange};
+        color: ${props => props.theme.accent};
         cursor: pointer;
     }
 `;
 
 
 export const Chart = styled.div`
-    flex: 100%;
+    width: 33vw;
     display: flex;
     align-items: center;
     justify-content: center;

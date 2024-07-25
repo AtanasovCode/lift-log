@@ -43,7 +43,7 @@ const Hero = () => {
 
             <Styled.HeroInfo>
                 <Styled.MainTitle animationEnd={animationEnd} ref={mainTitleRef}>
-                    Visualize your strenght and progress
+                    Visualize your strength and progress
                     <Styled.Fancy>
                         effectively
                     </Styled.Fancy>

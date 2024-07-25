@@ -10,10 +10,9 @@ export const GlobalStyle = createGlobalStyle`
     html,
     body {
         min-height: 100%;
-        max-width: 1440px;
         font-size: ${props => props.theme.defaultFontSize};
         font-family: ${props => props.theme.defaultFont};
-        background-color: ${props => props.theme.richBlackDark};
+        background-color: ${props => props.theme.background};
     }
 
     button,
