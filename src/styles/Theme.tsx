@@ -15,7 +15,7 @@ const theme = {
   
     magnolia: "hsl(273, 33%, 94%)",
     mayaBlue: "#5dbdf9",
-    mayaBluePale: "rgba(93, 189, 249, .17)",
+    mayaBluePale: "#5dbdf92b",
     mayaBlueDark: "rgba(93, 189, 249, .3)",
     lightPurple: "#dd02b8",
     darkYellow: "#FF950A",
@@ -26,6 +26,13 @@ const theme = {
     richBlackDark: "#060d14",
   
     barFill: "#000",
+
+
+    background: "",
+    primary: "",
+    secondary: "",
+    accent: "",
+    text: "",
   };
 
   export { theme };

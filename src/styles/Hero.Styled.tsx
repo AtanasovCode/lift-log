@@ -1,112 +1,118 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-
+import styled, { keyframes } from 'styled-components';
+import { Link } from 'react-router-dom';
 import header from '../assets/images/header.jpg';
 import headerMobile from '../assets/images/header-mobile.jpg';
 
-export const HeroSection = styled.div`
-    position: relative;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    overflow: hidden;
+const shake = keyframes`
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(5px); }
+    75% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+`;
 
-    background: linear-gradient(
-        to right,
-        ${props => props.theme.richBlackDark} 25%,
-        transparent
-    ), url(${header});
-
-    background-size: cover;
-    background-position: 50% 85%;
-    background-repeat: no-repeat;
-    overflow: hidden;
-
-    @media (max-width: 700px) {
-        display:flex;
-        align-items: center;
-        justfiy-content: center;
-        background: url(${headerMobile});
-        background-position: center;
+const lift = keyframes`
+    0% {
+        bottom: 0%;
+    }
+    70% {
+        bottom: 35%;
+    }
+    75% {
+        bottom: 35%;
+    }
+    100% {
+        bottom: 0%;
     }
 `;
 
-export const HeaderTint = styled.div`
-    @media (max-width: 700px) {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, .7);
-        z-index: 1;    
-    }
+export const HeroSection = styled.div`
+    background-color: ${props => props.theme.richBlack};
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const HeroImageContainer = styled.div`
+    width: 26vw;
+    height: 100vh;
+    background-color: ${props => props.theme.mayaBluePale};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+`;
+
+export const HeroImage = styled.img`
+    width: 75%;
 `;
 
 export const HeroInfo = styled.div`
-    max-width: 600px;
+    padding: 2rem;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    z-index: 2;
-    margin-left: 65px;
+`;
 
-    animation: fadeIn 1.2s 1;
+export const HeroInfoImage = styled.img`
+    position: absolute;
+    bottom: 4%;
+    right: 0;
+    width: 16%;
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-100%);
+    animation: lift 3.5s ease-in infinite;
+
+    @keyframes lift {
+        0% {
+            bottom: 0%;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        65% {
+            bottom: 35%;
         }
-    }
 
-    @media (max-width: 700px) {
-        margin-left: 0;
-        align-items: center;
-        text-align: center;
+        100% {
+            bottom: 0%;
+        }
     }
 `;
 
 export const MainTitle = styled.div`
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 42px;
+    font-weight: 900;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 1.5rem;
+    max-width: 70%;
+    text-align: center;
 
-    @media (max-width: 700px) {
-        font-size: 30px;
-        margin: 0 20px;
-        margin-bottom: 30px;
-    }
+    animation: ${({ animationEnd }) => animationEnd ? shake : 'none'} 0.5s;
 
-    @media (max-width: 500px) {
-        font-size: 22px;
-        margin: 0 15px;
-        margin-bottom: 30px;
+    &.shake {
+        animation: ${shake} 0.5s;
     }
 `;
 
 export const Fancy = styled.span`
-    color: ${props => props.theme.lightGreen};
+    color: #0085FF;
     padding-left: 7px;
+    font-family: ${props => props.theme.logoFont};
 `;
 
 export const HeroButton = styled(Link)`
-    background-color: ${props => props.theme.lightGreen};
-    color: #000;
+    background-color: ${props => props.theme.mayaBluePale};
+    color: #fff;
     padding: 10px 65px;
     text-align: center;
     border-radius: 15px;
     font-size: 16px;
     font-weight: 500;
+    width: 40%;
 
     &:hover {
-        background-color: ${props => props.theme.darkGreen};
+        background-color: ${props => props.theme.mayaBlueDark};
         animation: excited .3s 1;
     }
 
