@@ -11,8 +11,8 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${props => props.theme.richBlackDark};
-    color: #fff;
+    background-color: ${props => props.theme.background};
+    color: ${props => props.theme.text};
 
     @media (max-width: 820px) {
         padding: 50px 20px 25px 20px;
@@ -72,7 +72,6 @@ export const LiftIcon = styled.img`
 export const LiftName = styled.div`
     font-size: 24px;
     font-weight: 600;
-    color: #fff;
     margin-bottom: 15px;
     display: flex;
     align-items: center;
@@ -114,13 +113,13 @@ export const LiftDesc = styled.div`
 
 export const Percent = styled.div<Props>`
     color: ${props => props.positive ? "lime" : "red"};
-    margin-left: 7px;
+    margin-left: .5rem;
 `;
 
 export const Tip = styled.div`
     position: absolute;
-    bottom: 25px;
-    font-size: 15px;
+    bottom: 1.5rem;
+    font-size: 1rem;
     color: darkgray;
     opacity: .6;
     display: flex;
@@ -134,16 +133,14 @@ export const Tip = styled.div`
 
 export const ResetButton = styled.input`
     border-radius: 12px;
-    background-color: ${props => props.theme.richBlackDark};
-    color: ${props => props.theme.mayaBlue};
-    border: 2px solid ${props => props.theme.mayaBlue};
-    font-size: 16px;
+    background-color: ${props => props.theme.secondary};
+    border: none;
+    color: ${props => props.theme.text};
     font-weight: 600;
     text-align: center;
     padding: 10px;
     width: 40%;
-    margin-top: 30px;
-    transition: all .3s ease-in;
+    margin-top: 2rem;
 
     @media (max-width: 450px) {
         width: 70%;
@@ -151,8 +148,6 @@ export const ResetButton = styled.input`
 
     &:hover {
         cursor: pointer;
-        background-color: ${props => props.theme.mayaBlue};
-        color: ${props => props.theme.richBlackDark};
     }
 `;
 

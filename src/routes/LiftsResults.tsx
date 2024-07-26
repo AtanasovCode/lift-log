@@ -25,12 +25,12 @@ const LiftsResults = () => {
     const size = useWindowSize();
 
     const COLORS: [string, string, string, string, string, string] = [
-        '#810101', // Red
-        '#4e3939', // Brownish-grey
-        '#260072', // Deep purple
-        '#1f221f', // Dark green
-        '#005e62', // Teal
-        '#9b00a7' //Dark purple
+        '#e9a424', // Red
+        '#e53b6b', // Brownish-grey
+        '#f83bdf', // Deep purple
+        '#616561', // Dark green
+        '#08f7af', // Teal
+        '#7c7afa' //Dark purple
     ];
 
     const [exercises, setExercises] = useState([]);
@@ -153,12 +153,12 @@ export default LiftsResults;
 
 const Container = styled.div`
     min-height: calc(100vh - 125px);
-    background-color: ${props => props.theme.darkYellow};
+    background-color: ${props => props.theme.background};
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    color: #fff;
-    padding: 25px 40px 40px 40px;
+    color: ${props => props.theme.text};
+    padding: 1.5rem 2rem;
     margin-top: 125px;
     border-top-left-radius: 18%;
 
@@ -185,7 +185,6 @@ const LiftsContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #000;
 
     @media (max-width: 850px) {
         width: 100%;
@@ -221,19 +220,19 @@ const LiftTitle = styled.div`
 const Lifts = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 35px;
+    grid-gap: 2rem;
 
     @media (max-width: 1100px) {
-        grid-gap: 20px;
+        grid-gap: 1.5rem;
     }
 
     @media (max-width: 850px) {
-        grid-gap: 35px;
+        grid-gap: 2rem;
     }
 
     @media (max-width: 550px) {
         grid-template-columns: 1fr;
-        grid-gap: 20px;
+        grid-gap: 1.3rem;
     }
 `;
 
@@ -293,8 +292,8 @@ const ChartContainer = styled.div`
 const RestartButton = styled.input`
     width: 60%;
     text-align: center;
-    background-color: ${props => props.theme.richBlackDark};
-    color: ${props => props.theme.darkYellow};
+    background-color: ${props => props.theme.secondary};
+    color: ${props => props.theme.text};
     border: none;
     font-size: 16px;
     font-weight: 600;
@@ -305,8 +304,6 @@ const RestartButton = styled.input`
     transition: all .3s ease-in;
 
     &:hover {
-        background-color: ${props => props.theme.darkYellow};
-        color: ${props => props.theme.richBlackDark};
-        border: 3px solid ${props => props.theme.richBlackDark};
+        cursor: pointer;
     }
 `;
