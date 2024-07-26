@@ -53,7 +53,7 @@ const ChartSelect = ({ setChartType, getChartIcon }: Props) => {
                     return (
                         <ChartOption key={chart} onClick={() => selectChart(chart)}>
                             <ChartIcon>
-                                {getChartIcon(chart, "fill", theme.darkYellow)}
+                                {getChartIcon(chart, "fill", theme.accent)}
                             </ChartIcon>
                             <ChartName>{chart}</ChartName>
                         </ChartOption>
@@ -74,9 +74,9 @@ const Container = styled.div`
     justify-content: center;
     border-radius: 8px;
     padding: 35px;
-    background-color: ${props => props.theme.richBlackDark};
+    background-color: ${props => props.theme.background};
     border-radius: 15px;
-    border: 1px solid ${props => props.theme.darkYellow};
+    border: 1px solid ${props => props.theme.accent};
     position: fixed;
     width: 60vw;
     z-index: 10;
@@ -134,7 +134,7 @@ const ChartsContainer = styled.div`
 `;
 
 const ChartOption = styled.div`
-    border: 1px solid ${props => props.theme.darkYellow};
+    border: 1px solid ${props => props.theme.accent};
     display: flex;
     align-items: center;
     justify-content: space-evenly;

@@ -90,10 +90,6 @@ const MultipleExerciseSelect = () => {
                 </Title>
                 <Subtitle>
                     Enter your personal record (PR) for each lift in
-                    <InputUnit defaultValue={unit}>
-                        <UnitOption value="kg">kg</UnitOption>
-                        <UnitOption value="lbs">lbs</UnitOption>
-                    </InputUnit>
                 </Subtitle>
             </Heading>
 
@@ -117,13 +113,12 @@ const MultipleExerciseSelect = () => {
 export default MultipleExerciseSelect;
 
 const Container = styled.div`
-    max-width: 700px;
     position: fixed;
     width: 60%;
     top: 50%;        
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    background-color: ${props => props.theme.richBlackDark};
+    background-color: ${props => props.theme.background};
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -132,7 +127,7 @@ const Container = styled.div`
     color: #fff;
     padding: 40px;
     border-radius: 15px;
-    border: 1px solid ${props => props.theme.darkYellow};
+    border: 1px solid ${props => props.theme.accent};
 
 
 
@@ -143,19 +138,19 @@ const Container = styled.div`
     }
 
     @media (max-width: 750px) {
-        max-width: 100%;
+        max-width: 100vw;
         height: 100%;
         top: 0;
         left: 0;
         right: 0;
-        width: 100%;
+        width: 100vw;
         transform: translateX(0) translateY(0);
-        padding: 20px;
+        padding: 1.5rem;
         border-radius: 0;
     }
 
     @media (max-width: 550px) {
-        padding: 15px;
+        padding: 1rem;
     }
 `;
 
@@ -213,7 +208,7 @@ const UnitOption = styled.option`
 const SubmitData = styled.input`
     min-width: 40%;
     border: none;
-    background-color: ${props => props.theme.darkYellow};
+    background-color: ${props => props.theme.accent};
     color: #000;
     font-weight: 600;
     margin-top: 40px;

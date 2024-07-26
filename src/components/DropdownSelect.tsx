@@ -165,9 +165,9 @@ const Input = styled.div`
 
 const InputPR = styled.input`
     flex: 33%;
-    border: 1px solid ${props => props.theme.darkYellow};
+    border: 1px solid ${props => props.theme.accent};
     padding: 15px;
-    background-color: ${props => props.theme.richBlackDark};
+    background-color: ${props => props.theme.background};
     color: #fff;
     border-bottom-right-radius: 12px;
     border-top-right-radius: 12px;
@@ -188,7 +188,7 @@ const Dropdown = styled.div<StyledProps>`
     cursor: pointer;
     font-size: 17px;
     margin-right: 8px;
-    border: 1px solid ${props => props.theme.darkYellow};
+    border: 1px solid ${props => props.theme.accent};
     position: relative;
     border-bottom-left-radius: 12px;
     border-top-left-radius: 12px;
@@ -224,7 +224,7 @@ const SearchContainer = styled.div<StyledProps>`
             position: fixed;
             top: 0;
             left: 0;
-            border-bottom: 1px solid ${props.theme.darkYellow};
+            border-bottom: 1px solid ${props.theme.accent};
         }
     `}
 `;
@@ -234,7 +234,7 @@ const Search = styled.input`
     padding: 7px 15px;
     padding-left: 40px;
     border: none;
-    background-color: ${props => props.theme.richBlackDark};
+    background-color: ${props => props.theme.background};
     color: darkgray;
     font-size: 16px;
     border-bottom-left-radius: 12px;
@@ -273,8 +273,8 @@ const List = styled.div<PropsPosition>`
     max-height: 240px;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: ${props => props.theme.richBlackDark};
-    border: 1px solid ${props => props.theme.darkYellow};
+    background-color: ${props => props.theme.background};
+    border: 1px solid ${props => props.theme.accent};
     position: absolute;
     z-index: 15;
 
@@ -323,7 +323,7 @@ const Option = styled.div`
     align-items: center;
     justify-content: flex-start;
     padding: 10px;
-    border-bottom: 1px solid ${props => props.theme.darkYellow};
+    border-bottom: 1px solid ${props => props.theme.accent};
     cursor: pointer;
 
     @media (max-width: 550px) {
