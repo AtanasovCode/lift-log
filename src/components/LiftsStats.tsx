@@ -17,7 +17,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import ChartSelect from './ChartSelect';
 
-import illustration from '../assets/illustrations/group-yellow-bg.svg'
+import illustration from '../assets/illustrations/illustration-lifts.svg'
 import MultipleExerciseSelect from './MultipleExerciseSelect';
 
 interface Props {

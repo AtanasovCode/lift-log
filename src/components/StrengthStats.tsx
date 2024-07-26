@@ -6,7 +6,7 @@ import { theme } from '../styles/Theme';
 import CalendarInput from './CalendarInput';
 import ExerciseSelect from './ExerciseSelect';
 
-import illustration from '../assets/illustrations/group-bg.svg';
+import illustration from '../assets/illustrations/illustration-strength.svg';
 
 import { AppContext } from './context/AppContext';
 
