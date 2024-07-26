@@ -69,7 +69,7 @@ const GetStats = () => {
                     id="lifts"
                     onClick={(e) => handleChangeTab(e)}
                     active={activeTab == "lifts" ? true : false}
-                    color={theme.darkYellow}
+                    color={theme.accent}
                 >
                     Lifts
                 </Styled.Tab>

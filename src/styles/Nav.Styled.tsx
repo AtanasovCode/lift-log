@@ -23,7 +23,7 @@ export const Nav = styled.nav`
     @media (max-width: 700px) {
         align-items: center;
         justify-content: center;
-        background-color: ${props => props.theme.richBlackDark};
+        background-color: ${props => props.theme.background};
         position: fixed;
         z-index: 10;
         padding: 20px;

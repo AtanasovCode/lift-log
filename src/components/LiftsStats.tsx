@@ -135,20 +135,20 @@ const LiftsStats = ({
 
 
             <Styled.TextContainer>
-                <Styled.Heading color={theme.darkYellow}>
+                <Styled.Heading color={theme.accent}>
                     <Styled.Title>
-                        <Styled.Fancy color={theme.darkYellow}>
+                        <Styled.Fancy color={theme.accent}>
                             Observe
                         </Styled.Fancy>
                         your
-                        <Styled.Fancy color={theme.darkYellow}>
+                        <Styled.Fancy color={theme.accent}>
                             strongest
                         </Styled.Fancy>
                         lifts
                     </Styled.Title>
                     <Styled.Icon>
                         <HandFist
-                            color={theme.richBlackDark}
+                            color={theme.background}
                             size="100%"
                             weight="fill"
                         />
@@ -166,12 +166,12 @@ const LiftsStats = ({
                                     <ListNumbers
                                         size="100%"
                                         weight="light"
-                                        color={theme.darkYellow}
+                                        color={theme.accent}
                                     />
                                 </Styled.LabelIcon>
                                 <Styled.SelectField
                                     defaultValue={2}
-                                    color={theme.darkYellow}
+                                    color={theme.accent}
                                     onChange={(e) => {
                                         setNumberOfExercises(e.currentTarget.value);
                                         sessionStorage.setItem("numberOfExercises", e.currentTarget.value.toString());
@@ -205,14 +205,14 @@ const LiftsStats = ({
                                 <Styled.LabelIcon>
                                     <Barbell
                                         size="100%"
-                                        color={theme.darkYellow}
+                                        color={theme.accent}
                                         weight="light"
                                     />
                                 </Styled.LabelIcon>
                                 <Styled.InputExercise
                                     type="button"
                                     value={sessionStorage.getItem("lifts") ? "Exercises Updated" : "Input Exercises"}
-                                    color={theme.darkYellow}
+                                    color={theme.accent}
                                     onClick={toggleMultipleExercises}
                                 />
                             </Styled.InputFieldContainer>
@@ -224,19 +224,19 @@ const LiftsStats = ({
                             </Styled.LabelText>
                             <Styled.InputFieldContainer>
                                 <Styled.LabelIcon>
-                                    {getChartIcon(chartType, "light", theme.darkYellow)}
+                                    {getChartIcon(chartType, "light", theme.accent)}
                                 </Styled.LabelIcon>
                                 <Styled.InputExercise
                                     type="button"
                                     value={chartType ? chartType : "Select Chart"}
-                                    color={theme.darkYellow}
+                                    color={theme.accent}
                                     onClick={toggleCharts}
                                 />
                             </Styled.InputFieldContainer>
                         </Styled.LabelContainer>
 
                         <Styled.Submit
-                            color={theme.darkYellow}
+                            color={theme.accent}
                             onClick={submitData}
                         >
                             <Styled.SubmitIcon>

@@ -18,7 +18,7 @@ export const Container = styled.div`
     justify-content: center;
     margin-top: 30px;
     color: #fff;
-    background-color: ${props => props.theme.richBlackDark};
+    background-color: ${props => props.theme.background};
     padding-bottom: 25px;
 
     @media (max-width: 700px) {
@@ -67,7 +67,6 @@ export const TextContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: ${props => props.theme.richBlackDark};
     padding: 0px 50px;
 
     @media (max-width: 700px) {
@@ -85,7 +84,6 @@ export const Heading = styled.div<PropsHeading>`
     justify-content: center;
     position: relative;
     border-radius: 15px;
-    background-color: ${props => props.theme.richBlackDark};
 
     @keyframes slideIn {
         from {
@@ -111,12 +109,6 @@ export const Heading = styled.div<PropsHeading>`
         border-bottom-right-radius: 0;
         background-color: ${props => props.color};
         padding: 25px 0;
-    }
-`;
-
-export const HeadingOrange = styled(Heading)`
-    @media (max-width: 700px) {
-        background-color: ${props => props.theme.lightPurple};
     }
 `;
 
@@ -150,15 +142,10 @@ export const Fancy = styled.span`
     @media (max-width: 700px) {
         color: ${props => props.color};
         margin: 7px 0;
-        background-color: ${props => props.theme.richBlackDark};
+        background-color: ${props => props.theme.background};
         border-radius: 8px;
         padding: 8px;
     }
-`;
-
-
-export const PurpleFancy = styled(Fancy)`
-    color: ${props => props.theme.lightPurple};
 `;
 
 export const Icon = styled.div`
@@ -184,7 +171,7 @@ export const InputContainer = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 45px;
-    padding: 0 20px;
+    padding: 0 1.2rem;
 `;
 
 export const Inputs = styled.div`
@@ -234,10 +221,10 @@ export const LabelText = styled.div`
 export const SelectField = styled.select`
     width: 100%;
     border: 1px solid ${props => props.color};
-    background-color: transparent;
-    color: #fff;
+    background-color: ${props => props.theme.background};
+    color: ${props => props.theme.text};
     font-size: 18px;
-    padding: 10px;
+    padding: .5rem;
     padding-left: 55px;
     border-radius: 12px;
     color: darkgray;

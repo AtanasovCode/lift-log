@@ -9,7 +9,7 @@ export const Container = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: ${props => props.theme.richBlackDark};
+    background-color: ${props => props.theme.background};
     padding-top: 125px;
 `;
 
@@ -32,13 +32,13 @@ export const Tab = styled.div<Props>`
     justify-content: center;
     padding: 12px 18px;
     border-radius: 16px;
-    background-color: ${props => props.theme.richBlack};
-    color: #ffffff70;
+    background-color: #454242;
+    color: #e0dddd;
     margin: 0 15px;
     cursor: pointer;
     user-select: none;
 
     //Tab is currently active:
     background-color: ${props => props.active && props.color};
-    color: ${props => props.active && "#000"};
+    color: ${props => props.active && props.theme.background};
 `;
