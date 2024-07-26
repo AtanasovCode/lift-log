@@ -118,7 +118,7 @@ const LiftProgressGraph = () => {
                         <Line
                             data={LiftDataDeadlift}
                             dataKey="Lift"
-                            stroke={theme.mayaBlue}
+                            stroke={"#FFF"}
                             xAxisId={"deadlift"}
                             yAxisId={"deadlift"}
                             dot={<CustomDot />}
@@ -126,7 +126,7 @@ const LiftProgressGraph = () => {
                         <Line
                             data={LiftDataBench}
                             dataKey="Lift"
-                            stroke={theme.softOrange}
+                            stroke={"#0099ff"}
                             xAxisId={"bench"}
                             yAxisId={"bench"}
                             dot={<CustomDot />}
@@ -134,7 +134,7 @@ const LiftProgressGraph = () => {
                         <Line
                             data={LiftDataSquat}
                             dataKey="Lift"
-                            stroke={theme.lighterGreen}
+                            stroke={"#fc65f7"}
                             xAxisId={"squat"}
                             yAxisId={"squat"}
                             dot={<CustomDot />}
@@ -193,8 +193,13 @@ export const Info = styled.div`
     text-align: center;
     max-width: 35%;
 
+    @media (max-width: 1200px) {
+        max-width: 55%;
+    }
+
     @media (max-width: 900px) {
-        font-size: 26px;
+        font-size: 1.7rem;
+        max-width: 85%;
     }
 
     @media (max-width: 700px) {
@@ -226,7 +231,7 @@ export const Chart = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-right: 70px;
+    margin-right: 2.5rem;
 
     @media (max-width: 700px) {
         margin: 0 20px;
@@ -250,7 +255,7 @@ export const ChartDescription = styled.div`
 
 export const TooltipContainer = styled.div`
     padding: 10px 12px;
-    background-color: ${props => props.theme.defaultBackgroundColor};
+    background-color: ${props => props.theme.background};
     border: none;
 `;
 
@@ -281,5 +286,5 @@ export const TooltipDot = styled.div`
     height: 4px;
     border-radius: 50%;
     opacity: .5;
-    background-color: black;
+    background-color: ${props => props.theme.background};
 `;

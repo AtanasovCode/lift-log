@@ -33,6 +33,10 @@ export const HeroSection = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+    }
 `;
 
 export const HeroImageContainer = styled.div`
@@ -43,10 +47,27 @@ export const HeroImageContainer = styled.div`
     align-items: center;
     justify-content: center;
     padding: 1rem;
+
+    @media (max-width: 1024px) {
+        width: 100vw;
+        height: 30vh;
+    }
+
+    @media (max-width: 768px) {
+        height: 20vh;
+    }
 `;
 
 export const HeroImage = styled.img`
     width: 75%;
+
+    @media (max-width: 1024px) {
+        width: 20%;
+    }
+
+    @media (max-width: 768px) {
+        width: 30%;
+    }
 `;
 
 export const HeroInfo = styled.div`
@@ -60,7 +81,7 @@ export const HeroInfo = styled.div`
 
 export const HeroInfoImage = styled.img`
     position: absolute;
-    bottom: 4%;
+    bottom: 0%;
     right: 0;
     width: 16%;
 
@@ -78,15 +99,40 @@ export const HeroInfoImage = styled.img`
             bottom: 0%;
         }
     }
+
+    @media (max-width: 768px) {
+        width: 20%;
+    }
+
+    @media (max-width: 550px) {
+        width: 32%;
+    }
 `;
 
 export const MainTitle = styled.div`
-    font-size: 42px;
+    font-size: 2.5rem;
     font-weight: 900;
-    color: #fff;
+    color: ${props => props.theme.text};
     margin-bottom: 1.5rem;
     max-width: 70%;
     text-align: center;
+
+    @media (max-width: 1200px) {
+        max-width: 85%;
+    }
+
+    @media (max-width: 850px) {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 700px) {
+        max-width: 90%;
+        font-size: 1.5rem;
+    }
+
+    @media (max-width: 550px) {
+        max-width: 95%;
+    }
 
     animation: ${({ animationEnd }) => animationEnd ? shake : 'none'} 0.5s;
 
@@ -103,7 +149,7 @@ export const Fancy = styled.span`
 
 export const HeroButton = styled(Link)`
     background-color: ${props => props.theme.mayaBluePale};
-    color: #fff;
+    color: ${props => props.theme.text};
     padding: 10px 65px;
     text-align: center;
     border-radius: 15px;
@@ -120,5 +166,13 @@ export const HeroButton = styled(Link)`
         50% {
             transform: scale(1.05) rotate(0.5deg);
         }
+    }
+
+    @media (max-width: 700px) {
+        width: 60%;    
+    }
+
+    @media (max-width: 550px) {
+        width: 80%;
     }
 `;

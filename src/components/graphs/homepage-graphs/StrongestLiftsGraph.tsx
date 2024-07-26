@@ -155,12 +155,12 @@ const Info = styled.div`
 `;
 
 const Title = styled.div`
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 800;
     text-align: center;
     
     @media (max-width: 900px) {
-        font-size: 26px;
+        font-size: 1.5rem;
     }
 
     @media (max-width: 700px) {
@@ -192,7 +192,7 @@ const Icon = styled.img`
     }
 
     @media (max-width: 700px) {
-        width: 85px;
-        height: 85px;
+        width: 50px;
+        height: 50px;
     }
 `;
