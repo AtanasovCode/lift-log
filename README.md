@@ -8,7 +8,7 @@ Powergraphix is a web application that provides users with an intuitive and visu
 - Input your strongest lift for each month of the year and visualize your progress with the help of a chart.
 - See how many new PBs you have made and see what is your all-time strongest lift.
 - Chose from a detailed list of exercises.
-- ![](./src/assets/screenshots/exercises.png)
+![](./src/assets/screenshots/exercises.png)
 - Track up to 6 different exercises and have visual representation of your strength.
 - Chose between 4 different chart types for your ideal representation of your strongest lifts.
 - Easily change/edit the data and easily change exercises that you want to see your progress in.
