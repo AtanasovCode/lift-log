@@ -66,7 +66,7 @@ const StrengthStats = ({
 
             <Styled.TextContainer>
 
-                <Styled.Heading color={theme.mayaBlue}>
+                <Styled.Heading color={theme.accent}>
                     <Styled.Title>
                         <Styled.Fancy color={theme.accent}>Visualize</Styled.Fancy>
                         your

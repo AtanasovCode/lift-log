@@ -16,14 +16,14 @@ export const Container = styled.div`
     flex-direction: row-reverse;
     align-items: stretch;
     justify-content: space-between;
-    margin-top: 2rem;
     width: 100%;
     color: ${props => props.theme.text};
     background-color: ${props => props.theme.background};
     padding-bottom: 1.5rem;
 
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
         flex-direction: column-reverse;
+        padding-bottom: 1rem;
     }
 `;
 
@@ -43,21 +43,20 @@ export const ImageContainer = styled.div`
     align-items: center;
     justify-content: center;
     
-    @media (max-width: 700px) {
-        margin-top: 35px;
+    @media (max-width: 768px) {
+        margin-top: 3rem;
     }
 `;
 
 export const Illustration = styled.img`
-    width: 57%;
-    min-width: 300px;
+    width: 60%;
 
-    @media (max-width: 930px) {
-        min-width: 230px;
+    @media (max-width: 1024px) {
+        width: 80%;
     }
 
-    @media (max-width: 700px) {
-        width: 200px;
+    @media (max-width: 768px) {
+        width: 50%;
     }
 `;
 
@@ -68,13 +67,9 @@ export const TextContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    padding: 0px 50px;
+    padding: 0 1rem;
 
-    @media (max-width: 700px) {
-        padding: 0;
-    }
-
-    @media (max-width: 550px) {
+    @media (max-width: 768px) {
         padding: 0;
     }
 `;
@@ -100,7 +95,7 @@ export const Heading = styled.div<PropsHeading>`
         }
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 625px) {
         width: 100%;
         flex-direction: column-reverse;
         margin-top: 35px;
@@ -115,18 +110,18 @@ export const Heading = styled.div<PropsHeading>`
 
 
 export const Title = styled.div`
-    font-size: 30px;
+    font-size: 2rem;
     font-weight: 700;
     color: ${props => props.theme.text};
 
     @media (max-width: 930px) {
-        font-size: 22px;
+        font-size: 1.5rem;
     }
     
 
-    @media (max-width: 700px) {
+    @media (max-width: 625px) {
         font-weight: 900;
-        font-size: 30px;
+        font-size: 2rem;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -140,7 +135,7 @@ export const Fancy = styled.span`
     margin: 0 6px;
     text-align: center;
 
-    @media (max-width: 700px) {
+    @media (max-width: 625px) {
         color: ${props => props.color};
         margin: 7px 0;
         background-color: ${props => props.theme.background};

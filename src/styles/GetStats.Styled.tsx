@@ -19,10 +19,13 @@ export const Tabs = styled.div`
     align-items: center;
     justify-content: flex-start;
     padding: 0 2rem;
+    margin-bottom: 1rem;
 
-    @media (max-width: 700px) {
-        padding: 0 15px;
+    @media (max-width: 768px) {
+        padding: 0 1rem;
         justify-content: center;
+        width: 100%;
+        margin-bottom: 2rem;
     }
 `;
 

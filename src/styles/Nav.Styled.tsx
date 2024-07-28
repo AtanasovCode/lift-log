@@ -17,13 +17,10 @@ export const Nav = styled.nav`
     color: ${props => props.theme.text};
     overflow-x: hidden;
 
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
         align-items: center;
         justify-content: center;
         background-color: ${props => props.theme.background};
-        position: fixed;
-        z-index: 10;
-        padding: 20px;
     }
 `;
 
@@ -31,7 +28,7 @@ export const Logo = styled.img`
     height: 50px;
     cursor: pointer;
 
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
         height: 60px;
     }
 `;
@@ -41,7 +38,7 @@ export const NavLinks = styled.div<Props>`
     align-items: center;
     justify-content: center;
 
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
         position: fixed;
         width: 50%;
         height: 100vh;
@@ -113,17 +110,13 @@ export const MenuIcon = styled.div`
     right: -300%;
     z-index: 0;
 
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
         user-select: all;
         opacity: 1;
         position: absolute;
         right: 25px;
         cursor: pointer;
         z-index: 5;
-        width: 40px;
-    }
-
-    @media (max-width: 500px) {
         width: 30px;
     }
 `;
