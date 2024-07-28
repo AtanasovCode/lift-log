@@ -91,8 +91,7 @@ const Calendar = styled.div`
     transform: translateX(-50%) translateY(-50%);
     z-index: 15;
     padding: 25px;
-    background-color: ${props => props.theme.richBlackDark};
-    border: 1px solid ${props => props.theme.mayaBlue};
+    background-color: ${props => props.theme.background};
     border-radius: 15px;
     max-width: 700px;
     width: 70vw;
@@ -174,7 +173,7 @@ const Month = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid ${props => props.theme.mayaBlueDark};
+    border: 1px solid ${props => props.theme.secondary};
     border-radius: 8px;
     position: relative;
 `;
@@ -183,8 +182,8 @@ const MonthName = styled.div`
     font-size: 17px;
     font-weight: 600;
     padding: 5px;
-    background-color: ${props => props.theme.mayaBluePale};
-    color: #fff;
+    background-color: ${props => props.theme.secondary};
+    color: ${props => props.theme.text};
     width: 100%;
     text-align: center;
 
@@ -200,22 +199,14 @@ const MonthInput = styled.input`
     padding-left: 12px;
     background-color: transparent;
     border: none;
-    color: #ffffff;
+    color: ${props => props.theme.text};
     font-size: 16px;
-`;
-
-const UnitSelect = styled.div`
-    font-size: 14px;
-    color: darkgray;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
 `;
 
 const Submit = styled.input`
     font-size: 16px;
-    background-color: ${props => props.theme.mayaBluePale};
-    color: #fff;
+    background-color: ${props => props.theme.secondary};
+    color: ${props => props.theme.text};
     text-align: center;
     width: 100%;
     height: 45px;

@@ -32,7 +32,7 @@ export const Tab = styled.div<Props>`
     justify-content: center;
     padding: 12px 18px;
     border-radius: 16px;
-    background-color: #454242;
+    background-color: ${props => props.theme.secondary};
     color: #e0dddd;
     margin: 0 15px;
     cursor: pointer;

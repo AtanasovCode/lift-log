@@ -101,7 +101,7 @@ export const Stats = styled.div`
 export const LiftNumber = styled.div`
     font-size: 30px;
     font-weight: 800;
-    color: ${props => props.theme.mayaBlue};
+    color: ${props => props.theme.accent};
     margin-right: 7px;
     font-family: 'Dosis', sans-serif;
 `;
@@ -152,8 +152,8 @@ export const ResetButton = styled.input`
 `;
 
 export const Tooltip = styled.div`
-    background-color: ${props => props.theme.richBlackDark};
-    color: #fff;
+    background-color: ${props => props.theme.background};
+    color: ${props => props.theme.text};
     padding: 10px;
     display: flex;
     align-items: center;
@@ -167,7 +167,7 @@ export const TooltipInfo = styled.div`
 
 export const TooltipValue = styled.div`
     font-family: 'Dosis', sans-serif;
-    color: ${props => props.theme.mayaBlue};
+    color: ${props => props.theme.accent};
     font-size: 20px;
     font-weight: 900;
 `;

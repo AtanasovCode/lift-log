@@ -80,7 +80,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: space-evenly;
     min-height: 40vh;
-    color: #fff;
+    color: ${props => props.theme.text};
     padding: 10px 45px;\
 
     @media (max-width: 950px) {

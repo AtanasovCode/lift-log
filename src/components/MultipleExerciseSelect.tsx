@@ -124,7 +124,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: ${props => props.theme.text};
     padding: 40px;
     border-radius: 15px;
     border: 1px solid ${props => props.theme.accent};
@@ -194,7 +194,7 @@ const InputsContainer = styled.div`
 
 
 const InputUnit = styled.select`
-    background-color: ${props => props.theme.richBlack};
+    background-color: ${props => props.theme.background};
     border: none;
     color: darkgray;
     font-size: 14px;
@@ -202,7 +202,7 @@ const InputUnit = styled.select`
 `;
 
 const UnitOption = styled.option`
-    background-color: ${props => props.theme.richBlack};
+    background-color: ${props => props.theme.background};
 `;
 
 const SubmitData = styled.input`

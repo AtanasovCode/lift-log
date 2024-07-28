@@ -36,8 +36,8 @@ export const CustomTooltip = ({ payload, active, chartType }) => {
 
 const TooltipContainer = styled.div`
     padding: 10px;
-    background-color: ${props => props.theme.richBlackDark};
-    color: #fff;
+    background-color: ${props => props.theme.background};
+    color: ${props => props.theme.text};
     display: flex;
     align-items: center;
     justify-content: center;

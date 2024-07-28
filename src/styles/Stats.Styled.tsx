@@ -17,7 +17,7 @@ export const Container = styled.div`
     align-items: stretch;
     justify-content: center;
     margin-top: 30px;
-    color: #fff;
+    color: ${props => props.theme.text};
     background-color: ${props => props.theme.background};
     padding-bottom: 25px;
 
@@ -116,7 +116,7 @@ export const Heading = styled.div<PropsHeading>`
 export const Title = styled.div`
     font-size: 30px;
     font-weight: 700;
-    color: #fff;
+    color: ${props => props.theme.text};
 
     @media (max-width: 930px) {
         font-size: 22px;
@@ -210,7 +210,7 @@ export const InputFieldContainer = styled.div`
 
 export const LabelText = styled.div`
     font-size: 18px;
-    color: #fff;
+    color: ${props => props.theme.text};
 
 
     @media (max-width: 550px) {
@@ -237,7 +237,7 @@ export const SelectField = styled.select`
 `;
 
 export const SelectOption = styled.option`
-    background-color: ${props => props.theme.richBlackDark};
+    background-color: ${props => props.theme.background};
     color: #fff;
 `;
 
@@ -246,7 +246,6 @@ export const InputExercise = styled.input`
     width: 100%;
     border: 1px solid ${props => props.color};
     background-color: transparent;
-    color: #fff;
     font-size: 18px;
     padding: 10px;
     padding-left: 55px;
@@ -261,17 +260,13 @@ export const InputExercise = styled.input`
     }
 `;
 
-export const InputExerciseGreen = styled(InputExercise)`border: 1px solid ${props => props.theme.lightGreen};`;
-
-export const InputExerciseOrange = styled(InputExercise)`border: 1px solid ${props => props.theme.lightPurple};`;
-
 export const InputLifts = styled(InputExercise)`
     cursor: pointer;
 
     border-color: ${props => props.color};
 
     &:hover {
-        background-color: ${props => props.theme.mayaBluePale};
+        background-color: ${props => props.theme.secondary};
     }
 `;
 
@@ -303,10 +298,6 @@ export const Submit = styled.div`
     cursor: pointer;
     user-select: none;
     width: 100%;
-`;
-
-export const SubmitOrange = styled(Submit)`
-    background-color: ${props => props.theme.lightPurple};
 `;
 
 export const SubmitIcon = styled.div`

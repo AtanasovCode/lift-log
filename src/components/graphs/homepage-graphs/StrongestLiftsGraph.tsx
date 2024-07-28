@@ -107,8 +107,7 @@ const Container = styled.section`
     justify-content: space-between;
     padding: 2.5rem;
     min-height: 90vh;
-    //background-color: #FF950A;
-    background-color: ${props => props.theme.mayaBluePale};
+    background-color: ${props => props.theme.secondary};
     position: relative;
     color: ${props => props.theme.text};
 
@@ -131,7 +130,7 @@ const Chart = styled.div`
 
     font-size: 20px;
     font-weight: 700;
-    color: #fff;
+    color: ${props => props.theme.text};
 
     @media (max-width: 900px) {
         font-size: 16px;

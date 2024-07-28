@@ -1,11 +1,6 @@
-const theme = {
-    defaultFontSize: "16px",
-    defaultFontFamily: "sans-serif",
-    defaultBackgroundColor: "#111",
-    defaultFontColor: "#fff",
-  
+const theme = {  
     logoFont: "'Keania One', cursive",
-    defaultFont: "'Noto Sans', sans-serif",
+    font: "'Noto Sans', sans-serif",
   
     richBlack: "#0f1f2e",
     darkBlue: "hsl(203, 94%, 12%)",
@@ -15,7 +10,7 @@ const theme = {
   
     magnolia: "hsl(273, 33%, 94%)",
     mayaBlue: "#5dbdf9",
-    mayaBluePale: "rgba(93, 189, 249, 0.169)",
+    mayaBluePale: "#5dbdf92b",
     mayaBlueDark: "rgba(93, 189, 249, .3)",
     lightPurple: "#dd02b8",
     darkYellow: "#FF950A",
@@ -29,7 +24,7 @@ const theme = {
 
 
     background: "#0f1f2e",
-    primary: "#740743",
+    primary: "#733598",
     secondary: "#5dbdf92b",
     accent: "#0085FF",
     text: "#f5f1f1",

@@ -149,8 +149,8 @@ export const DropdownWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme.richBlackDark};
-  border: 1px solid ${props => props.theme.mayaBlueDark};
+  background-color: ${props => props.theme.background};
+  border: 1px solid ${props => props.theme.secondary};
   border-radius: 8px;
 
   @media (max-width: 700px) {
@@ -167,7 +167,7 @@ export const DropdownHeader = styled.div`
   font-size: 22px;
   font-weight: 600;
   padding: 15px;
-  color: #fff;
+  color: ${props => props.theme.text};
 
   @media (max-width: 700px) {
     font-size: 20px;
@@ -192,9 +192,9 @@ export const DropdownInput = styled.input`
   padding: 10px;
   border-radius: 8px;
   padding-left: 45px;
-  border: 1px solid ${props => props.theme.mayaBlue};
-  background-color: ${props => props.theme.richBlackDark};
-  color: #fff;
+  border: 1px solid ${props => props.theme.accent};
+  background-color: ${props => props.theme.background};
+  color: ${props => props.theme.text};
   font-size: 18px;
   &:focus {
     outline: none;
@@ -223,8 +223,8 @@ const FilterTabs = styled.div`
 
 const Filter = styled.select`
   padding: 10px;
-  background-color: ${props => props.theme.richBlackDark};
-  border: 1px solid ${props => props.theme.mayaBlue};
+  background-color: ${props => props.theme.background};
+  border: 1px solid ${props => props.theme.accent};
   border-radius: 8px;
   font-size: 15px;
   color: #ffffff80;
@@ -232,15 +232,15 @@ const Filter = styled.select`
 `;
 
 const FilterOption = styled.option`
-  background-color: ${props => props.theme.richBlack};
-  border: 1px solid ${props => props.theme.mayaBlue};
+  background-color: ${props => props.theme.background};
+  border: 1px solid ${props => props.theme.accent};
 `;
 
 export const DropdownList = styled.div`
   z-index: 1;
   background-color: transparent;
   border-top: none;
-  color: #fff;
+  color: ${props => props.theme.text};
   max-height: 370px;
   overflow-y: auto;
   width: 100%;
@@ -253,11 +253,11 @@ export const DropdownList = styled.div`
 export const DropdownItem = styled.div`
   padding: 10px;
   width: 100%;
-  border-bottom: 1px solid ${props => props.theme.mayaBlue};
+  border-bottom: 1px solid ${props => props.theme.accent};
   background-color: transparent;
   font-size: 14px;
   cursor: pointer;
-  color: #fff;
+  color: ${props => props.theme.text};
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -290,7 +290,7 @@ const DropdownIcon = styled.img`
 const DropdownExercise = styled.div`
   font-size: 18px;
   font-weight: 400;
-  color: #fff;
+  color: ${props => props.theme.text};
   margin-bottom: 5px;
 
   @media (max-width: 550px) {

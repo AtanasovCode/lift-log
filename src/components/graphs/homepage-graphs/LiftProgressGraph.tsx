@@ -159,7 +159,7 @@ export const Container = styled.div`
     position: relative;
     justify-content: space-between;
     background-color: ${props => props.theme.background};
-    color: ${props => props.theme.defaultFontColor};
+    color: ${props => props.theme.text};
     padding: 2.5rem;
     margin: 2rem 0; 
     width: 100vw;

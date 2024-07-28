@@ -16,7 +16,7 @@ export const Nav = styled.nav`
     position: absolute;
     top: 0;
     left: 0;
-    color: #fff;
+    color: ${props => props.theme.text};
     z-index: 4;
     overflow-x: hidden;
 
@@ -48,7 +48,7 @@ export const NavLinks = styled.div<Props>`
         position: fixed;
         width: 50%;
         height: 100vh;
-        background-color: ${props => props.theme.richBlackDark};
+        background-color: ${props => props.theme.background};
         padding: 40px 15px;
         margin-top: 75px;
         top: 0;
@@ -98,13 +98,14 @@ export const NavLink = styled(Link)`
 `;
 
 export const SpecialLink = styled(NavLink)`
-    border: 2px solid ${props => props.theme.lightGreen};
+    border: 2px solid ${props => props.theme.accent};
     border-radius: 15px;
     padding: 5px 35px;
+    transition: all .3s ease-in-out;
 
     &:hover {
-        background-color: ${props => props.theme.lighterGreen};
-        color: #000;
+        background-color: ${props => props.theme.accent};
+        color: ${props => props.theme.background};
     }
 `;
 

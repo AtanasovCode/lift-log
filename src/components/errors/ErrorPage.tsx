@@ -28,9 +28,9 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: ${props => props.theme.richBlackDark};
-    color: #fff;
-    padding: 40px 65px;
+    background-color: ${props => props.theme.background};
+    color: ${props => props.theme.text};
+    padding: 2rem 3rem;
 `;
 
 const Title = styled.div`

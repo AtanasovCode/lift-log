@@ -168,7 +168,7 @@ const InputPR = styled.input`
     border: 1px solid ${props => props.theme.accent};
     padding: 15px;
     background-color: ${props => props.theme.background};
-    color: #fff;
+    color: ${props => props.theme.text};
     border-bottom-right-radius: 12px;
     border-top-right-radius: 12px;
 
