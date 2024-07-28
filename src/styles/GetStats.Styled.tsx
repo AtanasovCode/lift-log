@@ -9,15 +9,16 @@ export const Container = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     background-color: ${props => props.theme.background};
-    padding-top: 125px;
 `;
 
 export const Tabs = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0 50px;
+    padding: 0 2rem;
 
     @media (max-width: 700px) {
         padding: 0 15px;
@@ -30,7 +31,7 @@ export const Tab = styled.div<Props>`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 18px;
+    padding: .6rem 1rem;
     border-radius: 16px;
     background-color: ${props => props.theme.secondary};
     color: #e0dddd;

@@ -15,11 +15,12 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row-reverse;
     align-items: stretch;
-    justify-content: center;
-    margin-top: 30px;
+    justify-content: space-between;
+    margin-top: 2rem;
+    width: 100%;
     color: ${props => props.theme.text};
     background-color: ${props => props.theme.background};
-    padding-bottom: 25px;
+    padding-bottom: 1.5rem;
 
     @media (max-width: 700px) {
         flex-direction: column-reverse;

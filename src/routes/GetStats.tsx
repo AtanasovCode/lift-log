@@ -37,26 +37,6 @@ const GetStats = () => {
         setErrorActive(false);
     }
 
-    //Return correct component based on the active tab
-    const getActiveComponent = () => {
-        if (activeTab == "strength") {
-            return (
-                <StrengthStats
-                    errorActive={errorActive}
-                    setErrorActive={setErrorActive}
-                />
-            );
-        }
-        if (activeTab == "lifts") {
-            return (
-                <LiftsStats
-                    errorActive={errorActive}
-                    setErrorActive={setErrorActive}
-                />
-            );
-        }
-    }
-
 
     return (
         <Styled.Container>
@@ -78,12 +58,23 @@ const GetStats = () => {
                     id="strength"
                     onClick={(e) => handleChangeTab(e)}
                     active={activeTab == "strength" ? true : false}
-                    color={theme.mayaBlue}
+                    color={theme.accent}
                 >
                     Strength
                 </Styled.Tab>
             </Styled.Tabs>
-            {getActiveComponent()}
+            {
+                activeTab === "lifts" ?
+                    <LiftsStats
+                        errorActive={errorActive}
+                        setErrorActive={setErrorActive}
+                    />
+                    :
+                    <StrengthStats
+                        errorActive={errorActive}
+                        setErrorActive={setErrorActive}
+                    />
+            }
         </Styled.Container>
     );
 };

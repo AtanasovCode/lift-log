@@ -8,16 +8,13 @@ interface Props {
 
 
 export const Nav = styled.nav`
-    padding: 35px 65px;
+    padding: 2rem 4rem;
     width: 100%;
+    margin-bottom: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: absolute;
-    top: 0;
-    left: 0;
     color: ${props => props.theme.text};
-    z-index: 4;
     overflow-x: hidden;
 
     @media (max-width: 700px) {

@@ -68,9 +68,9 @@ const StrengthStats = ({
 
                 <Styled.Heading color={theme.mayaBlue}>
                     <Styled.Title>
-                        <Styled.Fancy color={theme.mayaBlue}>Visualize</Styled.Fancy>
+                        <Styled.Fancy color={theme.accent}>Visualize</Styled.Fancy>
                         your
-                        <Styled.Fancy color={theme.mayaBlue}>power</Styled.Fancy>
+                        <Styled.Fancy color={theme.accent}>strength</Styled.Fancy>
                         increase
                     </Styled.Title>
 
@@ -119,7 +119,7 @@ const StrengthStats = ({
                             <Styled.InputFieldContainer>
                                 <Styled.LabelIcon>
                                     <Calendar
-                                        color={theme.mayaBlue}
+                                        color={theme.accent}
                                         weight="fill"
                                         size="100%"
                                     />
@@ -134,12 +134,12 @@ const StrengthStats = ({
 
                         <Styled.Submit
                             onClick={submitData}
-                            color={theme.mayaBlue}
+                            color={theme.accent}
                         >
                             <Styled.SubmitIcon>
                                 <ChartLine
                                     size="100%"
-                                    color={theme.richBlackDark}
+                                    color={theme.background}
                                     weight="duotone"
                                 />
                             </Styled.SubmitIcon>
