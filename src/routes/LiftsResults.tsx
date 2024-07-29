@@ -90,7 +90,7 @@ const LiftsResults = () => {
         sessionStorage.removeItem("lifts");
         sessionStorage.removeItem("chartType");
 
-        navigate("/get-stats", {replace: true});
+        navigate("/get-stats", { replace: true });
     }
 
     return (
@@ -108,41 +108,43 @@ const LiftsResults = () => {
 
                 <Nav />
 
-                <LiftsContainer>
-                    <LiftTitle>
-                        Your
-                        strongest
-                        lifts
-                    </LiftTitle>
-                    <Lifts>
-                        {
-                            exercises.map((lift: Lifts) => {
-                                return (
-                                    <Lift key={lift.name}>
-                                        <LiftName>
-                                            {lift.name}
-                                        </LiftName>
-                                        <LiftPR>
-                                            {lift.pr}kg
-                                        </LiftPR>
-                                    </Lift>
-                                );
-                            })
-                        }
-                    </Lifts>
-                    <RestartButton 
-                        type="button"
-                        value="New Results"
-                        onClick={handleRestartResults}
-                    />
-                </LiftsContainer>
+                <ContentWrapper>
+                    <LiftsContainer>
+                        <LiftTitle>
+                            Your
+                            strongest
+                            lifts
+                        </LiftTitle>
+                        <Lifts>
+                            {
+                                exercises.map((lift: Lifts) => {
+                                    return (
+                                        <Lift key={lift.name}>
+                                            <LiftName>
+                                                {lift.name}
+                                            </LiftName>
+                                            <LiftPR>
+                                                {lift.pr}kg
+                                            </LiftPR>
+                                        </Lift>
+                                    );
+                                })
+                            }
+                        </Lifts>
+                        <RestartButton
+                            type="button"
+                            value="New Results"
+                            onClick={handleRestartResults}
+                        />
+                    </LiftsContainer>
 
-                <ChartContainer>
-                    {
-                        sessionStorage.getItem("chartType") !== null &&
-                        getChart(sessionStorage.getItem("chartType") as string)
-                    }
-                </ChartContainer>
+                    <ChartContainer>
+                        {
+                            sessionStorage.getItem("chartType") !== null &&
+                            getChart(sessionStorage.getItem("chartType") as string)
+                        }
+                    </ChartContainer>
+                </ContentWrapper>
             </Container>
         </ChartContext.Provider>
     );
@@ -152,35 +154,28 @@ export default LiftsResults;
 
 
 const Container = styled.div`
-    min-height: calc(100vh - 125px);
+    min-height: 100vh0;
     background-color: ${props => props.theme.background};
     display: flex;
+    flex-direction: column;
     align-items: stretch;
-    justify-content: space-between;
+    justify-content: center;
     color: ${props => props.theme.text};
     padding: 1.5rem 2rem;
-    margin-top: 125px;
-    border-top-left-radius: 18%;
+`;
 
-    @media (max-width: 1100px) {
-        padding: 25px 20px 40px 20px;
-    }
+const ContentWrapper = styled.div`
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 
-    @media (max-width: 850px) {
+    @media (max-width: 768px) {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border-top-left-radius: 50px;
-        border-top-right-radius: 50px;
-    }
-
-    @media (max-width: 700px) {
-        margin-top: 120px;
     }
 `;
 
 const LiftsContainer = styled.div`
-    flex: 100%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -273,7 +268,7 @@ const LiftPR = styled.div`
 `;
 
 const ChartContainer = styled.div`
-    flex: 100%;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
