@@ -311,6 +311,13 @@ const RestartButton = styled.input`
     transition: all .3s ease-in;
 
     &:hover {
-        cursor: pointer;
+        background-color: ${props => props.theme.mayaBlueDark};
+        animation: excited .3s 1;
+    }
+
+    @keyframes excited {
+        50% {
+            transform: scale(1.07) rotate(0.5deg);
+        }
     }
 `;
