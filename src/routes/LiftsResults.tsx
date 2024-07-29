@@ -110,32 +110,34 @@ const LiftsResults = () => {
 
                 <ContentWrapper>
                     <LiftsContainer>
-                        <LiftTitle>
-                            Your
-                            strongest
-                            lifts
-                        </LiftTitle>
-                        <Lifts>
-                            {
-                                exercises.map((lift: Lifts) => {
-                                    return (
-                                        <Lift key={lift.name}>
-                                            <LiftName>
-                                                {lift.name}
-                                            </LiftName>
-                                            <LiftPR>
-                                                {lift.pr}kg
-                                            </LiftPR>
-                                        </Lift>
-                                    );
-                                })
-                            }
-                        </Lifts>
-                        <RestartButton
-                            type="button"
-                            value="New Results"
-                            onClick={handleRestartResults}
-                        />
+                        <LiftsWrapper>
+                            <LiftTitle>
+                                Your
+                                strongest
+                                lifts
+                            </LiftTitle>
+                            <Lifts>
+                                {
+                                    exercises.map((lift: Lifts) => {
+                                        return (
+                                            <Lift key={lift.name}>
+                                                <LiftName>
+                                                    {lift.name}
+                                                </LiftName>
+                                                <LiftPR>
+                                                    {lift.pr}kg
+                                                </LiftPR>
+                                            </Lift>
+                                        );
+                                    })
+                                }
+                            </Lifts>
+                            <RestartButton
+                                type="button"
+                                value="New Results"
+                                onClick={handleRestartResults}
+                            />
+                        </LiftsWrapper>
                     </LiftsContainer>
 
                     <ChartContainer>
@@ -175,7 +177,7 @@ const ContentWrapper = styled.div`
 `;
 
 const LiftsContainer = styled.div`
-    width: 40%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -191,31 +193,39 @@ const LiftsContainer = styled.div`
     }
 `;
 
+const LiftsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+`;
+
 const LiftTitle = styled.div`
     text-align: center;
-    font-size: 34px;
+    font-size: 2.4rem;
     font-weight: 900;
-    margin-bottom: 15px;
-    margin-top: 20px;
+    margin-bottom: 1.2rem;
+    margin-top: 1.5rem;
     font-family: 'Dosis', sans-serif;
 
-    @media (max-width: 1100px) {
-        font-size: 30px;
+    @media (max-width: 1024px) {
+        font-size: 2rem;
     }
 
-    @media (max-width: 850px) {
-        font-size: 32px;
+    @media (max-width: 768px) {
+        font-size: 2rem;
     }
 
     @media (max-width: 550px) {
-        font-size: 25px;
+        font-size: 1.5rem;
     }
 `;
 
 const Lifts = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2rem;
+    gap: 2rem;
 
     @media (max-width: 1100px) {
         grid-gap: 1.5rem;
@@ -233,28 +243,30 @@ const Lifts = styled.div`
 
 const Lift = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: flex-end;
 `;
 
 const LiftName = styled.div`
-    font-size: 17px;
+    font-size: 1rem;
     font-weight: 600;
 
     @media (max-width: 1100px) {
-        font-size: 15px;
+        font-size: .8rem;
     }
 
     @media (max-width: 850px) {
-        font-size: 17px;
+        font-size: 1.1rem;
     }
 `;
 
 const LiftPR = styled.div`
-    margin-left: 10px;
-    font-size: 30px;
+    margin-right: 7px;
+    font-size: 2rem;
     font-family: 'Dosis', sans-serif;
     font-weight: 900;
+    color: ${props => props.theme.accent};
 
     @media (max-width: 1100px) {
         font-size: 24px;
@@ -285,7 +297,7 @@ const ChartContainer = styled.div`
 
 
 const RestartButton = styled.input`
-    width: 60%;
+    width: 100%;
     text-align: center;
     background-color: ${props => props.theme.secondary};
     color: ${props => props.theme.text};
