@@ -227,48 +227,50 @@ const Result = () => {
             <Nav />
             <Styled.ContentContainer>
                 <Styled.LiftInfo>
-                    <Styled.InfoContainer>
-                        <Styled.LiftName>
-                            <Styled.LiftIcon
-                                src={getExerciseIcon(currentExercise)}
-                            />
-                            {currentExercise}
-                        </Styled.LiftName>
+                    <Styled.InfoWrapper>
+                        <Styled.InfoContainer>
+                            <Styled.LiftName>
+                                <Styled.LiftIcon
+                                    src={getExerciseIcon(currentExercise)}
+                                />
+                                {currentExercise}
+                            </Styled.LiftName>
 
-                        <Styled.StatsContainer>
-                            <Styled.Stats>
-                                <Styled.LiftNumber>
-                                    {strongestLift}kg
-                                </Styled.LiftNumber>
-                                <Styled.LiftDesc>
-                                    strongest lift
-                                </Styled.LiftDesc>
-                            </Styled.Stats>
+                            <Styled.StatsContainer>
+                                <Styled.Stats>
+                                    <Styled.LiftNumber>
+                                        {strongestLift}kg
+                                    </Styled.LiftNumber>
+                                    <Styled.LiftDesc>
+                                        strongest lift
+                                    </Styled.LiftDesc>
+                                </Styled.Stats>
 
-                            <Styled.Stats>
-                                <Styled.LiftNumber>
-                                    {brokenPBs}
-                                </Styled.LiftNumber>
-                                <Styled.LiftDesc>
-                                    broken PBs
-                                </Styled.LiftDesc>
-                            </Styled.Stats>
+                                <Styled.Stats>
+                                    <Styled.LiftNumber>
+                                        {brokenPBs}
+                                    </Styled.LiftNumber>
+                                    <Styled.LiftDesc>
+                                        broken PBs
+                                    </Styled.LiftDesc>
+                                </Styled.Stats>
 
-                            <Styled.Stats>
-                                <Styled.LiftNumber>
-                                    {percentImproved}%
-                                </Styled.LiftNumber>
-                                <Styled.LiftDesc>
-                                    improved
-                                </Styled.LiftDesc>
-                            </Styled.Stats>
-                        </Styled.StatsContainer>
-                    </Styled.InfoContainer>
-                    <Styled.ResetButton
-                        type="button"
-                        value="New Results"
-                        onClick={resetValues}
-                    />
+                                <Styled.Stats>
+                                    <Styled.LiftNumber>
+                                        {percentImproved}%
+                                    </Styled.LiftNumber>
+                                    <Styled.LiftDesc>
+                                        improved
+                                    </Styled.LiftDesc>
+                                </Styled.Stats>
+                            </Styled.StatsContainer>
+                        </Styled.InfoContainer>
+                        <Styled.ResetButton
+                            type="button"
+                            value="New Results"
+                            onClick={resetValues}
+                        />
+                    </Styled.InfoWrapper>
                 </Styled.LiftInfo>
 
                 <Styled.ChartContainer>

@@ -34,22 +34,22 @@ export const ContentContainer = styled.div`
 `;
 
 export const ChartContainer = styled.div`
-    flex: 100%;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
         width: 80%;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 620px) {
         width: 100%;
     }
 `;
 
 export const LiftInfo = styled.div`
-    flex: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,11 +57,18 @@ export const LiftInfo = styled.div`
 
     @media (max-width: 700px) {
         width: 100%;
-        margin-bottom: 60px;
+        margin-bottom: 3rem;
     }
 `;
 
 export const InfoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+`;
+
+export const InfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -79,7 +86,7 @@ export const LiftIcon = styled.img`
 `;
 
 export const LiftName = styled.div`
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: 600;
     margin-bottom: 15px;
     display: flex;
@@ -108,8 +115,8 @@ export const Stats = styled.div`
 `;
 
 export const LiftNumber = styled.div`
-    font-size: 30px;
-    font-weight: 800;
+    font-size: 2rem;
+    font-weight: 900;
     color: ${props => props.theme.accent};
     margin-right: 7px;
     font-family: 'Dosis', sans-serif;
@@ -127,10 +134,11 @@ export const Percent = styled.div<Props>`
 
 export const Tip = styled.div`
     position: absolute;
-    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    bottom: 2%;
     font-size: 1rem;
-    color: darkgray;
-    opacity: .6;
+    color: #959292;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,19 +149,15 @@ export const Tip = styled.div`
 `;
 
 export const ResetButton = styled.input`
-    border-radius: 12px;
+    border-radius: 16px;
     background-color: ${props => props.theme.secondary};
     border: none;
     color: ${props => props.theme.text};
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
-    padding: 10px;
-    width: 40%;
+    padding: .7rem 1.2rem; 
+    width: 100%;
     margin-top: 2rem;
-
-    @media (max-width: 450px) {
-        width: 70%;
-    }
 
     &:hover {
         background-color: ${props => props.theme.mayaBlueDark};
@@ -162,22 +166,22 @@ export const ResetButton = styled.input`
 
     @keyframes excited {
         50% {
-            transform: scale(1.05) rotate(0.5deg);
+            transform: scale(1.07) rotate(0.5deg);
         }
     }
 `;
 
 export const Tooltip = styled.div`
-    background-color: ${props => props.theme.background};
+    background-color: ${props => props.theme.secondary};
     color: ${props => props.theme.text};
-    padding: .5rem;
+    border-radius: 16px;
+    padding: .6rem;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
 export const TooltipInfo = styled.div`
-    font-size: 16px;
     margin-right: 7px;
 `;
 
