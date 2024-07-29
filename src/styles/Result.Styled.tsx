@@ -14,8 +14,8 @@ export const Container = styled.div`
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
 
-    @media (max-width: 820px) {
-        padding: 50px 20px 25px 20px;
+    @media (max-width: 768px) {
+        
     }
 
     @media (max-width: 700px) {
@@ -31,33 +31,41 @@ export const ContentContainer = styled.div`
     justify-content: space-between;
     margin-top: 3rem;
     padding: 0 2rem;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 
 export const ChartContainer = styled.div`
-    width: 40%;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 
     @media (max-width: 768px) {
-        width: 80%;
+        width: 80vw;
     }
 
-    @media (max-width: 620px) {
-        width: 100%;
+    @media (max-width: 525px) {
+        width: 90vw;
     }
 `;
 
 export const LiftInfo = styled.div`
-    flex: 1;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    @media (max-width: 700px) {
+    @media (max-width: 1024px) {
+        width: 30%;
+    }
+
+    @media (max-width: 768px) {
         width: 100%;
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
     }
 `;
 
@@ -77,27 +85,26 @@ export const InfoWrapper = styled.div`
 
 export const LiftIcon = styled.img`
     filter: invert(100%);
-    margin-right: 10px;
-    height: 40px;
+    margin-right: 12px;
+    height: 80px;
 
-    @media (max-width: 700px) {
-        height: 55px;
+    @media (max-width: 768px) {
+        height: 75px;
     }
 `;
 
 export const LiftName = styled.div`
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 100%;
+    flex: 1;
 
-    @media (max-width: 700px) {
-        width: 100%;
-        font-size: 26px;
-        }
+    @media (max-width: 1024px) {
+        font-size: 1.5rem;
+    }
 `;
 
 export const StatsContainer = styled.div`
@@ -105,7 +112,6 @@ export const StatsContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    flex: 100%;
 `;
 
 export const Stats = styled.div`
@@ -120,15 +126,31 @@ export const LiftNumber = styled.div`
     color: ${props => props.theme.accent};
     margin-right: 7px;
     font-family: 'Dosis', sans-serif;
+
+    @media (max-width: 1024px) {
+        font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
 `;
 
 export const LiftDesc = styled.div`
-    font-size: 25px;
-    font-weight: 900;
+    font-size: 1.5rem;
+    font-weight: 800;
+
+    @media (max-width: 1024px) {
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 1.5rem;
+    }
 `;
 
 export const Percent = styled.div<Props>`
-    color: ${props => props.positive ? "lime" : "red"};
+    color: ${props => props.positive ? props.theme.accent : "red"};
     margin-left: .5rem;
 `;
 

@@ -290,16 +290,6 @@ const Result = () => {
                         </LineChart>
                     </ResponsiveContainer>
                 </Styled.ChartContainer>
-
-                <Styled.Tip>
-                    <Barbell
-                        size={22}
-                        weight="fill"
-                        color={theme.accent}
-                        style={{ marginRight: "6px" }}
-                    />
-                    Gym Pro Tip: {tip}
-                </Styled.Tip>
             </Styled.ContentContainer>
         </Styled.Container>
     );
