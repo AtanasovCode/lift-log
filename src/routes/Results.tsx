@@ -204,8 +204,8 @@ const Result = () => {
         label: string,
     }
 
-    const CustomTooltip = ({payload, active, label}: TooltipProps) => {
-        if(active) {
+    const CustomTooltip = ({ payload, active, label }: TooltipProps) => {
+        if (active) {
             let weight = payload[0].payload.weight;
             let month = payload[0].payload.month;
 
@@ -225,78 +225,80 @@ const Result = () => {
     return (
         <Styled.Container>
             <Nav />
-            <Styled.LiftInfo>
-                <Styled.InfoContainer>
-                    <Styled.LiftName>
-                        <Styled.LiftIcon
-                            src={getExerciseIcon(currentExercise)}
-                        />
-                        {currentExercise}
-                    </Styled.LiftName>
+            <Styled.ContentContainer>
+                <Styled.LiftInfo>
+                    <Styled.InfoContainer>
+                        <Styled.LiftName>
+                            <Styled.LiftIcon
+                                src={getExerciseIcon(currentExercise)}
+                            />
+                            {currentExercise}
+                        </Styled.LiftName>
 
-                    <Styled.StatsContainer>
-                        <Styled.Stats>
-                            <Styled.LiftNumber>
-                                {strongestLift}kg
-                            </Styled.LiftNumber>
-                            <Styled.LiftDesc>
-                                strongest lift
-                            </Styled.LiftDesc>
-                        </Styled.Stats>
+                        <Styled.StatsContainer>
+                            <Styled.Stats>
+                                <Styled.LiftNumber>
+                                    {strongestLift}kg
+                                </Styled.LiftNumber>
+                                <Styled.LiftDesc>
+                                    strongest lift
+                                </Styled.LiftDesc>
+                            </Styled.Stats>
 
-                        <Styled.Stats>
-                            <Styled.LiftNumber>
-                                {brokenPBs}
-                            </Styled.LiftNumber>
-                            <Styled.LiftDesc>
-                                broken PBs
-                            </Styled.LiftDesc>
-                        </Styled.Stats>
+                            <Styled.Stats>
+                                <Styled.LiftNumber>
+                                    {brokenPBs}
+                                </Styled.LiftNumber>
+                                <Styled.LiftDesc>
+                                    broken PBs
+                                </Styled.LiftDesc>
+                            </Styled.Stats>
 
-                        <Styled.Stats>
-                            <Styled.LiftNumber>
-                                {percentImproved}%
-                            </Styled.LiftNumber>
-                            <Styled.LiftDesc>
-                                improved
-                            </Styled.LiftDesc>
-                        </Styled.Stats>
-                    </Styled.StatsContainer>
-                </Styled.InfoContainer>
-                <Styled.ResetButton
-                    type="button"
-                    value="New Results"
-                    onClick={resetValues}
-                />
-            </Styled.LiftInfo>
+                            <Styled.Stats>
+                                <Styled.LiftNumber>
+                                    {percentImproved}%
+                                </Styled.LiftNumber>
+                                <Styled.LiftDesc>
+                                    improved
+                                </Styled.LiftDesc>
+                            </Styled.Stats>
+                        </Styled.StatsContainer>
+                    </Styled.InfoContainer>
+                    <Styled.ResetButton
+                        type="button"
+                        value="New Results"
+                        onClick={resetValues}
+                    />
+                </Styled.LiftInfo>
 
-            <Styled.ChartContainer>
-                <ResponsiveContainer width={"99%"} height={chartHeight}>
-                    <LineChart margin={{ top: 0, left: 0, right: 0, bottom: 0 }}>
-                        <Line data={currentData} dataKey="weight" fill={theme.mayaBlue} />
-                        <XAxis
-                            dataKey="month"
-                            tick={{ fontSize: `${axisFontSize}` }}
-                        />
-                        <YAxis
-                            domain={[YAxisLowestValue, YAxisHighestValue]}
-                            width={yAxisWidth}
-                            tick={{ fontSize: `${axisFontSize}` }}
-                        />
-                        <Tooltip content={<CustomTooltip />} />
-                    </LineChart>
-                </ResponsiveContainer>
-            </Styled.ChartContainer>
+                <Styled.ChartContainer>
+                    <ResponsiveContainer width={"99%"} height={chartHeight}>
+                        <LineChart margin={{ top: 0, left: 0, right: 0, bottom: 0 }}>
+                            <Line data={currentData} dataKey="weight" fill={theme.mayaBlue} />
+                            <XAxis
+                                dataKey="month"
+                                tick={{ fontSize: `${axisFontSize}` }}
+                            />
+                            <YAxis
+                                domain={[YAxisLowestValue, YAxisHighestValue]}
+                                width={yAxisWidth}
+                                tick={{ fontSize: `${axisFontSize}` }}
+                            />
+                            <Tooltip content={<CustomTooltip />} />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </Styled.ChartContainer>
 
-            <Styled.Tip>
-                <Barbell
-                    size={22}
-                    weight="fill"
-                    color={theme.mayaBlue}
-                    style={{ marginRight: "6px" }}
-                />
-                Gym Pro Tip: {tip}
-            </Styled.Tip>
+                <Styled.Tip>
+                    <Barbell
+                        size={22}
+                        weight="fill"
+                        color={theme.accent}
+                        style={{ marginRight: "6px" }}
+                    />
+                    Gym Pro Tip: {tip}
+                </Styled.Tip>
+            </Styled.ContentContainer>
         </Styled.Container>
     );
 }

@@ -143,7 +143,7 @@ export const MainTitle = styled.div`
 
 export const Fancy = styled.span`
     color: #0085FF;
-    padding-left: 7px;
+    padding-left: .5rem;
     font-family: ${props => props.theme.logoFont};
 `;
 
@@ -153,7 +153,7 @@ export const HeroButton = styled(Link)`
     padding: 10px 65px;
     text-align: center;
     border-radius: 15px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     width: 40%;
 

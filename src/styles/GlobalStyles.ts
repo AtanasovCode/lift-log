@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         min-height: 100vh;
         background-color: ${props => props.theme.background};
         font-family: ${props => props.theme.font};
+        overflow-x: hidden;
     }
 
     button,

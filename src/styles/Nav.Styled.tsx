@@ -80,21 +80,19 @@ export const NavLinks = styled.div<Props>`
 export const NavLink = styled(Link)`
     font-size: 15px;
     font-weight: 500;
-    margin: 0 35px;
+    margin: .5rem;
     cursor: pointer;
-    user-select: none;
 
     @media (max-width: 700px) {
-        font-size: 20px;
-        font-weight: 500;
-        margin: 10px 0;
+        font-size: 1.3rem;
+        margin: .4rem;
     }
 `;
 
 export const SpecialLink = styled(NavLink)`
     border: 2px solid ${props => props.theme.accent};
-    border-radius: 15px;
-    padding: 5px 35px;
+    border-radius: 16px;
+    padding: .4rem 1.5rem;
     transition: all .3s ease-in-out;
 
     &:hover {
@@ -107,11 +105,10 @@ export const MenuIcon = styled.div`
     user-select: none;
     opacity: 0;
     position: absolute;
-    right: -300%;
+    right: -100%;
     z-index: 0;
 
     @media (max-width: 768px) {
-        user-select: all;
         opacity: 1;
         position: absolute;
         right: 25px;

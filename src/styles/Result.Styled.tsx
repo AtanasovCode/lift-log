@@ -7,10 +7,10 @@ interface Props {
 
 export const Container = styled.div`
     min-height: 100vh;
-    padding: 80px 70px 50px 70px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
 
@@ -22,6 +22,15 @@ export const Container = styled.div`
         flex-direction: column;
         padding-top: 120px;
     }
+`;
+
+export const ContentContainer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding: 0 2rem;
 `;
 
 export const ChartContainer = styled.div`
@@ -147,14 +156,21 @@ export const ResetButton = styled.input`
     }
 
     &:hover {
-        cursor: pointer;
+        background-color: ${props => props.theme.mayaBlueDark};
+        animation: excited .3s 1;
+    }
+
+    @keyframes excited {
+        50% {
+            transform: scale(1.05) rotate(0.5deg);
+        }
     }
 `;
 
 export const Tooltip = styled.div`
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
-    padding: 10px;
+    padding: .5rem;
     display: flex;
     align-items: center;
     justify-content: center;
