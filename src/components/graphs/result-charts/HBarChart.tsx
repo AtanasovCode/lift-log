@@ -30,16 +30,16 @@ const HBarChartComponent = () => {
             >
                 <XAxis
                     type="number" dataKey="pr"
-                    tick={{ fill: "#000", fontSize: `${AxisFontSize}` }}
+                    tick={{ fill: "#fff", fontSize: `${AxisFontSize}` }}
                 />
                 <YAxis
                     type="category" dataKey="name"
                     width={HAxisWidth}
-                    tick={{ fill: "#000", fontSize: `${AxisFontSize}px`}}
+                    tick={{ fill: "#fff", fontSize: `${AxisFontSize}px`}}
                 />
                 <Bar
                     dataKey="pr"
-                    fill={theme.richBlackDark}
+                    fill={theme.accent}
                     barSize={50}
                 />
                 <Tooltip
@@ -48,7 +48,7 @@ const HBarChartComponent = () => {
                             chartType={sessionStorage.getItem("chartType")}
                         />
                     }
-                    cursor={{fill: "#00000030"}}
+                    cursor={{ fill: "#163cba60" }}
                 />
             </BarChart>
         </ResponsiveContainer>

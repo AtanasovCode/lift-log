@@ -25,12 +25,12 @@ const LiftsResults = () => {
     const size = useWindowSize();
 
     const COLORS: [string, string, string, string, string, string] = [
-        '#e9a424', // Red
-        '#e53b6b', // Brownish-grey
-        '#f83bdf', // Deep purple
-        '#616561', // Dark green
-        '#08f7af', // Teal
-        '#7c7afa' //Dark purple
+        '#08f7af', // Red
+        '#6ca9f8', // Brownish-grey
+        '#0804eb', // Deep purple
+        '#3c23ba', // Dark green
+        '#694df6', // Teal
+        '#e100ff' //Dark purple
     ];
 
     const [exercises, setExercises] = useState([]);

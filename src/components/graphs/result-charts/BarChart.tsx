@@ -28,17 +28,17 @@ const BarChartComponent = () => {
                     type="category" dataKey="name"
                     tick={{
                         fontSize: `${AxisFontSize}px`, 
-                        fill: "#000",
+                        fill: "#FFF",
                     }}
                 />
                 <YAxis
                     type="number" dataKey="pr"
-                    tick={{ fill: "#000", fontSize: `${AxisFontSize}` }}
+                    tick={{ fill: "#fff", fontSize: `${AxisFontSize}` }}
                     width={AxisWidth}
                 />
                 <Bar
                     dataKey="pr"
-                    fill={theme.richBlackDark}
+                    fill={theme.accent}
                 />
                 <Tooltip
                     content={
@@ -46,7 +46,7 @@ const BarChartComponent = () => {
                             chartType={sessionStorage.getItem("chartType")}
                         />
                     }
-                    cursor={{ fill: "#00000030" }}
+                    cursor={{ fill: "#163cba60" }}
                 />
             </BarChart>
         </ResponsiveContainer>

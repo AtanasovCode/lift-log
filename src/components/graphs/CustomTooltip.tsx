@@ -11,7 +11,7 @@ export const CustomTooltip = ({ payload, active, chartType }) => {
                 <TooltipContainer key={name}>
                     <TooltipExercise>
                         <TooltipIcon src={getExerciseIcon(name)} />
-                        {name}:
+                        {name}
                     </TooltipExercise>
                     <TooltipLift>{pr ? pr : value}kg</TooltipLift>
                 </TooltipContainer>
@@ -22,7 +22,7 @@ export const CustomTooltip = ({ payload, active, chartType }) => {
                 <TooltipContainer key={name}>
                     <TooltipExercise>
                         <TooltipIcon src={getExerciseIcon(name)} />
-                        {name}:
+                        {name}
                     </TooltipExercise>
                     <TooltipLift>{pr}kg</TooltipLift>
                 </TooltipContainer>
@@ -35,22 +35,23 @@ export const CustomTooltip = ({ payload, active, chartType }) => {
 
 
 const TooltipContainer = styled.div`
-    padding: 10px;
+    padding: .5rem;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
-    font-weight: 300;
-    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 16px;
+    border: transparent;
 `;
 
 const TooltipIcon = styled.img`
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
     filter: invert(100%);
-    margin-right: 6px;
+    margin-right: 7px;
 `;
 
 const TooltipExercise = styled.div`
@@ -64,4 +65,8 @@ const TooltipLift = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: ${props => props.theme.accent};
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
 `;
