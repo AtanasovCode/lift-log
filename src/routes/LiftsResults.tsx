@@ -164,6 +164,14 @@ const Container = styled.div`
     justify-content: center;
     color: ${props => props.theme.text};
     padding: 1.5rem 2rem;
+
+    @media (max-width: 1024px) {
+        padding: 1rem .5rem;
+    }
+
+    @media (max-width: 768px) {
+        padding: 1rem;
+    }
 `;
 
 const ContentWrapper = styled.div`
@@ -177,19 +185,23 @@ const ContentWrapper = styled.div`
 `;
 
 const LiftsContainer = styled.div`
-    width: 35%;
+    width: 42%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    @media (max-width: 850px) {
+    @media (max-width: 1024px) {
+        width: 50%;
+    }
+
+    @media (max-width: 768px) {
         width: 100%;
         margin-bottom: 45px;
     }
 
     @media (max-width: 550px) {
-        margin-bottom: 45px;
+        margin-bottom: 3rem;
     }
 `;
 
@@ -199,6 +211,18 @@ const LiftsWrapper = styled.div`
     align-items: center;
     justify-content: center;
     width: 80%;
+
+    @media (max-width: 1300px) {
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        width: 80%;
+    }
+
+    @media (max-width: 550px) {
+        width: 100%;
+    }
 `;
 
 const LiftTitle = styled.div`
@@ -210,15 +234,11 @@ const LiftTitle = styled.div`
     font-family: 'Dosis', sans-serif;
 
     @media (max-width: 1024px) {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     @media (max-width: 768px) {
         font-size: 2rem;
-    }
-
-    @media (max-width: 550px) {
-        font-size: 1.5rem;
     }
 `;
 
@@ -227,17 +247,17 @@ const Lifts = styled.div`
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 
-    @media (max-width: 1100px) {
-        grid-gap: 1.5rem;
+    @media (max-width: 1024px) {
+        grid-gap: 1rem;
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 768px) {
         grid-gap: 2rem;
     }
 
     @media (max-width: 550px) {
         grid-template-columns: 1fr;
-        grid-gap: 1.3rem;
+        grid-gap: 1.5rem;
     }
 `;
 
@@ -252,12 +272,12 @@ const LiftName = styled.div`
     font-size: 1rem;
     font-weight: 600;
 
-    @media (max-width: 1100px) {
-        font-size: .8rem;
+    @media (max-width: 768px) {
+        font-size: 1.1rem;
     }
 
-    @media (max-width: 850px) {
-        font-size: 1.1rem;
+    @media (max-width: 550px) {
+        font-size: 1.3rem;
     }
 `;
 
@@ -268,14 +288,18 @@ const LiftPR = styled.div`
     font-weight: 900;
     color: ${props => props.theme.accent};
 
-    @media (max-width: 1100px) {
-        font-size: 24px;
-        margin-left: 5px;
+    @media (max-width: 1024px) {
+        font-size: 1.8rem;
     }
 
-    @media (max-width: 850px) {
-        font-size: 30px;
-        margin-left: 8px;
+    @media (max-width: 768px) {
+        font-size: 1.8rem;
+        margin-left: 6px;
+    }
+
+    @media (max-width: 550px) {
+        font-size: 2.2rem;
+        margin-left: 5px;
     }
 `;
 
