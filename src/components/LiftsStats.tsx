@@ -166,7 +166,7 @@ const LiftsStats = ({
                                     <Styled.LabelIcon>
                                         <ListNumbers
                                             size="100%"
-                                            weight="light"
+                                            weight="fill"
                                             color={theme.text}
                                         />
                                     </Styled.LabelIcon>
@@ -206,7 +206,7 @@ const LiftsStats = ({
                                         <Barbell
                                             size="100%"
                                             color={theme.text}
-                                            weight="light"
+                                            weight="fill"
                                         />
                                     </Styled.LabelIcon>
                                     <Styled.InputExercise
@@ -224,7 +224,7 @@ const LiftsStats = ({
                                 </Styled.LabelText>
                                 <Styled.InputFieldContainer>
                                     <Styled.LabelIcon>
-                                        {getChartIcon(chartType, "light", theme.text)}
+                                        {getChartIcon(chartType, "fill", theme.text)}
                                     </Styled.LabelIcon>
                                     <Styled.InputExercise
                                         type="button"

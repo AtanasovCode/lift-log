@@ -99,7 +99,7 @@ const StrengthStats = ({
                                 <Styled.InputFieldContainer>
                                     <Styled.LabelIcon>
                                         <Barbell
-                                            color={theme.mayaBlue}
+                                            color={theme.text}
                                             weight="fill"
                                             size="100%"
                                         />
@@ -119,7 +119,7 @@ const StrengthStats = ({
                                 <Styled.InputFieldContainer>
                                     <Styled.LabelIcon>
                                         <Calendar
-                                            color={theme.accent}
+                                            color={theme.text}
                                             weight="fill"
                                             size="100%"
                                         />
@@ -139,8 +139,8 @@ const StrengthStats = ({
                                 <Styled.SubmitIcon>
                                     <ChartLine
                                         size="100%"
-                                        color={theme.background}
-                                        weight="duotone"
+                                        color={theme.text}
+                                        weight="fill"
                                     />
                                 </Styled.SubmitIcon>
                                 Get Results

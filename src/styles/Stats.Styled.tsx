@@ -19,10 +19,11 @@ export const Container = styled.div`
     width: 100%;
     color: ${props => props.theme.text};
     background-color: ${props => props.theme.background};
+    padding: 1rem 2rem;
 
     @media (max-width: 768px) {
         flex-direction: column-reverse;
-        padding-bottom: 1rem;
+        padding: 1rem 0;
     }
 `;
 
@@ -55,7 +56,11 @@ export const Illustration = styled.img`
     }
 
     @media (max-width: 768px) {
-        width: 50%;
+        width: 70%;
+    }
+
+    @media (max-width: 550px) {
+        width: 80%;
     }
 `;
 
@@ -77,6 +82,10 @@ export const TextWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 export const Heading = styled.div<PropsHeading>`
@@ -99,15 +108,15 @@ export const Heading = styled.div<PropsHeading>`
         }
     }
 
-    @media (max-width: 625px) {
+    @media (max-width: 768px) {
         width: 100%;
         flex-direction: column-reverse;
-        margin-top: 35px;
+        margin-top: 2rem;
         animation: slideIn .456s ease 1;
-        border-radius: 55px;
+        border-radius: 60px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
-        background-color: ${props => props.color};
+        background-color: ${props => props.theme.accent};
         padding: 25px 0;
     }
 `;
@@ -123,7 +132,7 @@ export const Title = styled.div`
     }
     
 
-    @media (max-width: 625px) {
+    @media (max-width: 768px) {
         font-weight: 900;
         font-size: 2rem;
         display: flex;
@@ -139,7 +148,7 @@ export const Fancy = styled.span`
     margin: 0 6px;
     text-align: center;
 
-    @media (max-width: 625px) {
+    @media (max-width: 768px) {
         color: ${props => props.color};
         margin: 7px 0;
         background-color: ${props => props.theme.background};
@@ -153,9 +162,9 @@ export const Icon = styled.div`
     width: 0;
     height: 0;
 
-    @media (max-width: 700px) {
-        width: 50px;
-        height: 50px;
+    @media (max-width: 768px) {
+        width: 90px;
+        height: 90px;
     }
     
     @media (max-width: 550px) {
@@ -170,21 +179,17 @@ export const InputContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 45px;
+    margin-top: 2.5rem;
+
+    @media (max-width: 768px) {
+        padding: 0 2rem;
+    }
 `;
 
 export const Inputs = styled.div`
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     width: 100%;
-
-    @media (max-width: 550px) {
-        width: 90%;
-    }
-
-    @media (max-width: 400px) {
-        width: 90%;
-    }
 `;
 
 export const LabelContainer = styled.div`
@@ -192,12 +197,13 @@ export const LabelContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 25px;
+    margin-bottom: 2rem;
     position: relative;
     width: 100%;
 
-    @media (max-width: 550px) {
+    @media (max-width: 768px) {
         flex-direction: column;
+        justify-content: center;
     }
 `;
 
@@ -209,6 +215,10 @@ export const InputFieldContainer = styled.div`
     min-width: 250px;
     margin-left: 10px;
     width: 100%;
+
+    @media (max-width: 768px) {
+        margin-left: 0;
+    }
 `;
 
 export const LabelText = styled.div`
@@ -217,9 +227,12 @@ export const LabelText = styled.div`
     width: 35%;
 
 
-    @media (max-width: 550px) {
+    @media (max-width: 768px) {
+        width: 100%;
+        text-align: left;
+        padding-left: .5rem;
         font-size: 17px;
-    }
+        margin-bottom: .4rem;
 `;
 
 export const SelectField = styled.select`
@@ -227,17 +240,12 @@ export const SelectField = styled.select`
     color: ${props => props.theme.text};
     border: none;
     font-size: 18px;
-    padding: .5rem 60px;
+    padding: .5rem;
     padding-left: 60px;
-    border-radius: 12px;
+    border-radius: 16px;
     width: 100%;
     border: transparent;
-
-    @media (max-width: 550px) {
-        width: 100%;
-        margin-top: 12px;
-        padding-left: 65px;
-    }
+    border: 1px solid ${props => props.theme.accent};
 `;
 
 export const SelectOption = styled.option`
@@ -257,12 +265,11 @@ export const InputExercise = styled.input`
     padding-left: 60px;
     border-radius: 16px;
     text-align: left;
-
-    @media (max-width: 550px) {
-        width: 100%;
-        margin-top: 12px;
-        padding-left: 65px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid ${props => props.theme.accent};
 `;
 
 export const InputLifts = styled(InputExercise)`
@@ -276,15 +283,14 @@ export const InputLifts = styled(InputExercise)`
 `;
 
 export const LabelIcon = styled.div`
+    position: absolute;
+    left: 2%;
     width: 24px;
     height: 24px;
-    position: absolute;
-    left: 4%;
 
-    @media (max-width: 550px) {
-        width: 35px;
-        height: 35px;
-        bottom: 5%;
+    @media (max-width: 768px) {
+        width: 30px;
+        height: 30px;
     }
 `;
 
