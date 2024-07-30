@@ -15,12 +15,11 @@ export const Nav = styled.nav`
     align-items: center;
     justify-content: space-between;
     color: ${props => props.theme.text};
-    overflow-x: hidden;
+    background-color: ${props => props.theme.background};
 
     @media (max-width: 768px) {
         align-items: center;
         justify-content: center;
-        background-color: ${props => props.theme.background};
     }
 `;
 
@@ -43,22 +42,22 @@ export const NavLinks = styled.div<Props>`
         width: 50%;
         height: 100vh;
         background-color: ${props => props.theme.background};
-        padding: 40px 15px;
-        margin-top: 75px;
+        padding: 2rem 1rem;
         top: 0;
-        right: -200%;
-        transition: all .666s ease;
+        right: -100%;
+        transition: all .4s ease-in-out;
+        z-index: 99;
 
         //Mobile Nav is Active
         ${props => props.active && `
             top: 0;
             right: 0;
-            transition: all .666s ease;
+            transition: all .4s ease-in-out;
         `}
 
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-start;
 
         &::before {
@@ -84,8 +83,25 @@ export const NavLink = styled(Link)`
     cursor: pointer;
 
     @media (max-width: 700px) {
-        font-size: 1.3rem;
-        margin: .4rem;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+`;
+
+export const NavLogoContainer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+`;
+
+export const NavLogo = styled.img`
+    display: none;
+
+    @media (max-width: 768px) {
+        display: block;
+        width: 40%;
     }
 `;
 

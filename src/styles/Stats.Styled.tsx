@@ -245,7 +245,6 @@ export const SelectField = styled.select`
     border-radius: 16px;
     width: 100%;
     border: transparent;
-    border: 1px solid ${props => props.theme.accent};
 `;
 
 export const SelectOption = styled.option`
@@ -269,7 +268,6 @@ export const InputExercise = styled.input`
     align-items: center;
     justify-content: center;
     position: relative;
-    border: 1px solid ${props => props.theme.accent};
 `;
 
 export const InputLifts = styled(InputExercise)`

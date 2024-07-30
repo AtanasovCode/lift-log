@@ -19,13 +19,13 @@ const Nav = () => {
 
     return (
         <Styled.Nav>
-            <Styled.Logo 
+            <Styled.Logo
                 src={logo}
                 onClick={() => navigate("/")}
             />
 
             <Styled.MenuIcon onClick={handleMobileNavShow} >
-                <List 
+                <List
                     color="white"
                     size="100%"
                     weight="regular"
@@ -33,6 +33,12 @@ const Nav = () => {
             </Styled.MenuIcon>
 
             <Styled.NavLinks active={active}>
+                <Styled.NavLogoContainer>
+                    <Styled.NavLogo
+                        src={logo}
+                        alt="logo icon"
+                    />
+                </Styled.NavLogoContainer>
                 <Styled.NavLink to="/">
                     Home
                 </Styled.NavLink>
