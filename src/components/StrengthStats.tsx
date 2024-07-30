@@ -65,97 +65,97 @@ const StrengthStats = ({
             </Styled.ImageContainer>
 
             <Styled.TextContainer>
+                <Styled.TextWrapper>
+                    <Styled.Heading color={theme.accent}>
+                        <Styled.Title>
+                            <Styled.Fancy color={theme.accent}>Visualize</Styled.Fancy>
+                            your
+                            <Styled.Fancy color={theme.accent}>strength</Styled.Fancy>
+                            increase
+                        </Styled.Title>
 
-                <Styled.Heading color={theme.accent}>
-                    <Styled.Title>
-                        <Styled.Fancy color={theme.accent}>Visualize</Styled.Fancy>
-                        your
-                        <Styled.Fancy color={theme.accent}>strength</Styled.Fancy>
-                        increase
-                    </Styled.Title>
+                        <Styled.Icon>
+                            <RocketLaunch
+                                size="100%"
+                                color={theme.richBlackDark}
+                                weight="fill" />
+                        </Styled.Icon>
+                    </Styled.Heading>
 
-                    <Styled.Icon>
-                        <RocketLaunch
-                            size="100%"
-                            color={theme.richBlackDark}
-                            weight="fill" />
-                    </Styled.Icon>
-                </Styled.Heading>
-
-                {/*Input components that are activated on button click*/}
-                {showExercises && <ExerciseSelect />}
-                {showCalendar && <CalendarInput />}
-                {showExercises && <Styled.Tint />}
-                {showCalendar && <Styled.Tint />}
+                    {/*Input components that are activated on button click*/}
+                    {showExercises && <ExerciseSelect />}
+                    {showCalendar && <CalendarInput />}
+                    {showExercises && <Styled.Tint />}
+                    {showCalendar && <Styled.Tint />}
 
 
-                <Styled.InputContainer>
+                    <Styled.InputContainer>
 
-                    <Styled.Inputs>
-                        <Styled.LabelContainer>
-                            <Styled.LabelText>
-                                Exercise:
-                            </Styled.LabelText>
-                            <Styled.InputFieldContainer>
-                                <Styled.LabelIcon>
-                                    <Barbell
-                                        color={theme.mayaBlue}
-                                        weight="fill"
-                                        size="100%"
+                        <Styled.Inputs>
+                            <Styled.LabelContainer>
+                                <Styled.LabelText>
+                                    Exercise:
+                                </Styled.LabelText>
+                                <Styled.InputFieldContainer>
+                                    <Styled.LabelIcon>
+                                        <Barbell
+                                            color={theme.mayaBlue}
+                                            weight="fill"
+                                            size="100%"
+                                        />
+                                    </Styled.LabelIcon>
+                                    <Styled.InputExercise
+                                        type="button"
+                                        value={exerciseSelected}
+                                        onClick={toggleExercises}
                                     />
-                                </Styled.LabelIcon>
-                                <Styled.InputExercise
-                                    type="button"
-                                    value={exerciseSelected}
-                                    onClick={toggleExercises}
-                                />
-                            </Styled.InputFieldContainer>
-                        </Styled.LabelContainer>
+                                </Styled.InputFieldContainer>
+                            </Styled.LabelContainer>
 
-                        <Styled.LabelContainer>
-                            <Styled.LabelText>
-                                Lifts:
-                            </Styled.LabelText>
-                            <Styled.InputFieldContainer>
-                                <Styled.LabelIcon>
-                                    <Calendar
-                                        color={theme.accent}
-                                        weight="fill"
-                                        size="100%"
+                            <Styled.LabelContainer>
+                                <Styled.LabelText>
+                                    Lifts:
+                                </Styled.LabelText>
+                                <Styled.InputFieldContainer>
+                                    <Styled.LabelIcon>
+                                        <Calendar
+                                            color={theme.accent}
+                                            weight="fill"
+                                            size="100%"
+                                        />
+                                    </Styled.LabelIcon>
+                                    <Styled.InputLifts
+                                        type="button"
+                                        value={calendarValue}
+                                        onClick={toggleCalendar}
                                     />
-                                </Styled.LabelIcon>
-                                <Styled.InputLifts
-                                    type="button"
-                                    value={calendarValue}
-                                    onClick={toggleCalendar}
-                                />
-                            </Styled.InputFieldContainer>
-                        </Styled.LabelContainer>
+                                </Styled.InputFieldContainer>
+                            </Styled.LabelContainer>
 
-                        <Styled.Submit
-                            onClick={submitData}
-                            color={theme.accent}
-                        >
-                            <Styled.SubmitIcon>
-                                <ChartLine
-                                    size="100%"
-                                    color={theme.background}
-                                    weight="duotone"
-                                />
-                            </Styled.SubmitIcon>
-                            Get Results
+                            <Styled.Submit
+                                onClick={submitData}
+                                color={theme.accent}
+                            >
+                                <Styled.SubmitIcon>
+                                    <ChartLine
+                                        size="100%"
+                                        color={theme.background}
+                                        weight="duotone"
+                                    />
+                                </Styled.SubmitIcon>
+                                Get Results
 
-                            {
-                                errorActive &&
-                                <Styled.ErrorMessage>
-                                    There is some data missing!
-                                </Styled.ErrorMessage>
-                            }
-                        </Styled.Submit>
-                    </Styled.Inputs>
+                                {
+                                    errorActive &&
+                                    <Styled.ErrorMessage>
+                                        There is some data missing!
+                                    </Styled.ErrorMessage>
+                                }
+                            </Styled.Submit>
+                        </Styled.Inputs>
 
-                </Styled.InputContainer>
-
+                    </Styled.InputContainer>
+                </Styled.TextWrapper>
             </Styled.TextContainer>
 
         </Styled.Container>

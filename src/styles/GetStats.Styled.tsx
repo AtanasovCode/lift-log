@@ -34,15 +34,15 @@ export const Tab = styled.div<Props>`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .6rem 1rem;
+    padding: .5rem 1rem;
     border-radius: 16px;
-    background-color: ${props => props.theme.secondary};
-    color: #e0dddd;
-    margin: 0 15px;
+    background-color: ${props => props.theme.mayaBlueDark};
+    color: #b1abab;
+    margin: 0 .5rem;
     cursor: pointer;
     user-select: none;
 
     //Tab is currently active:
-    background-color: ${props => props.active && props.color};
+    background-color: ${props => props.active && props.theme.primary};
     color: ${props => props.active && props.theme.background};
 `;

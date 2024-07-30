@@ -6,8 +6,8 @@ const theme = {
     richBlackDark: "#060d14",
 
     background: "#0f1f2e",
-    primary: "#733598",
-    secondary: "#5dbdf92b",
+    primary: "#6aa1d8",
+    secondary: "#508eb52b",
     accent: "#0085FF",
     text: "#f5f1f1",
   };
