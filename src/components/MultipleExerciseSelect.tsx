@@ -119,17 +119,13 @@ const Container = styled.div`
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     background-color: ${props => props.theme.background};
-    z-index: 10;
+    z-index: 999;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: ${props => props.theme.text};
     padding: 40px;
-    border-radius: 15px;
-    border: 1px solid ${props => props.theme.accent};
-
-
 
     @media (max-width: 950px) {
         width: 80vw;
@@ -137,7 +133,7 @@ const Container = styled.div`
         padding: 25px;
     }
 
-    @media (max-width: 750px) {
+    @media (max-width: 768px) {
         max-width: 100vw;
         height: 100%;
         top: 0;
@@ -156,8 +152,8 @@ const Container = styled.div`
 
 const CloseIcon = styled.div`
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 5%;
+    right: 3%;
     width: 30px;
     cursor: pointer;
 `;
@@ -167,21 +163,21 @@ const Heading = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 3rem;
     position: relative;
 `;
 
 const Title = styled.div`
     font-size: 22px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 1.2rem;
 `;
 
 const Subtitle = styled.div`
     text-align: center;
     font-size: 15px;
     color: darkgray;
-    margin: 0 15px;
+    margin: 0 1rem;
 `;
 
 
@@ -192,29 +188,16 @@ const InputsContainer = styled.div`
     grid-gap: 15px;
 `;
 
-
-const InputUnit = styled.select`
-    background-color: ${props => props.theme.background};
-    border: none;
-    color: darkgray;
-    font-size: 14px;
-    margin-left: 7px;
-`;
-
-const UnitOption = styled.option`
-    background-color: ${props => props.theme.background};
-`;
-
 const SubmitData = styled.input`
-    min-width: 40%;
+    width: 100%;
     border: none;
-    background-color: ${props => props.theme.accent};
-    color: #000;
+    background-color: ${props => props.theme.secondary};
+    color: ${props => props.theme.text};
     font-weight: 600;
-    margin-top: 40px;
+    margin-top: 3rem;
     font-size: 16px;
-    padding: 15px;
-    border-radius: 12px;
+    padding: 1rem;
+    border-radius: 16px;
 
     &:hover {
         cursor: pointer;

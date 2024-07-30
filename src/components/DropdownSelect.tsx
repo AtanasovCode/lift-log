@@ -165,12 +165,12 @@ const Input = styled.div`
 
 const InputPR = styled.input`
     flex: 33%;
-    border: 1px solid ${props => props.theme.accent};
-    padding: 15px;
-    background-color: ${props => props.theme.background};
+    padding: 1rem;
+    background-color: ${props => props.theme.secondary};
     color: ${props => props.theme.text};
     border-bottom-right-radius: 12px;
     border-top-right-radius: 12px;
+    border: none;
 
     @media (max-width: 550px) {
         flex: 35%;
@@ -179,8 +179,9 @@ const InputPR = styled.input`
 
 
 const Dropdown = styled.div<StyledProps>`
+    position: relative;
+    overflow: hidden;
     flex: 66%;
-    min-width: 220px;
     position: relative;
     display: flex;
     align-items: center;
@@ -188,10 +189,9 @@ const Dropdown = styled.div<StyledProps>`
     cursor: pointer;
     font-size: 17px;
     margin-right: 8px;
-    border: 1px solid ${props => props.theme.accent};
     position: relative;
-    border-bottom-left-radius: 12px;
-    border-top-left-radius: 12px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
 
     ${props => props.isOpen && `
         border-radius: 0;
@@ -231,15 +231,18 @@ const SearchContainer = styled.div<StyledProps>`
 
 const Search = styled.input`
     width: 100%;
-    padding: 7px 15px;
-    padding-left: 40px;
+    height: 100%;
+    background-color: ${props => props.theme.secondary};
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border: none;
-    background-color: ${props => props.theme.background};
-    color: darkgray;
+    color: ${props => props.theme.text};
     font-size: 16px;
-    border-bottom-left-radius: 12px;
-    border-top-left-radius: 12px;
-
+    padding-left: 50px;
+]
     @media (max-width: 550px) {
         border-radius: none;
         width: 100%;
@@ -250,9 +253,10 @@ const Search = styled.input`
 const SearchIcon = styled.div`
     position: absolute;
     top: 50%;
-    left: 2%;
+    left: 4%;
     transform: translateY(-50%);
-    width: 25px;
+    width: 22px;
+    height: 22px;
 `;
 
 //this is the selected exercise icon:
@@ -311,10 +315,10 @@ const CloseList = styled.div`
 
     @media (max-width: 550px) {
         opacity: 1;
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        z-index: 15;
+        position: absolute;
+        top: 150px;
+        right: 150px;
+        z-index: 99;
     }
 `;
 

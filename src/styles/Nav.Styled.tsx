@@ -8,6 +8,7 @@ interface Props {
 
 
 export const Nav = styled.nav`
+    overflow-x: hidden;
     padding: 2rem 4rem;
     width: 100%;
     margin-bottom: 2rem;
