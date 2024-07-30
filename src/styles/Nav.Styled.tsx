@@ -44,15 +44,14 @@ export const NavLinks = styled.div<Props>`
         background-color: ${props => props.theme.background};
         padding: 2rem 1rem;
         top: 0;
-        right: -100%;
-        transition: all .4s ease-in-out;
+        right: -200%;
+        transition: all .6s ease-in-out;
         z-index: 99;
 
         //Mobile Nav is Active
         ${props => props.active && `
             top: 0;
             right: 0;
-            transition: all .4s ease-in-out;
         `}
 
         display: flex;
