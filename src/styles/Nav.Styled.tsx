@@ -71,21 +71,28 @@ export const NavLinks = styled.div<Props>`
         }
     }
 
-    @media (max-width: 400px) {
-        width: 75%;
+    @media (max-width: 550px) {
+        width: 80%;
     }
 `;
 
 export const NavLink = styled(Link)`
-    font-size: 15px;
+    font-size: 1rem;
     font-weight: 500;
     margin: .5rem;
     cursor: pointer;
 
-    @media (max-width: 700px) {
-        font-size: 1.5rem;
-        margin: 0;
+    @media (max-width: 768px) {
+        font-size: 1.2rem;
+        margin-bottom: .5rem;
     }
+`;
+
+export const CloseIcon = styled.div`
+    position: absolute;
+    top: 2%;
+    left: 4%;
+    cursor: pointer;
 `;
 
 export const NavLogoContainer = styled.div`
@@ -100,6 +107,11 @@ export const NavLogo = styled.img`
     display: none;
 
     @media (max-width: 768px) {
+        display: block;
+        width: 40%;
+    }
+
+    @media (max-width: 550px) {
         display: block;
         width: 40%;
     }

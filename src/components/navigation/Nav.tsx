@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as Styled from '../../styles/Nav.Styled';
-import { List } from '@phosphor-icons/react';
+import { List, X } from '@phosphor-icons/react';
 import { useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
@@ -33,6 +33,13 @@ const Nav = () => {
             </Styled.MenuIcon>
 
             <Styled.NavLinks active={active}>
+                <Styled.CloseIcon onClick={handleMobileNavShow}>
+                    <X 
+                        size={28}
+                        color="#FFF"
+                        weight="light"
+                    />
+                </Styled.CloseIcon>
                 <Styled.NavLogoContainer>
                     <Styled.NavLogo
                         src={logo}
