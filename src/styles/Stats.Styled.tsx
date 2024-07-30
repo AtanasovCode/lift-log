@@ -19,7 +19,6 @@ export const Container = styled.div`
     width: 100%;
     color: ${props => props.theme.text};
     background-color: ${props => props.theme.background};
-    padding-bottom: 1.5rem;
 
     @media (max-width: 768px) {
         flex-direction: column-reverse;
@@ -64,7 +63,6 @@ export const Illustration = styled.img`
 export const TextContainer = styled.div`
     flex: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     padding: 0 1rem;
@@ -74,12 +72,18 @@ export const TextContainer = styled.div`
     }
 `;
 
+export const TextWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+`;
+
 export const Heading = styled.div<PropsHeading>`
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    border-radius: 15px;
 
     @keyframes slideIn {
         from {
@@ -165,14 +169,14 @@ export const InputContainer = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 45px;
-    padding: 0 1.2rem;
 `;
 
 export const Inputs = styled.div`
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+    width: 100%;
 
     @media (max-width: 550px) {
         width: 90%;
@@ -184,11 +188,13 @@ export const Inputs = styled.div`
 `;
 
 export const LabelContainer = styled.div`
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-bottom: 25px;
     position: relative;
+    width: 100%;
 
     @media (max-width: 550px) {
         flex-direction: column;
@@ -202,11 +208,13 @@ export const InputFieldContainer = styled.div`
     position: relative;
     min-width: 250px;
     margin-left: 10px;
+    width: 100%;
 `;
 
 export const LabelText = styled.div`
     font-size: 18px;
     color: ${props => props.theme.text};
+    width: 35%;
 
 
     @media (max-width: 550px) {
@@ -215,15 +223,15 @@ export const LabelText = styled.div`
 `;
 
 export const SelectField = styled.select`
-    width: 100%;
-    border: 1px solid ${props => props.color};
-    background-color: ${props => props.theme.background};
+    background-color: ${props => props.theme.secondary};
     color: ${props => props.theme.text};
+    border: none;
     font-size: 18px;
-    padding: .5rem;
-    padding-left: 55px;
+    padding: .5rem 60px;
+    padding-left: 60px;
     border-radius: 12px;
-    color: darkgray;
+    width: 100%;
+    border: transparent;
 
     @media (max-width: 550px) {
         width: 100%;
@@ -234,19 +242,20 @@ export const SelectField = styled.select`
 
 export const SelectOption = styled.option`
     background-color: ${props => props.theme.background};
-    color: #fff;
+    color: ${props => props.theme.text};
+    border: none;
 `;
 
 
 export const InputExercise = styled.input`
     width: 100%;
-    border: 1px solid ${props => props.color};
-    background-color: transparent;
+    background-color: ${props => props.theme.secondary};
+    color: ${props => props.theme.text};
+    border: none;
     font-size: 18px;
-    padding: 10px;
-    padding-left: 55px;
-    border-radius: 12px;
-    color: darkgray;
+    padding: .5rem;
+    padding-left: 60px;
+    border-radius: 16px;
     text-align: left;
 
     @media (max-width: 550px) {
@@ -267,10 +276,10 @@ export const InputLifts = styled(InputExercise)`
 `;
 
 export const LabelIcon = styled.div`
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     position: absolute;
-    left: 8%;
+    left: 4%;
 
     @media (max-width: 550px) {
         width: 35px;
@@ -281,14 +290,14 @@ export const LabelIcon = styled.div`
 
 
 export const Submit = styled.div`
-    background-color: ${props => props.color};
-    color: #000;
-    padding: 10px 45px;
+    background-color: ${props => props.theme.secondary};
+    color: ${props => props.theme.text};
+    padding: .5rem .7rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    border-radius: 12px;
+    border-radius: 16px;
     font-weight: 600;
     position: relative;
     cursor: pointer;
@@ -299,11 +308,10 @@ export const Submit = styled.div`
 export const SubmitIcon = styled.div`
     width: 35px;
     height: 35px;
-    position: absolute;
-    left: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 6px;
 `;
 
 

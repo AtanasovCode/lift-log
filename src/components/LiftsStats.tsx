@@ -135,129 +135,130 @@ const LiftsStats = ({
 
 
             <Styled.TextContainer>
-                <Styled.Heading color={theme.accent}>
-                    <Styled.Title>
-                        <Styled.Fancy color={theme.accent}>
-                            Observe
-                        </Styled.Fancy>
-                        your
-                        <Styled.Fancy color={theme.accent}>
-                            strongest
-                        </Styled.Fancy>
-                        lifts
-                    </Styled.Title>
-                    <Styled.Icon>
-                        <HandFist
-                            color={theme.background}
-                            size="100%"
-                            weight="fill"
-                        />
-                    </Styled.Icon>
-                </Styled.Heading>
+                <Styled.TextWrapper>
+                    <Styled.Heading color={theme.accent}>
+                        <Styled.Title>
+                            <Styled.Fancy color={theme.accent}>
+                                Observe
+                            </Styled.Fancy>
+                            your
+                            <Styled.Fancy color={theme.accent}>
+                                strongest
+                            </Styled.Fancy>
+                            lifts
+                        </Styled.Title>
+                        <Styled.Icon>
+                            <HandFist
+                                color={theme.background}
+                                size="100%"
+                                weight="fill"
+                            />
+                        </Styled.Icon>
+                    </Styled.Heading>
 
-                <Styled.InputContainer>
-                    <Styled.Inputs>
-                        <Styled.LabelContainer>
-                            <Styled.LabelText>
-                                Track:
-                            </Styled.LabelText>
-                            <Styled.InputFieldContainer>
-                                <Styled.LabelIcon>
-                                    <ListNumbers
-                                        size="100%"
-                                        weight="light"
-                                        color={theme.accent}
-                                    />
-                                </Styled.LabelIcon>
-                                <Styled.SelectField
-                                    defaultValue={2}
-                                    color={theme.accent}
-                                    onChange={(e) => {
-                                        setNumberOfExercises(e.currentTarget.value);
-                                        sessionStorage.setItem("numberOfExercises", e.currentTarget.value.toString());
-                                    }}
-                                >
-                                    <Styled.SelectOption
-                                        value="select"
-                                        disabled
+                    <Styled.InputContainer>
+                        <Styled.Inputs>
+                            <Styled.LabelContainer>
+                                <Styled.LabelText>
+                                    Track:
+                                </Styled.LabelText>
+                                <Styled.InputFieldContainer>
+                                    <Styled.LabelIcon>
+                                        <ListNumbers
+                                            size="100%"
+                                            weight="light"
+                                            color={theme.text}
+                                        />
+                                    </Styled.LabelIcon>
+                                    <Styled.SelectField
+                                        defaultValue={2}
+                                        onChange={(e) => {
+                                            setNumberOfExercises(e.currentTarget.value);
+                                            sessionStorage.setItem("numberOfExercises", e.currentTarget.value.toString());
+                                        }}
                                     >
-                                        Exercises to track
-                                    </Styled.SelectOption>
-                                    {numbers.map((number) => {
-                                        return (
-                                            <Styled.SelectOption
-                                                value={number}
-                                                key={number}
-                                            >
-                                                {number} Exercises
-                                            </Styled.SelectOption>
-                                        );
-                                    })}
-                                </Styled.SelectField>
-                            </Styled.InputFieldContainer>
-                        </Styled.LabelContainer>
+                                        <Styled.SelectOption
+                                            value="select"
+                                            disabled
+                                        >
+                                            Exercises to track
+                                        </Styled.SelectOption>
+                                        {numbers.map((number) => {
+                                            return (
+                                                <Styled.SelectOption
+                                                    value={number}
+                                                    key={number}
+                                                >
+                                                    {number} Exercises
+                                                </Styled.SelectOption>
+                                            );
+                                        })}
+                                    </Styled.SelectField>
+                                </Styled.InputFieldContainer>
+                            </Styled.LabelContainer>
 
-                        <Styled.LabelContainer>
-                            <Styled.LabelText>
-                                Exercises:
-                            </Styled.LabelText>
-                            <Styled.InputFieldContainer>
-                                <Styled.LabelIcon>
-                                    <Barbell
-                                        size="100%"
+                            <Styled.LabelContainer>
+                                <Styled.LabelText>
+                                    Exercises:
+                                </Styled.LabelText>
+                                <Styled.InputFieldContainer>
+                                    <Styled.LabelIcon>
+                                        <Barbell
+                                            size="100%"
+                                            color={theme.text}
+                                            weight="light"
+                                        />
+                                    </Styled.LabelIcon>
+                                    <Styled.InputExercise
+                                        type="button"
+                                        value={sessionStorage.getItem("lifts") ? "Exercises Updated" : "Input Exercises"}
                                         color={theme.accent}
-                                        weight="light"
+                                        onClick={toggleMultipleExercises}
                                     />
-                                </Styled.LabelIcon>
-                                <Styled.InputExercise
-                                    type="button"
-                                    value={sessionStorage.getItem("lifts") ? "Exercises Updated" : "Input Exercises"}
-                                    color={theme.accent}
-                                    onClick={toggleMultipleExercises}
-                                />
-                            </Styled.InputFieldContainer>
-                        </Styled.LabelContainer>
+                                </Styled.InputFieldContainer>
+                            </Styled.LabelContainer>
 
-                        <Styled.LabelContainer>
-                            <Styled.LabelText>
-                                Chart type:
-                            </Styled.LabelText>
-                            <Styled.InputFieldContainer>
-                                <Styled.LabelIcon>
-                                    {getChartIcon(chartType, "light", theme.accent)}
-                                </Styled.LabelIcon>
-                                <Styled.InputExercise
-                                    type="button"
-                                    value={chartType ? chartType : "Select Chart"}
-                                    color={theme.accent}
-                                    onClick={toggleCharts}
-                                />
-                            </Styled.InputFieldContainer>
-                        </Styled.LabelContainer>
+                            <Styled.LabelContainer>
+                                <Styled.LabelText>
+                                    Chart type:
+                                </Styled.LabelText>
+                                <Styled.InputFieldContainer>
+                                    <Styled.LabelIcon>
+                                        {getChartIcon(chartType, "light", theme.text)}
+                                    </Styled.LabelIcon>
+                                    <Styled.InputExercise
+                                        type="button"
+                                        value={chartType ? chartType : "Select Chart"}
+                                        color={theme.accent}
+                                        onClick={toggleCharts}
+                                    />
+                                </Styled.InputFieldContainer>
+                            </Styled.LabelContainer>
 
-                        <Styled.Submit
-                            color={theme.accent}
-                            onClick={submitData}
-                        >
-                            <Styled.SubmitIcon>
-                                <ChartDonut
-                                    size="100%"
-                                    color={theme.richBlackDark}
-                                    weight="fill"
-                                />
-                            </Styled.SubmitIcon>
-                            Get Results
+                            <Styled.Submit
+                                color={theme.accent}
+                                onClick={submitData}
+                            >
+                                <Styled.SubmitIcon>
+                                    <ChartDonut
+                                        size="100%"
+                                        color={theme.text}
+                                        weight="fill"
+                                    />
+                                </Styled.SubmitIcon>
+                                Get Results
 
-                            {
-                                errorActive &&
-                                <Styled.ErrorMessage>
-                                    There is some data missing!
-                                </Styled.ErrorMessage>
-                            }
-                        </Styled.Submit>
+                                {
+                                    errorActive &&
+                                    <Styled.ErrorMessage>
+                                        There is some data missing!
+                                    </Styled.ErrorMessage>
+                                }
+                            </Styled.Submit>
 
-                    </Styled.Inputs>
-                </Styled.InputContainer>
+                        </Styled.Inputs>
+                    </Styled.InputContainer>
+                </Styled.TextWrapper>
             </Styled.TextContainer>
         </Styled.Container>
     );
