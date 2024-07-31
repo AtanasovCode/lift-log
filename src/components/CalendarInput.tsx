@@ -40,7 +40,7 @@ const CalendarInput = () => {
             </Close>
             <Heading>
                 <Title>
-                    Calendar
+                    Weight Input
                 </Title>
                 <Description>
                     Input your heaviest lift for each month
@@ -85,18 +85,22 @@ const CalendarInput = () => {
 export default CalendarInput;
 
 const Calendar = styled.div`
+    max-width: 1024px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    z-index: 15;
-    padding: 25px;
+    z-index: 99;
+    padding: 1.5rem;
     background-color: ${props => props.theme.background};
-    border-radius: 15px;
-    max-width: 700px;
-    width: 70vw;
+    border-radius: 16px;
+    width: 50%;
 
-    @media (max-width: 700px) {
+    @media (max-width: 1024px) {
+        width: 80%;
+    }
+
+    @media (max-width: 768px) {
         width: 100%;
         height: 100%;
         border-radius: 0;
@@ -112,7 +116,7 @@ const Heading = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 35px;
+    margin-bottom: 2.2rem;
 
     @media (max-width: 700px) {
         margin-bottom: 20px;
@@ -123,48 +127,49 @@ const Title = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: .6rem;
 
-    @media (max-width: 700px) {
-        font-size: 20px;
+    @media (max-width: 768px) {
+        font-size: 22px;
     }
 `;
 
 const Description = styled.div`
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 17px;
+    margin-bottom: .6rem;
     text-align: center;
 
     @media (max-width: 550px) {
         font-size: 16px;
-        padding: 0 30px;
+        padding: 0 2rem;
     }
 `;
 
 const Disclaimer = styled.div`
     font-size: 14px;
-    color: darkgray;
+    color: #c1bfbf;
     text-align: center;
 
     @media (max-width: 550px) {
         font-size: 13px;
-        padding: 0 30px;
+        padding: 0 2rem;
     }
 `;
 
 const Months = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
+    grid-gap: .5rem;
 
-    @media (max-width: 750px) {
-        grid-gap: 10px;
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
     }
 
     @media (max-width: 550px) {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 `;
 
@@ -173,19 +178,19 @@ const Month = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid ${props => props.theme.secondary};
-    border-radius: 8px;
+    background-color: ${props => props.theme.secondary};
+    border-radius: 16px;
     position: relative;
 `;
 
 const MonthName = styled.div`
     font-size: 17px;
     font-weight: 600;
-    padding: 5px;
-    background-color: ${props => props.theme.secondary};
+    padding: .5rem;
     color: ${props => props.theme.text};
     width: 100%;
     text-align: center;
+    margin-bottom: .5rem;
 
     @media (max-width: 500px) {
         font-size: 15px;
@@ -195,8 +200,8 @@ const MonthName = styled.div`
 const MonthInput = styled.input`
     width: 100%;
     height: 35px;
-    padding: 5px;
-    padding-left: 12px;
+    padding: .5rem;
+    text-align: center;
     background-color: transparent;
     border: none;
     color: ${props => props.theme.text};
@@ -209,9 +214,9 @@ const Submit = styled.input`
     color: ${props => props.theme.text};
     text-align: center;
     width: 100%;
-    height: 45px;
-    margin-top: 40px;
-    border-radius: 8px;
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    border-radius: 16px;
     border: none;
 
     &:hover {
@@ -219,10 +224,10 @@ const Submit = styled.input`
     }
 
 
-    @media (max-width: 500px) {
+    @media (max-width: 550px) {
         font-size: 15px;
-        height: 40px;
-        margin-top: 25px;
+        padding: .5rem 1rem;
+        margin-top: 2rem;
     }
 `;
 
@@ -235,8 +240,8 @@ const ErrorMsg = styled.div`
 
 const Close = styled.div`
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 5%;
+    right: 5%;
     width: 30px;
     cursor: pointer;
 `;
