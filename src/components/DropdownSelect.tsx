@@ -323,8 +323,9 @@ const Option = styled.div`
     background-color: ${props => props.theme.secondary};
     cursor: pointer;
 
-    @media (max-width: 550px) {
+    @media (max-width: 768px) {
         padding: 15px;
+        margin-bottom: .5rem;
     }
 `;
 
