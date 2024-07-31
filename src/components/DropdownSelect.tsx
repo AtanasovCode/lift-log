@@ -289,28 +289,27 @@ const List = styled.div`
     right: 0;
     z-index: 99;
 
-    @media (max-width: 550px) {
+    @media (max-width: 768px) {
         position: fixed;
-        top: 60px;
+        top: 0;
         left: 0;
-        width: 100%;
+        width: 100vw;
         height: 100vh;
-        z-index: 20;
         max-height: 100vh;
+        z-index: 9999;
         border: none;
+        padding-top: 4rem;
     }
 `;
 
 const CloseList = styled.div`
-    opacity: 0;
-    position: absolute;
-    right: -500%;
+    display: none;
 
     @media (max-width: 550px) {
-        opacity: 1;
+        display: block;
         position: absolute;
-        top: 150px;
-        right: 150px;
+        top: 2%;
+        right: 5%;
         z-index: 99;
     }
 `;
@@ -324,7 +323,7 @@ const Option = styled.div`
     cursor: pointer;
 
     @media (max-width: 768px) {
-        padding: 15px;
+        padding: 1rem;
         margin-bottom: .5rem;
     }
 `;
