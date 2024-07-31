@@ -136,11 +136,11 @@ const ExerciseSelect = () => {
 export default ExerciseSelect;
 
 export const DropdownWrapper = styled.div`
-  max-width: 650px;
-  padding: 15px;
+  max-width: 1024px;
+  padding: 1rem;
   position: fixed;
-  width: 60vw;
-  z-index: 10;
+  width: 50%;
+  z-index: 99;
   opacity: 1;
   top: 50%;
   left: 50%;
@@ -150,10 +150,13 @@ export const DropdownWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${props => props.theme.background};
-  border: 1px solid ${props => props.theme.secondary};
-  border-radius: 8px;
+  border-radius: 16px;
 
-  @media (max-width: 700px) {
+  @media (max-width: 1024px) {
+    width: 70%
+  }
+
+  @media (max-width: 768px) {
     width: 100%;
     height: 100%;
     max-width: 100%;
@@ -166,10 +169,10 @@ export const DropdownHeader = styled.div`
   text-align: center;
   font-size: 22px;
   font-weight: 600;
-  padding: 15px;
+  padding: 1rem;
   color: ${props => props.theme.text};
 
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     font-size: 20px;
   }
 
@@ -189,13 +192,14 @@ const DropdownSearch = styled.div`
 
 export const DropdownInput = styled.input`
   width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  padding-left: 45px;
-  border: 1px solid ${props => props.theme.accent};
-  background-color: ${props => props.theme.background};
+  padding: .5rem;
+  border-radius: 16px;
+  padding-left: 50px;
+  background-color: ${props => props.theme.secondary};
   color: ${props => props.theme.text};
+  border: none;
   font-size: 18px;
+
   &:focus {
     outline: none;
   }
@@ -206,10 +210,10 @@ export const DropdownInput = styled.input`
 `;
 
 const SearchIcon = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   position: absolute;
-  left: 8px;
+  left: 3%;
   top: 5%;
 `;
 
@@ -218,51 +222,49 @@ const FilterTabs = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  margin: 8px 0 25px 0;
+  margin: .5rem 0;
 `;
 
 const Filter = styled.select`
-  padding: 10px;
-  background-color: ${props => props.theme.background};
-  border: 1px solid ${props => props.theme.accent};
-  border-radius: 8px;
+  padding: 1rem;
+  background-color: ${props => props.theme.secondary};
+  border: none;
+  border-radius: 16px;
   font-size: 15px;
-  color: #ffffff80;
-  margin-right: 10px;
+  color: #ffffff90;
 `;
 
 const FilterOption = styled.option`
   background-color: ${props => props.theme.background};
-  border: 1px solid ${props => props.theme.accent};
 `;
 
 export const DropdownList = styled.div`
   z-index: 1;
   background-color: transparent;
-  border-top: none;
   color: ${props => props.theme.text};
-  max-height: 370px;
+  max-height: 60vh;
   overflow-y: auto;
   width: 100%;
 
-  @media (max-width: 700px) {
-    max-height: 300px;
+  @media (max-width: 768px) {
+    max-height: 70vh;
   }
 `;
 
 export const DropdownItem = styled.div`
-  padding: 10px;
+  padding: .7rem;
   width: 100%;
-  border-bottom: 1px solid ${props => props.theme.accent};
-  background-color: transparent;
-  font-size: 14px;
+  background-color: ${props => props.theme.secondary};
+  border-radius: 16px;
   cursor: pointer;
   color: ${props => props.theme.text};
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: .5rem;
+
   &:hover {
-    background-color: #222;
+    background-color: ${props => props.theme.mayaBlueDark};
   }
 `;
 
@@ -275,23 +277,19 @@ const DropdownText = styled.div`
 `;
 
 const DropdownIcon = styled.img`
-  height: 40px;
+  height: 50px;
   filter: invert(100%);
 
-  @media (max-width: 700px) {
-    height: 30px;
-  }
-
-  @media (max-width: 500px) {
-    height: 25px;
+  @media (max-width: 540px) {
+    height: 40px;
   }
 `;
 
 const DropdownExercise = styled.div`
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 600;
   color: ${props => props.theme.text};
-  margin-bottom: 5px;
+  margin-bottom: .5rem;
 
   @media (max-width: 550px) {
     font-size: 16px;
@@ -300,8 +298,8 @@ const DropdownExercise = styled.div`
 
 const DropdownCategory = styled.div`
   font-size: 15px;
-  font-weight: 300;
-  color: darkgray;
+  font-weight: 400;
+  color: #ccc9c9;
 
   @media (max-width: 550px) {
     font-size: 14px;
@@ -312,7 +310,7 @@ const Close = styled.div`
   width: 30px;
   height: 30px;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5%;
+  right: 5%;
   cursor: pointer;
 `;

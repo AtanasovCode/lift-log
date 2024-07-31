@@ -18,6 +18,7 @@ interface Exercise {
     category: string;
 }
 
+
 interface Props {
     index: number,
     onExerciseDataUpdate: Function,

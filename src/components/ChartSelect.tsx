@@ -142,7 +142,7 @@ const ChartOption = styled.div`
 
     &:hover {
         cursor: pointer;
-        background-color: #cccccc30;
+        background-color: ${props => props.theme.mayaBlueDark};
     }
 `;
 
