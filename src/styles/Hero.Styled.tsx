@@ -42,7 +42,7 @@ export const HeroSection = styled.div`
 export const HeroImageContainer = styled.div`
     width: 26vw;
     height: 100vh;
-    background-color: ${props => props.theme.secondary};
+    background-color: ${props => props.theme.heroSecondary};
     display: flex;
     align-items: center;
     justify-content: center;
