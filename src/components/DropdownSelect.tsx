@@ -59,6 +59,7 @@ const DropdownSelect = ({
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
+        console.log("toggle dropdown")
     };
 
     const handleSearchTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,9 +80,7 @@ const DropdownSelect = ({
     return (
         <Input>
             <Dropdown
-                ref={childRef}
                 onClick={() => (mobileView && isOpen) ? console.log() : toggleDropdown()}
-                isOpen={isOpen}
             >
                 {
                     isOpen != true && name != "" ?
@@ -92,7 +91,13 @@ const DropdownSelect = ({
                             {name}
                         </Heading>
                         :
-                        <SearchContainer isOpen={isOpen}>
+                        <SearchContainer 
+                            onClick={() => {
+                                console.log("CLICK ON THE SEARCH CONTAINER");
+                                (mobileView && isOpen) ? console.log() : toggleDropdown()
+                            }}
+                            isOpen={isOpen}
+                        >
                             <Search
                                 placeholder="Search exercises..."
                                 value={isOpen ? searchText : name}
@@ -108,7 +113,7 @@ const DropdownSelect = ({
                         </SearchContainer>
                 }
                 {isOpen == true && (
-                    <List position={checkDistance(parentRef, childRef)}>
+                    <List>
                         <CloseList onClick={toggleMultipleExercises}>
                             <X
                                 size={32}
@@ -165,23 +170,22 @@ const Input = styled.div`
 `;
 
 const InputPR = styled.input`
-    flex: 33%;
+    flex: .33;
     padding: 1rem;
     background-color: ${props => props.theme.secondary};
     color: ${props => props.theme.text};
-    border-bottom-right-radius: 12px;
-    border-top-right-radius: 12px;
+    border-bottom-right-radius: 16px;
+    border-top-right-radius: 16px;
     border: none;
 
     @media (max-width: 550px) {
-        flex: 35%;
+        flex: .35;
     }
 `;
 
 
-const Dropdown = styled.div<StyledProps>`
+const Dropdown = styled.div`
     position: relative;
-    overflow: hidden;
     flex: 66%;
     position: relative;
     display: flex;
@@ -189,14 +193,10 @@ const Dropdown = styled.div<StyledProps>`
     justify-content: flex-start;
     cursor: pointer;
     font-size: 17px;
-    margin-right: 8px;
+    margin-right: .4rem;
     position: relative;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
-
-    ${props => props.isOpen && `
-        border-radius: 0;
-    `}
 
     @media (max-width: 550px) {
         flex: 65%;
@@ -205,11 +205,12 @@ const Dropdown = styled.div<StyledProps>`
 
 const Heading = styled.div`
     width: 100%;
-    padding: 15px;
+    padding: 1rem;
     padding-left: 50px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    background-color: ${props => props.theme.secondary};
 
     @media (max-width: 550px) {
         font-size: 14px;
@@ -218,6 +219,9 @@ const Heading = styled.div`
 
 const SearchContainer = styled.div<StyledProps>`
     width: 100%;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    overflow: hidden;
 
     ${props => props.isOpen && `
         @media (max-width: 550px) {
@@ -274,28 +278,16 @@ const SearchExercise = styled.img`
     }
 `;
 
-const List = styled.div<PropsPosition>`
-    max-height: 240px;
+const List = styled.div`
     overflow-y: auto;
-    overflow-x: hidden;
+    max-height: 250px;
+    height: 300px;
     background-color: ${props => props.theme.background};
-    border: 1px solid ${props => props.theme.accent};
     position: absolute;
-    z-index: 15;
-
-    ${props => props.position == "bottom" && `
-        top: 100%;
-        left: 0;
-        right: 0;
-    `}
-
-    //When there is not enough space below the dropdown
-    //display the list above
-    ${props => props.position == "top" && `
-        bottom: 100%;
-        left: 0;
-        right: 0; 
-    `}
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
 
     @media (max-width: 550px) {
         position: fixed;
@@ -327,8 +319,8 @@ const Option = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 10px;
-    border-bottom: 1px solid ${props => props.theme.accent};
+    padding: .6rem;
+    background-color: ${props => props.theme.secondary};
     cursor: pointer;
 
     @media (max-width: 550px) {

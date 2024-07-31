@@ -36,8 +36,7 @@ const MultipleExerciseSelect = () => {
     useEffect(() => {
         let w = size.width;
 
-        if(w <= 750) setMobileView(true);
-        if(w > 750) setMobileView(false);
+        w <= 768 ? setMobileView(true) : setMobileView(false);
     }, [size])
 
 
@@ -113,8 +112,9 @@ const MultipleExerciseSelect = () => {
 export default MultipleExerciseSelect;
 
 const Container = styled.div`
+    max-width: 1024px;
     position: fixed;
-    width: 60%;
+    width: 50%;
     top: 50%;        
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -125,16 +125,15 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     color: ${props => props.theme.text};
-    padding: 40px;
+    padding: 3rem;
+    border-radius: 16px;
 
-    @media (max-width: 950px) {
-        width: 80vw;
-        max-width: 700px;
-        padding: 25px;
+    @media (max-width: 1024px) {
+        width: 70%;
+        padding: 1.5rem;
     }
 
     @media (max-width: 768px) {
-        max-width: 100vw;
         height: 100%;
         top: 0;
         left: 0;
