@@ -67,31 +67,28 @@ const ChartSelect = ({ setChartType, getChartIcon }: Props) => {
 export default ChartSelect;
 
 const Container = styled.div`
-    max-width: 550px;
+    max-width: 1024px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    padding: 35px;
+    border-radius: 16px;
+    padding: 2rem;
     background-color: ${props => props.theme.background};
-    border-radius: 15px;
-    border: 1px solid ${props => props.theme.accent};
     position: fixed;
-    width: 60vw;
-    z-index: 10;
+    width: 50%;
+    z-index: 99;
     opacity: 1;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 
 
-    @media (max-width: 1000px) {
-        max-width: 700px;
-        width: 70vw;
+    @media (max-width: 1024px) {
+        width: 70%;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
         width: 100vw;
         height: 100%;
     }
@@ -99,9 +96,9 @@ const Container = styled.div`
 
 const CloseIcon = styled.div`
     position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 25px;
+    top: 5%;
+    right: 5%;
+    width: 30px;
     cursor: pointer;
 `;
 
@@ -109,13 +106,12 @@ const Heading = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 1.8rem;
 `;
 
 const Title = styled.div`
     font-size: 22px;
     font-weight: 600;
-    margin-bottom: 20px;
 
     @media (max-width: 550px) {
         font-size: 18px;
@@ -124,9 +120,10 @@ const Title = styled.div`
 `;
 
 const ChartsContainer = styled.div`
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
+    grid-gap: 2rem;
 
     @media (max-width: 550px) {
         grid-template-columns: 1fr;
@@ -134,14 +131,14 @@ const ChartsContainer = styled.div`
 `;
 
 const ChartOption = styled.div`
-    border: 1px solid ${props => props.theme.accent};
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    padding: 10px;
-    min-width: 200px;
-    border-radius: 8px;
+    justify-content: center;
+    padding: .5rem;
+    width: 100%;
+    border-radius: 16px;
     user-select: none;
+    background-color: ${props => props.theme.secondary};
 
     &:hover {
         cursor: pointer;
@@ -151,8 +148,13 @@ const ChartOption = styled.div`
 
 const ChartName = styled.div`
     font-size: 16px;
+    margin-left: .5rem;
 `;
 
 const ChartIcon = styled.div`
-    height: 30px;
+    height: 40px;
+
+    @media (max-width: 550px) {
+        height: 30px;
+    }
 `;
