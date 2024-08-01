@@ -305,7 +305,7 @@ const List = styled.div`
 const CloseList = styled.div`
     display: none;
 
-    @media (max-width: 550px) {
+    @media (max-width: 768px) {
         display: block;
         position: absolute;
         top: 2%;

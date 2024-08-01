@@ -89,10 +89,15 @@ export const NavLink = styled(Link)`
 `;
 
 export const CloseIcon = styled.div`
-    position: absolute;
-    top: 2%;
-    left: 4%;
-    cursor: pointer;
+    display: none;
+
+    @media (max-width: 768px) {
+        position: absolute;
+        top: 4%;
+        left: 4%;
+        cursor: pointer;
+        display: block;
+    }
 `;
 
 export const NavLogoContainer = styled.div`
