@@ -49,10 +49,9 @@ const Nav = () => {
                 <NavLink to="/">
                     Home
                 </NavLink>
-
-                <SpecialLink to="/get-stats">
+                <NavLink to="/get-stats">
                     Try it!
-                </SpecialLink>
+                </NavLink>
             </NavLinks>
         </Navigation>
     );
@@ -90,6 +89,7 @@ const NavLinks = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 30vw;
 
     @media (max-width: 768px) {
         position: fixed;
@@ -101,17 +101,16 @@ const NavLinks = styled.div`
         right: -200%;
         transition: all .6s ease-in-out;
         z-index: 99;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
         //Mobile Nav is Active
         ${props => props.active && `
             top: 0;
             right: 0;
         `}
-
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
 
         &::before {
             content: "";
@@ -134,10 +133,21 @@ const NavLink = styled(Link)`
     font-weight: 500;
     margin: .5rem;
     cursor: pointer;
+    background-color: ${props => props.theme.secondary};
+    padding: .5rem;
+    border-radius: 16px;
+    flex: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media (max-width: 768px) {
         font-size: 1.2rem;
         margin-bottom: .5rem;
+    }
+
+    &:hover {
+        background-color: ${props => props.theme.mayaBlueDark};
     }
 `;
 
@@ -172,18 +182,6 @@ const NavLogo = styled.img`
     @media (max-width: 550px) {
         display: block;
         width: 40%;
-    }
-`;
-
-const SpecialLink = styled(NavLink)`
-    border: 2px solid ${props => props.theme.accent};
-    border-radius: 16px;
-    padding: .4rem 1.5rem;
-    transition: all .3s ease-in-out;
-
-    &:hover {
-        background-color: ${props => props.theme.accent};
-        color: ${props => props.theme.background};
     }
 `;
 
