@@ -96,7 +96,7 @@ const NavLinks = styled.div`
         width: 50%;
         height: 100vh;
         background-color: ${props => props.theme.background};
-        padding: 2rem 1rem;
+        padding: 2rem 0;
         top: 0;
         right: -200%;
         transition: all .6s ease-in-out;
@@ -104,7 +104,7 @@ const NavLinks = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
 
         //Mobile Nav is Active
         ${props => props.active && `
@@ -130,7 +130,7 @@ const NavLinks = styled.div`
 
 const NavLink = styled(Link)`
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     margin: .5rem;
     cursor: pointer;
     background-color: ${props => props.theme.secondary};
@@ -142,8 +142,13 @@ const NavLink = styled(Link)`
     justify-content: center;
 
     @media (max-width: 768px) {
-        font-size: 1.2rem;
-        margin-bottom: .5rem;
+        font-size: 1rem;
+        margin: 0 0 .7rem 0;
+        flex: 0;
+        width: 100%;
+        justify-content: flex-start;
+        padding: .6rem 1rem;
+        background-color: transparent;
     }
 
     &:hover {
@@ -177,11 +182,11 @@ const NavLogo = styled.img`
     @media (max-width: 768px) {
         display: block;
         width: 40%;
+        margin-bottom: 7rem;
     }
 
     @media (max-width: 550px) {
-        display: block;
-        width: 40%;
+        width: 45%;
     }
 `;
 
