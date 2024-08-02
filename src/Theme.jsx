@@ -22,13 +22,13 @@ const night = {
     mayaBlueDark: "rgba(93, 189, 249, .3)",
     richBlackDark: "#010306",
 
-    heroSecondary: "#508eb52b",
+    heroSecondary: "#508eb512",
 
-    background: "#0f1f2e",
-    primary: "#6aa1d8",
-    secondary: "#508eb553",
+    background: "#100f0f",
+    primary: "#5f95cb",
+    secondary: "#508eb566",
     accent: "#0085FF",
-    text: "#e9e4e4",
+    text: "#f4eeee",
   };
 
   export { night, dark };

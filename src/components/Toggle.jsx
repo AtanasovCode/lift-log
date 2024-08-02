@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useStore } from '../../useStore';
 import styled, { css } from 'styled-components';
 
 const Toggle = () => {
@@ -7,6 +8,15 @@ const Toggle = () => {
     const handleToggle = () => {
         setIsChecked((prev) => !prev);
     };
+
+    const {
+        theme,
+        setTheme,
+    } = useStore();
+
+    useEffect(() => {
+        isChecked ? setTheme("dark") : setTheme("night");
+    }, [isChecked])
 
     return (
         <ToggleWrapper>
