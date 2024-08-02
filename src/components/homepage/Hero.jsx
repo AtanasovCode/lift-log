@@ -4,6 +4,7 @@ import styled, { keyframes } from 'styled-components';
 
 import logo from '../../assets/logo.svg';
 import barbell from '../../assets/illustrations/barbell.svg';
+import Toggle from '../Toggle';
 
 const Hero = () => {
 
@@ -36,6 +37,9 @@ const Hero = () => {
     return (
         <HeroSection>
             <HeroImageContainer>
+                <ToggleContainer>
+                    <Toggle />
+                </ToggleContainer>
                 <HeroImage
                     src={logo}
                     alt="power graphix logo"
@@ -110,6 +114,7 @@ const HeroImageContainer = styled.div`
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    position: relative;
 
     @media (max-width: 1024px) {
         width: 100vw;
@@ -119,6 +124,12 @@ const HeroImageContainer = styled.div`
     @media (max-width: 768px) {
         height: 20vh;
     }
+`;
+
+const ToggleContainer = styled.div`
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
 `;
 
 const HeroImage = styled.img`
