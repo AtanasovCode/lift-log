@@ -130,6 +130,7 @@ const ToggleContainer = styled.div`
     position: absolute;
     bottom: 5%;
     left: 5%;
+    z-index: 11;
 `;
 
 const HeroImage = styled.img`
