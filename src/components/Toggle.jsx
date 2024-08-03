@@ -1,145 +1,78 @@
-import React, { useEffect, useState } from 'react';
-import { useStore } from '../../useStore';
-import styled, { css } from 'styled-components';
+import styled from "styled-components";
+import { useStore } from "../../useStore";
+import moon from '../assets/moon.svg';
 
 const Toggle = () => {
-    const [isChecked, setIsChecked] = useState(false);
 
-    const handleToggle = () => {
-        setIsChecked((prev) => !prev);
-    };
+  const { theme, setTheme } = useStore();
 
-    const {
-        theme,
-        setTheme,
-    } = useStore();
+  const handleToggle = () => {
+    setTheme(theme === "dark" ? "night" : "dark");
+  };
 
-    useEffect(() => {
-        isChecked ? setTheme("dark") : setTheme("night");
-    }, [isChecked])
-
-    return (
-        <ToggleWrapper>
-            <ThemeName>
-                Amoled
-            </ThemeName>
-            <ToggleInput
-                id="toggle"
-                className="toggle"
-                type="checkbox"
-                role="switch"
-                name="toggle"
-                value="on"
-                checked={isChecked}
-                onChange={handleToggle}
-                aria-checked={isChecked}
-            />
-            <Slot isChecked={isChecked} htmlFor="toggle" className="slot">
-                <span className="slot__label">OFF</span>
-                <span className="slot__label">ON</span>
-            </Slot>
-            <Curtain isChecked={isChecked} className="curtain" />
-        </ToggleWrapper>
-    );
+  return (
+    <ToggleContainer
+      onClick={handleToggle}
+      isChecked={theme === "dark"}
+    >
+      <ToggleWrapper
+        isChecked={theme === "dark"}
+      >
+        <MoonIcon
+          src={moon}
+          alt="moon icon toggle for amoled theme"
+          isChecked={theme === "dark"}
+        />
+      </ToggleWrapper>
+      <ThemeName>
+        Amoled
+      </ThemeName>
+    </ToggleContainer>
+  );
 };
 
 export default Toggle;
 
-const ToggleWrapper = styled.div`
+const ToggleContainer = styled.div`
+  position: absolute;
+  bottom: 3%;
+  left: 5%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 const ThemeName = styled.div`
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-right: .5rem;
-    -webkit-text-stroke: 0.05em #fff;
-    font-family: ${props => props.theme.font};
+  font-size: 1rem;
+  color: ${props => props.theme.text};
+  margin-left: .5rem;
 `;
 
-const ToggleInput = styled.input`
-  border-radius: 0.75rem;
-  cursor: pointer;
-  position: relative;
-  margin-right: 0.25rem;
-  width: 3rem;
-  height: 1.5rem;
-  appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  border: 1px solid ${props => props.theme.accent};
+const ToggleWrapper = styled.div`
+  background-color: #000;
+  padding: .5rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 70px;
+  height: 30px;
+  transition: all .4s ease-in-out;
 
-  &:before {
-    background: ${props => props.theme.accent};
-    border-radius: 50%;
-    content: "";
-    position: absolute;
-    top: 0.2rem;
-    left: 0.3rem;
-    width: 1.2rem;
-    height: 1.1rem;
-    transition: transform 0.33s ease-in-out;
-  }
-
-  &:checked:before {
-    transform: translateX(1.5em);
-  }
-
-  &:focus {
-    outline: transparent;
-  }
+  ${props => props.isChecked && `
+    background-color: ${props.theme.secondary};
+  `}
 `;
 
-const Slot = styled.label`
-  color: transparent;
-  font-size: 1.2em;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  overflow: hidden;
-  height: 1em;
-  -webkit-text-stroke: 0.05em #fff;
-  position: relative;
+const MoonIcon = styled.img`
+  width: 25px;
+  height: 25px;
+  transition: all .4s ease-in-out;
 
-  & span {
-    display: block;
-    transition: transform 0.25s ease-in-out;
-  }
-
-  & span:first-child {
-    transform-origin: 50% 0;
-    ${({ isChecked }) =>
-        isChecked &&
-        css`
-        transform: translateY(-50%) scaleY(0);
-      `}
-  }
-
-  & span:last-child {
-    transform-origin: 50% 100%;
-    ${({ isChecked }) =>
-        isChecked &&
-        css`
-        transform: translateY(-100%) scaleY(1);
-      `}
-  }
-`;
-
-const Curtain = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  background-color: #ffffff;
-  transition: transform 0.25s ease-in-out;
-  z-index: -1;
-
-  ${({ isChecked }) =>
-        isChecked &&
-        css`
-      transform: scaleX(1);
-    `}
+  ${props => props.isChecked && `
+    width: 20px;
+    height: 20px;
+    transform: translateX(calc(100% + 15px));
+  `}
 `;

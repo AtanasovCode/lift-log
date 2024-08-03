@@ -37,9 +37,8 @@ const Hero = () => {
     return (
         <HeroSection>
             <HeroImageContainer>
-                <ToggleContainer>
-                    <Toggle />
-                </ToggleContainer>
+                <Toggle />
+
                 <HeroImage
                     src={logo}
                     alt="power graphix logo"
@@ -124,12 +123,6 @@ const HeroImageContainer = styled.div`
     @media (max-width: 768px) {
         height: 20vh;
     }
-`;
-
-const ToggleContainer = styled.div`
-    position: absolute;
-    bottom: 5%;
-    left: 5%;
 `;
 
 const HeroImage = styled.img`

@@ -98,7 +98,7 @@ const Container = styled.section`
     justify-content: space-between;
     padding: 2.5rem;
     min-height: 90vh;
-    background-color: ${props => props.theme.secondary};
+    background-color: ${props => props.theme.heroSecondary};
     position: relative;
     color: ${props => props.theme.text};
 

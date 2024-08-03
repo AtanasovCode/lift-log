@@ -13,7 +13,6 @@ const Homepage = () => {
       <Hero />
       <LiftProgressGraph />
       <StrongestLiftsGraph />
-      <LayeredWavesFooter />
       <Footer />
     </App>
   )
