@@ -50,6 +50,12 @@ const Nav = () => {
                 <NavLink to="/">
                     Home
                 </NavLink>
+                <NavLink to="/input-stats">
+                    Lift Stats
+                </NavLink>
+                <NavLink to="/input-stats">
+                    Strength Stats
+                </NavLink>
                 <ToggleContainer>
                     <Toggle />
                 </ToggleContainer>
@@ -97,7 +103,7 @@ const NavLinks = styled.div`
         width: 50%;
         height: 100vh;
         background-color: ${props => props.theme.background};
-        padding: 2rem 0;
+        padding: 2rem 1rem;
         top: 0;
         right: -200%;
         transition: all .6s ease-in-out;
@@ -144,7 +150,7 @@ const NavLink = styled(Link)`
 
     @media (max-width: 768px) {
         font-size: 1rem;
-        margin: 0 0 .7rem 0;
+        margin: 0 0 .3rem 0;
         flex: 0;
         width: 100%;
         justify-content: flex-start;
