@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { List, X } from '@phosphor-icons/react';
 import { useNavigate, Link } from 'react-router-dom';
+import Toggle from './Toggle';
 
 import logo from '../assets/logo.svg';
 
@@ -52,6 +53,9 @@ const Nav = () => {
                 <NavLink to="/get-stats">
                     Try it!
                 </NavLink>
+                <ToggleContainer>
+                    <Toggle />
+                </ToggleContainer>
             </NavLinks>
         </Navigation>
     );
@@ -124,7 +128,7 @@ const NavLinks = styled.div`
     }
 
     @media (max-width: 550px) {
-        width: 80%;
+        width: 100%;
     }
 `;
 
@@ -153,6 +157,14 @@ const NavLink = styled(Link)`
 
     &:hover {
         background-color: ${props => props.theme.mayaBlueDark};
+    }
+`;
+
+const ToggleContainer = styled.div`
+    @media (max-width: 768px) {
+        position: absolute;
+        bottom: 5%;
+        left: 5%;
     }
 `;
 
@@ -186,7 +198,7 @@ const NavLogo = styled.img`
     }
 
     @media (max-width: 550px) {
-        width: 45%;
+        width: 30%;
     }
 `;
 
