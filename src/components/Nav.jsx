@@ -50,9 +50,6 @@ const Nav = () => {
                 <NavLink to="/">
                     Home
                 </NavLink>
-                <NavLink to="/get-stats">
-                    Try it!
-                </NavLink>
                 <ToggleContainer>
                     <Toggle />
                 </ToggleContainer>
