@@ -96,7 +96,6 @@ const NavLinks = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30vw;
 
     @media (max-width: 768px) {
         position: fixed;
@@ -138,28 +137,41 @@ const NavLinks = styled.div`
 const NavLink = styled(Link)`
     font-size: 1rem;
     font-weight: 400;
-    margin: .5rem;
     cursor: pointer;
-    background-color: ${props => props.theme.secondary};
-    padding: .5rem;
-    border-radius: 16px;
-    flex: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 1rem;
+    padding-bottom: .5rem;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -20%;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        border-radius: 16px;
+        background-color: ${props => props.theme.secondary};
+        transition: all .3s ease-in-out;
+    }
+
+    &:hover::before {
+        background-color: ${props => props.theme.accent};
+    }
 
     @media (max-width: 768px) {
         font-size: 1rem;
         margin: 0 0 .3rem 0;
-        flex: 0;
         width: 100%;
         justify-content: flex-start;
         padding: .6rem 1rem;
-        background-color: transparent;
-    }
 
-    &:hover {
-        background-color: ${props => props.theme.mayaBlueDark};
+        &::before {
+            display: none;
+        }
     }
 `;
 
@@ -184,11 +196,14 @@ const CloseIcon = styled.div`
 `;
 
 const NavLogoContainer = styled.div`
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 2.5rem;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 const NavLogo = styled.img`
@@ -202,6 +217,10 @@ const NavLogo = styled.img`
 
     @media (max-width: 550px) {
         width: 30%;
+    }
+
+    @media (max-width: 425px) {
+        width: 40%;
     }
 `;
 
