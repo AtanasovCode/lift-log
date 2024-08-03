@@ -50,7 +50,7 @@ const ThemeName = styled.div`
 `;
 
 const ToggleWrapper = styled.div`
-  background-color: #000;
+  background-color: #676565;
   padding: .5rem;
   border-radius: 20px;
   display: flex;
@@ -65,14 +65,16 @@ const ToggleWrapper = styled.div`
   `}
 `;
 
-const MoonIcon = styled.img`
-  width: 25px;
-  height: 25px;
+const MoonIcon = styled.div`
+  width: 20px;
+  height: 20px;
   transition: all .4s ease-in-out;
+  background-color: #2c2b2b;
+  transform: scale(.9);
+  border-radius: 50%;
 
   ${props => props.isChecked && `
-    width: 20px;
-    height: 20px;
-    transform: translateX(calc(100% + 15px));
+    transform: translateX(calc(100% + 15px)) scale(1.1);
+    background-color: ${props.theme.richBlackDark};
   `}
 `;
