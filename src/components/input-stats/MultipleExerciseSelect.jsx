@@ -24,10 +24,16 @@ const MultipleExerciseSelect = () => {
 
     // Callback function to update exercisesData
     const handleExerciseDataUpdate = (index, name, pr) => {
+        console.log(`Index: ${index}, name: ${name}, PR: ${pr}`);
         const updatedData = [...exercisesData];
         updatedData[index] = { name, pr };
         setExercisesData(updatedData);
     };
+
+    useEffect(() => {
+        console.log(exercisesData);
+        console.log(`number of exercises: ${numberOfExercises}`)
+    }, [exercisesData])
 
     useEffect(() => {
         const w = size.width;
@@ -52,19 +58,18 @@ const MultipleExerciseSelect = () => {
     };
 
     const submitData = (e) => {
-        e.preventDefault();
-
         let lifts = 0;
 
         exercisesData.forEach((lift) => {
             if (lift.name && lift.pr > 0) lifts++;
         });
 
-        if (lifts === numberOfExercises) {
+        if (lifts === parseInt(numberOfExercises)) {
             sessionStorage.setItem("lifts", JSON.stringify(exercisesData));
             toggleMultipleExercises();
         } else {
             setErrorMessage(true);
+            console.log(`Number of exercises: ${numberOfExercises} === lifts: ${lifts}`)
         }
     };
 
