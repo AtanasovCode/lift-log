@@ -78,6 +78,7 @@ const Calendar = styled.div`
 
     @media (max-width: 1024px) {
         width: 80%;
+        overflow-y: auto;
     }
 
     @media (max-width: 768px) {
@@ -144,12 +145,12 @@ const Months = styled.div`
     grid-gap: .5rem;
 
     @media (max-width: 768px) {
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 1rem;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     @media (max-width: 550px) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: .4rem;
     }
 `;
 
@@ -164,7 +165,7 @@ const Month = styled.div`
 `;
 
 const MonthName = styled.div`
-    font-size: 17px;
+    font-size: 1.1rem;
     font-weight: 600;
     padding: .5rem;
     color: ${props => props.theme.text};
@@ -172,8 +173,9 @@ const MonthName = styled.div`
     text-align: center;
     margin-bottom: .5rem;
 
-    @media (max-width: 500px) {
-        font-size: 15px;
+    @media (max-width: 550px) {
+        font-size: .9rem;
+        padding: .3rem;
     }
 `;
 
@@ -186,6 +188,10 @@ const MonthInput = styled.input`
     border: none;
     color: ${props => props.theme.text};
     font-size: 16px;
+
+    @media (max-width: 550px) {
+        padding: .3rem;
+    }
 `;
 
 const Submit = styled.input`
