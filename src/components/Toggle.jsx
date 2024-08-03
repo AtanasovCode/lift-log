@@ -34,9 +34,6 @@ const Toggle = () => {
 export default Toggle;
 
 const ToggleContainer = styled.div`
-  position: absolute;
-  bottom: 3%;
-  left: 5%;
   display: flex;
   align-items: center;
   justify-content: center;
