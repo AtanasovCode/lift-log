@@ -50,12 +50,6 @@ const Nav = () => {
                 <NavLink to="/">
                     Home
                 </NavLink>
-                <NavLink to="/input-stats">
-                    Lift Stats
-                </NavLink>
-                <NavLink to="/input-stats">
-                    Strength Stats
-                </NavLink>
                 <ToggleContainer>
                     <Toggle />
                 </ToggleContainer>
@@ -99,9 +93,10 @@ const NavLinks = styled.div`
 
     @media (max-width: 768px) {
         position: fixed;
-        width: 50%;
+        width: 60%;
         height: 100vh;
-        background-color: ${props => props.theme.background};
+        background-color: rgba(0, 0, 0, .8);
+        backdrop-filter: blur(15px);
         padding: 2rem 1rem;
         top: 0;
         right: -200%;
@@ -125,7 +120,7 @@ const NavLinks = styled.div`
             height: 100%;
             top: 0;
             left: -100%;
-            background-color: rgba(0, 0, 0, .7);
+            background-color: rgba(0, 0, 0, .6);
         }
     }
 
