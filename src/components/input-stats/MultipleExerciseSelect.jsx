@@ -24,16 +24,10 @@ const MultipleExerciseSelect = () => {
 
     // Callback function to update exercisesData
     const handleExerciseDataUpdate = (index, name, pr) => {
-        console.log(`Index: ${index}, name: ${name}, PR: ${pr}`);
         const updatedData = [...exercisesData];
         updatedData[index] = { name, pr };
         setExercisesData(updatedData);
     };
-
-    useEffect(() => {
-        console.log(exercisesData);
-        console.log(`number of exercises: ${numberOfExercises}`)
-    }, [exercisesData])
 
     useEffect(() => {
         const w = size.width;
@@ -69,7 +63,6 @@ const MultipleExerciseSelect = () => {
             toggleMultipleExercises();
         } else {
             setErrorMessage(true);
-            console.log(`Number of exercises: ${numberOfExercises} === lifts: ${lifts}`)
         }
     };
 

@@ -13,7 +13,6 @@ const Nav = () => {
     //Set mobile navigation to active or inactive
     const handleMobileNavShow = () => {
         setActive(!active);
-        //console.log("ACTIVE!");
     }
 
     const navigate = useNavigate();

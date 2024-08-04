@@ -62,7 +62,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
         if (chart && lifts === parseInt(numberOfExercises)) {
             navigate("/lift-result");
         } else {
-            console.log("Missing data, somehow?");
+            console.log("Missing data");
         }
     };
 

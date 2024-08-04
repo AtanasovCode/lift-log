@@ -33,7 +33,6 @@ const DropdownSelect = ({
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
-        console.log("toggle dropdown");
     };
 
     const handleSearchTextChange = (event) => {
@@ -67,7 +66,6 @@ const DropdownSelect = ({
                         :
                         <SearchContainer
                             onClick={() => {
-                                console.log("CLICK ON THE SEARCH CONTAINER");
                                 (mobileView && isOpen) ? console.log() : toggleDropdown();
                             }}
                             isOpen={isOpen}
