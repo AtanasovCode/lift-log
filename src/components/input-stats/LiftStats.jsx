@@ -11,6 +11,7 @@ import {
 } from '@phosphor-icons/react';
 import { useStore } from '../../../useStore';
 import { getChartIcon } from '../../Utils';
+import styled from 'styled-components';
 
 import MultipleExerciseSelect from './MultipleExerciseSelect';
 import ChartSelect from './ChartSelect';
@@ -38,6 +39,11 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
 
     //used for selecting number of exercises to track
     const [numbers, setNumbers] = useState([2, 3, 4, 5, 6]);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    }
 
     const submitData = (e) => {
         e.preventDefault();
@@ -102,37 +108,32 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                 <Styled.LabelText>
                                     Track:
                                 </Styled.LabelText>
-                                <Styled.InputFieldContainer>
-                                    <Styled.LabelIcon>
-                                        <ListNumbers
-                                            size="100%"
-                                            weight="fill"
-                                            color={theme.text}
-                                        />
-                                    </Styled.LabelIcon>
-                                    <Styled.SelectField
-                                        defaultValue={2}
-                                        onChange={(e) => {
-                                            setNumberOfExercises(e.currentTarget.value);
-                                            sessionStorage.setItem("numberOfExercises", e.currentTarget.value.toString());
-                                        }}
-                                    >
-                                        <Styled.SelectOption
-                                            value="select"
-                                            disabled
-                                        >
+                                <DropdownContainer onClick={() => toggleDropdown()}>
+                                    <DropdownValue>
+                                        <DropdownIcon></DropdownIcon>
+                                        <DropdownText>{numberOfExercises}</DropdownText>
+                                    </DropdownValue>
+                                    <DropdownMenu isOpen={isOpen}>
+                                        <DropdownHeading>
                                             Exercises to track
-                                        </Styled.SelectOption>
-                                        {numbers.map((number) => (
-                                            <Styled.SelectOption
-                                                value={number}
-                                                key={number}
-                                            >
-                                                {number} Exercises
-                                            </Styled.SelectOption>
-                                        ))}
-                                    </Styled.SelectField>
-                                </Styled.InputFieldContainer>
+                                        </DropdownHeading>
+                                        {
+                                            numbers.map((number) => {
+                                                return (
+                                                    <DropdownItem
+                                                        onClick={() => {
+                                                            sessionStorage.setItem("numberOfExercises", parseInt(number))
+                                                            setNumberOfExercises(number);
+                                                            toggleDropdown();
+                                                        }}
+                                                    >
+                                                        {number}
+                                                    </DropdownItem>
+                                                );
+                                            })
+                                        }
+                                    </DropdownMenu>
+                                </DropdownContainer>
                             </Styled.LabelContainer>
 
                             <Styled.LabelContainer>
@@ -202,3 +203,76 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
 };
 
 export default LiftStats;
+
+const DropdownContainer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: flex-start;
+    background-color: ${props => props.theme.secondary};
+    color: ${props => props.theme.text};
+    padding: .5rem;
+    border-radius: 16px;
+`;
+
+const DropdownIcon = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+`;
+
+const DropdownValue = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+`;
+
+const DropdownText = styled.div`
+    font-size: 1rem;
+`;
+
+const DropdownMenu = styled.div`
+    width: 100%;
+    height: 0;
+    display: none;
+    user-select: none;
+    padding: .5rem;
+    background-color: transparent;
+    z-index: 5;
+    transition: all .4s ease-in-out;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    ${props => props.isOpen && `
+        display: block;
+        height: auto;
+        top: 105%;
+        background-color: ${props.theme.secondary};
+        backdrop-filter: blur(20px);
+        z-index: 9;
+        border-radius: 16px;
+
+    `}
+`;
+
+const DropdownHeading = styled.div`
+    width: 100%;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+`;
+
+const DropdownItem = styled.div`
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: .5rem;
+
+    &:hover {
+        background-color: ${props => props.theme.mayaBlueDark};
+    }
+`;

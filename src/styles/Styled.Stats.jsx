@@ -185,10 +185,9 @@ export const LabelContainer = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
+    justify-content: center;
+    margin-bottom: 1.4rem;
     position: relative;
-    width: 100%;
 
     @media (max-width: 768px) {
         flex-direction: column;
