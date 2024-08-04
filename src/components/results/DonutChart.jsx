@@ -22,8 +22,8 @@ const DonutChartComponent = () => {
 
     const size = useWindowSize();
 
-    const [outerRadius, setOuterRadius] = useState < number > (160);
-    const [innerRadius, setInnerRadius] = useState < number > (50);
+    const [outerRadius, setOuterRadius] = useState(160);
+    const [innerRadius, setInnerRadius] = useState(50);
 
     useEffect(() => {
         let w = size.width;
