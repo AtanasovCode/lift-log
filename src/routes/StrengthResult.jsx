@@ -249,7 +249,6 @@ export const Container = styled.div`
 
     @media (max-width: 700px) {
         flex-direction: column;
-        padding-top: 120px;
     }
 `;
 
