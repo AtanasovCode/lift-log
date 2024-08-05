@@ -111,7 +111,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                 <DropdownContainer onClick={() => toggleDropdown()}>
                                     <DropdownValue>
                                         <DropdownIcon></DropdownIcon>
-                                        <DropdownText>{numberOfExercises}</DropdownText>
+                                        <DropdownText>{numberOfExercises} exercises</DropdownText>
                                     </DropdownValue>
                                     <DropdownMenu isOpen={isOpen}>
                                         <DropdownHeading>
@@ -127,7 +127,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                                             toggleDropdown();
                                                         }}
                                                     >
-                                                        {number}
+                                                        {number} exercises
                                                     </DropdownItem>
                                                 );
                                             })
@@ -140,7 +140,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                 <Styled.LabelText>
                                     Exercises:
                                 </Styled.LabelText>
-                                <Styled.InputFieldContainer>
+                                <Styled.InputFieldContainer onClick={toggleMultipleExercises}>
                                     <Styled.LabelIcon>
                                         <Barbell
                                             size="100%"
@@ -148,12 +148,9 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                             weight="fill"
                                         />
                                     </Styled.LabelIcon>
-                                    <Styled.InputExercise
-                                        type="button"
-                                        value={sessionStorage.getItem("lifts") ? "Exercises Updated" : "Input Exercises"}
-                                        color={theme.accent}
-                                        onClick={toggleMultipleExercises}
-                                    />
+                                    <Styled.InputExercise>
+                                        {sessionStorage.getItem("lifts") ? "Exercises Updated" : "Input Exercises"}
+                                    </Styled.InputExercise>
                                 </Styled.InputFieldContainer>
                             </Styled.LabelContainer>
 
@@ -161,16 +158,13 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                 <Styled.LabelText>
                                     Chart type:
                                 </Styled.LabelText>
-                                <Styled.InputFieldContainer>
+                                <Styled.InputFieldContainer onClick={toggleCharts}>
                                     <Styled.LabelIcon>
                                         {getChartIcon(chartType, "fill", theme.text)}
                                     </Styled.LabelIcon>
-                                    <Styled.InputExercise
-                                        type="button"
-                                        value={chartType ? chartType : "Select Chart"}
-                                        color={theme.accent}
-                                        onClick={toggleCharts}
-                                    />
+                                    <Styled.InputExercise>
+                                        {chartType ? chartType : "Select Chart"}
+                                    </Styled.InputExercise>
                                 </Styled.InputFieldContainer>
                             </Styled.LabelContainer>
 
@@ -263,14 +257,17 @@ const DropdownHeading = styled.div`
     width: 100%;
     font-size: 1.1rem;
     text-align: center;
+    font-weight: 600;
     margin-bottom: 1rem;
 `;
 
 const DropdownItem = styled.div`
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
-    margin-bottom: .5rem;
+    margin-bottom: .2rem;
+    cursor: pointer;
+    padding: .4rem;
 
     &:hover {
         background-color: ${props => props.theme.mayaBlueDark};

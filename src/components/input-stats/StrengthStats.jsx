@@ -84,7 +84,7 @@ const StrengthStats = ({ errorActive, setErrorActive }) => {
                                 <Styled.LabelText>
                                     Exercise:
                                 </Styled.LabelText>
-                                <Styled.InputFieldContainer>
+                                <Styled.InputFieldContainer onClick={toggleExercises}>
                                     <Styled.LabelIcon>
                                         <Barbell
                                             color={theme.text}
@@ -92,11 +92,9 @@ const StrengthStats = ({ errorActive, setErrorActive }) => {
                                             size="100%"
                                         />
                                     </Styled.LabelIcon>
-                                    <Styled.InputExercise
-                                        type="button"
-                                        value={exerciseSelected}
-                                        onClick={toggleExercises}
-                                    />
+                                    <Styled.InputExercise>
+                                        {exerciseSelected}
+                                    </Styled.InputExercise>
                                 </Styled.InputFieldContainer>
                             </Styled.LabelContainer>
 
@@ -104,7 +102,7 @@ const StrengthStats = ({ errorActive, setErrorActive }) => {
                                 <Styled.LabelText>
                                     Lifts:
                                 </Styled.LabelText>
-                                <Styled.InputFieldContainer>
+                                <Styled.InputFieldContainer onClick={toggleCalendar}>
                                     <Styled.LabelIcon>
                                         <Calendar
                                             color={theme.text}
@@ -112,11 +110,9 @@ const StrengthStats = ({ errorActive, setErrorActive }) => {
                                             size="100%"
                                         />
                                     </Styled.LabelIcon>
-                                    <Styled.InputLifts
-                                        type="button"
-                                        value={calendarValue}
-                                        onClick={toggleCalendar}
-                                    />
+                                    <Styled.InputLifts>
+                                        {calendarValue}
+                                    </Styled.InputLifts>
                                 </Styled.InputFieldContainer>
                             </Styled.LabelContainer>
 

@@ -196,13 +196,18 @@ export const LabelContainer = styled.div`
 `;
 
 export const InputFieldContainer = styled.div`
+    font-size: 16px;
+    padding: .5rem 1rem;
+    border-radius: 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
-    min-width: 250px;
-    margin-left: 10px;
     width: 100%;
+    background-color: ${props => props.theme.secondary};
+    color: ${props => props.theme.text};
+    user-select: none;
+    cursor: pointer;
 
     @media (max-width: 768px) {
         margin-left: 0;
@@ -243,20 +248,10 @@ export const SelectOption = styled.option`
 `;
 
 
-export const InputExercise = styled.input`
-    width: 100%;
-    background-color: ${props => props.theme.secondary};
-    color: ${props => props.theme.text};
-    border: none;
-    font-size: 18px;
-    padding: .5rem;
-    padding-left: 60px;
-    border-radius: 16px;
-    text-align: left;
+export const InputExercise = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 `;
 
 export const InputLifts = styled(InputExercise)`
@@ -270,14 +265,13 @@ export const InputLifts = styled(InputExercise)`
 `;
 
 export const LabelIcon = styled.div`
-    position: absolute;
-    left: 2%;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
+    margin-right: 1rem;
 
     @media (max-width: 768px) {
-        width: 30px;
-        height: 30px;
+        width: 24px;
+        height: 24px;
     }
 `;
 
