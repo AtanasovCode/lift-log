@@ -91,8 +91,9 @@ const MultipleExerciseSelect = () => {
                 type="button"
                 value="Submit"
                 onClick={submitData}
+                $error={errorMessage}
             />
-            {errorMessage && <Error>Provide data to all input fields!</Error>}
+            {errorMessage && <Error>Please fill in all empty fields</Error>}
         </Container>
     );
 };
@@ -188,12 +189,16 @@ const SubmitData = styled.input`
     &:hover {
         cursor: pointer;
     }
+
+    ${props => props.$error && `
+        border: 1px solid ${props.theme.error};
+    `}
 `;
 
 const Error = styled.div`
     font-size: 13px;
     font-weight: 300;
-    color: #ff4c4c;
+    color: ${props => props.theme.error};
     margin-top: 10px;
     text-align: center;
 `;

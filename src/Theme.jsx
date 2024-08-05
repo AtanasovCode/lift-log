@@ -1,6 +1,8 @@
 const night = {  
     logoFont: "'Keania One', cursive",
     font: "'Noto Sans', sans-serif",
+
+    error: "#ff9393",
     
     mayaBlue: "#5dbdf9",
     mayaBlueDark: "#2c6991",
@@ -18,6 +20,8 @@ const night = {
   const dark = {  
     logoFont: "'Keania One', cursive",
     font: "'Noto Sans', sans-serif",
+
+    error: "#ef7373",
     
     mayaBlueDark: "rgba(93, 189, 249, .3)",
     richBlackDark: "#010306",

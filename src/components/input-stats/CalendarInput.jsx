@@ -235,7 +235,7 @@ const Submit = styled.input`
 
 const ErrorMsg = styled.div`
     font-size: .8rem;
-    color: #ef7373;
+    color: ${props => props.theme.error};
     text-align: center;
     margin: .4rem 0;
 `;
