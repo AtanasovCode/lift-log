@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from "zustand";
 
 const useStore = create((set) => ({
   //theme
@@ -8,6 +8,9 @@ const useStore = create((set) => ({
   //InputStats
   activeTab: "lifts",
   setActiveTab: (value) => set({ activeTab: value }),
+
+  activeNav: false,
+  setActiveNav: (value) => set({ activeNav: value }),
 
   userData: [
     { month: 'Jan', weight: 0 },

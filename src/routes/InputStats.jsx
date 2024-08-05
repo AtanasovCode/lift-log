@@ -5,6 +5,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
 import LiftStats from "../components/input-stats/LiftStats";
 import StrengthStats from "../components/input-stats/StrengthStats";
+import { useEffect } from "react";
 
 
 const InputStats = () => {
@@ -14,14 +15,19 @@ const InputStats = () => {
     const {
         activeTab,
         setActiveTab,
+        activeNav,
     } = useStore();
 
     const handleChangeTab = (e) => {
         setActiveTab(e.currentTarget.id);
     }
 
+    useEffect(() => {
+        console.log(`activeNav: ${activeNav}`)
+    }, [activeNav])
+
     return (
-        <Container>
+        <Container $activeNav={activeNav}>
             {/* Outlet used for navigating to child routes */}
             <Outlet />
             <Nav />
@@ -65,6 +71,11 @@ const Container = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     background-color: ${props => props.theme.background};
+
+    ${props => props.$activeNav && `
+        overflow: hidden;
+        height: 100vh;
+    `}
 `;
 
 const Tabs = styled.div`

@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 import useWindowSize from "../hooks/useWindowSize";
 import { useNavigate } from "react-router-dom";
+import { useStore } from "../../useStore";
 import styled, { useTheme } from "styled-components";
 
 //importing charts
@@ -19,6 +20,9 @@ const LiftsResults = () => {
     const theme = useTheme();
     const navigate = useNavigate();
     const size = useWindowSize();
+
+    const { activeNav } = useStore();
+
 
     const COLORS = [
         '#08f7af', // Red
@@ -98,7 +102,7 @@ const LiftsResults = () => {
             AxisWidth,
             HAxisWidth,
         }}>
-            <Container>
+            <Container $activeNav={activeNav}>
 
                 <Nav />
 
@@ -157,6 +161,11 @@ const Container = styled.div`
     justify-content: center;
     color: ${props => props.theme.text};
     padding: 1.5rem 2rem;
+
+    ${props => props.$activeNav && `
+        overflow: hidden;
+        height: 100vh;
+    `}
 
     @media (max-width: 1024px) {
         padding: 1rem .5rem;

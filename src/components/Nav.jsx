@@ -2,17 +2,18 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { List, X } from '@phosphor-icons/react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useStore } from '../../useStore';
 import Toggle from './Toggle';
 
 import logo from '../assets/logo.svg';
 
 const Nav = () => {
 
-    const [active, setActive] = useState(false);
+    const { activeNav, setActiveNav } = useStore();
 
     //Set mobile navigation to active or inactive
     const handleMobileNavShow = () => {
-        setActive(!active);
+        setActiveNav(!activeNav);
     }
 
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Nav = () => {
                 />
             </MenuIcon>
 
-            <NavLinks active={active}>
+            <NavLinks $active={activeNav}>
                 <CloseIcon onClick={handleMobileNavShow}>
                     <X
                         size={28}
@@ -107,7 +108,7 @@ const NavLinks = styled.div`
         justify-content: flex-start;
 
         //Mobile Nav is Active
-        ${props => props.active && `
+        ${props => props.$active && `
             top: 0;
             right: 0;
         `}
@@ -157,7 +158,7 @@ const NavLink = styled(Link)`
     }
 
     @media (max-width: 768px) {
-        font-size: 1rem;
+        font-size: 1.15rem;
         margin: 0 0 .3rem 0;
         width: 100%;
         justify-content: flex-start;
@@ -172,7 +173,7 @@ const NavLink = styled(Link)`
 const ToggleContainer = styled.div`
     @media (max-width: 768px) {
         position: absolute;
-        bottom: 5%;
+        bottom: 10%;
         left: 5%;
     }
 `;

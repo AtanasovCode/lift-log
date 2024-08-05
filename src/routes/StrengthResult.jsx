@@ -26,6 +26,7 @@ const StrengthResult = () => {
         setExerciseSelected,
         setCalendarValue,
         setUserData,
+        activeNav,
     } = useStore();
 
     const [YAxisHighestValue, setYAxisHighestValue] = useState(0);
@@ -160,7 +161,7 @@ const StrengthResult = () => {
     };
 
     return (
-        <Container>
+        <Container $activeNav={activeNav}>
             <Nav />
             <ContentContainer>
                 <LiftInfo>
@@ -242,6 +243,11 @@ export const Container = styled.div`
     justify-content: flex-start;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
+
+    ${props => props.activeNav && `
+        overflow: hidden;
+        height: 100vh;
+    `}
 
     @media (max-width: 768px) {
         
