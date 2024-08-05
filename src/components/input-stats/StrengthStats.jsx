@@ -9,9 +9,10 @@ import CalendarInput from './CalendarInput';
 import ExerciseSelect from './ExerciseSelect';
 
 import illustration from '../../assets/illustrations/illustration-strength.svg';
+import { useState } from 'react';
 
 
-const StrengthStats = ({ errorActive, setErrorActive }) => {
+const StrengthStats = () => {
 
     const {
         userData, setUserData,
@@ -28,6 +29,8 @@ const StrengthStats = ({ errorActive, setErrorActive }) => {
     const navigate = useNavigate();
     const theme = useTheme();
 
+    const [error, setError] = useState(false);
+
     // Checks to see if user has selected an exercise
     // and has values for at least 3 lifts
     // If true, the function navigates to the results page
@@ -39,9 +42,10 @@ const StrengthStats = ({ errorActive, setErrorActive }) => {
         })
 
         if (lifts >= 3 && exerciseSelected !== "Select an exercise") {
+            setError(false);
             navigate("/strength-result");
         } else {
-
+            setError(true);
         }
     }
 
@@ -129,7 +133,7 @@ const StrengthStats = ({ errorActive, setErrorActive }) => {
                                 </Styled.SubmitIcon>
                                 Get Results
 
-                                {errorActive && (
+                                {error && (
                                     <Styled.ErrorMessage>
                                         There is some data missing!
                                     </Styled.ErrorMessage>
