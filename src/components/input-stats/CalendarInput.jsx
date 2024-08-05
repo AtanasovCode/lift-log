@@ -17,10 +17,11 @@ const CalendarInput = () => {
         let PRs = 0;
 
         userData.map((item) => {
-            if(parseInt(item.pr) > 0) PRs++;
+            if(parseInt(item.weight) > 0) PRs++;
         })
 
         if(PRs >= 3) {
+            console.log("All Good!");
             setActiveError(false);
             calendarSubmit();
         } else {
