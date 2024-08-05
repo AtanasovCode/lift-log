@@ -304,7 +304,7 @@ export const SubmitIcon = styled.div`
 
 export const ErrorMessage = styled.div`
     font-size: 15px;
-    color: #fa2a2a;
+    color: ${props => props.theme.error};
     font-weight: 300;
     position: absolute;
     bottom: -25px;

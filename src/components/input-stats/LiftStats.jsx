@@ -37,6 +37,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
     //used for selecting number of exercises to track
     const [numbers, setNumbers] = useState([2, 3, 4, 5, 6]);
     const [isOpen, setIsOpen] = useState(false);
+    const [error, setError] = useState(false);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
@@ -57,9 +58,11 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
         });
 
         if (chart && lifts === parseInt(numberOfExercises)) {
+            setError(false);
             navigate("/lift-result");
         } else {
             console.log("Missing data");
+            setError(true);
         }
     };
 
@@ -184,7 +187,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                 </Styled.SubmitIcon>
                                 Get Results
 
-                                {errorActive &&
+                                {error &&
                                     <Styled.ErrorMessage>
                                         There is some data missing!
                                     </Styled.ErrorMessage>
