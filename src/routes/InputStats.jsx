@@ -100,7 +100,7 @@ const Tab = styled.div`
     justify-content: center;
     padding: .5rem 1rem;
     border-radius: 16px;
-    background-color: ${props => props.theme.mayaBlueDark};
+    background-color: ${props => props.theme.secondary};
     color: #d5d4d4;
     margin: 0 .5rem;
     cursor: pointer;

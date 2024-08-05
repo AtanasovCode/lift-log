@@ -105,7 +105,7 @@ export const Heading = styled.div`
         border-radius: 60px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
-        background-color: ${props => props.theme.accent};
+        background-color: ${props => props.theme.secondary};
         padding: 25px 0;
     }
 `;
@@ -128,7 +128,7 @@ export const Title = styled.div`
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        color: #000;
+        color: #fff;
     }
 `;
 
@@ -140,9 +140,9 @@ export const Fancy = styled.span`
     @media (max-width: 768px) {
         color: ${props => props.color};
         margin: 7px 0;
-        background-color: ${props => props.theme.background};
         border-radius: 8px;
         padding: 8px;
+        color: #fff;
     }
 `;
 

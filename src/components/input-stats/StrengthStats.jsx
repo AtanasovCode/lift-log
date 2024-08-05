@@ -67,7 +67,7 @@ const StrengthStats = ({ errorActive, setErrorActive }) => {
                         <Styled.Icon>
                             <RocketLaunch
                                 size="100%"
-                                color={theme.richBlackDark}
+                                color="#fff"
                                 weight="fill" />
                         </Styled.Icon>
                     </Styled.Heading>
@@ -124,7 +124,7 @@ const StrengthStats = ({ errorActive, setErrorActive }) => {
                                     <ChartLine
                                         size="100%"
                                         color={theme.text}
-                                        weight="fill"
+                                        weight="thin"
                                     />
                                 </Styled.SubmitIcon>
                                 Get Results

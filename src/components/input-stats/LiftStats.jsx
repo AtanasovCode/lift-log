@@ -92,7 +92,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                         </Styled.Title>
                         <Styled.Icon>
                             <HandFist
-                                color={theme.background}
+                                color="#fff"
                                 size="100%"
                                 weight="fill"
                             />
