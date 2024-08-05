@@ -2,12 +2,9 @@ import * as Styled from '../../styles/Styled.Stats';
 import { useTheme } from 'styled-components';
 import {
     HandFist,
-    ListNumbers,
     Barbell,
     ChartDonut,
-    ChartBar,
-    ChartBarHorizontal,
-    ChartPieSlice,
+    Hash,
 } from '@phosphor-icons/react';
 import { useStore } from '../../../useStore';
 import { getChartIcon } from '../../Utils';
@@ -110,7 +107,13 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                 </Styled.LabelText>
                                 <DropdownContainer onClick={() => toggleDropdown()}>
                                     <DropdownValue>
-                                        <DropdownIcon></DropdownIcon>
+                                        <Styled.LabelIcon>
+                                            <Hash
+                                                size="100%"
+                                                color={theme.text}
+                                                weight="regular"
+                                            />
+                                        </Styled.LabelIcon>
                                         <DropdownText>{numberOfExercises} exercises</DropdownText>
                                     </DropdownValue>
                                     <DropdownMenu isOpen={isOpen}>
@@ -208,13 +211,6 @@ const DropdownContainer = styled.div`
     color: ${props => props.theme.text};
     padding: .5rem;
     border-radius: 16px;
-`;
-
-const DropdownIcon = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1rem;
 `;
 
 const DropdownValue = styled.div`
