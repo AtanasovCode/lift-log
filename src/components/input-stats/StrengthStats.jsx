@@ -41,7 +41,7 @@ const StrengthStats = ({ errorActive, setErrorActive }) => {
         if (lifts >= 3 && exerciseSelected !== "Select an exercise") {
             navigate("/strength-result");
         } else {
-            
+
         }
     }
 

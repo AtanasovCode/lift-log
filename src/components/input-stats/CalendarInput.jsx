@@ -13,6 +13,22 @@ const CalendarInput = () => {
         calendarSubmit, calendarError,
     } = useStore();
 
+    const handleCalendarSubmit = () => {
+        let PRs = 0;
+
+        userData.map((item) => {
+            if(parseInt(item.pr) > 0) PRs++;
+        })
+
+        if(PRs >= 3) {
+            setActiveError(false);
+            calendarSubmit();
+        } else {
+            setActiveError(true);
+            console.log("Not enough PRs");
+        }
+    }
+
     // Updates the weight values based on the user input
     const handleInputChange = (value, idx) => {
         // Parse the input value and set it to 0 if NaN (e.g., if the input is cleared)
@@ -52,12 +68,12 @@ const CalendarInput = () => {
                 ))}
 
             </Months>
+            {activeError && <ErrorMsg>Please input at least 3 PRs</ErrorMsg>}
             <Submit
                 type="button"
                 value="Submit Lifts"
-                onClick={calendarSubmit}
+                onClick={() => handleCalendarSubmit()}
             />
-            {calendarError && <ErrorMsg>At least 3 lifts needed</ErrorMsg>}
         </Calendar>
     );
 };
@@ -217,10 +233,10 @@ const Submit = styled.input`
 `;
 
 const ErrorMsg = styled.div`
-    font-size: 15px;
-    color: #cf3838;
+    font-size: .8rem;
+    color: #ef7373;
     text-align: center;
-    margin-top: 10px;
+    margin: .4rem 0;
 `;
 
 const Close = styled.div`
