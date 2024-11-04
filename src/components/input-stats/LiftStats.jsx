@@ -119,7 +119,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                         </Styled.LabelIcon>
                                         <DropdownText>{numberOfExercises} exercises</DropdownText>
                                     </DropdownValue>
-                                    <DropdownMenu isOpen={isOpen}>
+                                    <DropdownMenu $isOpen={isOpen}>
                                         <DropdownHeading>
                                             Exercises to track
                                         </DropdownHeading>
@@ -127,6 +127,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                             numbers.map((number) => {
                                                 return (
                                                     <DropdownItem
+                                                        key={number}
                                                         onClick={() => {
                                                             sessionStorage.setItem("numberOfExercises", parseInt(number))
                                                             setNumberOfExercises(number);
@@ -240,7 +241,7 @@ const DropdownMenu = styled.div`
     left: 0;
     top: 0;
 
-    ${props => props.isOpen && `
+    ${props => props.$isOpen && `
         display: block;
         height: auto;
         top: 105%;
