@@ -1,15 +1,16 @@
 import { useStore } from "../../../useStore";
+import styled from "styled-components";
 
 const Tabs = () => {
 
-    const { setActiveTab } = useStore();
+    const { activeTab, setActiveTab } = useStore();
 
     return (
-        <Tabs>
+        <TabsContainer>
             <Tab
                 id="lifts"
                 onClick={() => setActiveTab("lifts")}
-                active={activeTab == "lifts" ? true : false}
+                $active={activeTab == "lifts" ? true : false}
             >
                 Lifts
             </Tab>
@@ -17,45 +18,55 @@ const Tabs = () => {
             <Tab
                 id="strength"
                 onClick={() => setActiveTab("strength")}
-                active={activeTab == "strength" ? true : false}
+                $active={activeTab == "strength" ? true : false}
             >
                 Strength
             </Tab>
-        </Tabs>
+            <ActiveTabBorder $activeTab={activeTab} />
+        </TabsContainer>
     );
 }
 
 export default Tabs;
 
-const Tabs = styled.div`
+const TabsContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding: 0 2rem;
-    margin-bottom: 1rem;
+    justify-content: center;
+    width: 100%;
+    position: relative;
 
-    @media (max-width: 768px) {
-        padding: 0 1rem;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 2rem;
+    @media (min-width: 768px) {
+        margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+        width: 30%;
     }
 `;
 
 const Tab = styled.div`
     text-align: center;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .5rem 1rem;
-    border-radius: 16px;
-    background-color: ${props => props.theme.secondary};
     color: #d5d4d4;
-    margin: 0 .5rem;
     cursor: pointer;
     user-select: none;
+`;
 
-    //Tab is currently active:
-    background-color: ${props => props.active && props.theme.accent};
-    color: ${props => props.active && props.theme.background};
+const ActiveTabBorder = styled.div`
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: ${props => props.theme.accent};
+    transform: translateX(0);
+    transition: all .288s ease-in-out;
+    ${props => props.$activeTab === "lifts" ? 
+        `transform: translateX(0)` 
+        : 
+        `transform: translateX(100%)`}
 `;
