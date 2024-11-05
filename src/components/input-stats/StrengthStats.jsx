@@ -51,13 +51,6 @@ const StrengthStats = () => {
 
     return (
         <Styled.Container>
-            <Styled.ImageContainer>
-                <Styled.Illustration
-                    src={illustration}
-                    alt="illustration of a man carrying a barbell with weight"
-                />
-            </Styled.ImageContainer>
-
             <Styled.TextContainer>
                 <Styled.TextWrapper>
                     <Styled.Heading color={theme.accent}>

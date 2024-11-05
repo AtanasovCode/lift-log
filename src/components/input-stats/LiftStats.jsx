@@ -70,11 +70,6 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
         <Styled.Container>
             {showMultipleExercises && <Styled.Tint />}
             {showCharts && <Styled.Tint />}
-            <Styled.ImageContainer>
-                <Styled.Illustration
-                    src={illustration}
-                />
-            </Styled.ImageContainer>
 
             {/*Components for selecting chart type, exercises...*/}
             {showCharts && <ChartSelect setChartType={setChartType} getChartIcon={getChartIcon} />}
@@ -215,6 +210,10 @@ const DropdownContainer = styled.div`
     color: ${props => props.theme.text};
     padding: .5rem;
     border-radius: 16px;
+
+    @media (min-width: 768px) {
+        padding: 1.1rem 1.6rem;
+    }
 `;
 
 const DropdownValue = styled.div`

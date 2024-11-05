@@ -1,18 +1,24 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: stretch;
-    justify-content: space-between;
     width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
     color: ${props => props.theme.text};
     background-color: ${props => props.theme.background};
-    padding: 1rem 2rem;
+    margin-top: 4rem;
+    
+    @media (min-width: 1024px) {
+        width: 75%;
+        max-width: 75rem;
+        margin-top: 3rem;
+    }
 
-    @media (max-width: 768px) {
-        flex-direction: column-reverse;
-        padding: 1rem 0;
+    
+    @media (min-width: 1330px) {
+        width: 50%;
     }
 `;
 
@@ -26,62 +32,35 @@ export const Tint = styled.div`
     z-index: 6;
 `;
 
-export const ImageContainer = styled.div`
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    @media (max-width: 768px) {
-        margin-top: 3rem;
-    }
-`;
-
-export const Illustration = styled.img`
-    width: 60%;
-
-    @media (max-width: 1024px) {
-        width: 80%;
-    }
-
-    @media (max-width: 768px) {
-        width: 70%;
-    }
-
-    @media (max-width: 550px) {
-        width: 80%;
-    }
-`;
-
 
 export const TextContainer = styled.div`
-    flex: 1;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 0 1rem;
-
-    @media (max-width: 768px) {
-        padding: 0;
-    }
 `;
 
 export const TextWrapper = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-
-    @media (max-width: 768px) {
-        width: 100%;
-    }
 `;
 
 export const Heading = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    flex-direction: column-reverse;
+    width: 100%;
+    animation: slideIn .456s ease-in-out 1;
+    border-radius: 60px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: ${props => props.theme.secondary};
+    padding: 1.5rem 2.5rem;
+
 
     @keyframes slideIn {
         from {
@@ -97,120 +76,133 @@ export const Heading = styled.div`
         }
     }
 
-    @media (max-width: 768px) {
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        position: relative;
+        animation: none;
+        flex-direction: row-reverse;
+        border-radius: 16px;
         width: 100%;
-        flex-direction: column-reverse;
-        margin-top: 2rem;
-        animation: slideIn .456s ease 1;
-        border-radius: 60px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        background-color: ${props => props.theme.secondary};
-        padding: 25px 0;
+        margin-bottom: 2.5rem;
     }
 `;
 
 
 export const Title = styled.div`
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 900;
     color: ${props => props.theme.text};
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 
-    @media (max-width: 930px) {
-        font-size: 1.5rem;
+    @media (min-width: 1024px) {
+        font-size: 2rem;
+        font-weight: 900;
+        flex-direction: row;
+        align-items: center;
     }
     
 
     @media (max-width: 768px) {
-        font-weight: 900;
-        font-size: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        color: #fff;
+
     }
 `;
 
 export const Fancy = styled.span`
     color: ${props => props.color};
-    margin: 0 6px;
-    text-align: center;
+    margin: 7px 0;
+    border-radius: 8px;
+    padding: 8px;
+    color: ${props => props.color};
 
-    @media (max-width: 768px) {
-        color: ${props => props.color};
-        margin: 7px 0;
-        border-radius: 8px;
-        padding: 8px;
-        color: #fff;
+    @media (min-width: 1024px) {
+        margin: 0 6px;
+        text-align: center;
     }
 `;
 
 export const Icon = styled.div`
     margin-left: 6px;
-    width: 0;
-    height: 0;
+    width: 70px;
+    height: 70px;
 
-    @media (max-width: 768px) {
+    @media (min-width: 550px) {
         width: 90px;
         height: 90px;
-    }
-    
-    @media (max-width: 550px) {
-        width: 70px;
-        height: 70px;
 
+    }
+
+    @media (min-width: 1024px) {
+        width: 75px;
+        height: 75px;
     }
 `;
 
 export const InputContainer = styled.div`
-    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 2.5rem;
+    width: 100%;
+    padding: 1.5rem;
 
-    @media (max-width: 768px) {
-        padding: 0 2rem;
+    @media (min-width: 768px) {
+        padding: 3.5rem;
+    }
+    
+    @media (min-width: 1024px) {
+        padding: 0;
     }
 `;
 
 export const Inputs = styled.div`
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    width: 100%;
 `;
 
 export const LabelContainer = styled.div`
-    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 100%;
     margin-bottom: 1.4rem;
     position: relative;
 
-    @media (max-width: 768px) {
-        flex-direction: column;
+    @media (min-width: 768px) {
+        flex-direction: row;
         justify-content: center;
+        margin-bottom: 2.3rem;
+    }
+
+    @media (min-width: 1024px) {
+        margin-bottom: 1.5rem;
     }
 `;
 
 export const InputFieldContainer = styled.div`
-    font-size: 16px;
-    padding: .5rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     position: relative;
-    width: 100%;
     background-color: ${props => props.theme.secondary};
     color: ${props => props.theme.text};
     user-select: none;
     cursor: pointer;
 
-    @media (max-width: 768px) {
-        margin-left: 0;
+    @media (min-width: 768px) {
+        padding: 1.1rem 1.6rem;
+    }
+
+    @media (min-width: 768px) {
+        padding: .9rem 1.3rem;
     }
 `;
 
@@ -230,6 +222,7 @@ export const LabelText = styled.div`
 `;
 
 export const SelectField = styled.select`
+    width: 100%;
     background-color: ${props => props.theme.secondary};
     color: ${props => props.theme.text};
     border: none;

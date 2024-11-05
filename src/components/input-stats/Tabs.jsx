@@ -41,7 +41,12 @@ const TabsContainer = styled.div`
     }
 
     @media (min-width: 1024px) {
-        width: 30%;
+        width: 75%;
+        max-width: 75rem;
+    }
+
+    @media (min-width: 1330px) {
+        width: 50%;
     }
 `;
 

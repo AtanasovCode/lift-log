@@ -27,15 +27,16 @@ const InputStats = () => {
             {/* Outlet used for navigating to child routes */}
             <Outlet />
             <Nav />
-            <Tabs />
-            {
-                activeTab === "lifts" ?
-                    <LiftStats
-                    />
-                    :
-                    <StrengthStats
-                    />
-            }
+
+            <Wrapper>
+                <Tabs />
+                {
+                    activeTab === "lifts" ?
+                        <LiftStats />
+                        :
+                        <StrengthStats />
+                }
+            </Wrapper>
         </Container>
     );
 }
@@ -44,7 +45,8 @@ export default InputStats;
 
 
 const Container = styled.div`
-    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -55,4 +57,12 @@ const Container = styled.div`
         overflow: hidden;
         height: 100vh;
     `}
+`;
+
+const Wrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `;

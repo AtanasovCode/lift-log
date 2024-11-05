@@ -75,6 +75,11 @@ const Navigation = styled.nav`
         align-items: center;
         justify-content: center;
     }
+
+    @media (min-width: 1024px) {
+        padding: 1rem 4rem;
+        margin-bottom: 1rem;
+    }
 `;
 
 const Logo = styled.img`
