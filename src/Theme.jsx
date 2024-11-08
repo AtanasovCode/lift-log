@@ -12,7 +12,7 @@ const night = {
 
     background: "#0f1f2e",
     primary: "#6aa1d8",
-    secondary: "#508eb546",
+    secondary: "#244356", //508eb546
     accent: "#0085FF",
     text: "#f5f1f1",
   };

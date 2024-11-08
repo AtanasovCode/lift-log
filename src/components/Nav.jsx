@@ -176,10 +176,10 @@ const NavLink = styled(Link)`
 `;
 
 const ToggleContainer = styled.div`
-    @media (max-width: 768px) {
+    @media (min-width: 1024px) {
         position: absolute;
-        bottom: 10%;
-        left: 5%;
+        bottom: 3%;
+        left: 1%;
     }
 `;
 

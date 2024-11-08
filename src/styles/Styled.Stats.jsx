@@ -283,6 +283,10 @@ export const Submit = styled.div`
     cursor: pointer;
     user-select: none;
     width: 100%;
+
+    @media (min-width: 1024px) {
+        padding: 1rem;
+    }
 `;
 
 export const SubmitIcon = styled.div`
