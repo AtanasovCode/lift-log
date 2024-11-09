@@ -27,7 +27,7 @@ const ChartSelect = ({ setChartType, getChartIcon }) => {
         <Container>
             <Heading>
                 <Title>
-                    Select your preferred chart type
+                    Select Chart Type
                 </Title>
             </Heading>
 
@@ -42,7 +42,7 @@ const ChartSelect = ({ setChartType, getChartIcon }) => {
                 {charts.map((chart) => (
                     <ChartOption key={chart} onClick={() => selectChart(chart)}>
                         <ChartIcon>
-                            {getChartIcon(chart, "fill", theme.accent)}
+                            {getChartIcon(chart, "thin", theme.text)}
                         </ChartIcon>
                         <ChartName>{chart}</ChartName>
                     </ChartOption>
@@ -64,20 +64,27 @@ const Container = styled.div`
     padding: 2rem;
     background-color: ${props => props.theme.background};
     position: fixed;
-    width: 50%;
+    width: 100vw;
+    height: 100%;
     z-index: 99;
     opacity: 1;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 
-    @media (max-width: 1024px) {
-        width: 70%;
+    @media (min-width: 768px) {
+        width: 80%;
+        height: auto;
+        padding: 2rem 2.5rem;
     }
 
-    @media (max-width: 768px) {
-        width: 100vw;
-        height: 100%;
+    @media (min-width: 1024px) {
+        width: 50%;
+        padding: 2.5rem 3rem;
+    }
+
+    @media (min-width: 1300px) {
+        width: 35%;
     }
 `;
 
@@ -110,7 +117,7 @@ const ChartsContainer = styled.div`
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2rem;
+    grid-gap: 1rem;
 
     @media (max-width: 550px) {
         grid-template-columns: 1fr;

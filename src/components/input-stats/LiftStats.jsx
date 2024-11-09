@@ -7,7 +7,7 @@ import {
     Hash,
 } from '@phosphor-icons/react';
 import { useStore } from '../../../useStore';
-import { getChartIcon } from '../../Utils';
+import { getChartIcon, closePopupWithTint } from '../../Utils';
 import styled from 'styled-components';
 
 import MultipleExerciseSelect from './MultipleExerciseSelect';
@@ -68,8 +68,8 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
 
     return (
         <Styled.Container>
-            {showMultipleExercises && <Styled.Tint />}
-            {showCharts && <Styled.Tint />}
+            {showMultipleExercises && <Styled.Tint onClick={() => closePopupWithTint(setShowMultipleExercises)} />}
+            {showCharts && <Styled.Tint onClick={() => closePopupWithTint(setShowCharts)} />}
 
             {/*Components for selecting chart type, exercises...*/}
             {showCharts && <ChartSelect setChartType={setChartType} getChartIcon={getChartIcon} />}

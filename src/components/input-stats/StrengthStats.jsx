@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components';
 import { Calendar, Barbell, ChartLine, RocketLaunch } from '@phosphor-icons/react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../../../useStore';
+import { closePopupWithTint } from '../../Utils';
 
 
 import CalendarInput from './CalendarInput';
@@ -16,7 +17,7 @@ const StrengthStats = () => {
 
     const {
         userData, setUserData,
-        showExercises,
+        showExercises, setShowExercises,
         showCalendar, setShowCalendar,
         calendarValue, setCalendarValue,
         exerciseSelected, setExerciseSelected,
@@ -72,8 +73,8 @@ const StrengthStats = () => {
                     {/* Input components that are activated on button click */}
                     {showExercises && <ExerciseSelect />}
                     {showCalendar && <CalendarInput />}
-                    {showExercises && <Styled.Tint />}
-                    {showCalendar && <Styled.Tint />}
+                    {showExercises && <Styled.Tint onClick={() => closePopupWithTint(setShowExercises)} />}
+                    {showCalendar && <Styled.Tint onClick={() => closePopupWithTint(setShowCalendar)} />}
 
                     <Styled.InputContainer>
                         <Styled.Inputs>

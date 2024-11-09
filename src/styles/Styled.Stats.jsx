@@ -23,10 +23,11 @@ export const Container = styled.div`
 `;
 
 export const Tint = styled.div`
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(6px);
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100dvh;
     top: 0;
     left: 0;
     z-index: 6;
@@ -103,19 +104,9 @@ export const Title = styled.div`
         flex-direction: row;
         align-items: center;
     }
-    
-
-    @media (max-width: 768px) {
-
-    }
 `;
 
 export const Fancy = styled.span`
-    color: ${props => props.color};
-    margin: 7px 0;
-    border-radius: 8px;
-    padding: 8px;
-    color: ${props => props.color};
 
     @media (min-width: 1024px) {
         margin: 0 6px;
@@ -135,8 +126,10 @@ export const Icon = styled.div`
     }
 
     @media (min-width: 1024px) {
-        width: 75px;
-        height: 75px;
+        min-width: 55px;
+        min-height: 55px;
+        width: 55px;
+        height: 55px;
     }
 `;
 
