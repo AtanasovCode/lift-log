@@ -48,7 +48,7 @@ const Hero = () => {
             </HeroImageContainer>
 
             <HeroInfo>
-                <MainTitle animationEnd={animationEnd} ref={mainTitleRef}>
+                <MainTitle $animationEnd={animationEnd} ref={mainTitleRef}>
                     Visualize your strength and progress
                     <Fancy>
                         effectively

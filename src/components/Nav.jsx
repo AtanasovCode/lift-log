@@ -64,179 +64,167 @@ const Navigation = styled.nav`
     overflow-x: hidden;
     padding: 2rem 4rem;
     width: 100%;
-    margin-bottom: 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     color: ${props => props.theme.text};
     background-color: ${props => props.theme.background};
 
-    @media (max-width: 768px) {
-        align-items: center;
-        justify-content: center;
-    }
-
     @media (min-width: 1024px) {
-        padding: 1rem 4rem;
-        margin-bottom: 1rem;
+        justify-content: space-between;
+        padding: 2rem 3rem;
+        margin-bottom: 1.5rem;
     }
 `;
 
 const Logo = styled.img`
-    height: 50px;
+    height: 60px;
     cursor: pointer;
 
-    @media (max-width: 768px) {
-        height: 60px;
+    @media (min-width: 1024px) {
+        height: 50px;
     }
 `;
 
 const NavLinks = styled.div`
+    position: fixed;
+    width: 100%;
+    height: 100dvh;
+    background-color: ${props => props.theme.background};
+    padding: 2rem 1rem;
+    top: 0;
+    right: -200%;
+    transition: all 0.6s ease-in-out;
+    z-index: 99;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 
-    @media (max-width: 768px) {
-        position: fixed;
-        width: 60%;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, .8);
-        backdrop-filter: blur(15px);
-        padding: 2rem 1rem;
+    ${props => props.$active && `
         top: 0;
-        right: -200%;
-        transition: all .6s ease-in-out;
-        z-index: 99;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
+        right: 0;
+    `}
 
-        //Mobile Nav is Active
-        ${props => props.$active && `
-            top: 0;
-            right: 0;
-        `}
-
-        &::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: -100%;
-            background-color: rgba(0, 0, 0, .6);
-        }
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: -100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(6px);
     }
 
-    @media (max-width: 550px) {
-        width: 100%;
+    @media (min-width: 550px) {
+        width: 60%;
+    }
+
+    @media (min-width: 768px) {
+        width: 35%;
+    }
+
+    @media (min-width: 1024px) {
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        backdrop-filter: none;
+        padding: 0;
+        flex-direction: row;
+        justify-content: center;
     }
 `;
 
 const NavLink = styled(Link)`
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: 400;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-right: 1rem;
-    padding-bottom: .5rem;
+    justify-content: flex-start;
+    margin: 0 0 0.3rem 0;
+    padding: 0.6rem 1rem;
     position: relative;
-
-    &::before {
-        content: '';
-        position: absolute;
-        bottom: -20%;
-        right: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        border-radius: 16px;
-        background-color: ${props => props.theme.secondary};
-        transition: all .3s ease-in-out;
-    }
+    width: 100%;
 
     &:hover::before {
         background-color: ${props => props.theme.accent};
     }
 
-    @media (max-width: 768px) {
-        font-size: 1.15rem;
-        margin: 0 0 .3rem 0;
-        width: 100%;
-        justify-content: flex-start;
-        padding: .6rem 1rem;
+    @media (min-width: 768px) {
+        font-size: 1rem;
+        margin-right: 1rem;
+        justify-content: center;
+        padding-bottom: 0.5rem;
+        width: auto;
 
         &::before {
-            display: none;
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            border-radius: 16px;
+            background-color: ${props => props.theme.secondary};
+            transition: all 0.3s ease-in-out;
         }
     }
 `;
 
 const ToggleContainer = styled.div`
-    @media (min-width: 1024px) {
-        position: absolute;
-        bottom: 3%;
-        left: 1%;
-    }
+    position: absolute;
+    bottom: 3%;
+    left: 1%;
 `;
 
 const CloseIcon = styled.div`
-    display: none;
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    cursor: pointer;
+    display: block;
 
-    @media (max-width: 768px) {
-        position: absolute;
-        top: 4%;
-        left: 4%;
-        cursor: pointer;
-        display: block;
+    @media (min-width: 1024px) {
+        display: none;
     }
 `;
 
 const NavLogoContainer = styled.div`
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 2.5rem;
-
-    @media (max-width: 768px) {
-        width: 100%;
-    }
 `;
 
 const NavLogo = styled.img`
-    display: none;
+    display: block;
+    width: 40%;
 
-    @media (max-width: 768px) {
-        display: block;
-        width: 40%;
-        margin-bottom: 7rem;
-    }
-
-    @media (max-width: 550px) {
+    @media (min-width: 550px) {
         width: 30%;
     }
 
-    @media (max-width: 425px) {
-        width: 40%;
+    @media (min-width: 1024px) {
+        display: none;
     }
 `;
 
 const MenuIcon = styled.div`
     user-select: none;
-    opacity: 0;
+    opacity: 1;
     position: absolute;
-    right: -100%;
-    z-index: 0;
+    display: inline-block;
+    right: 25px;
+    cursor: pointer;
+    z-index: 5;
+    width: 30px;
 
-    @media (max-width: 768px) {
-        opacity: 1;
-        position: absolute;
-        right: 25px;
-        cursor: pointer;
-        z-index: 5;
-        width: 30px;
+    @media (min-width: 1024px) {
+        display: none;
     }
 `;
