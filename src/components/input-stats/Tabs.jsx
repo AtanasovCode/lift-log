@@ -72,7 +72,7 @@ const Tab = styled.div`
         font-size: 1rem;
         font-weight: 400;
         margin-bottom: 1rem;
-        min-width: 12vw;
+        min-width: 10vw;
         padding: 1.1rem 1.5rem;
         background-color: ${props => props.$active ? props.theme.secondary : props.theme.background};
         color: ${props => props.$active ? props.theme.text : "#aba4a4"};
