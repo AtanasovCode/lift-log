@@ -53,6 +53,7 @@ const Nav = () => {
                 <ToggleContainer>
                     <Toggle />
                 </ToggleContainer>
+                <NavTint onClick={() => setActiveNav(false)} />
             </NavLinks>
         </Navigation>
     );
@@ -75,6 +76,17 @@ const Navigation = styled.nav`
         padding: 2rem 3rem;
         margin-bottom: 1.5rem;
     }
+`;
+
+const NavTint = styled.div`
+    content: "";
+    position: absolute;
+    width: calc(100vw - 100%);
+    height: 100%;
+    top: 0;
+    right: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
 `;
 
 const Logo = styled.img`
@@ -105,17 +117,6 @@ const NavLinks = styled.div`
         top: 0;
         right: 0;
     `}
-
-    &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: -100%;
-        background-color: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(6px);
-    }
 
     @media (min-width: 550px) {
         width: 60%;
