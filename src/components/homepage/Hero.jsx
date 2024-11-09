@@ -210,7 +210,7 @@ const MainTitle = styled.div`
         max-width: 95%;
     }
 
-    animation: ${({ animationEnd }) => animationEnd ? shake : 'none'} 0.5s;
+    animation: ${({ $animationEnd }) => $animationEnd ? shake : 'none'} 0.5s;
 
     &.shake {
         animation: ${shake} 0.5s;

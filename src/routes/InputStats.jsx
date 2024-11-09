@@ -52,11 +52,6 @@ const Container = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     background-color: ${props => props.theme.background};
-
-    ${props => props.$activeNav && `
-        overflow: hidden;
-        height: 100vh;
-    `}
 `;
 
 const Wrapper = styled.div`
