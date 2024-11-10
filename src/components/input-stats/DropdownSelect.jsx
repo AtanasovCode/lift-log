@@ -140,22 +140,18 @@ const Input = styled.div`
 `;
 
 const InputPR = styled.input`
-    flex: .33;
+    width: 30%;
     padding: 1rem;
     background-color: ${props => props.theme.secondary};
     color: ${props => props.theme.text};
     border-bottom-right-radius: 16px;
     border-top-right-radius: 16px;
     border: none;
-
-    @media (max-width: 550px) {
-        flex: .35;
-    }
 `;
 
 const Dropdown = styled.div`
+    width: 100%;
     position: relative;
-    flex: 66%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -164,10 +160,6 @@ const Dropdown = styled.div`
     margin-right: .4rem;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
-
-    @media (max-width: 550px) {
-        flex: 65%;
-    }
 `;
 
 const Heading = styled.div`
@@ -185,6 +177,7 @@ const Heading = styled.div`
 `;
 
 const SearchContainer = styled.div`
+    width: 70%;
     width: 100%;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
@@ -234,13 +227,13 @@ const SearchIcon = styled.div`
 const SearchExercise = styled.img`
     position: absolute;
     top: 50%;
-    left: 3%;
+    left: 4%;
     transform: translateY(-50%);
-    height: 25px;
+    height: 20px;
     filter: invert(100%);
 
-    @media (max-width: 550px) {
-        height: 20px;
+    @media (min-width: 550px) {
+        height: 27px;
     }
 `;
 

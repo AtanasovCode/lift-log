@@ -122,7 +122,7 @@ export const DropdownWrapper = styled.div`
   padding: 1rem;
   position: fixed;
   width: 50%;
-  z-index: 99;
+  z-index: 9999;
   opacity: 1;
   top: 50%;
   left: 50%;

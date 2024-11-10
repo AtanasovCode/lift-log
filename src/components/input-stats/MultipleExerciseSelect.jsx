@@ -101,12 +101,11 @@ const MultipleExerciseSelect = () => {
 export default MultipleExerciseSelect;
 
 const Container = styled.div`
-    max-width: 1024px;
     position: fixed;
-    width: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    height: 100dvh;
+    top: 0;
+    left: 0;
     background-color: ${props => props.theme.background};
     z-index: 999;
     display: flex;
@@ -114,29 +113,30 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     color: ${props => props.theme.text};
-    padding: 3rem;
-    border-radius: 16px;
+    padding: 1.2rem;
 
-    @media (max-width: 1024px) {
-        width: 70%;
+    @media (min-width: 768px) {
+        width: 80%;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        border-radius: 16px;
         padding: 1.5rem;
     }
 
-    @media (max-width: 768px) {
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100vw;
-        transform: translateX(0) translateY(0);
-        padding: 1.5rem;
-        border-radius: 0;
+    @media (min-width: 1024px) {
+        width: 50%;
+        max-width: 60rem;
+        padding: 2rem;
     }
 
-    @media (max-width: 550px) {
-        padding: 1rem;
+    @media (min-width: 1330px) {
+        width: 45%;
     }
 `;
+
+
 
 const CloseIcon = styled.div`
     position: absolute;
@@ -188,6 +188,7 @@ const SubmitData = styled.input`
 
     &:hover {
         cursor: pointer;
+        background-color: ${props => props.theme.mayaBlueDark};
     }
 
     ${props => props.$error && `

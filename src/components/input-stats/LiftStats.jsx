@@ -7,8 +7,10 @@ import {
     Hash,
 } from '@phosphor-icons/react';
 import { useStore } from '../../../useStore';
-import { getChartIcon } from '../../Utils';
+import { getChartIcon, closePopupWithTint } from '../../Utils';
 import styled from 'styled-components';
+import { excitedAnimation } from '../Animations';
+
 
 import MultipleExerciseSelect from './MultipleExerciseSelect';
 import ChartSelect from './ChartSelect';
@@ -68,13 +70,8 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
 
     return (
         <Styled.Container>
-            {showMultipleExercises && <Styled.Tint />}
-            {showCharts && <Styled.Tint />}
-            <Styled.ImageContainer>
-                <Styled.Illustration
-                    src={illustration}
-                />
-            </Styled.ImageContainer>
+            {showMultipleExercises && <Styled.Tint onClick={() => closePopupWithTint(setShowMultipleExercises)} />}
+            {showCharts && <Styled.Tint onClick={() => closePopupWithTint(setShowCharts)} />}
 
             {/*Components for selecting chart type, exercises...*/}
             {showCharts && <ChartSelect setChartType={setChartType} getChartIcon={getChartIcon} />}
@@ -119,7 +116,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                         </Styled.LabelIcon>
                                         <DropdownText>{numberOfExercises} exercises</DropdownText>
                                     </DropdownValue>
-                                    <DropdownMenu isOpen={isOpen}>
+                                    <DropdownMenu $isOpen={isOpen}>
                                         <DropdownHeading>
                                             Exercises to track
                                         </DropdownHeading>
@@ -127,6 +124,7 @@ const LiftStats = ({ errorActive, setErrorActive }) => {
                                             numbers.map((number) => {
                                                 return (
                                                     <DropdownItem
+                                                        key={number}
                                                         onClick={() => {
                                                             sessionStorage.setItem("numberOfExercises", parseInt(number))
                                                             setNumberOfExercises(number);
@@ -214,6 +212,10 @@ const DropdownContainer = styled.div`
     color: ${props => props.theme.text};
     padding: .5rem;
     border-radius: 16px;
+
+    @media (min-width: 768px) {
+        padding: 1.1rem 1.6rem;
+    }
 `;
 
 const DropdownValue = styled.div`
@@ -240,7 +242,7 @@ const DropdownMenu = styled.div`
     left: 0;
     top: 0;
 
-    ${props => props.isOpen && `
+    ${props => props.$isOpen && `
         display: block;
         height: auto;
         top: 105%;

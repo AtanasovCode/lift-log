@@ -13,15 +13,15 @@ const Toggle = () => {
   return (
     <ToggleContainer
       onClick={handleToggle}
-      isChecked={theme === "dark"}
+      $isChecked={theme === "dark"}
     >
       <ToggleWrapper
-        isChecked={theme === "dark"}
+        $isChecked={theme === "dark"}
       >
         <MoonIcon
           src={moon}
           alt="moon icon toggle for amoled theme"
-          isChecked={theme === "dark"}
+          $isChecked={theme === "dark"}
         />
       </ToggleWrapper>
       <ThemeName>
@@ -57,7 +57,7 @@ const ToggleWrapper = styled.div`
   height: 30px;
   transition: all .4s ease-in-out;
 
-  ${props => props.isChecked && `
+  ${props => props.$isChecked && `
     background-color: ${props.theme.secondary};
   `}
 `;
@@ -70,7 +70,7 @@ const MoonIcon = styled.div`
   transform: scale(.9);
   border-radius: 50%;
 
-  ${props => props.isChecked && `
+  ${props => props.$isChecked && `
     transform: translateX(calc(100% + 15px)) scale(1.1);
     background-color: ${props.theme.richBlackDark};
   `}

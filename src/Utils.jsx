@@ -1,3 +1,4 @@
+import { useStore } from "../useStore";
 import { 
     ChartBar, 
     ChartBarHorizontal, 
@@ -5,7 +6,7 @@ import {
     ChartDonut,
 } from "@phosphor-icons/react";
 
-const getChartIcon = (name, weight, color) => {
+export const getChartIcon = (name, weight, color) => {
     switch (name) {
         case "Pie Chart": return (
             <ChartPieSlice
@@ -45,4 +46,6 @@ const getChartIcon = (name, weight, color) => {
     }
 };
 
-export { getChartIcon }
+export const closePopupWithTint = (setValue) => {
+    setValue(false);
+}
