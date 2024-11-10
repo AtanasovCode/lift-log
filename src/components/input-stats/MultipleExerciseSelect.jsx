@@ -188,6 +188,7 @@ const SubmitData = styled.input`
 
     &:hover {
         cursor: pointer;
+        background-color: ${props => props.theme.mayaBlueDark};
     }
 
     ${props => props.$error && `

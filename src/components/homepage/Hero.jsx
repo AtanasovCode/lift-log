@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
+import { excitedAnimation } from '../Animations';
 
 import logo from '../../assets/logo.svg';
 import barbell from '../../assets/illustrations/barbell.svg';
@@ -233,16 +234,7 @@ const HeroButton = styled(Link)`
     font-weight: 500;
     width: 40%;
 
-    &:hover {
-        background-color: ${props => props.theme.mayaBlueDark};
-        animation: excited .3s 1;
-    }
-
-    @keyframes excited {
-        50% {
-            transform: scale(1.05) rotate(0.5deg);
-        }
-    }
+    ${excitedAnimation};
 
     @media (max-width: 700px) {
         width: 60%;    

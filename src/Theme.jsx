@@ -12,7 +12,7 @@ const night = {
 
     background: "#0f1f2e",
     primary: "#6aa1d8",
-    secondary: "#244356", //508eb546
+    secondary: "#154479", //"#244356" #508eb546
     accent: "#0085FF",
     text: "#f5f1f1",
   };
@@ -30,7 +30,7 @@ const night = {
 
     background: "#100f0f",
     primary: "#5f95cb",
-    secondary: "#508eb566",
+    secondary: "#123A68",
     accent: "#0085FF",
     text: "#f4eeee",
   };

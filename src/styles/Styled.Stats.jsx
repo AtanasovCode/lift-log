@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { excitedAnimation } from "../components/Animations";
 
 export const Container = styled.div`
     width: 100%;
@@ -276,6 +277,8 @@ export const Submit = styled.div`
     cursor: pointer;
     user-select: none;
     width: 100%;
+
+    ${excitedAnimation}
 
     @media (min-width: 1024px) {
         padding: 1rem;

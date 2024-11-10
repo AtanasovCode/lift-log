@@ -9,6 +9,8 @@ import {
 import { useStore } from '../../../useStore';
 import { getChartIcon, closePopupWithTint } from '../../Utils';
 import styled from 'styled-components';
+import { excitedAnimation } from '../Animations';
+
 
 import MultipleExerciseSelect from './MultipleExerciseSelect';
 import ChartSelect from './ChartSelect';
