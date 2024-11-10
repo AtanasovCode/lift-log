@@ -31,7 +31,7 @@ export const Tint = styled.div`
     height: 100dvh;
     top: 0;
     left: 0;
-    z-index: 6;
+    z-index: 99;
 `;
 
 

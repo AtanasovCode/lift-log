@@ -87,7 +87,7 @@ const Calendar = styled.div`
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    z-index: 99;
+    z-index: 9999;
     padding: 1.5rem;
     background-color: ${props => props.theme.background};
     border-radius: 16px;

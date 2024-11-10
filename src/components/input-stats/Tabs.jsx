@@ -99,8 +99,8 @@ const ActiveTabBorder = styled.div`
     bottom: -50%;
     left: 0;
     width: 50%;
-    height: 2px;
-    background-color: ${props => props.theme.accent};
+    height: 4px;
+    background-color: ${props => props.theme.mayaBlueDark};
     transform: translateX(0);
     transition: all .288s ease-in-out;
     ${props => props.$activeTab === "lifts" ? `transform: translateX(0)` : `transform: translateX(100%)`};
